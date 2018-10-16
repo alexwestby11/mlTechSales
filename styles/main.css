@@ -1,13 +1,23 @@
 .colSide{
     border-radius: 5px;
-    background: rgb(246,224,181);
-    box-shadow: black;
-}
-.jumbo{
-
-    background: rgb(238,169,144);
+    background: rgba(223,219,212,1.0);
+    height: 75%
 }
 .imageBorder{
     border-radius: 5px;
+}
+.center {
+    margin: auto;
+    height: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.topRow{
+    height:10%;
+    background:rgba(0,81,114,.4);
+}
+.pageBackground{
+   background:rgba(0,91,124,.2);
 
 }
