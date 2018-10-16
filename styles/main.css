@@ -1,11 +1,13 @@
 .colSide{
-    border-radius: 25px;
-    border: 2px solid #73AD21;
-    padding: 20px;
+    border-radius: 5px;
     background: rgb(246,224,181);
+    box-shadow: black;
 }
+.jumbo{
 
+    background: rgb(238,169,144);
+}
 .imageBorder{
-    border-radius: 25px;
+    border-radius: 5px;
 
 }
