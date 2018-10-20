@@ -3,6 +3,12 @@
     background: rgba(223,219,212,1.0);
     height: 75%
 }
+
+.colBox{
+    border-radius: 5px;
+    background: rgba(223,219,212,1.0);
+}
+
 .imageBorder{
     border-radius: 5px;
 }
@@ -19,5 +25,11 @@
 }
 .pageBackground{
    background:rgba(0,91,124,.2);
+}
 
+horizontalLine{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
