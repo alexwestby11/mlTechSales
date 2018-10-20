@@ -1,3 +1,14 @@
+.lightBlue{
+    background:rgba(0,91,124,.2);
+}
+.darkBlue{
+    background:rgba(0,81,114,.4);
+}
+.tan{
+    background: rgba(223,219,212,1.0);
+}
+
+
 .colSide{
     border-radius: 5px;
     background: rgba(223,219,212,1.0);
@@ -7,6 +18,11 @@
 .colBox{
     border-radius: 5px;
     background: rgba(223,219,212,1.0);
+}
+
+.colBoxMap{
+    border-radius: 5px;
+
 }
 
 .imageBorder{
