@@ -1,0 +1,61 @@
+.lightBlue{
+    background:rgba(0,91,124,.2);
+}
+.darkBlue{
+    background:rgba(0,81,114,.4);
+}
+.tan{
+    background: rgba(223,219,212,1.0);
+}
+
+
+.colSide{
+    border-radius: 5px;
+    background: rgba(223,219,212,1.0);
+    height: 85%
+}
+
+.colBox{
+    border-radius: 5px;
+    background: rgba(223,219,212,1.0);
+}
+
+.colBoxMap{
+    border-radius: 5px;
+
+}
+
+.imageBorder{
+    border-radius: 5px;
+}
+.center {
+    margin: auto;
+    height: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.topRow{
+    height:10%;
+    background:rgba(0,81,114,.4);
+}
+.pageBackground{
+   background:rgba(0,91,124,.2);
+}
+
+.horizontalLine{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.columnHeight{
+    height: 85%;
+}
+
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
