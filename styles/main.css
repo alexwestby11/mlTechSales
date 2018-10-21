@@ -20,6 +20,11 @@
     background: rgba(223,219,212,1.0);
 }
 
+.recommendationBox{
+    border-radius: 5px;
+    background:rgba(0,91,124,.2);
+}
+
 .colBoxMap{
     border-radius: 5px;
 
@@ -58,4 +63,9 @@
 .vertical-align {
     display: flex;
     align-items: center;
+}
+
+.productRowHeight
+{
+    height: 48%;
 }
