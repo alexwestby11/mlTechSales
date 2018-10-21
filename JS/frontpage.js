@@ -3,5 +3,5 @@ function myFunction() {
 }
 
 function linkProductPage() {
-  window.location.href = '/PP/ProductPage.html/';
+  window.location.href = 'ProductPage.html';
 }
