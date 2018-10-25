@@ -7,4 +7,14 @@ function getMap()
     });
 }
 
+function createCarousel() {
+    $('.single-item').slick({
+        speed: 300,
+        slidesToShow: 1,
+        slidesToScroll: 3,
+        vertical: true
+    });
 
+
+
+}
