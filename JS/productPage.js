@@ -1,4 +1,4 @@
-function getMap()
+function createMap()
 {
     mapboxgl.accessToken = "";
     var map = new mapboxgl.Map({
@@ -8,11 +8,19 @@ function getMap()
 }
 
 function createCarousel() {
-    $('.single-item').slick({
-        speed: 300,
-        slidesToShow: 1,
-        slidesToScroll: 3,
-        vertical: true
+    jQuery( document ).ready(function( $ ) {
+        $( 'myCarousel' ).sliderPro({
+            width: 25,
+            height: 25,
+            imageScaleMode: 'contain',
+            arrows: true,
+            buttons: false,
+            waitForLayers: true,
+            fade: true,
+            autoplay: false,
+            autoScaleLayers: false,
+            arrows: true
+        });
     });
 }
 function createGraph(){
