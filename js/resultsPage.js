@@ -1,4 +1,4 @@
-     function dtable() {
+     function dTable() {
              $("#dynamic_table").ready(function () {
                     console.log(3);
                  localStorage['myKey'] = 0; // only strings
