@@ -28,12 +28,14 @@ function createGraph(){
        //Stands for current node being created
        var currentNode= 6;
        var childNodes=[];
+       var previousChildNodes=[]
        var emptyArray= [];
+       var previouslyClicked=-1;
 
         // create an array with nodes
         var nodes = new vis.DataSet([
-            {id: 1, label: 'Mouse',isSelected: false},
-            {id: 2, label: 'Macbook Pro' },
+            {id: 1, label: 'Mouse'},
+            {id: 2, label: 'Macbook Pro'},
             {id: 3, label: 'Mousepad'   },
             {id: 4, label: 'Second Monitor'},
             {id: 5, label: 'Laptop Sleeve' }
@@ -57,15 +59,25 @@ function createGraph(){
         };
         var options = {
 
+            layout: {
+                randomSeed: undefined,
+                improvedLayout:true
+            },
+
+
             nodes: {
                 color: {
                     border: 'rgb(223,219,212)',
                     background: 'rgb(223,219,212)',
                     highlight: {
-                        border: '#2B7CE9',
-                        background: '#D2E5FF'
+                        border: 'rgba(0,91,124,.2)',
+                        background: 'rgb(0,91,124)',
                                 }
                         },
+                scaling: {
+                    min: 10,
+                    max: 30
+                },
                 shape:'dot'
                     },
             edges:{
@@ -80,12 +92,13 @@ function createGraph(){
             },
             physics:{
                 enabled: true,
-                repulsion: {
-                    centralGravity: 0.8,
-                    springLength: 50,
-                    springConstant: 0.5,
-                    nodeDistance: 100,
-                    damping: 0.55
+                barnesHut: {
+                    gravitationalConstant: -2000,
+                    centralGravity: 0.3,
+                    springLength: 20,
+                    springConstant: 0.04,
+                    damping: 0.09,
+                    avoidOverlap: 0
                 }
             }
 
@@ -96,8 +109,19 @@ function createGraph(){
 
     network.on("selectNode", function(params) {
         if (params.nodes.length > 0) {
+
+            previouslyClicked=nodeId;
+            previousChildNodes=childNodes;
+            if(previouslyClicked!=-1)
+            {
+                deleteNodes(nodes,edges,previouslyClicked,previousChildNodes)
+            }
+
+
+
             childNodes=emptyArray;
             var nodeId = params.nodes[0];
+
             console.log("Clicked on a NODE with id = " + nodeId + ", label = " +
                 nodes.get(nodeId).label);
             for(var i=6; i<=9; ++i)
@@ -106,6 +130,7 @@ function createGraph(){
                 childNodes.push(currentNode);
                 currentNode++;
             }
+
         }
     });
 
@@ -114,13 +139,27 @@ function createGraph(){
     }
 
 function addNodes(nodes,edges,givenNode,fromNode) {
-    nodes.add(  {id: givenNode, label: 'Mouse'})
-    edges.add(  {from: fromNode, to: givenNode})
+    nodes.add({ id: givenNode,
+                label: 'Mouse',
+                color:{
+                    border: 'rgba(0,81,114,.4',
+                    background: 'rgba(0,81,114,.4)',
+                    highlight: {
+                        border: '#2B7CE9',
+                        background: '#D2E5FF'
+                    }},
+                 radius: 12,
+                 value: 10
+                });
+    edges.add({from: fromNode, to: givenNode});
+
+
 }
-function deleteNodes(nodes,edges,parentNode,childreNodes)
+function deleteNodes(nodes,edges,parentNode,childrenNodes)
 {
     for(var i=0; i<=childrenNodes.length-1;++i)
     {
-
+        var tempNode = nodes.get(childrenNodes[i]);
+        nodes.update([{id:tempNode.id, hidden: true}]);
     }
 }
