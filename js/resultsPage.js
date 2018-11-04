@@ -44,9 +44,7 @@ function changeImage(x,y,z){
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
               var string = "name" + j.toString() + k.toString();
-              console.log(string);
-               var image = document.getElementById(string);
-                console.log(dataArray.length);
+               var image = document.getElementById(string);;
                 image.src = (dataArray[dx]).img_src;
                 ++ dx;
           }
@@ -59,9 +57,7 @@ function nextImage(x,y,z){
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
               var string = "name" + j.toString() + k.toString();
-              console.log(string);
                var image = document.getElementById(string);
-                console.log(dataArray.length);
                 image.src = (dataArray[dx]).img_src;
                 ++ dx;
           }
@@ -69,11 +65,28 @@ function nextImage(x,y,z){
     z_idx = dx;
 }
 
-function nextButton(){
-   nextImage(4,2,z_idx);
+function prevImage(x,y,z){
+    var dx = z - (4*2)*2;
+      for (var j = 0; j < y; ++j) {//rows
+          for (var k = 0; k < x; ++k) {//col
+              var string = "name" + j.toString() + k.toString();
+               var image = document.getElementById(string);
+               image.src = (dataArray[dx]).img_src;
+                ++dx;
+          }
+      }
+    z_idx = dx;
 }
+function nextButton(){
+
+   nextImage(4,2,z_idx);
+  console.log(z_idx);
+}
+
 function prevButton(){
-   nextImage(4,2,z_idx-8);
+
+   prevImage(4,2,z_idx);
+console.log(z_idx);
 }
 
 
@@ -92,7 +105,7 @@ function linkProductPage() {
 
 function getData() {
     $(document).ready(function () {
-            $.getJSON("data/data2.json", function (result) {
+            $.getJSON("data/data3.json", function (result) {
                 //console.log(result);
                 $.each(result, function (i, field) {
                     let product = new Product();
