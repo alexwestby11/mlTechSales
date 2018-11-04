@@ -1,42 +1,21 @@
 var dataArray = [];
 
-function getData1() {
-    console.log("here");
+
+function getData() {
     $.ajax({
         type:'GET',
         url: 'data/package.json',
         dataType: 'json',
         success: function(data){
             $.each(data,function(index,item){
-                  const newProduct = new Product;
-                $.each(item, function(key,value){
-                    if(key == "imgSrc"){
-                        newProduct.img_src = value;
-                    }
-                    else if(key == "price"){
-                        newProduct.price = value;
-                    }
-                    else if(key == "name"){
-                        newProduct.name = value;
-                    }
-                    else if(key == "id"){
-                        newProduct.id = value;
-                    }
-                     else if(key == "type"){
-                        newProduct.type = value;
-                    }
-                    else if(key == "manfacturer"){
-                        newProduct.brand = value;
-                    }
-
-                });
-                dataArray.push(newProduct);
-                console.log(dataArray.length);
+                    var myObj = JSON.parse(item);
+                    console.log(myObj.imgSrc);
             });
         }
     });
 
 }
+
 
 
 class Product {
@@ -70,3 +49,12 @@ class Product {
 
 }
 
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var myObj = JSON.parse(this.responseText);
+        document.getElementById("demo").innerHTML = myObj.name;
+    }
+};
+xmlhttp.open("GET", "json_demo.txt", true);
+xmlhttp.send();
