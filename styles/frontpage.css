@@ -100,9 +100,16 @@
 }
 /* Font Size */
 .titleText {
-    font-size: 50px;
+    color: whitesmoke;
+    font-family: custom1;
+    font-size: 5vmax;
     text-align: center;
-    padding-top: 50px;
+    text-shadow:
+    -1px -1px 0 TEAL,
+    1px -1px 0 TEAL,
+    -1px 1px 0 TEAL,
+    1px 1px 0 TEAL;
+
 }
 
 .titleSubText {
@@ -120,7 +127,10 @@
     height: 34px;
 }
 
-
+@font-face {
+font-family: "custom1";
+src: url("../fonts/BenguiatGothicStd-HeavyObl.otf");
+}
 
 
 
