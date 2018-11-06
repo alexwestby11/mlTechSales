@@ -138,8 +138,10 @@
 }
 
 .margin1{
-    margin-bottom:  0.5vmin;
-    margin-top:  0.5vmin;
+    margin-bottom:  5%;
+    margin-top:  5%;
+    margin-right:  5%;
+    margin-left: 5%;
 }
 
 .roundedB{
@@ -174,10 +176,14 @@
     outline: none !important;
 }
 
-.imgW {
-   width: 100%;
-    height: 100%;
+.W {
+width: 100%;
 }
+
+.mT {
+margin-top: 0.75%;
+}
+
 
 div{
     color: black;
@@ -190,3 +196,12 @@ div{
 .palFont{
     font-family: Calibri;
 }
+
+.flewRow{
+    flex: 0 1 auto;
+}
+
+.tableRowHeight{
+   height: 14vmax;
+}
+

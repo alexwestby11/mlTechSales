@@ -20,12 +20,23 @@
 <body onload = "dTable();">
 <div class="container-fluid h-100 snowColor palFont">
 
-<div class="container-fluid ">
-    <div class="row h-auto text-center blueColor marginTitle rounded shadow">
-        <div class="col-lg-4 col-sm-offset-4 container titleText">
+<div class="container-fluid">
+    <div class="row-fluid text-center blueColor marginTitle rounded shadow">
+        <div class="col titleText">
                 <p>Tech Sails</p>
-			<div class="col container titleSubText">
-                <p>Sailing Through the Competiton</p>
+			    <div class="row flex-row titleSubText ">
+                    <div class="col-lg-4 titleSubText">
+                        <button type = "submit" onclick="prevButton();">Prev</button>
+                    </div>
+
+                    <div class="col titleSubText">
+                      <p>Sailing Through the Competiton</p>
+                    </div>
+
+                    <div class="col titleSubText">
+                        <button type = "submit" onclick="nextButton();">Next</button>
+                    </div>
+            </div>
 
         </div>
 
@@ -33,21 +44,15 @@
 </div>
 
 
-
-
+<!--results-->
 <div class="container-fluid palFont">
-    <div class="col m-auto">
-		<div class=" table-responsive h-60 rounded1 lightcyanColor shadow  margin1 rounded">
-            <table class="table" id="d_table">
-
+    <div class="col shadow blueColor mT rounded">
+            <table class="table-fluid W rounded" id="d_table">
+                <!- Custom Table-->
             </table>
-		</div>
-		<button type = "submit" onclick="nextButton();">Next</button>
-	</div>
-    </div>
-		<button type = "submit" onclick="prevButton();">Prev</button>
 	</div>
 </div>
-</div>
+
+
 </div>
 </body>

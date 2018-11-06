@@ -1,20 +1,23 @@
 var dataArray = [];
 var z_idx;
+var numRows = 6;
+var numCol= 2;
 function dTable() {
     getData();
     console.log("getting data");
              $("#dynamic_table").ready(function () {
                  localStorage['myKey'] = 0; // only strings
                  //creates x images on same row
-                 function numCol(x, y) {
+                 function numTable(x, y) {
                      var stringValue = '';
                      for (var j = 0; j < y; ++j) {//rows
                          stringValue += "<tr>";
                          for (var k = 0; k < x; ++k) {//col
 
                              stringValue += "<td>" +
-                                 "<div class=\" row-fluid roundedT roundedB creamColor margin1 btn-primary shadow  blackText\">Text" +
-                                 "<input  id ='name"+j+k+"' onclick='google()' type=\"image\" src= \"images/Apple1.jpg\" class = \"img-fluid rounded imgW\">" +
+                                 "<div id ='box"+j+k+"' class=\"row-fluid rounded creamColor margin1 btn-primary shadow blackText\">" +
+                                 "<div class=\"col-fluid text-center\" ><h6>Value</h6></div>"+
+                                 "<input tag = \"img\" onclick='google()' type=\"image\" src= \"images/Apple1.jpg\" class = \"img tableRowHeight rounded W\">" +
                                  "<div class=\"col-fluid text-center\">Info<br> Stuff <br> stuff</div>" +
                                  "</div>" +
                                  "</td>";
@@ -26,7 +29,7 @@ function dTable() {
 
                  // console.log(i);
 
-                 $('#d_table').html(numCol(5, 2));
+                 $('#d_table').html(numTable(numRows, numCol));
 
                  $('#tab_logic').append('<tr id="d_table' + (1) + '"></tr>');
 
@@ -43,10 +46,14 @@ function changeImage(x,y,z){
     var dx = z;
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
-              var string = "name" + j.toString() + k.toString();
-               var image = document.getElementById(string);
-                image.src = (dataArray[dx]).img_src;
-                ++ dx;
+              var string = "box" + j.toString() + k.toString();
+               var prd = document.getElementById(string);
+               prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
+               var name = (prd.getElementsByTagName("h6")[0]);
+               name.innerHTML = dataArray[dx].name.substring(0,15);
+               var info = (prd.getElementsByTagName("div")[1]);
+               info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
+               ++ dx;
           }
       }
     z_idx = dx;
@@ -56,22 +63,30 @@ function nextImage(x,y,z){
     var dx = z;
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
-              var string = "name" + j.toString() + k.toString();
-               var image = document.getElementById(string);
-                image.src = (dataArray[dx]).img_src;
-                ++ dx;
+               var string = "box" + j.toString() + k.toString();
+               var prd = document.getElementById(string);
+               prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
+               var name = (prd.getElementsByTagName("h6")[0]);
+               name.innerHTML = dataArray[dx].name.substring(0,15);
+               var info = (prd.getElementsByTagName("div")[1]);
+               info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
+                ++dx;
           }
       }
     z_idx = dx;
 }
 
 function prevImage(x,y,z){
-    var dx = z - (5*2)*2;
+    var dx = z - (numRows*numCol)*2;
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
-              var string = "name" + j.toString() + k.toString();
-               var image = document.getElementById(string);
-               image.src = (dataArray[dx]).img_src;
+             var string = "box" + j.toString() + k.toString();
+               var prd = document.getElementById(string);
+               prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
+               var name = (prd.getElementsByTagName("h6")[0]);
+               name.innerHTML = dataArray[dx].name.substring(0,15);
+               var info = (prd.getElementsByTagName("div")[1]);
+               info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
                 ++dx;
           }
       }
@@ -79,13 +94,13 @@ function prevImage(x,y,z){
 }
 function nextButton(){
 
-   nextImage(5,2,z_idx);
+   nextImage(numRows,numCol,z_idx);
   console.log(z_idx);
 }
 
 function prevButton(){
 
-   prevImage(5,2,z_idx);
+   prevImage(numRows,numCol,z_idx);
 console.log(z_idx);
 }
 
@@ -94,6 +109,10 @@ console.log(z_idx);
 
 function setImage(x,y){
     return dataArray[x*y].img_src;
+}
+
+function setName(x,y){
+    return dataArray[x*y].name;
 }
 
 function productPage(){
@@ -114,12 +133,21 @@ function getData() {
                             product.img_src = value;
 
                         }
+                        else if (key == "name") {
+                            product.name = value;
+                        }
+                        else if (key == "price") {
+                            product.price = value;
+                        }
+                        else if (key == "manfacturer") {
+                            product.brand = value;
+                        }
                     });
                     dataArray.push(product);
                 });
                 console.log("Data Done");
                 console.log(dataArray.length);
-                changeImage(5,2,0);
+                changeImage(numRows,numCol,0);
             });
     });
 }
@@ -151,6 +179,5 @@ class Product {
     return this.category;
   }
 
-
-
 }
+
