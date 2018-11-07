@@ -2,7 +2,8 @@ var dataArray = [];
 var z_idx;
 var numRows = 6;
 var numCol= 2;
-var itemArray = new Array(numCol*numRows);
+var itemArray = []
+localStorage['ID'] = 0; // only strings
 function dTable() {
     getData();
     console.log("getting data");
@@ -14,9 +15,9 @@ function dTable() {
                      for (var j = 0; j < y; ++j) {//rows
                          stringValue += "<tr>";
                          for (var k = 0; k < x; ++k) {//col
-
+                             var idString = (j*numRows + k).toString();
                              stringValue += "<td>" +
-                                 "<div tag = '"+j*numRows+k+"' onclick=\"reply_click(this.id)\" id ='box"+j+k+"' class=\"row-fluid rounded creamColor margin1 btn-primary shadow blackText\">" +
+                                 "<div id = '"+idString+"' onclick=\"reply_click(this.id)\"  class=\"row-fluid rounded creamColor margin1 btn-primary shadow blackText\">" +
                                  "<div class=\"col-fluid text-center\" ><h6>Value</h6></div>"+
                                  "<input tag = \"img\"  type=\"image\" src= \"images/Apple1.jpg\" class = \"img tableRowHeight rounded W\">" +
                                  "<div class=\"col-fluid text-center\">Info<br> Stuff <br> stuff</div>" +
@@ -44,19 +45,24 @@ function google()
     console.log(this.id);
 }
 
+function idValue(j,k){
+    return (j*numRows + k).toString();
+}
+
 function changeImage(x,y,z){
     var dx = z;
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
-              var string = "box" + j.toString() + k.toString();
+              var string = (j*numRows + k).toString();
                var prd = document.getElementById(string);
                prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
                var name = (prd.getElementsByTagName("h6")[0]);
                name.innerHTML = dataArray[dx].name.substring(0,15);
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
-               storeID(j*numRows + k, dataArray[dx].id);
-               //console.log(j*numRows + k);
+               itemArray[j*numRows + k] = dataArray[dx].id;
+               console.log(j*numRows + k);
+               console.log(dataArray[dx].id);
                ++ dx;
           }
       }
@@ -67,7 +73,7 @@ function nextImage(x,y,z){
     var dx = z;
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
-               var string = "box" + j.toString() + k.toString();
+               var string = (j*numRows + k).toString();
                var prd = document.getElementById(string);
                prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
                var name = (prd.getElementsByTagName("h6")[0]);
@@ -84,7 +90,7 @@ function prevImage(x,y,z){
     var dx = z - (numRows*numCol)*2;
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
-             var string = "box" + j.toString() + k.toString();
+             var string = (j*numRows + k).toString();
                var prd = document.getElementById(string);
                prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
                var name = (prd.getElementsByTagName("h6")[0]);
@@ -187,12 +193,7 @@ class Product {
 
 function reply_click(clicked_id)
 {
-    alert(clicked_id);
-    var item = document.getElementById(clicked_id);
-    console.log();
-}
-
-function storeID(box, value)
-{
-    itemArray[box] = value;
+        var num = Number(clicked_id);
+        localStorage['ID'] = itemArray[num]; // only strings
+        console.log( localStorage['ID']);
 }
