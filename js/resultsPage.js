@@ -2,6 +2,7 @@ var dataArray = [];
 var z_idx;
 var numRows = 6;
 var numCol= 2;
+var itemArray = new Array(numCol*numRows);
 function dTable() {
     getData();
     console.log("getting data");
@@ -15,9 +16,9 @@ function dTable() {
                          for (var k = 0; k < x; ++k) {//col
 
                              stringValue += "<td>" +
-                                 "<div id ='box"+j+k+"' class=\"row-fluid rounded creamColor margin1 btn-primary shadow blackText\">" +
+                                 "<div tag = '"+j*numRows+k+"' onclick=\"reply_click(this.id)\" id ='box"+j+k+"' class=\"row-fluid rounded creamColor margin1 btn-primary shadow blackText\">" +
                                  "<div class=\"col-fluid text-center\" ><h6>Value</h6></div>"+
-                                 "<input tag = \"img\" onclick='google()' type=\"image\" src= \"images/Apple1.jpg\" class = \"img tableRowHeight rounded W\">" +
+                                 "<input tag = \"img\"  type=\"image\" src= \"images/Apple1.jpg\" class = \"img tableRowHeight rounded W\">" +
                                  "<div class=\"col-fluid text-center\">Info<br> Stuff <br> stuff</div>" +
                                  "</div>" +
                                  "</td>";
@@ -39,7 +40,8 @@ function dTable() {
 
 function google()
 {
-     location.href = "http://google.com";
+     //location.href = "http://google.com";
+    console.log(this.id);
 }
 
 function changeImage(x,y,z){
@@ -53,6 +55,8 @@ function changeImage(x,y,z){
                name.innerHTML = dataArray[dx].name.substring(0,15);
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
+               storeID(j*numRows + k, dataArray[dx].id);
+               //console.log(j*numRows + k);
                ++ dx;
           }
       }
@@ -181,3 +185,14 @@ class Product {
 
 }
 
+function reply_click(clicked_id)
+{
+    alert(clicked_id);
+    var item = document.getElementById(clicked_id);
+    console.log();
+}
+
+function storeID(box, value)
+{
+    itemArray[box] = value;
+}
