@@ -10,7 +10,7 @@
 
 
 .colSide{
-    border-radius: 5px;
+
     background: rgba(223,219,212,1.0);
     height: 85%
 }
@@ -93,4 +93,11 @@
 .sp-image{
     width:90%;
     height:90%;
+}
+
+.padding1 {
+    padding-right: 10%;
+     padding-left: 10%;
+    padding-bottom: 10%;
+    padding-top: 10%;
 }
