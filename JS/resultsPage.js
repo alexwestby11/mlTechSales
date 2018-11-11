@@ -303,22 +303,39 @@ function myCounter6() {++c6;}
         colIdArray[1].style.height = "75%";
         colIdArray[2].style.height = "25%";
     }
-    else{colIdArray[1].style.height = "25%";
+    else if(priorityBox[0] === priorityBox[1]) {
+        colIdArray[1].style.height = "50%";
+        colIdArray[2].style.height = "50%";
+    }
+    else{
+        colIdArray[1].style.height = "25%";
         colIdArray[2].style.height = "75%";
     }
-     if(priorityBox[4]  > priorityBox[5]){
+
+    if(priorityBox[2]  > priorityBox[3]){
+        colIdArray[2].style.height = "75%";
+        colIdArray[3].style.height = "25%";
+    }
+    else if(priorityBox[2] === priorityBox[3]) {
+        colIdArray[2].style.height = "50%";
+        colIdArray[3].style.height = "50%";
+    }
+    else{
+        colIdArray[2].style.height = "25%";
+        colIdArray[3].style.height = "75%";
+    }
+
+    if(priorityBox[4]  > priorityBox[5]){
         colIdArray[4].style.height = "75%";
         colIdArray[5].style.height = "25%";
     }
-    else{colIdArray[4].style.height = "25%";
-        colIdArray[5].style.height = "75%";
+    else if(priorityBox[4] === priorityBox[1]) {
+        colIdArray[1].style.height = "50%";
+        colIdArray[2].style.height = "50%";
     }
-     if(priorityBox[7]  > priorityBox[8]){
-        colIdArray[7].style.height = "75%";
-        colIdArray[8].style.height = "25%";
-    }
-    else{colIdArray[7].style.height = "25%";
-        colIdArray[8].style.height = "75%";
+    else{
+        colIdArray[1].style.height = "25%";
+        colIdArray[2].style.height = "75%";
     }
     updateDiv();
  /*
