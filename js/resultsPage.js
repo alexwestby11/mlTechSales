@@ -3,6 +3,7 @@ var z_idx;
 var numRows = 6;
 var numCol= 2;
 var itemArray = []
+var priorityBox = [0,0,0,0,0,0];
 var myVar = localStorage['ID'] || '0';
 function dTable() {
     getData();
@@ -131,24 +132,24 @@ function linkProductPage() {
 
 function getData() {
     $(document).ready(function () {
-            $.getJSON("data/data5.json", function (result) {
+            $.getJSON("data/data7.json", function (result) {
                 //console.log(result);
                 $.each(result, function (i, field) {
                     let product = new Product();
                     $.each(field, function (key, value) {
-                        if (key == "imgSrc") {
+                        if (key === "imgSrc") {
                             product.img_src = value;
                         }
-                        else if (key == "name") {
+                        else if (key === "name") {
                             product.name = value;
                         }
-                        else if (key == "price") {
+                        else if (key === "price") {
                             product.price = value;
                         }
-                        else if (key == "manfacturer") {
+                        else if (key === "manfacturer") {
                             product.brand = value;
                         }
-                         else if (key == "id") {
+                         else if (key === "id") {
                             product.id = value;
                         }
                     });
@@ -200,4 +201,175 @@ function reply_click(clicked_id)
 function returnItemClicked(){
     console.log(localStorage['ID']);
     return localStorage['ID'];
+}
+var c1 = 0;
+var c2 = 0;
+var c3 = 0;
+var c4 = 0;
+var c5 = 0;
+var c6 = 0;
+
+var Timer1;
+var Timer2;
+var Timer3;
+var Timer4;
+var Timer5;
+var Timer6;
+function reply_mouseover(clicked_id)
+{
+            if(clicked_id === "box1"){
+                console.log("ibox1");
+                 Timer1 = setInterval(myCounter1, 1000);
+            }
+            else if(clicked_id === "box2"){
+                console.log("ibox2");
+                Timer2 = setInterval(myCounter2, 1000);
+            }
+            else if(clicked_id === "box3"){
+                console.log("ibox3");
+                Timer3 = setInterval(myCounter3, 1000);
+            }
+            else if(clicked_id === "box4") {
+                console.log("ibox4");
+                Timer4 = setInterval(myCounter4, 1000);
+            }
+            else if(clicked_id === "box5"){
+                console.log("ibox5");
+                Timer5 = setInterval(myCounter5, 1000);
+            }
+            else if(clicked_id === "box6"){
+                console.log("ibox6");
+                Timer6 = setInterval(myCounter6, 1000);
+            }
+
+}
+
+function reply_mouseOut(clicked_id) {
+            if(clicked_id === "box1"){
+                console.log(c1);
+                console.log("lbox1");
+                priorityBox[0] = c1;
+                 clearTimeout(Timer1);
+            }
+            else if(clicked_id === "box2"){
+                console.log(c2);
+                console.log("lbox2");
+                priorityBox[1] = c2;
+                clearTimeout(Timer2);
+            }
+            else if(clicked_id === "box3"){
+                console.log(c3);
+                console.log("lbox3");
+                 priorityBox[2] = c3;
+                clearTimeout(Timer3);
+            }
+            else if(clicked_id === "box4"){
+                console.log(c4);
+                console.log("lbox4");
+                priorityBox[3] = c4;
+                clearTimeout(Timer4);
+            }
+            else if(clicked_id === "box5"){
+                console.log(c5);
+                console.log("lbox5");
+                priorityBox[4] = c5;
+               clearTimeout(Timer5);
+            }
+            else if(clicked_id === "box6"){
+                console.log(c6);
+                console.log("lbox6");
+                priorityBox[5] = c6;
+                 clearTimeout(Timer6);
+
+            }
+
+}
+
+function myCounter1() {++c1;}
+function myCounter2() {++c2;}
+function myCounter3() {++c3;}
+function myCounter4() {++c4;}
+function myCounter5() {++c5;}
+function myCounter6() {++c6;}
+
+function printPriorityBox(){
+    for(var i = 0; i < priorityBox.length; ++i){
+        console.log("Box " + (i+1).toString() + " = " + priorityBox[i].toString());
+    }
+
+    var dox = document.getElementById("flexCol2");
+         dox.style.width = "20%";
+}
+
+function colChange(){
+    var maxValue = Math.max(priorityBox);
+    var total = 0;
+    for(var i = 0; i < priorityBox.length; ++i){
+        total += priorityBox[i];
+    }
+    var perCol = [0,0,0];
+
+    //find column most used
+    perCol[0] = Math.round(((priorityBox[0] + priorityBox[1])/total) * 100);
+    perCol[1] = Math.round(((priorityBox[2] + priorityBox[3])/total) * 100);
+    perCol[2] = Math.round(((priorityBox[4] + priorityBox[5])/total) * 100);
+    var maxIndex = 0;
+    for(var i = 1; i < perCol.length; ++i){
+        if(perCol[maxIndex] < perCol[i]){
+            maxIndex = i;
+        }
+    }
+    var colIdArray = [];
+    colIdArray.push(document.getElementById("flexCol1"));
+    colIdArray.push(document.getElementById("flex1"));
+    colIdArray.push(document.getElementById("flex2"));
+    colIdArray.push(document.getElementById("flexCol2"));
+    colIdArray.push(document.getElementById("flex3"));
+    colIdArray.push(document.getElementById("flex4"));
+    colIdArray.push(document.getElementById("flexCol3"));
+    colIdArray.push(document.getElementById("flex5"));
+    colIdArray.push(document.getElementById("flex6"));
+    colIdArray[maxIndex*3].style.width = "50%";
+    if(priorityBox[0]  > priorityBox[1]){
+        colIdArray[1].style.height = "75%";
+        colIdArray[2].style.height = "25%";
+    }
+    else{colIdArray[1].style.height = "25%";
+        colIdArray[2].style.height = "75%";
+    }
+
+    if(priorityBox[4]  > priorityBox[5]){
+        colIdArray[4].style.height = "75%";
+        colIdArray[5].style.height = "25%";
+    }
+    else{colIdArray[4].style.height = "25%";
+        colIdArray[5].style.height = "75%";
+    }
+     if(priorityBox[7]  > priorityBox[8]){
+        colIdArray[7].style.height = "75%";
+        colIdArray[8].style.height = "25%";
+    }
+    else{colIdArray[7].style.height = "25%";
+        colIdArray[8].style.height = "75%";
+    }
+    updateDiv();
+
+/*
+    var col1 = document.getElementById("flexCol1");
+    col1.style.width = (percentCol1 + '%').toString();
+
+    var box1 = document.getElementById("box1");
+    col1.style.height = (percentCol1 + '%').toString();
+*/
+
+
+
+    //console.log("Col 1 = " + percentCol1);
+   // console.log("Col 2 = " + percentCol2);
+   // console.log("Col 3 = " + percentCol3);
+}
+
+function updateDiv()
+{
+    $("map").load(location.href+" map>*","");
 }

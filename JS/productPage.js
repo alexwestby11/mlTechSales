@@ -163,3 +163,13 @@ function deleteNodes(nodes,edges,parentNode,childrenNodes)
         nodes.update([{id:tempNode.id, hidden: true}]);
     }
 }
+
+function reply_click(clicked_id)
+{
+        //gets item number
+        var num = Number(clicked_id);
+        console.log(num);
+}
+
+
+

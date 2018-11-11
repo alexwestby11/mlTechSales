@@ -201,11 +201,3 @@ $('#myCarousel').carousel({
 
 
 
-
-
-
-
-
-
-
-
