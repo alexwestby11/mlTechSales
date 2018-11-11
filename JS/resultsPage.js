@@ -196,64 +196,64 @@ var Timer6;
 function reply_mouseover(clicked_id)
 {
             if(clicked_id === "box1"){
-                console.log("ibox1");
+                //console.log("ibox1");
                  Timer1 = setInterval(myCounter1, 1000);
             }
             else if(clicked_id === "box2"){
-                console.log("ibox2");
+               // console.log("ibox2");
                 Timer2 = setInterval(myCounter2, 1000);
             }
             else if(clicked_id === "box3"){
-                console.log("ibox3");
+                //console.log("ibox3");
                 Timer3 = setInterval(myCounter3, 1000);
             }
             else if(clicked_id === "box4") {
-                console.log("ibox4");
+                //console.log("ibox4");
                 Timer4 = setInterval(myCounter4, 1000);
             }
             else if(clicked_id === "box5"){
-                console.log("ibox5");
+                //console.log("ibox5");
                 Timer5 = setInterval(myCounter5, 1000);
             }
             else if(clicked_id === "box6"){
-                console.log("ibox6");
+                //console.log("ibox6");
                 Timer6 = setInterval(myCounter6, 1000);
             }
  }
  function reply_mouseOut(clicked_id) {
             if(clicked_id === "box1"){
-                console.log(c1);
-                console.log("lbox1");
+                //console.log(c1);
+                //console.log("lbox1");
                 priorityBox[0] = c1;
                  clearTimeout(Timer1);
             }
             else if(clicked_id === "box2"){
-                console.log(c2);
-                console.log("lbox2");
+                //console.log(c2);
+               // console.log("lbox2");
                 priorityBox[1] = c2;
                 clearTimeout(Timer2);
             }
             else if(clicked_id === "box3"){
-                console.log(c3);
-                console.log("lbox3");
+                //console.log(c3);
+                //console.log("lbox3");
                  priorityBox[2] = c3;
                 clearTimeout(Timer3);
             }
             else if(clicked_id === "box4"){
-                console.log(c4);
-                console.log("lbox4");
+                //console.log(c4);
+                //console.log("lbox4");
                 priorityBox[3] = c4;
                 clearTimeout(Timer4);
             }
             else if(clicked_id === "box5"){
-                console.log(c5);
-                console.log("lbox5");
+                //console.log(c5);
+               // console.log("lbox5");
                 priorityBox[4] = c5;
                clearTimeout(Timer5);
             }
             else if(clicked_id === "box6"){
-                console.log(c6);
-                console.log("lbox6");
+                //console.log(c6);
+                //console.log("lbox6");
                 priorityBox[5] = c6;
                  clearTimeout(Timer6);
              }
@@ -268,8 +268,6 @@ function myCounter6() {++c6;}
     for(var i = 0; i < priorityBox.length; ++i){
         console.log("Box " + (i+1).toString() + " = " + priorityBox[i].toString());
     }
-     var dox = document.getElementById("flexCol2");
-         dox.style.width = "20%";
 }
  function colChange(){
     var maxValue = Math.max(priorityBox);
@@ -283,6 +281,7 @@ function myCounter6() {++c6;}
     perCol[1] = Math.round(((priorityBox[2] + priorityBox[3])/total) * 100);
     perCol[2] = Math.round(((priorityBox[4] + priorityBox[5])/total) * 100);
     var maxIndex = 0;
+    var restOfItems = [];
     for(var i = 1; i < perCol.length; ++i){
         if(perCol[maxIndex] < perCol[i]){
             maxIndex = i;
@@ -298,7 +297,38 @@ function myCounter6() {++c6;}
     colIdArray.push(document.getElementById("flexCol3"));
     colIdArray.push(document.getElementById("flex5"));
     colIdArray.push(document.getElementById("flex6"));
-    colIdArray[maxIndex*3].style.width = "50%";
+
+    //if all columns the same
+    if(perCol[0] === perCol[1] === perCol[2]){
+        colIdArray[0].style.width = "100%";
+        colIdArray[3].style.width = "100%";
+        colIdArray[6].style.width = "100%";
+    }
+    else{
+        if(colIdArray[maxIndex * 3]){
+           colIdArray[maxIndex * 3].style.width = "60%";
+           for(var i = 0; i < 3; ++i){
+               if(maxIndex !== i){
+                   restOfItems.push(i);
+               }
+           }
+           if(restOfItems[0] === restOfItems[1]){
+               colIdArray[restOfItems[0]*3].style.width = "50%";
+               colIdArray[restOfItems[1]*3].style.width = "50%";
+           }
+           else if(restOfItems[0] > restOfItems[1]){
+               colIdArray[restOfItems[0]*3].style.width = "50%";
+               colIdArray[restOfItems[1]*3].style.width = "30%";
+           }
+           else{
+               colIdArray[restOfItems[0]*3].style.width = "30%";
+               colIdArray[restOfItems[1]*3].style.width = "50%";
+           }
+        }
+
+    }
+
+
     if(priorityBox[0]  > priorityBox[1]){
         colIdArray[1].style.height = "75%";
         colIdArray[2].style.height = "25%";
@@ -313,31 +343,31 @@ function myCounter6() {++c6;}
     }
 
     if(priorityBox[2]  > priorityBox[3]){
-        colIdArray[2].style.height = "75%";
-        colIdArray[3].style.height = "25%";
-    }
-    else if(priorityBox[2] === priorityBox[3]) {
-        colIdArray[2].style.height = "50%";
-        colIdArray[3].style.height = "50%";
-    }
-    else{
-        colIdArray[2].style.height = "25%";
-        colIdArray[3].style.height = "75%";
-    }
-
-    if(priorityBox[4]  > priorityBox[5]){
         colIdArray[4].style.height = "75%";
         colIdArray[5].style.height = "25%";
     }
-    else if(priorityBox[4] === priorityBox[1]) {
-        colIdArray[1].style.height = "50%";
-        colIdArray[2].style.height = "50%";
+    else if(priorityBox[2] === priorityBox[3]) {
+        colIdArray[4].style.height = "50%";
+        colIdArray[5].style.height = "50%";
     }
     else{
-        colIdArray[1].style.height = "25%";
-        colIdArray[2].style.height = "75%";
+        colIdArray[4].style.height = "25%";
+        colIdArray[5].style.height = "75%";
     }
-    updateDiv();
+
+    if(priorityBox[4]  > priorityBox[5]){
+        colIdArray[7].style.height = "75%";
+        colIdArray[8].style.height = "25%";
+    }
+    else if(priorityBox[4] === priorityBox[5]) {
+        colIdArray[7].style.height = "50%";
+        colIdArray[8].style.height = "50%";
+    }
+    else{
+        colIdArray[7].style.height = "25%";
+        colIdArray[8].style.height = "75%";
+    }
+    printPriorityBox();
  /*
     var col1 = document.getElementById("flexCol1");
     col1.style.width = (percentCol1 + '%').toString();
