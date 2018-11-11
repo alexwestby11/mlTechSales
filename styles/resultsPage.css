@@ -131,17 +131,21 @@
     height: 34px;
 }
 
-.padding1{
-    padding-top: 0.3vmin;
-    padding-left: 0.3vmin;
-    padding-right: 0.3vmin;
+.paddingTop{
+    padding-top: 0.25%;
+}
+
+.paddingBottom{
+    padding-bottom: 0.25%;
+}
+.marginRL{
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .margin1{
-    margin-bottom:  5%;
-    margin-top:  5%;
-    margin-right:  5%;
-    margin-left: 5%;
+    margin-top: 5px;
+     margin-bottom: 5px;
 }
 
 .roundedB{
@@ -203,5 +207,9 @@ div{
 
 .tableRowHeight{
    height: 14vmax;
+}
+
+.carousel-inner img {
+  margin: auto;
 }
 
