@@ -5,6 +5,11 @@ function createMap()
         container: 'map',
         style: 'mapbox://styles/amdaq1/cjnhq1uui1ea92rp462ng3gf9'
     });
+    console.log("HELLO");
+    var alpha= getJSONData();
+    var beta= JSON.parse(alpha)
+    console.log(beta);
+    console.log("Hello2");
 }
 
 function createCarousel() {
@@ -122,8 +127,6 @@ function createGraph(){
             childNodes=emptyArray;
             var nodeId = params.nodes[0];
 
-            console.log("Clicked on a NODE with id = " + nodeId + ", label = " +
-                nodes.get(nodeId).label);
             for(var i=6; i<=9; ++i)
             {
                 addNodes(nodes,edges,currentNode,nodeId);
@@ -168,7 +171,38 @@ function reply_click(clicked_id)
 {
         //gets item number
         var num = Number(clicked_id);
-        console.log(num);
+}
+
+
+
+
+
+
+
+function getJSONData() {
+    $(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
+            dataType: 'json',
+            type: 'GET',
+            success: function (data) {
+                for (var i in data)
+                {
+                    var beta= data;
+                    console.log(i[0]);
+                }
+
+                alert(alpha);
+                return data;
+            },
+            error: function (error) {
+                console.log(error);
+                alert("no good "+JSON.stringify(error));
+                //jason = JSON.parse(data);
+                //console.log(jason);
+            }
+        });
+    })
 }
 
 
