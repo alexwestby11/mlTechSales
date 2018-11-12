@@ -4,7 +4,6 @@
 
 <!-- custom JS functions -->
 <script src="JS/productPage.js"></script>
-<script src="JS/productPage.js"></script>
 
 
 <!DOCTYPE html>
@@ -12,7 +11,7 @@
 <head>
     <link rel="stylesheet" href="styles/main.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>test2</title>
 
 
     <!-- Latest compiled and minified CSS -->
@@ -27,10 +26,11 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-	
+    <!-- local css scripts -->
+    <link rel ="stylesheet" href="styles/resultsPage.css">
 
     <!--Map Box API -->
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50e0/mapbox-gl.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
 
 
@@ -43,31 +43,44 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css' rel='stylesheet' />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
 
-    <!--Custom JS Functions -->
-    <script type="text/javascript" src="JS/resultsPage.js" ></script>
+
+    <script src="JS/resultsPage.js/"></script>
     </head>
 <body>
 
-<div class="container-fluid pageBackground">
+  <!--Background -->
+<div class = "container-fluid h-100 blueColor">
 
-    <div class="row topRow shadow-sm">
-        <div class="col-lg-4 ">
+     <!--Top Search Bar -->
+    <div class="container-fluid">
+      <div class="row rounded topRow">
+            <div class="col-lg-4 ">
 
-          <form>
-            <div class="input-group pt-3 ml-5">
-              <input type="search" class=" form-control" id="searchbar" placeholder="Search for ...">
-         <span class="input-group-btn ml-4">
-                     <button class="btn btn-light" type="button">Search</button>
-                 </span>
+              <form>
+                <div class="input-group pt-3 ml-5">
+                  <input type="search" class=" form-control" id="searchbar" placeholder="Search for ...">
+                     <span class="input-group-btn ml-4">
+                         <button class="btn btn-light" type="button">Search</button>
+                     </span>
+                </div>
+              </form>
+                <button type = "submit" onclick="colChange()">Values</button>
             </div>
-          </form>
-
         </div>
-    </div>
+    </div><!--Top Search Bar End-->
 
-    <div class="row h-100">
-        <div class="colSide mt-3 ml-5 pt-3 shadow-lg  col-md-3 single-item " id="myCarousel" >
-				<div id="" class="carousel slide" data-ride="carousel">
+
+
+
+
+    <div class="d-flex flex-row " style='width:100%; height:89%;'>
+        <!--Coloumn 1-->
+       <div id = "flexCol1" class="d-flex flex-column" style='width:33%; height:100%;'>
+             <div id = "flex1" class="d-flex"  style='width:100%; height:50%;'>
+                <div id = "box1" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1" style= height:98%;' >
+
+
+				<div id="stuff" class="carousel slide" data-ride="carousel">
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
 						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -79,50 +92,63 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<div class="fill" style=" background-color:#48c3af;">1</div>
+							<div class="fill rounded" style=" background-color:#48c3af;">1</div>
 						</div>
 						<div class="carousel-item">
-							<div class="fill" style=" background-color:#b33f4a;">2</div>
+							<div class="fill rounded" style=" background-color:#b33f4a;">2</div>
 						</div>
 						<div class="carousel-item">
-							<div class="fill" style=" background-color:#7fc2f4;">3</div>
+							<div class="fill rounded" style=" background-color:#7fc2f4;">3</div>
 						</div>
 						<div class="carousel-item">
-							<div class="fill" style=" background-color:#e47794;">4</div>
+							<div class="fill rounded" style=" background-color:#e47794;">4</div>
 						</div>
 					</div>
-				</div>
-			</div>
-        </div>
-        <div class="col ">
-            <div class="row h-100">
-                <div class="colSide mb-5 ml-2 mt-3 mr-2 shadow-lg col-md-3 ">
-                Specs :
-                </div>
-                <div class=" mb-5 mt-3 col-md-8 columnHeight">
-                    <div class=" row h-50">
-                        <div class="colBox shadow-lg col-md-12 mb-2 ">
-                            <div class=" row  productRowHeight ">
-                                <div class="recommendationBox shadow-sm col m-2 mynetwork"  id="mynetwork">
-                                    <script>createGraph()</script>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+			    </div>
+              </div>
+          </div>
+           <div id = "flex2" class="d-flex" style='width:100%; height:50%;'>
+             <div id = "box2" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1" style= height:97%; >
+                Summary
+              </div>
+          </div>
+       </div>
 
-                    <div class=" row h-50">
-                            <div id='map' style='width:100%; height:100%;' class="colBoxMap  shadow-lg">
-                                <script>createMap()</script>
-                           </div>
-                        </div>
-                    </div>
+        <!--Coloumn 2-->
+        <div id = "flexCol2" class="d-flex flex-column" style='width:33%; height:100%;'>
+             <div id = "flex3" class="d-flex" style='width:100%; height:50%;'>
+                <div id = "box3"  onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col rounded colSide margin1 marginRL" >
+                Specs
+              </div>
+          </div>
+           <div  id = "flex4" class="d-flex" style='width:100%; height:50%;'>
+             <div id = "box4" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1 marginRL" style= height:97%;>
+                Related Items
+              </div>
+          </div>
+       </div>
 
-        </div>
+         <!--Coloumn 3-->
+        <div id = "flexCol3" class="d-flex flex-column" style='width:34%; height:100%;'>
+             <div id = "flex5" class="d-flex" style='width:100%; height:50%;'>
+                <div id = "box5" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded  margin1">
+                  <div class="recommendationBox center rounded" style='width:100%; height:97%;'  id="mynetwork">
+                     <script>createGraph()</script>
+                  </div>
+              </div>
+          </div>
+           <div id = "flex6" class="d-flex" style='width:100%; height:50%;'>
+             <div id = "box6" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded  margin1">
+                 <div id='map' style='width:100%; height:97%;' class = "col center rounded">
+                     <script>getData()</script>
+                     <script>createMap()</script>
+                 </div>
+              </div>
+          </div>
+       </div>
+
     </div>
+</div>
 
-</div>
-</div>
-</div>
-<button type = "submit" onclick="returnItemClicked();">Get Item</button>
 </body>
 </html>

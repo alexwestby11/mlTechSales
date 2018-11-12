@@ -6,9 +6,7 @@ function createMap()
         style: 'mapbox://styles/amdaq1/cjnhq1uui1ea92rp462ng3gf9'
     });
     console.log("HELLO");
-    var alpha= getJSONData();
-    var beta= JSON.parse(alpha)
-    console.log(beta);
+    getJSONData();
     console.log("Hello2");
 }
 
@@ -186,14 +184,8 @@ function getJSONData() {
             dataType: 'json',
             type: 'GET',
             success: function (data) {
-                for (var i in data)
-                {
-                    var beta= data;
-                    console.log(i[0]);
-                }
-
-                alert(alpha);
-                return data;
+                //alert(JSON.stringify(data));
+                alert(data[0].id)
             },
             error: function (error) {
                 console.log(error);
