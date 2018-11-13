@@ -5,6 +5,10 @@ function createMap()
         container: 'map',
         style: 'mapbox://styles/amdaq1/cjnhq1uui1ea92rp462ng3gf9'
     });
+    console.log("HELLO");
+    var alp = ['asdf','asdf','asdf'];
+    getImageURL(alp);
+    console.log("Hello2");
 }
 
 function createCarousel() {
@@ -23,7 +27,7 @@ function createCarousel() {
         });
     });
 }
-function createGraph(){
+function createGraph(relatedProductsNames,relatedProductImages){
 
        //Stands for current node being created
        var currentNode= 6;
@@ -35,9 +39,12 @@ function createGraph(){
         // create an array with nodes
         var nodes = new vis.DataSet([
             {id: 1, label: 'Mouse'},
-            {id: 2, label: 'Macbook Pro'},
-            {id: 3, label: 'Mousepad'   },
-            {id: 4, label: 'Second Monitor'},
+            {id: 2, label: relatedProductsNames[0],
+                     image:relatedProductImages[0]},
+            {id: 3, label: relatedProductsNames[1],
+                    image:relatedProductImages[0]},
+            {id: 4, label: relatedProductsNames[2],
+                image:relatedProductImages[0]},
             {id: 5, label: 'Laptop Sleeve' }
         ]);
 
@@ -78,7 +85,7 @@ function createGraph(){
                     min: 10,
                     max: 30
                 },
-                shape:'dot'
+                shape:'circularImage'
                     },
             edges:{
                 color: {
@@ -122,8 +129,6 @@ function createGraph(){
             childNodes=emptyArray;
             var nodeId = params.nodes[0];
 
-            console.log("Clicked on a NODE with id = " + nodeId + ", label = " +
-                nodes.get(nodeId).label);
             for(var i=6; i<=9; ++i)
             {
                 addNodes(nodes,edges,currentNode,nodeId);
@@ -168,8 +173,125 @@ function reply_click(clicked_id)
 {
         //gets item number
         var num = Number(clicked_id);
-        console.log(num);
 }
 
 
 
+
+
+
+
+function getJSONData() {
+    $(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
+            dataType: 'json',
+            type: 'GET',
+            success: function (data) {
+                //alert(JSON.stringify(data));
+                alert(data[0].id)
+            },
+            error: function (error) {
+                console.log(error);
+                alert("no good "+JSON.stringify(error));
+                //jason = JSON.parse(data);
+                //console.log(jason);
+            }
+        });
+    })
+}
+
+function getImageURL(imageIDs)
+{
+    $(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
+            dataType: 'json',
+            type: 'GET',
+            success: function (data) {
+                //alert(JSON.stringify(data));
+               // for(var i=0; i<=imageIDs.length-1;++i)
+                {
+                    //alert(data[i].imgSrc)
+                    var img = document.createElement("img");
+                    img.src =data[0].imgSrc;
+
+                    var src = document.getElementById("imageA");
+                    src.appendChild(img);
+                }
+            },
+            error: function (error) {
+                console.log(error);
+                alert("no good "+JSON.stringify(error));
+                //jason = JSON.parse(data);
+                //console.log(jason);
+            }
+        });
+    })
+}
+
+function getSpecs(searchString)
+{
+    $(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
+            dataType: 'json',
+            type: 'GET',
+            success: function (data) {
+                //alert(JSON.stringify(data));
+                // for(var i=0; i<=imageIDs.length-1;++i)
+                {
+                    //alert(data[i].imgSrc)
+                    var img = document.createElement("img");
+                    img.src =data[0].imgSrc;
+
+                    var src = document.getElementById("imageA");
+                    src.appendChild(img);
+                }
+            },
+            error: function (error) {
+                console.log(error);
+                alert("no good "+JSON.stringify(error));
+                //jason = JSON.parse(data);
+                //console.log(jason);
+            }
+        });
+    })
+
+
+
+}
+
+
+function getRecommended(givenItem,func)
+{
+    $(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRecommendation/1/3',
+            dataType: 'json',
+            type: 'GET',
+            success: function (data) {
+                //alert(JSON.stringify(data));
+                // for(var i=0; i<=imageIDs.length-1;++i)
+                var relatedImages=[];
+                var relatedProducts=[];
+                {
+                    //alert(data[i].imgSrc)
+                    for(var i=0; i<=2; i++)
+                    {
+                        relatedImages.push(data[i].imgSrc);
+                        relatedProducts.push(data[i].name);
+                    }
+                }
+                func(relatedProducts,relatedImages);
+            },
+            error: function (error) {
+                console.log(error);
+                alert("no good "+JSON.stringify(error));
+                //jason = JSON.parse(data);
+                //console.log(jason);
+            }
+        });
+    })
+
+}
