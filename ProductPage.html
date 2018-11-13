@@ -92,7 +92,8 @@
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<div class="fill rounded" style=" background-color:#48c3af;">1</div>
+							<div id="imageA" class="fill rounded" style=" background-color:#48c3af;">1</div>
+                            <div id="image1"></div>
 						</div>
 						<div class="carousel-item">
 							<div class="fill rounded" style=" background-color:#b33f4a;">2</div>
@@ -133,7 +134,7 @@
              <div id = "flex5" class="d-flex" style='width:100%; height:50%;'>
                 <div id = "box5" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded  margin1">
                   <div class="recommendationBox center rounded" style='width:100%; height:97%;'  id="mynetwork">
-                     <script>createGraph()</script>
+                     <script>getRecommended(1,createGraph)</script>
                   </div>
               </div>
           </div>
