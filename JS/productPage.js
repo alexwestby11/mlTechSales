@@ -7,27 +7,12 @@ function createMap()
     });
     console.log("HELLO");
     var alp = ['asdf','asdf','asdf'];
-    getImageURL(alp);
+    //getImageURL(alp);
     console.log("Hello2");
     imageSearch();
 }
 
-function createCarousel() {
-    jQuery( document ).ready(function( $ ) {
-        $( 'myCarousel' ).sliderPro({
-            width: 25,
-            height: 25,
-            imageScaleMode: 'contain',
-            arrows: true,
-            buttons: false,
-            waitForLayers: true,
-            fade: true,
-            autoplay: false,
-            autoScaleLayers: false,
-            arrows: true
-        });
-    });
-}
+
 function createGraph(relatedProductsNames,relatedProductImages){
 
        //Stands for current node being created
@@ -242,12 +227,14 @@ function getSpecs(searchString)
                 //alert(JSON.stringify(data));
                 // for(var i=0; i<=imageIDs.length-1;++i)
                 {
+                    /*
                     //alert(data[i].imgSrc)
                     var img = document.createElement("img");
                     img.src =data[0].imgSrc;
 
                     var src = document.getElementById("imageA");
                     src.appendChild(img);
+                    */
                 }
             },
             error: function (error) {
@@ -297,27 +284,40 @@ function getRecommended(givenItem,func)
 
 }
 
-function imageSearch(func)
+function imageSearch()
 {
     $(document).ready(function() {
         var alpha = $.ajax({
             url: 'https://www.googleapis.com/customsearch/v1',
             dataType: 'json',
             type: 'GET',
+            searchType:"image",
+            defaultToImageSearch:"true",
             data: {
                 cx:"011749348010515111944:k-gbw5fzlh8",
-                q:"computer",
+                q:"Macbook",
                 key:"AIzaSyDzMW_eWTkYyXLFQmPAMREqhzYT_GVaxGU"
             },
             success: function (data) {
-                for(var i=0; i<=3; ++i)
+
+                var iterations=0;
+                var loopNum=0;
+                while(iterations<=3)
                 {
-                    console.log(data["items"][1].title);
-                    console.log(data["items"][1].htmlFormattedUrl);
+                    if('cse_image' in data.items[loopNum].pagemap)
+                    {
+                        var img = document.createElement("img");
+                        img.src =data.items[loopNum].pagemap.cse_image[0].src;
+                        var src = document.getElementById("image"+iterations.toString());
+                        src.appendChild(img);
+
+                        //console.log(data.items[0].pagemap.cse_image[i])
+                        //console.log(data["items"][i].title);
+                        //console.log(data["items"][i].link);
+                        iterations++;
+                    }
+                    loopNum++;
                 }
-
-                func()
-
             },
             error: function (error) {
                 console.log(error);

@@ -154,28 +154,30 @@
     <session id="1035178506">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.10" value="1" />
-          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.11" value="2" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="2" />
-          <entry key="project.open.time.15" value="1" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.15" value="2" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="62" />
-          <entry key="js" value="1574" />
-          <entry key="txt" value="49" />
+          <entry key="html" value="236" />
+          <entry key="js" value="2225" />
+          <entry key="txt" value="105" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="62" />
-          <entry key="JavaScript" value="1574" />
-          <entry key="PLAIN_TEXT" value="49" />
+          <entry key="HTML" value="236" />
+          <entry key="JavaScript" value="2225" />
+          <entry key="PLAIN_TEXT" value="105" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -193,7 +195,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.419778">
+    <splitter split-orientation="horizontal" split-proportion="0.8103448">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -217,8 +219,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ProductPage.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="127">
-                  <caret line="134" column="30" lean-forward="true" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
+                <state relative-caret-position="365">
+                  <caret line="106" column="22" lean-forward="true" selection-start-line="106" selection-start-column="22" selection-end-line="106" selection-end-column="22" />
                   <folding>
                     <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -291,13 +293,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/JS/productPage.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
-                  <folding>
-                    <element signature="n#!!block;n#getJSONData#0" />
-                    <element signature="n#!!block;n#getImageURL#0" />
-                    <element signature="n#!!block;n#getSpecs#0" />
-                  </folding>
+                <state relative-caret-position="161">
+                  <caret line="297" column="26" selection-start-line="297" selection-start-column="26" selection-end-line="297" selection-end-column="26" />
                 </state>
               </provider>
             </entry>
@@ -326,7 +323,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>image</find>
       <find>sc</find>
       <find>jquery</find>
       <find>slick</find>
@@ -350,6 +346,10 @@
       <find>ce</find>
       <find>crea</find>
       <find>get</find>
+      <find>alert</find>
+      <find>getRecommended</find>
+      <find>getImageURL</find>
+      <find>image</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -389,8 +389,8 @@
         <option value="$PROJECT_DIR$/resultsPage.html" />
         <option value="$PROJECT_DIR$/test2.html" />
         <option value="$PROJECT_DIR$/JS/resultsPage.js" />
-        <option value="$PROJECT_DIR$/ProductPage.html" />
         <option value="$PROJECT_DIR$/JS/productPage.js" />
+        <option value="$PROJECT_DIR$/ProductPage.html" />
       </list>
     </option>
   </component>
@@ -418,6 +418,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -444,14 +445,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542133607677" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542481262608" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -496,7 +496,11 @@
       <workItem from="1542045223625" duration="2437000" />
       <workItem from="1542054824877" duration="19000" />
       <workItem from="1542056428336" duration="1142000" />
-      <workItem from="1542125788596" duration="6709000" />
+      <workItem from="1542125788596" duration="6746000" />
+      <workItem from="1542144553883" duration="1090000" />
+      <workItem from="1542151856374" duration="1181000" />
+      <workItem from="1542391740478" duration="134000" />
+      <workItem from="1542473059217" duration="8041000" />
     </task>
     <task id="LOCAL-00001" summary="Worked on vertical carousel for images">
       <created>1540510722379</created>
@@ -540,23 +544,38 @@
       <option name="project" value="LOCAL" />
       <updated>1542049993065</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Putting Related Items on page">
+      <created>1542133904198</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1542133904198</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Adding Custom Image Search">
+      <created>1542475384657</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1542475384658</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45888000" />
+    <option name="totallyTimeSpent" value="56371000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19757085" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15465587" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="UI Designer" order="6" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -567,7 +586,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3286334" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32740214" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -594,7 +613,21 @@
     <MESSAGE value="Added Graph Sizing" />
     <MESSAGE value="Worked on requests" />
     <MESSAGE value="Finally got requests to work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finally got requests to work" />
+    <MESSAGE value="Putting Related Items on page" />
+    <MESSAGE value="Adding Custom Image Search" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Custom Image Search" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/JS/productPage.js</url>
+          <line>190</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Dynamic Pages/p1.html" />
@@ -714,20 +747,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/JS/productPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="56" selection-start-line="29" selection-start-column="56" selection-end-line="29" selection-end-column="56" />
-          <folding>
-            <element signature="n#!!block;n#getJSONData#0" />
-            <element signature="n#!!block;n#getImageURL#0" />
-            <element signature="n#!!block;n#getSpecs#0" />
-          </folding>
+        <state relative-caret-position="161">
+          <caret line="297" column="26" selection-start-line="297" selection-start-column="26" selection-end-line="297" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ProductPage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="134" column="30" lean-forward="true" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
+        <state relative-caret-position="365">
+          <caret line="106" column="22" lean-forward="true" selection-start-line="106" selection-start-column="22" selection-end-line="106" selection-end-column="22" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
