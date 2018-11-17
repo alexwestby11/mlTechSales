@@ -284,47 +284,60 @@ function getRecommended(givenItem,func)
 
 }
 
+
+
+
 function imageSearch()
 {
-    $(document).ready(function() {
-        var alpha = $.ajax({
-            url: 'https://www.googleapis.com/customsearch/v1',
-            dataType: 'json',
-            type: 'GET',
-            searchType:"image",
-            defaultToImageSearch:"true",
-            data: {
-                cx:"011749348010515111944:k-gbw5fzlh8",
-                q:"Macbook",
-                key:"AIzaSyDzMW_eWTkYyXLFQmPAMREqhzYT_GVaxGU"
-            },
-            success: function (data) {
 
-                var iterations=0;
-                var loopNum=0;
-                while(iterations<=3)
-                {
-                    if('cse_image' in data.items[loopNum].pagemap)
+        $(document).ready(function() {
+            var alpha = $.ajax({
+                url: 'https://contextualwebsearch.com/api/Search/ImageSearchAPI?]',
+                dataType: 'json',
+                type: 'GET',
+                data:{count:"500",
+                     q:"macbook",
+                    autoCorrect:"false"
+                    },
+                success: function (data) {
+                    //alert(JSON.stringify(data));
+                    // for(var i=0; i<=imageIDs.length-1;++i)
+                    for(var i=0; i<=3;++i)
                     {
+                        //alert(data[i].imgSrc)
                         var img = document.createElement("img");
-                        img.src =data.items[loopNum].pagemap.cse_image[0].src;
-                        var src = document.getElementById("image"+iterations.toString());
-                        src.appendChild(img);
+                        img.src =data.value[i].url;
 
-                        //console.log(data.items[0].pagemap.cse_image[i])
-                        //console.log(data["items"][i].title);
-                        //console.log(data["items"][i].link);
-                        iterations++;
+                        var src = document.getElementById("image"+i.toString());
+                        src.appendChild(img);
                     }
-                    loopNum++;
+                },
+                error: function (error) {
+                    console.log(error);
+                    alert("no good "+JSON.stringify(error));
+                    //jason = JSON.parse(data);
+                    //console.log(jason);
                 }
-            },
-            error: function (error) {
-                console.log(error);
-                alert("no good "+JSON.stringify(error));
-                //jason = JSON.parse(data);
-                //console.log(jason);
-            }
-        });
-    })
+            });
+        })
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
