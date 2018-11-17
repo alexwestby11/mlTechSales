@@ -9,6 +9,7 @@ function createMap()
     var alp = ['asdf','asdf','asdf'];
     getImageURL(alp);
     console.log("Hello2");
+    imageSearch();
 }
 
 function createCarousel() {
@@ -189,7 +190,7 @@ function getJSONData() {
             type: 'GET',
             success: function (data) {
                 //alert(JSON.stringify(data));
-                alert(data[0].id)
+               // alert(data[0].id)
             },
             error: function (error) {
                 console.log(error);
@@ -294,4 +295,36 @@ function getRecommended(givenItem,func)
         });
     })
 
+}
+
+function imageSearch(func)
+{
+    $(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'https://www.googleapis.com/customsearch/v1',
+            dataType: 'json',
+            type: 'GET',
+            data: {
+                cx:"011749348010515111944:k-gbw5fzlh8",
+                q:"computer",
+                key:"AIzaSyDzMW_eWTkYyXLFQmPAMREqhzYT_GVaxGU"
+            },
+            success: function (data) {
+                for(var i=0; i<=3; ++i)
+                {
+                    console.log(data["items"][1].title);
+                    console.log(data["items"][1].htmlFormattedUrl);
+                }
+
+                func()
+
+            },
+            error: function (error) {
+                console.log(error);
+                alert("no good "+JSON.stringify(error));
+                //jason = JSON.parse(data);
+                //console.log(jason);
+            }
+        });
+    })
 }
