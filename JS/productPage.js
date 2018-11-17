@@ -7,26 +7,12 @@ function createMap()
     });
     console.log("HELLO");
     var alp = ['asdf','asdf','asdf'];
-    getImageURL(alp);
+    //getImageURL(alp);
     console.log("Hello2");
+    imageSearch();
 }
 
-function createCarousel() {
-    jQuery( document ).ready(function( $ ) {
-        $( 'myCarousel' ).sliderPro({
-            width: 25,
-            height: 25,
-            imageScaleMode: 'contain',
-            arrows: true,
-            buttons: false,
-            waitForLayers: true,
-            fade: true,
-            autoplay: false,
-            autoScaleLayers: false,
-            arrows: true
-        });
-    });
-}
+
 function createGraph(relatedProductsNames,relatedProductImages){
 
        //Stands for current node being created
@@ -189,7 +175,7 @@ function getJSONData() {
             type: 'GET',
             success: function (data) {
                 //alert(JSON.stringify(data));
-                alert(data[0].id)
+               // alert(data[0].id)
             },
             error: function (error) {
                 console.log(error);
@@ -241,12 +227,14 @@ function getSpecs(searchString)
                 //alert(JSON.stringify(data));
                 // for(var i=0; i<=imageIDs.length-1;++i)
                 {
+                    /*
                     //alert(data[i].imgSrc)
                     var img = document.createElement("img");
                     img.src =data[0].imgSrc;
 
                     var src = document.getElementById("imageA");
                     src.appendChild(img);
+                    */
                 }
             },
             error: function (error) {
@@ -295,3 +283,61 @@ function getRecommended(givenItem,func)
     })
 
 }
+
+
+
+
+function imageSearch()
+{
+
+        $(document).ready(function() {
+            var alpha = $.ajax({
+                url: 'https://contextualwebsearch.com/api/Search/ImageSearchAPI?]',
+                dataType: 'json',
+                type: 'GET',
+                data:{count:"500",
+                     q:"macbook",
+                    autoCorrect:"false"
+                    },
+                success: function (data) {
+                    //alert(JSON.stringify(data));
+                    // for(var i=0; i<=imageIDs.length-1;++i)
+                    for(var i=0; i<=3;++i)
+                    {
+                        //alert(data[i].imgSrc)
+                        var img = document.createElement("img");
+                        img.src =data.value[i].url;
+
+                        var src = document.getElementById("image"+i.toString());
+                        src.appendChild(img);
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                    alert("no good "+JSON.stringify(error));
+                    //jason = JSON.parse(data);
+                    //console.log(jason);
+                }
+            });
+        })
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
