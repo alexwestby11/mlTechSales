@@ -10,6 +10,7 @@ function createMap()
     //getImageURL(alp);
     console.log("Hello2");
     imageSearch();
+    getRetailers()
 }
 
 
@@ -320,10 +321,41 @@ function imageSearch()
                 }
             });
         })
+}
+
+function getRetailers()
+{
+    $(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'https://rest.viglink.com/api/product/search',
+            dataType: 'json',
+            type: 'GET',
+            data:{apiKey:"81801cad73784edc71318f28e82be509",
+                query:"macbook",
+                format:"json",
+                secret:"8477a248fe53766cf607cc5ce45ccf57eb91af58"
+            },
+            success: function (data) {
+                //alert(JSON.stringify(data));
+                // for(var i=0; i<=imageIDs.length-1;++i)
+                for(var i=0; i<=3;++i)
+                {
+                    var alpha=data;
+                    console.log("ayyyy")
+                }
+            },
+            error: function (error) {
+                console.log(error);
+                alert("no good "+JSON.stringify(error));
+                //jason = JSON.parse(data);
+                //console.log(jason);
+            }
+        });
+    })
+
 
 
 }
-
 
 
 
