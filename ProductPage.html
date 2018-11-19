@@ -70,14 +70,15 @@
 
 
     <div class="d-flex flex-row " style='width:100%; height:89%;' >
+
         <!--Coloumn 1-->
        <div id = "flexCol1" class="d-flex flex-column" style='width:33%; height:100%;'>
              <div id = "flex1" class="d-flex"  style='width:100%; height:50%;'>
                 <div id = "box1" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1" style= height:98%;' >
 
-
+<!--
 				<div id="stuff" class="carousel slide" data-ride="carousel">
-					<!-- Indicators -->
+
 					<ol class="carousel-indicators">
 						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 						<li data-target="#myCarousel" data-slide-to="1"></li>
@@ -85,24 +86,50 @@
 						<li data-target="#myCarousel" data-slide-to="3"></li>
 					</ol>
 
-					<!-- Wrapper for slides -->
+
 					<div class="carousel-inner" >
 						<div class="carousel-item active" >
-							<div id="image0" class="fill rounded" style=" background-color:#48c3af;" style='width:50%; height:50%;'></div>
+							<div id="image0" class="fill rounded" src = "" style='width:50%; height:50%;'>
+                                <script>
+
+                                    console.log("here1111");
+                                     console.log(myVar2);
+                                </script>
+                            </div>
 						</div>
 						<div class="carousel-item">
-							<div id="image1" class="fill rounded" style=" background-color:#b33f4a;" style='width:50%; height:50%;'></div>
+							<div id="image1" class="fill rounded" style=" background-color:#b33f4a;" style='width:50%; height:50%;'>
+                                 <script>
+                                    document.getElementById("image1").src = myVar2;
+                                </script>
+                            </div>
 						</div>
 						<div class="carousel-item">
-							<div id="image2" class="fill rounded" style=" background-color:#7fc2f4;"></div>
+							<div id="image2" class="fill rounded" style=" background-color:#7fc2f4;">
+                                 <script>
+                                    document.getElementById("image2").src = myVar2;
+                                </script>
+                            </div>
 						</div>
 						<div class="carousel-item">
-							<div id="image3" class="fill rounded" style=" background-color:#e47794;"></div>
+							<div id="image3" class="fill rounded" style=" background-color:#e47794;">
+                                 <script>
+                                    document.getElementById("image3").src = myVar2;
+                                </script>
+                            </div>
 						</div>
 					</div>
 			    </div>
               </div>
-                 <script>imageSearch()</script>
+                 <!--<script>imageSearch()</script>-->
+
+
+
+
+                    <img class = "img-fluid" src = "images/searchLogo.jpg" onload= "this.src=returnProductImage();" width = 100% height= 90%>
+
+
+           </div>
           </div>
            <div id = "flex2" class="d-flex" style='width:100%; height:50%;'>
              <div id = "box2" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1" style= height:97%; >
@@ -120,7 +147,25 @@
           </div>
            <div  id = "flex4" class="d-flex" style='width:100%; height:50%;'>
              <div id = "box4" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1 marginRL" style= height:97%;>
-                Related Items
+                     <div  id = "flexC1" class="d-flex flex-column" style='width:100%; height:100%;'>
+                         <div id = "flexR1" class="d-flex flex-row" style='width:100%; height:100%;'>
+                                <div id = "flex11" class="d-flex greenColor" style='width:100%; height:100%;'>
+                                    <img class = "img-fluid btn" src = "images/Apple1.jpg"  onload = "this.src = setRelateImg1()" width = 100% height= 100%>
+                                </div>
+                                <div id = "flex12" class="d-flex orangeColor" style='width:100%; height:100%;'>
+                                     <img class = "img-fluid btn" src = "images/Apple1.jpg" onload = "this.src = setRelateImg2()" width = 100% height= 100%>
+                                </div>
+                        </div>
+                          <div id = "flexR2" class="d-flex flex-row" style='width:100%; height:100%;'>
+                                <div id = "flex21" class="d-flex yellowColor" style='width:100%; height:100%;'>
+                                     <img class = "img-fluid btn" src = "images/Apple1.jpg" onload = "this.src = setRelateImg3()" width = 100% height= 100%>
+                                </div>
+                                <div id = "flex22" class="d-flex redColor" style='width:100%; height:100%;'>
+                                     <img class = "img-fluid btn" src = "images/Apple1.jpg" onload = "this.src = setRelateImg4()" width = 100% height= 100%>
+                                </div>
+                        </div>
+                     </div>
+
               </div>
           </div>
        </div>
@@ -130,15 +175,15 @@
              <div id = "flex5" class="d-flex" style='width:100%; height:50%;'>
                 <div id = "box5" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded  margin1">
                   <div class="recommendationBox center rounded" style='width:100%; height:97%;'  id="mynetwork">
-                     <script>getRecommended(1,createGraph)</script>
+                     <!--<script>getRecommended(1,createGraph)</script>-->
                   </div>
               </div>
           </div>
            <div id = "flex6" class="d-flex" style='width:100%; height:50%;'>
              <div id = "box6" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded  margin1">
                  <div id='map' style='width:100%; height:97%;' class = "col center rounded">
-                     <script>getData()</script>
-                     <script>createMap()</script>
+                     <!--<script>getData()</script>-->
+                     <!--<script>createMap()</script>-->
                  </div>
               </div>
           </div>

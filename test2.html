@@ -64,7 +64,7 @@
                      </span>
                 </div>
               </form>
-                <button type = "submit" onclick="colChange()">Values</button>
+                <button type = "submit" onclick="getJSONData()">Values</button>
             </div>
         </div>
     </div><!--Top Search Bar End-->
@@ -73,80 +73,8 @@
 
 
 
-    <div class="d-flex flex-row " style='width:100%; height:89%;'>
-        <!--Coloumn 1-->
-       <div id = "flexCol1" class="d-flex flex-column" style='width:33%; height:100%;'>
-             <div id = "flex1" class="d-flex"  style='width:100%; height:50%;'>
-                <div id = "box1" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1" style= height:98%;' >
 
 
-				<div id="stuff" class="carousel slide" data-ride="carousel">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-						<li data-target="#myCarousel" data-slide-to="1"></li>
-						<li data-target="#myCarousel" data-slide-to="2"></li>
-						<li data-target="#myCarousel" data-slide-to="3"></li>
-					</ol>
-
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<div class="fill rounded" style=" background-color:#48c3af;">1</div>
-						</div>
-						<div class="carousel-item">
-							<div class="fill rounded" style=" background-color:#b33f4a;">2</div>
-						</div>
-						<div class="carousel-item">
-							<div class="fill rounded" style=" background-color:#7fc2f4;">3</div>
-						</div>
-						<div class="carousel-item">
-							<div class="fill rounded" style=" background-color:#e47794;">4</div>
-						</div>
-					</div>
-			    </div>
-              </div>
-          </div>
-           <div id = "flex2" class="d-flex" style='width:100%; height:50%;'>
-             <div id = "box2" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1" style= height:97%; >
-                Summary
-              </div>
-          </div>
-       </div>
-
-        <!--Coloumn 2-->
-        <div id = "flexCol2" class="d-flex flex-column" style='width:33%; height:100%;'>
-             <div id = "flex3" class="d-flex" style='width:100%; height:50%;'>
-                <div id = "box3"  onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col rounded colSide margin1 marginRL" >
-                Specs
-              </div>
-          </div>
-           <div  id = "flex4" class="d-flex" style='width:100%; height:50%;'>
-             <div id = "box4" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1 marginRL" style= height:97%;>
-                Related Items
-              </div>
-          </div>
-       </div>
-
-         <!--Coloumn 3-->
-        <div id = "flexCol3" class="d-flex flex-column" style='width:34%; height:100%;'>
-             <div id = "flex5" class="d-flex" style='width:100%; height:50%;'>
-                <div id = "box5" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded  margin1">
-                  <div class="recommendationBox center rounded" style='width:100%; height:97%;'  id="mynetwork">
-                     <script>createGraph()</script>
-                  </div>
-              </div>
-          </div>
-           <div id = "flex6" class="d-flex" style='width:100%; height:50%;'>
-             <div id = "box6" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded  margin1">
-                 <div id='map' style='width:100%; height:97%;' class = "col center rounded">
-                     <script>createMap()</script>
-                 </div>
-              </div>
-          </div>
-       </div>
-
-    </div>
 </div>
 
 </body>

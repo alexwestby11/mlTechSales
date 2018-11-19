@@ -9,6 +9,7 @@ function createMap()
     var alp = ['asdf','asdf','asdf'];
     //getImageURL(alp);
     console.log("Hello2");
+   // imageSearch();
     imageSearch();
     getRetailers()
 }
@@ -168,14 +169,34 @@ function reply_click(clicked_id)
 
 
 
-function getJSONData() {
+function getJSONData(x,y) {
     $(document).ready(function() {
         var alpha = $.ajax({
             url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
             dataType: 'json',
             type: 'GET',
-            success: function (data) {
-                //alert(JSON.stringify(data));
+            success: function (result) {
+                 $.each(result, function (i, field) {
+                    let product = new Product();
+                    $.each(field, function (key, value) {
+                        if (key === "imgSrc") {
+                            console.log(value);
+                        }
+                        else if (key === "name") {
+                            product.name = value;
+                        }
+                        else if (key === "price") {
+                            product.price = value;
+                        }
+                        else if (key === "manfacturer") {
+                            product.brand = value;
+                        }
+                         else if (key === "id") {
+                            product.id = value;
+                        }
+                    });
+                    dataArray.push(product);
+                });
                // alert(data[0].id)
             },
             error: function (error) {
@@ -297,8 +318,8 @@ function imageSearch()
                 dataType: 'json',
                 type: 'GET',
                 data:{count:"500",
-                     q:"macbook",
-                    autoCorrect:"false"
+                     q:"laptop",
+                    autoCorrect:"true"
                     },
                 success: function (data) {
                     //alert(JSON.stringify(data));
@@ -315,7 +336,7 @@ function imageSearch()
                 },
                 error: function (error) {
                     console.log(error);
-                    alert("no good "+JSON.stringify(error));
+                  //  alert("no good "+JSON.stringify(error));
                     //jason = JSON.parse(data);
                     //console.log(jason);
                 }
@@ -355,12 +376,24 @@ function getRetailers()
     })
 
 
-
 }
 
 
+function setRelateImg1(){
+    return localStorage['ID_pic1'];
+}
 
+function setRelateImg2(){
+    return localStorage['ID_pic2'];
+}
 
+function setRelateImg3(){
+    return localStorage['ID_pic3'];
+}
+
+function setRelateImg4(){
+    return localStorage['ID_pic4'];
+}
 
 
 

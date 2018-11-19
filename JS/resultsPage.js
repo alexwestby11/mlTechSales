@@ -5,8 +5,15 @@ var numCol= 2;
 var itemArray = []
 var priorityBox = [0,0,0,0,0,0];
 var myVar = localStorage['ID'] || '0';
+var myVar1 = localStorage['ID_name'] || '0';
+var myVar2 = localStorage['ID_pic'] || '0';
+var myVar4 = localStorage['ID_pic1'] || '0';
+var myVar5 = localStorage['ID_pic2'] || '0';
+var myVar6 = localStorage['ID_pic3'] || '0';
+var myVar7 = localStorage['ID_pic4'] || '0';
+var myVar3 = localStorage['ID_cat'] || '0';
 function dTable() {
-    getData();
+    getData1();
              $("#dynamic_table").ready(function () {
                  //creates x images on same row
                  function numTable(x, y) {
@@ -16,9 +23,9 @@ function dTable() {
                          for (var k = 0; k < x; ++k) {//col
                              var idString = (j*numRows + k).toString();
                              stringValue += "<td>" +
-                                 "<div id = '"+idString+"' onclick=\"reply_click(this.id)\"  class=\"row-fluid rounded creamColor margin1 btn-primary shadow blackText\">" +
+                                 "<div id = '"+idString+"' onclick=\"reply_click(this.id)\"  class=\"row-fluid rounded creamColor margin1 btn-primary shadow blackText\" width = \"100%\" height = \"100%\">" +
                                  "<div class=\"col-fluid text-center\" ><h6>Value</h6></div>"+
-                                 "<input tag = \"img\"  type=\"image\" src= \"images/Apple1.jpg\" class = \"img tableRowHeight rounded W\">" +
+                                 "<input tag = \"img\"  type=\"image\" src= \"images/Apple1.jpg\" class = \"btn img tableRowHeight rounded W\" onclick=\"linkProductPage()\" >" +
                                  "<div class=\"col-fluid text-center\">Info<br> Stuff <br> stuff</div>" +
                                  "</div>" +
                                  "</td>";
@@ -32,7 +39,7 @@ function dTable() {
               });
              console.log(dataArray.length);
      }
- function google()
+ function linkProductPage()
 {
     location.href = "ProductPage.html";
     console.log(this.id);
@@ -51,9 +58,8 @@ function dTable() {
                name.innerHTML = dataArray[dx].name.substring(0,15);
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
-               itemArray[j*numRows + k] = dataArray[dx].id;
-              // console.log(j*numRows + k);
-              // console.log(dataArray[dx].id);
+               //itemArray[j*numRows + k] = dataArray[dx].id;
+              itemArray[j*numRows + k] = j*numRows + k;
                ++ dx;
           }
       }
@@ -70,7 +76,8 @@ function dTable() {
                name.innerHTML = dataArray[dx].name.substring(0,15);
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
-               itemArray[j*numRows + k] = dataArray[dx].id;
+               //itemArray[j*numRows + k] = dataArray[dx].id;
+              itemArray[j*numRows + k] = j*numRows + k;
                 ++dx;
           }
       }
@@ -87,7 +94,8 @@ function dTable() {
                name.innerHTML = dataArray[dx].name.substring(0,15);
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
-               itemArray[j*numRows + k] = dataArray[dx].id;
+               //itemArray[j*numRows + k] = dataArray[dx].id;
+              itemArray[j*numRows + k] = j*numRows + k;
                 ++dx;
           }
       }
@@ -110,10 +118,10 @@ function nextButton(){
  function productPage(){
      window.location.href = 'productPage.html';
 }
-function linkProductPage() {
+function linkResultsPage() {
   window.location.href = 'resultsPage.html';
 }
- function getData() {
+ function getData1() {
     $(document).ready(function () {
             $.getJSON("data/data7.json", function (result) {
                 //console.log(result);
@@ -147,35 +155,27 @@ function linkProductPage() {
  class Product {
   constructor() {
       this.id = '';
-    this.type = '';
-    this.img_src = '';
-    this.name = '';
-    this.brand = '';
-    this.price = '';
-    this.category = '';
-  }
-  // Getter
-  get getImg() {
-    return this.img_src;
-  }
-  get getName() {
-    return this.name;
-  }
-  get getBrand() {
-    return this.brand;
-  }
-  get getPrice() {
-    return this.price;
-  }
-  get getCategory() {
-    return this.category;
+      this.type = '';
+      this.img_src = '';
+      this.name = '';
+      this.brand = '';
+      this.price = '';
+      this.category = '';
   }
  }
  function reply_click(clicked_id)
 {
         //gets item number
         var num = Number(clicked_id);
-        localStorage['ID'] = itemArray[num]; // only strings
+        localStorage['ID'] = itemArray[num]; // only string
+        localStorage['ID_name'] = dataArray[localStorage['ID']].name;
+        localStorage['ID_pic'] = dataArray[localStorage['ID']].img_src;
+        localStorage['ID_pic1'] = dataArray[localStorage['ID']+1].img_src;
+        localStorage['ID_pic2'] = dataArray[localStorage['ID']+2].img_src;
+        localStorage['ID_pic3'] = dataArray[localStorage['ID']+3].img_src;
+        localStorage['ID_pic4'] = dataArray[localStorage['ID']+4].img_src;
+        localStorage['ID_cat'] = dataArray[localStorage['ID']].category;
+        alert(dataArray[localStorage['ID']+1].img_src);
 }
  function returnItemClicked(){
     console.log(localStorage['ID']);
@@ -187,7 +187,7 @@ var c3 = 0;
 var c4 = 0;
 var c5 = 0;
 var c6 = 0;
- var Timer1;
+var Timer1;
 var Timer2;
 var Timer3;
 var Timer4;
@@ -378,7 +378,10 @@ function myCounter6() {++c6;}
    // console.log("Col 2 = " + percentCol2);
    // console.log("Col 3 = " + percentCol3);
 }
- function updateDiv()
-{
-    $("map").load(location.href+" map>*","");
+
+function loadRelatedImages() {
+    document.getElementById("flex11").src = "images/searchImage.png";
+    document.getElementById("flex12").src = "images/searchImage.png";
+    document.getElementById("flex21").src = "images/searchImage.png";
+    document.getElementById("flex22").src = "images/searchImage.png";
 }
