@@ -1,12 +1,3 @@
-var myVar = localStorage['ID'] || '0';
-var myVar1 = localStorage['ID_name'] || '0';
-var myVar2 = localStorage['ID_pic'] || '0';
-var myVar3 = localStorage['ID_cat'] || '0';
-var myVar4 = localStorage['ID_pic1'] || '0';
-var myVar5 = localStorage['ID_pic2'] || '0';
-var myVar6 = localStorage['ID_pic3'] || '0';
-var myVar7 = localStorage['ID_pic4'] || '0';
-
 function createMap()
 {
     mapboxgl.accessToken = "pk.eyJ1IjoiYW1kYXExIiwiYSI6ImNqbmhucnEybTBmdDQza216czR1eXZ2Y20ifQ.Ev-VQ1mnNpwDOgPV3gRTOA";
@@ -19,6 +10,8 @@ function createMap()
     //getImageURL(alp);
     console.log("Hello2");
    // imageSearch();
+    imageSearch();
+    getRetailers()
 }
 
 
@@ -237,7 +230,7 @@ function getImageURL(imageIDs)
             },
             error: function (error) {
                 console.log(error);
-                //alert("no good "+JSON.stringify(error));
+                alert("no good "+JSON.stringify(error));
                 //jason = JSON.parse(data);
                 //console.log(jason);
             }
@@ -349,13 +342,42 @@ function imageSearch()
                 }
             });
         })
+}
+
+function getRetailers()
+{
+    $(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'https://rest.viglink.com/api/product/search',
+            dataType: 'json',
+            type: 'GET',
+            data:{apiKey:"81801cad73784edc71318f28e82be509",
+                format:"json",
+                query: 'macbook',
+                secret:"8477a248fe53766cf607cc5ce45ccf57eb91af58",
+
+            },
+            success: function (data) {
+                //alert(JSON.stringify(data));
+                // for(var i=0; i<=imageIDs.length-1;++i)
+                for(var i=0; i<=3;++i)
+                {
+                    var alpha=data;
+                    console.log("ayyyy")
+                }
+            },
+            error: function (error) {
+                console.log(error);
+                alert("no good "+JSON.stringify(error));
+                //jason = JSON.parse(data);
+                //console.log(jason);
+            }
+        });
+    })
 
 
 }
 
-function returnProductImage(){
-    return myVar2.toString();
-}
 
 function setRelateImg1(){
     return localStorage['ID_pic1'];
