@@ -331,9 +331,10 @@ function getRetailers()
             dataType: 'json',
             type: 'GET',
             data:{apiKey:"81801cad73784edc71318f28e82be509",
-                query:"macbook",
                 format:"json",
-                secret:"8477a248fe53766cf607cc5ce45ccf57eb91af58"
+                query: 'macbook',
+                secret:"8477a248fe53766cf607cc5ce45ccf57eb91af58",
+
             },
             success: function (data) {
                 //alert(JSON.stringify(data));
