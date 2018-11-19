@@ -182,6 +182,7 @@
 
 .W {
 width: 100%;
+    height: auto;
 }
 
 .mT {
@@ -213,3 +214,7 @@ div{
   margin: auto;
 }
 
+.rTable{
+    table-layout: fixed;
+width: 100%;
+}
