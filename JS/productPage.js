@@ -1,3 +1,5 @@
+
+var recArray = [0,0,0,0];
 function createMap()
 {
     mapboxgl.accessToken = "pk.eyJ1IjoiYW1kYXExIiwiYSI6ImNqbmhucnEybTBmdDQza216czR1eXZ2Y20ifQ.Ev-VQ1mnNpwDOgPV3gRTOA";
@@ -165,10 +167,11 @@ function reply_click(clicked_id)
 
 
 
-function getJSONData(x,y) {
+function getJSONData() {
+    getRecommendedProducts();
     $(document).ready(function() {
         var alpha = $.ajax({
-            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
+            url: localStorage['searchRec'] ,
             dataType: 'json',
             type: 'GET',
             success: function (result) {
@@ -176,7 +179,7 @@ function getJSONData(x,y) {
                     let product = new Product();
                     $.each(field, function (key, value) {
                         if (key === "imgSrc") {
-                            console.log(value);
+                             product.img_src= value;
                         }
                         else if (key === "name") {
                             product.name = value;
@@ -191,13 +194,18 @@ function getJSONData(x,y) {
                             product.id = value;
                         }
                     });
-                    dataArray.push(product);
+                    recArray[i] = product;
+                    console.log(recArray[i].img_src);
                 });
+                 localStorage['ID_pic1'] = recArray[0].img_src;
+                localStorage['ID_pic2'] = recArray[1].img_src;
+                localStorage['ID_pic3'] = recArray[2].img_src;
+                localStorage['ID_pic4'] = recArray[3].img_src;
                // alert(data[0].id)
             },
             error: function (error) {
                 console.log(error);
-                alert("no good "+JSON.stringify(error));
+                alert("no goodsa "+JSON.stringify(error));
                 //jason = JSON.parse(data);
                 //console.log(jason);
             }
@@ -226,7 +234,7 @@ function getImageURL(imageIDs)
             },
             error: function (error) {
                 console.log(error);
-                alert("no good "+JSON.stringify(error));
+                //alert("no good "+JSON.stringify(error));
                 //jason = JSON.parse(data);
                 //console.log(jason);
             }
@@ -257,7 +265,7 @@ function getSpecs(searchString)
             },
             error: function (error) {
                 console.log(error);
-                alert("no good "+JSON.stringify(error));
+                //alert("no good "+JSON.stringify(error));
                 //jason = JSON.parse(data);
                 //console.log(jason);
             }
@@ -293,7 +301,7 @@ function getRecommended(givenItem,func)
             },
             error: function (error) {
                 console.log(error);
-                alert("no good "+JSON.stringify(error));
+               // alert("no good "+JSON.stringify(error));
                 //jason = JSON.parse(data);
                 //console.log(jason);
             }
@@ -364,7 +372,7 @@ function getRetailers()
             },
             error: function (error) {
                 console.log(error);
-                alert("no good "+JSON.stringify(error));
+                //alert("no good "+JSON.stringify(error));
                 //jason = JSON.parse(data);
                 //console.log(jason);
             }
@@ -376,6 +384,7 @@ function getRetailers()
 
 function returnProductImage(){
     return localStorage['ID_pic'];
+
 }
 
 function setRelateImg1(){
@@ -396,13 +405,40 @@ function setRelateImg4(){
 
 
 
+function reply_click1(clicked_id)
+{
+        //gets item number
+        recArray[0].id;
+        localStorage['ID'] = recArray[0].id;
+        localStorage['ID_pic'] = recArray[0].img_src;
+        document.location.reload();
+}
 
+function reply_click2(clicked_id)
+{
+        //gets item number
+        recArray[1].id;
+        localStorage['ID'] = recArray[1].id;
+        localStorage['ID_pic'] = recArray[1].img_src;
+        document.location.reload();
+}
 
+function reply_click3(clicked_id)
+{
+        //gets item number
+        recArray[2].id;
+        localStorage['ID'] = recArray[2].id;
+        localStorage['ID_pic'] = recArray[2].img_src;
+        document.location.reload();
+}
 
-
-
-
-
-
+function reply_click4(clicked_id)
+{
+        //gets item number
+        recArray[3].id;
+        localStorage['ID'] = recArray[3].id;
+        localStorage['ID_pic'] = recArray[3].img_src;
+        document.location.reload();
+}
 
 
