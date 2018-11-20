@@ -1,8 +1,9 @@
 var dataArray = [];
 var z_idx;
-var numRows = 6;
+var numRows = 5;
 var numCol= 2;
-var itemArray = []
+var itemArray = [];
+var recArray = [0,0,0,0,0,0];
 var priorityBox = [0,0,0,0,0,0];
 var myVar = localStorage['ID'] || '0';
 var myVar1 = localStorage['ID_name'] || '0';
@@ -12,6 +13,7 @@ var myVar5 = localStorage['ID_pic2'] || '0';
 var myVar6 = localStorage['ID_pic3'] || '0';
 var myVar7 = localStorage['ID_pic4'] || '0';
 var myVar3 = localStorage['ID_cat'] || '0';
+var myVar8 = localStorage['searchRec'] || '0';
 function dTable() {
     getData1();
              $("#dynamic_table").ready(function () {
@@ -25,14 +27,14 @@ function dTable() {
                              stringValue += "<td>" +
                                  "<div id = '"+idString+"' onclick=\"reply_click(this.id)\"  class=\"row-fluid rounded creamColor margin1 btn-primary shadow blackText\" width = \"100%\" height = \"100%\">" +
                                  "<div class=\"col-fluid text-center\" ><h6>Value</h6></div>"+
-                                 "<input tag = \"img\"  type=\"image\" src= \"images/Apple1.jpg\" class = \"btn img tableRowHeight rounded W\" onclick=\"linkProductPage()\" >" +
+                                 "<input tag = \"img\"  type=\"image\" src= \"images/Apple1.jpg\" class = \"btn img tableRowHeight rounded W\" onclick=\"linkProductPage(); getRecommendData();\" >" +
                                  "<div class=\"col-fluid text-center\">Info<br> Stuff <br> stuff</div>" +
                                  "</div>" +
                                  "</td>";
                          }
                          stringValue += "</tr> ";
                      }
-                     return stringValue
+                     return stringValue;
                  }
                  $('#d_table').html(numTable(numRows, numCol));
                   $('#tab_logic').append('<tr id="d_table' + (1) + '"></tr>');
@@ -42,7 +44,7 @@ function dTable() {
  function linkProductPage()
 {
     location.href = "ProductPage.html";
-    console.log(this.id);
+    getRecommendedProducts(localStorage['ID']);
 }
  function idValue(j,k){
     return (j*numRows + k).toString();
@@ -58,8 +60,9 @@ function dTable() {
                name.innerHTML = dataArray[dx].name.substring(0,15);
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
-               //itemArray[j*numRows + k] = dataArray[dx].id;
-              itemArray[j*numRows + k] = j*numRows + k;
+               itemArray[j*numRows + k] = dataArray[dx].id;
+               //itemArray[j*numRows + k] = j*numRows + k;
+               dataArray[dx].index = dx;
                ++ dx;
           }
       }
@@ -76,8 +79,9 @@ function dTable() {
                name.innerHTML = dataArray[dx].name.substring(0,15);
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
-               //itemArray[j*numRows + k] = dataArray[dx].id;
-              itemArray[j*numRows + k] = j*numRows + k;
+               itemArray[j*numRows + k] = dataArray[dx].id;
+              //itemArray[j*numRows + k] = j*numRows + k;
+               dataArray[dx].index = dx;
                 ++dx;
           }
       }
@@ -94,8 +98,9 @@ function dTable() {
                name.innerHTML = dataArray[dx].name.substring(0,15);
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
-               //itemArray[j*numRows + k] = dataArray[dx].id;
-              itemArray[j*numRows + k] = j*numRows + k;
+               itemArray[j*numRows + k] = dataArray[dx].id;
+               dataArray[dx].index = dx;
+              // itemArray[j*numRows + k] = j*numRows + k;
                 ++dx;
           }
       }
@@ -123,7 +128,7 @@ function linkResultsPage() {
 }
  function getData1() {
     $(document).ready(function () {
-            $.getJSON("data/data7.json", function (result) {
+            $.getJSON(localStorage['searchInput'], function (result) {
                 //console.log(result);
                 $.each(result, function (i, field) {
                     let product = new Product();
@@ -143,6 +148,7 @@ function linkResultsPage() {
                          else if (key === "id") {
                             product.id = value;
                         }
+
                     });
                     dataArray.push(product);
                 });
@@ -161,21 +167,19 @@ function linkResultsPage() {
       this.brand = '';
       this.price = '';
       this.category = '';
+      this.index = 0;
   }
  }
  function reply_click(clicked_id)
 {
         //gets item number
         var num = Number(clicked_id);
-        localStorage['ID'] = itemArray[num]; // only string
-        localStorage['ID_name'] = dataArray[localStorage['ID']].name;
-        localStorage['ID_pic'] = dataArray[localStorage['ID']].img_src;
-        localStorage['ID_pic1'] = dataArray[localStorage['ID']+1].img_src;
-        localStorage['ID_pic2'] = dataArray[localStorage['ID']+2].img_src;
-        localStorage['ID_pic3'] = dataArray[localStorage['ID']+3].img_src;
-        localStorage['ID_pic4'] = dataArray[localStorage['ID']+4].img_src;
-        localStorage['ID_cat'] = dataArray[localStorage['ID']].category;
-        alert(dataArray[localStorage['ID']+1].img_src);
+        localStorage['ID'] = dataArray[itemArray[num]].id; // only string
+        var itemIndexInLocalArray = dataArray[itemArray[num]].index - 1;
+        localStorage['ID_name'] = dataArray[itemIndexInLocalArray].name;
+        localStorage['ID_pic'] = dataArray[itemIndexInLocalArray].img_src;
+        localStorage['ID_cat'] = dataArray[itemIndexInLocalArray].category;
+        alert(itemIndexInLocalArray);
 }
  function returnItemClicked(){
     console.log(localStorage['ID']);
@@ -379,9 +383,46 @@ function myCounter6() {++c6;}
    // console.log("Col 3 = " + percentCol3);
 }
 
-function loadRelatedImages() {
-    document.getElementById("flex11").src = "images/searchImage.png";
-    document.getElementById("flex12").src = "images/searchImage.png";
-    document.getElementById("flex21").src = "images/searchImage.png";
-    document.getElementById("flex22").src = "images/searchImage.png";
+
+function getRecommendedProducts(id_number){
+
+    localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRecommendation/" + id_number + "/4"
+//console.log( localStorage['searchRec']);
+}
+
+function getRecommendData() {
+    $(document).ready(function () {
+            $.getJSON(localStorage['searchRec'], function (result) {
+                //console.log(result);
+                $.each(result, function (i, field) {
+                    console.log(i);
+                    let product = new Product();
+                    $.each(field, function (key, value) {
+                        if (key === "imgSrc") {
+                            product.img_src = value;
+                        }
+                        else if (key === "name") {
+                            product.name = value;
+                        }
+                        else if (key === "price") {
+                            product.price = value;
+                        }
+                        else if (key === "manfacturer") {
+                            product.brand = value;
+                        }
+                         else if (key === "id") {
+                            product.id = value;
+                        }
+                    });
+                    alert(product);
+                    recArray[i] = product;
+
+                });
+                localStorage['ID_pic1'] = recArray[0].img_src;
+                localStorage['ID_pic2'] = recArray[1].img_src;
+                localStorage['ID_pic3'] = recArray[2].img_src;
+                localStorage['ID_pic4'] = recArray[3].img_src;
+
+            });
+    });
 }
