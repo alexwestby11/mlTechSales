@@ -132,8 +132,7 @@ font-family: "custom1";
 src: url("../fonts/BenguiatGothicStd-HeavyObl.otf");
 }
 
-
-
-
-
-
+#logo{
+	max-width: 100px;
+    max-height: 100px;
+}
