@@ -409,6 +409,9 @@ function reply_click1(clicked_id)
 {
         //gets item number
         recArray[0].id;
+         if(recArray[0].id == undefined){
+            wait(500);
+        }
         localStorage['ID'] = recArray[0].id;
         localStorage['ID_pic'] = recArray[0].img_src;
         document.location.reload();
@@ -418,6 +421,9 @@ function reply_click2(clicked_id)
 {
         //gets item number
         recArray[1].id;
+        if(recArray[1].id == undefined){
+            wait(500);
+        }
         localStorage['ID'] = recArray[1].id;
         localStorage['ID_pic'] = recArray[1].img_src;
         document.location.reload();
@@ -427,6 +433,9 @@ function reply_click3(clicked_id)
 {
         //gets item number
         recArray[2].id;
+         if(recArray[2].id == undefined){
+            wait(500);
+        }
         localStorage['ID'] = recArray[2].id;
         localStorage['ID_pic'] = recArray[2].img_src;
         document.location.reload();
@@ -436,6 +445,9 @@ function reply_click4(clicked_id)
 {
         //gets item number
         recArray[3].id;
+         if(recArray[2].id == undefined){
+            wait(500);
+        }
         localStorage['ID'] = recArray[3].id;
         localStorage['ID_pic'] = recArray[3].img_src;
         document.location.reload();
