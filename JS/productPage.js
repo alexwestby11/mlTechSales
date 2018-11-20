@@ -11,7 +11,7 @@ function createMap()
     console.log("Hello2");
    // imageSearch();
     imageSearch();
-    getRetailers()
+    getRetailers();
 }
 
 
@@ -162,10 +162,6 @@ function reply_click(clicked_id)
         //gets item number
         var num = Number(clicked_id);
 }
-
-
-
-
 
 
 
@@ -378,6 +374,9 @@ function getRetailers()
 
 }
 
+function returnProductImage(){
+    return myVar2.toString();
+}
 
 function setRelateImg1(){
     return localStorage['ID_pic1'];
