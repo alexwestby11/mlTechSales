@@ -1,16 +1,7 @@
 <!-- custom JS functions -->
 <script src="JS/productPage.js"></script>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="styles/main.css">
-    <meta charset="UTF-8">
-    <title>test2</title>
-
-
-    <!-- Latest compiled and minified CSS -->
+<!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -39,6 +30,13 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css' rel='stylesheet' />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles/main.css">
+    <meta charset="UTF-8">
+    <title>test2</title>
+
 
     <script src="JS/resultsPage.js/"></script>
     </head>
@@ -64,7 +62,7 @@
             </div>
         </div>
     </div><!--Top Search Bar End-->
-
+<script>getJSONData()</script>
 
 
 
@@ -150,18 +148,18 @@
                      <div  id = "flexC1" class="d-flex flex-column" style='width:100%; height:100%;'>
                          <div id = "flexR1" class="d-flex flex-row" style='width:100%; height:100%;'>
                                 <div id = "flex11" class="d-flex greenColor" style='width:100%; height:100%;'>
-                                    <img class = "img-fluid btn" src = "images/Apple1.jpg"  onload = "this.src = setRelateImg1()" width = 100% height= 100%>
+                                    <img class = "img-fluid btn" src = "images/Apple1.jpg"  onclick="reply_click1(this.id)" onload = "this.src = setRelateImg1()" width = 100% height= 100%>
                                 </div>
                                 <div id = "flex12" class="d-flex orangeColor" style='width:100%; height:100%;'>
-                                     <img class = "img-fluid btn" src = "images/Apple1.jpg" onload = "this.src = setRelateImg2()" width = 100% height= 100%>
+                                     <img class = "img-fluid btn" src = "images/Apple1.jpg"  onclick="reply_click2(this.id)" onload = "this.src = setRelateImg2()" width = 100% height= 100%>
                                 </div>
                         </div>
                           <div id = "flexR2" class="d-flex flex-row" style='width:100%; height:100%;'>
                                 <div id = "flex21" class="d-flex yellowColor" style='width:100%; height:100%;'>
-                                     <img class = "img-fluid btn" src = "images/Apple1.jpg" onload = "this.src = setRelateImg3()" width = 100% height= 100%>
+                                     <img class = "img-fluid btn" src = "images/Apple1.jpg" onclick="reply_click3(this.id)" onload = "this.src = setRelateImg3()" width = 100% height= 100%>
                                 </div>
                                 <div id = "flex22" class="d-flex redColor" style='width:100%; height:100%;'>
-                                     <img class = "img-fluid btn" src = "images/Apple1.jpg" onload = "this.src = setRelateImg4()" width = 100% height= 100%>
+                                     <img class = "img-fluid btn" src = "images/Apple1.jpg" onclick="reply_click4(this.id)" onload = "this.src = setRelateImg4()" width = 100% height= 100%>
                                 </div>
                         </div>
                      </div>
@@ -184,7 +182,7 @@
              <div id = "box6" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded  margin1">
                  <div id='map' style='width:100%; height:97%;' class = "col center rounded">
                      <!--<script>getData()</script>-->
-                     <script>createMap()</script>
+                    <!-- <script>createMap()</script>-->
                  </div>
               </div>
           </div>

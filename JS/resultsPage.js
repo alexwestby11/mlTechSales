@@ -2,8 +2,8 @@ var dataArray = [];
 var z_idx;
 var numRows = 5;
 var numCol= 2;
-var itemArray = [];
-var recArray = [0,0,0,0,0,0];
+var itemArray = [0,0,0,0,0,0,0,0,0,0];
+var recArray = [0,0,0,0];
 var priorityBox = [0,0,0,0,0,0];
 var myVar = localStorage['ID'] || '0';
 var myVar1 = localStorage['ID_name'] || '0';
@@ -14,6 +14,7 @@ var myVar6 = localStorage['ID_pic3'] || '0';
 var myVar7 = localStorage['ID_pic4'] || '0';
 var myVar3 = localStorage['ID_cat'] || '0';
 var myVar8 = localStorage['searchRec'] || '0';
+console.log("SEarhc ID = " + localStorage['searchRec']);
 function dTable() {
     getData1();
              $("#dynamic_table").ready(function () {
@@ -27,7 +28,7 @@ function dTable() {
                              stringValue += "<td>" +
                                  "<div id = '"+idString+"' onclick=\"reply_click(this.id)\"  class=\"row-fluid rounded creamColor margin1 btn-primary shadow blackText\" width = \"100%\" height = \"100%\">" +
                                  "<div class=\"col-fluid text-center\" ><h6>Value</h6></div>"+
-                                 "<input tag = \"img\"  type=\"image\" src= \"images/Apple1.jpg\" class = \"btn img tableRowHeight rounded W\" onclick=\"linkProductPage(); getRecommendData();\" >" +
+                                 "<input tag = \"img\"  type=\"image\" src= \"images/Apple1.jpg\" class = \"btn img tableRowHeight rounded W\" onclick=\"linkProductPage(); \" >" +
                                  "<div class=\"col-fluid text-center\">Info<br> Stuff <br> stuff</div>" +
                                  "</div>" +
                                  "</td>";
@@ -44,13 +45,13 @@ function dTable() {
  function linkProductPage()
 {
     location.href = "ProductPage.html";
-    getRecommendedProducts(localStorage['ID']);
 }
  function idValue(j,k){
     return (j*numRows + k).toString();
 }
  function changeImage(x,y,z){
     var dx = z;
+
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
               var string = (j*numRows + k).toString();
@@ -60,7 +61,7 @@ function dTable() {
                name.innerHTML = dataArray[dx].name.substring(0,15);
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
-               itemArray[j*numRows + k] = dataArray[dx].id;
+               itemArray[j*numRows + k] = dx;
                //itemArray[j*numRows + k] = j*numRows + k;
                dataArray[dx].index = dx;
                ++ dx;
@@ -79,7 +80,7 @@ function dTable() {
                name.innerHTML = dataArray[dx].name.substring(0,15);
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
-               itemArray[j*numRows + k] = dataArray[dx].id;
+                 itemArray[j*numRows + k] = dx;
               //itemArray[j*numRows + k] = j*numRows + k;
                dataArray[dx].index = dx;
                 ++dx;
@@ -98,7 +99,7 @@ function dTable() {
                name.innerHTML = dataArray[dx].name.substring(0,15);
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
-               itemArray[j*numRows + k] = dataArray[dx].id;
+                 itemArray[j*numRows + k] = dx;
                dataArray[dx].index = dx;
               // itemArray[j*numRows + k] = j*numRows + k;
                 ++dx;
@@ -158,33 +159,22 @@ function linkResultsPage() {
             });
     });
 }
- class Product {
-  constructor() {
-      this.id = '';
-      this.type = '';
-      this.img_src = '';
-      this.name = '';
-      this.brand = '';
-      this.price = '';
-      this.category = '';
-      this.index = 0;
-  }
- }
+
  function reply_click(clicked_id)
 {
         //gets item number
         var num = Number(clicked_id);
+       // alert("num = " + num);
+       // alert("itemArray = " + itemArray[num]);
+        alert("id = " + dataArray[itemArray[num]].id);
         localStorage['ID'] = dataArray[itemArray[num]].id; // only string
-        var itemIndexInLocalArray = dataArray[itemArray[num]].index - 1;
+        var itemIndexInLocalArray = itemArray[num];
         localStorage['ID_name'] = dataArray[itemIndexInLocalArray].name;
         localStorage['ID_pic'] = dataArray[itemIndexInLocalArray].img_src;
         localStorage['ID_cat'] = dataArray[itemIndexInLocalArray].category;
-        alert(itemIndexInLocalArray);
+        //alert(itemIndexInLocalArray);
 }
- function returnItemClicked(){
-    console.log(localStorage['ID']);
-    return localStorage['ID'];
-}
+
 var c1 = 0;
 var c2 = 0;
 var c3 = 0;
@@ -384,13 +374,13 @@ function myCounter6() {++c6;}
 }
 
 
-function getRecommendedProducts(id_number){
+function getRecommendedProducts(){
 
-    localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRecommendation/" + id_number + "/4"
-//console.log( localStorage['searchRec']);
+    localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRecommendation/" + localStorage['ID'] + "/4/similar"
 }
 
 function getRecommendData() {
+
     $(document).ready(function () {
             $.getJSON(localStorage['searchRec'], function (result) {
                 //console.log(result);
@@ -400,6 +390,8 @@ function getRecommendData() {
                     $.each(field, function (key, value) {
                         if (key === "imgSrc") {
                             product.img_src = value;
+                            console.log("here");
+                            alert(value);
                         }
                         else if (key === "name") {
                             product.name = value;
@@ -414,10 +406,11 @@ function getRecommendData() {
                             product.id = value;
                         }
                     });
-                    alert(product);
+
                     recArray[i] = product;
 
                 });
+
                 localStorage['ID_pic1'] = recArray[0].img_src;
                 localStorage['ID_pic2'] = recArray[1].img_src;
                 localStorage['ID_pic3'] = recArray[2].img_src;
@@ -425,4 +418,25 @@ function getRecommendData() {
 
             });
     });
+}
+
+ class Product {
+  constructor() {
+      this.id = '';
+      this.type = '';
+      this.img_src = '';
+      this.name = '';
+      this.brand = '';
+      this.price = '';
+      this.category = '';
+
+  }
+ }
+
+ function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
 }
