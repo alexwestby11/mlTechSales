@@ -26,7 +26,10 @@ function createMap()
         brandar='';
     customSearchResults(brands,categories,150)
     storeAsJson(brands);
+    summarize();
+
 }
+
 
 
 function createGraph(relatedProductsNames,relatedProductImages){
@@ -47,7 +50,8 @@ function createGraph(relatedProductsNames,relatedProductImages){
                     image:relatedProductImages[0]},
             {id: 4, label: relatedProductsNames[2],
                 image:relatedProductImages[0]},
-            {id: 5, label: 'Laptop Sleeve' }
+            {id: 5, label: 'Laptop Sleeve',
+                    image: relatedProductImages[0]}
         ]);
 
         // create an array with edges
@@ -183,7 +187,7 @@ function reply_click(clicked_id)
 
 
 
-function getJSONData(x,y) {
+function getJSONData() {
     $(document).ready(function() {
         var alpha = $.ajax({
             url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
@@ -276,7 +280,6 @@ function getSpecs(searchString)
             },
             error: function (error) {
                 console.log(error);
-                alert("no good "+JSON.stringify(error));
                 //jason = JSON.parse(data);
                 //console.log(jason);
             }
@@ -312,7 +315,6 @@ function getRecommended(givenItem,func)
             },
             error: function (error) {
                 console.log(error);
-                alert("no good "+JSON.stringify(error));
                 //jason = JSON.parse(data);
                 //console.log(jason);
             }
@@ -333,8 +335,8 @@ function imageSearch()
                 dataType: 'json',
                 type: 'GET',
                 data:{count:"500",
-                     q:"laptop",
-                    autoCorrect:"true"
+                     q:"macbook",
+                    autoCorrect:"false"
                     },
                 success: function (data) {
                     //alert(JSON.stringify(data));
@@ -344,6 +346,40 @@ function imageSearch()
                         //alert(data[i].imgSrc)
                         var img = document.createElement("img");
                         img.src =data.value[i].url;
+
+                        var src = document.getElementById("image"+i.toString());
+                        src.appendChild(img);
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                    //jason = JSON.parse(data);
+                    //console.log(jason);
+                }
+            });
+        })
+}
+
+
+function getUPC(queryString)
+{
+    $(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'https://contextualwebsearch.com/api/Search/ImageSearchAPI?]',
+            dataType: 'json',
+            type: 'GET',
+            data:{count:"500",
+                q:"macbook pro 13 inch",
+                autoCorrect:"false"
+            },
+            success: function (data) {
+                //alert(JSON.stringify(data));
+                // for(var i=0; i<=imageIDs.length-1;++i)
+                for(var i=0; i<=3;++i)
+                {
+                    //alert(data[i].imgSrc)
+                    var img = document.createElement("img");
+                    img.src =data.value[i].url;
 
                         var src = document.getElementById("image"+i.toString());
                         src.appendChild(img);
@@ -389,7 +425,49 @@ function getRetailers()
             }
         });
     })
+                    var src = document.getElementById("image"+i.toString());
+                    src.appendChild(img);
+                }
+            },
+            error: function (error) {
+                console.log(error);
+                //jason = JSON.parse(data);
+                //console.log(jason);
+            }
+        });
+    })
+}
 
+
+function printStuff(error,text,data)
+{
+    console.log(text)
+}
+
+
+function summarize()
+{
+    var searchPage="Desktop Computer"
+    $(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Laptop%20Computer',
+            type: 'GET',
+            success: function (data) {
+                var summary=data['query']['pages'][Object.keys(data['query']['pages'])[0]]['extract']
+                //alert(JSON.stringify(data));
+                // for(var i=0; i<=imageIDs.length-1;++i)
+                var src = document.getElementById("summaryBody");
+                src.innerHTML +=summary;
+                console.log(data[0]);
+            },
+            error: function (error) {
+                console.log(error);
+                //alert("no good "+JSON.stringify(error));
+                //jason = JSON.parse(data);
+                //console.log(jason);
+            }
+        });
+    })
 
 }
 
