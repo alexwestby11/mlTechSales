@@ -12,6 +12,20 @@ function createMap()
    // imageSearch();
     imageSearch();
     getRetailers()
+    brands=['Nikon','Canon','Sony']
+    categories=['Photography','Notebooks','Desktops']
+    brandsS='';
+    categoriesS='';
+
+    for(var i=0; i<=2;++i)
+    {
+        brandsS+='/manufacturer/'+brands[0]
+        categoriesS+='/category/'+categories[0]
+    }
+
+        brandar='';
+    customSearchResults(brands,categories,150)
+    storeAsJson(brands);
 }
 
 
@@ -249,6 +263,7 @@ function getSpecs(searchString)
                 //alert(JSON.stringify(data));
                 // for(var i=0; i<=imageIDs.length-1;++i)
                 {
+
                     /*
                     //alert(data[i].imgSrc)
                     var img = document.createElement("img");
@@ -395,11 +410,46 @@ function setRelateImg4(){
     return localStorage['ID_pic4'];
 }
 
+function customSearchResults(brands, categories,price){
+    $(document).ready(function() {
+        allBrands=''
+        allCategories=''
+        allPrices='/price/'+(price*.75).toString()+'/'+(price*1.25).toString()+'/desc';
+
+        for(var i=0; i<=2;++i)
+        {
+            allBrands+='/manufacturer/'+brands[i]
+            allCategories+='/category/'+categories[i]
+        }
+
+        var alpha = $.ajax({
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy'
+                  + allBrands
+                  + allCategories
+                  + allPrices,
+            dataType: 'json',
+            type: 'GET',
+            success: function (data) {
+
+            },
+            error: function (error) {
+            }
+        });
+    })
+}
 
 
-
-
-
+function storeUserSearchData(givenArray)
+{
+    var testObject ={'brand':{'Nikon':1,'Canon':2}, 'two': 2, 'three': 3 };
+    localStorage.setItem('userSearchPreferences', JSON.stringify(testObject));
+}
+ function getUserSearchData()
+ {
+     var retrievedObject = localStorage.getItem('userSearchPreferences');
+     return JSON.parse(retrievedObject);
+     console.log('retrievedObject: ', JSON.parse(retrievedObject));
+ }
 
 
 
