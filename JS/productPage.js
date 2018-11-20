@@ -375,7 +375,7 @@ function getRetailers()
 }
 
 function returnProductImage(){
-    return myVar2.toString();
+    return localStorage['ID_pic'];
 }
 
 function setRelateImg1(){

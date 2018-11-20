@@ -39,8 +39,9 @@ function getJSONData1() {
                         }
                     });
                     dataArray.push(product);
+
                 });
-               // alert(data[0].id)
+
             },
             error: function (error) {
                 console.log(error);

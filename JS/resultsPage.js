@@ -27,14 +27,14 @@ function dTable() {
                              stringValue += "<td>" +
                                  "<div id = '"+idString+"' onclick=\"reply_click(this.id)\"  class=\"row-fluid rounded creamColor margin1 btn-primary shadow blackText\" width = \"100%\" height = \"100%\">" +
                                  "<div class=\"col-fluid text-center\" ><h6>Value</h6></div>"+
-                                 "<input tag = \"img\"  type=\"image\" src= \"images/Apple1.jpg\" class = \"btn img tableRowHeight rounded W\" onclick=\"linkProductPage(); getRecommendData()\" >" +
+                                 "<input tag = \"img\"  type=\"image\" src= \"images/Apple1.jpg\" class = \"btn img tableRowHeight rounded W\" onclick=\"linkProductPage(); getRecommendData();\" >" +
                                  "<div class=\"col-fluid text-center\">Info<br> Stuff <br> stuff</div>" +
                                  "</div>" +
                                  "</td>";
                          }
                          stringValue += "</tr> ";
                      }
-                     return stringValue
+                     return stringValue;
                  }
                  $('#d_table').html(numTable(numRows, numCol));
                   $('#tab_logic').append('<tr id="d_table' + (1) + '"></tr>');
@@ -62,6 +62,7 @@ function dTable() {
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
                itemArray[j*numRows + k] = dataArray[dx].id;
                //itemArray[j*numRows + k] = j*numRows + k;
+               dataArray[dx].index = dx;
                ++ dx;
           }
       }
@@ -80,6 +81,7 @@ function dTable() {
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
                itemArray[j*numRows + k] = dataArray[dx].id;
               //itemArray[j*numRows + k] = j*numRows + k;
+               dataArray[dx].index = dx;
                 ++dx;
           }
       }
@@ -97,7 +99,8 @@ function dTable() {
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
                itemArray[j*numRows + k] = dataArray[dx].id;
-              //itemArray[j*numRows + k] = j*numRows + k;
+               dataArray[dx].index = dx;
+              // itemArray[j*numRows + k] = j*numRows + k;
                 ++dx;
           }
       }
@@ -145,6 +148,7 @@ function linkResultsPage() {
                          else if (key === "id") {
                             product.id = value;
                         }
+
                     });
                     dataArray.push(product);
                 });
@@ -163,21 +167,19 @@ function linkResultsPage() {
       this.brand = '';
       this.price = '';
       this.category = '';
+      this.index = 0;
   }
  }
  function reply_click(clicked_id)
 {
         //gets item number
         var num = Number(clicked_id);
-        localStorage['ID'] = itemArray[num]; // only string
-        localStorage['ID_name'] = dataArray[localStorage['ID']].name;
-        localStorage['ID_pic'] = dataArray[localStorage['ID']].img_src;
-
-        localStorage['ID_pic2'] = dataArray[localStorage['ID']+2].img_src;
-        localStorage['ID_pic3'] = dataArray[localStorage['ID']+3].img_src;
-        localStorage['ID_pic4'] = dataArray[localStorage['ID']+4].img_src;
-        localStorage['ID_cat'] = dataArray[localStorage['ID']].category;
-        alert(dataArray[localStorage['ID']+1].img_src);
+        localStorage['ID'] = dataArray[itemArray[num]].id; // only string
+        var itemIndexInLocalArray = dataArray[itemArray[num]].index - 1;
+        localStorage['ID_name'] = dataArray[itemIndexInLocalArray].name;
+        localStorage['ID_pic'] = dataArray[itemIndexInLocalArray].img_src;
+        localStorage['ID_cat'] = dataArray[itemIndexInLocalArray].category;
+        alert(itemIndexInLocalArray);
 }
  function returnItemClicked(){
     console.log(localStorage['ID']);
@@ -412,13 +414,14 @@ function getRecommendData() {
                             product.id = value;
                         }
                     });
+                    alert(product);
                     recArray[i] = product;
 
                 });
                 localStorage['ID_pic1'] = recArray[0].img_src;
-                localStorage['ID_pic2'] = recArray[0].img_src;
-                localStorage['ID_pic3'] = recArray[0].img_src;
-                localStorage['ID_pic1'] = recArray[0].img_src;
+                localStorage['ID_pic2'] = recArray[1].img_src;
+                localStorage['ID_pic3'] = recArray[2].img_src;
+                localStorage['ID_pic4'] = recArray[3].img_src;
 
             });
     });
