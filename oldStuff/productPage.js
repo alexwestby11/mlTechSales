@@ -1,5 +1,5 @@
-
 var recArray = [0,0,0,0];
+var capArray = [0,0,0,0];
 function createMap()
 {
     mapboxgl.accessToken = "pk.eyJ1IjoiYW1kYXExIiwiYSI6ImNqbmhucnEybTBmdDQza216czR1eXZ2Y20ifQ.Ev-VQ1mnNpwDOgPV3gRTOA";
@@ -171,12 +171,15 @@ function getJSONData() {
     getRecommendedProducts();
     $(document).ready(function() {
         var alpha = $.ajax({
-            url: localStorage['searchRec'] ,
+            url: localStorage['searchRec'],
             dataType: 'json',
             type: 'GET',
             success: function (result) {
                  $.each(result, function (i, field) {
                     let product = new Product();
+ if(i === 4) {
+        return false;
+    }
                     $.each(field, function (key, value) {
                         if (key === "imgSrc") {
                              product.img_src= value;
@@ -195,12 +198,62 @@ function getJSONData() {
                         }
                     });
                     recArray[i] = product;
-                    console.log(recArray[i].img_src);
+                    //console.log(recArray[i].img_src);
                 });
                  localStorage['ID_pic1'] = recArray[0].img_src;
                 localStorage['ID_pic2'] = recArray[1].img_src;
                 localStorage['ID_pic3'] = recArray[2].img_src;
                 localStorage['ID_pic4'] = recArray[3].img_src;
+               // alert(data[0].id)
+            },
+            error: function (error) {
+                console.log(error);
+                alert("no goodsa "+JSON.stringify(error));
+                //jason = JSON.parse(data);
+                //console.log(jason);
+            }
+        });
+    })
+}
+
+function getJSONData1() {
+    getCompatibleProducts();
+    console.log(localStorage['searchCap']);
+    $(document).ready(function() {
+        var alpha = $.ajax({
+            url: localStorage['searchCap'],
+            dataType: 'json',
+            type: 'GET',
+            success: function (result) {
+                 $.each(result, function (i, field) {
+                     if(i === 4) {
+                     return false;
+                    }
+                    let product = new Product();
+                    $.each(field, function (key, value) {
+                        if (key === "imgSrc") {
+                             product.img_src= value;
+                        }
+                        else if (key === "name") {
+                            product.name = value;
+                        }
+                        else if (key === "price") {
+                            product.price = value;
+                        }
+                        else if (key === "manfacturer") {
+                            product.brand = value;
+                        }
+                         else if (key === "id") {
+                            product.id = value;
+                        }
+                    });
+                    capArray[i] = product;
+                    //console.log(capArray[i].img_src);
+                });
+                 localStorage['ID_pic1_c'] = capArray[0].img_src;
+                localStorage['ID_pic2_c'] = capArray[1].img_src;
+                localStorage['ID_pic3_c'] = capArray[2].img_src;
+                localStorage['ID_pic4_c'] = capArray[3].img_src;
                // alert(data[0].id)
             },
             error: function (error) {
@@ -281,7 +334,7 @@ function getRecommended(givenItem,func)
 {
     $(document).ready(function() {
         var alpha = $.ajax({
-            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRecommendation/1/3',
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/1/3',
             dataType: 'json',
             type: 'GET',
             success: function (data) {
@@ -403,6 +456,22 @@ function setRelateImg4(){
     return localStorage['ID_pic4'];
 }
 
+function setCapImg1(){
+    return localStorage['ID_pic1_c'];
+}
+
+function setCapImg2(){
+    return localStorage['ID_pic2_c'];
+}
+
+function setCapImg3(){
+    return localStorage['ID_pic3_c'];
+}
+
+function setCapImg4(){
+    return localStorage['ID_pic4_c'];
+}
+
 
 
 function reply_click1(clicked_id)
@@ -413,6 +482,7 @@ function reply_click1(clicked_id)
             wait(500);
         }
         localStorage['ID'] = recArray[0].id;
+         localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/name/" + localStorage['ID'] ;
         localStorage['ID_pic'] = recArray[0].img_src;
         document.location.reload();
 }
@@ -425,6 +495,7 @@ function reply_click2(clicked_id)
             wait(500);
         }
         localStorage['ID'] = recArray[1].id;
+        localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/name/" + localStorage['ID'] ;
         localStorage['ID_pic'] = recArray[1].img_src;
         document.location.reload();
 }
@@ -433,10 +504,11 @@ function reply_click3(clicked_id)
 {
         //gets item number
         recArray[2].id;
-         if(recArray[2].id == undefined){
+        if(recArray[2].id == undefined){
             wait(500);
         }
         localStorage['ID'] = recArray[2].id;
+        localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/name/" + localStorage['ID'] ;
         localStorage['ID_pic'] = recArray[2].img_src;
         document.location.reload();
 }
@@ -450,7 +522,63 @@ function reply_click4(clicked_id)
         }
         localStorage['ID'] = recArray[3].id;
         localStorage['ID_pic'] = recArray[3].img_src;
+        localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/name/" + localStorage['ID'] ;
         document.location.reload();
 }
 
+function reply_click1C(clicked_id)
+{
+        //gets item number
+        capArray[0].id;
+         if(recArray[0].id == undefined){
+            wait(500);
+        }
+        localStorage['ID'] = capArray[0].id;
+         localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/name/" + localStorage['ID'] ;
+        localStorage['ID_pic'] = capArray[0].img_src;
+        document.location.reload();
+}
 
+function reply_click2C(clicked_id)
+{
+        //gets item number
+        capArray[1].id;
+        if(capArray[1].id == undefined){
+            wait(500);
+        }
+        localStorage['ID'] = recArray[1].id;
+        localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/name/" + localStorage['ID'] ;
+        localStorage['ID_pic'] = capArray[1].img_src;
+        document.location.reload();
+}
+
+function reply_click3C(clicked_id)
+{
+        //gets item number
+        capArray[2].id;
+        if(capArray[2].id == undefined){
+            wait(500);
+        }
+        localStorage['ID'] = capArray[2].id;
+        localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/name/" + localStorage['ID'] ;
+        localStorage['ID_pic'] = capArray[2].img_src;
+        document.location.reload();
+}
+
+function reply_click4C(clicked_id)
+{
+        //gets item number
+        capArray[3].id;
+         if(capArray[3].id == undefined){
+            wait(500);
+        }
+        localStorage['ID'] = capArray[3].id;
+         if(capArray[3].img_src == null) {
+                          localStorage['ID_pic'] = "images/Apple1.jpg";
+         }
+         else{
+             localStorage['ID_pic'] = capArray[3].img_src;
+         }
+        localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/name/" + localStorage['ID'] ;
+        document.location.reload();
+}

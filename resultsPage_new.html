@@ -1,0 +1,64 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+<!-- local js scripts -->
+<script src="JS/frontpage_new.js"></script>
+
+
+<!-- local css scripts -->
+<link rel ="stylesheet" href="styles/resultsPage.css">
+<!------ Include the above in youritemArray[num] HEAD tag ---------->
+<!DOCTYPE html>
+<html lang="en">
+<head><title>TechSails</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body onload = "dTable();">
+<div class="container-fluid h-100 snowColor palFont">
+
+<div class="container-fluid">
+    <div class="row-fluid text-center blueColor marginTitle rounded shadow">
+        <div class="col titleText">
+                <p>Tech Sails</p>
+			    <div class="row flex-row titleSubText ">
+                    <div class="col-lg-4 titleSubText">
+                        <button type = "submit" onclick="prevButton();">Prev</button>
+                    </div>
+
+                    <div class="col titleSubText">
+                      <p>Sailing Through the Competiton</p>
+                    </div>
+
+                    <div class="col titleSubText">
+                        <button type = "submit" onclick="nextButton();">Next</button>
+                    </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!--results-->
+<div class="container-fluid palFont">
+    <div class="col shadow blueColor mT rounded">
+            <table class="table-fluid W rounded" id="d_table" width="100%">
+                <!- Custom Table-->
+            </table>
+	</div>
+</div>
+
+
+</div>
+</body>

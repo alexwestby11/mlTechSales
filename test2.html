@@ -1,81 +1,30 @@
-
-
-
-
-<!-- custom JS functions -->
-<script src="JS/productPage.js"></script>
-
-
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
-    <link rel="stylesheet" href="styles/main.css">
-    <meta charset="UTF-8">
-    <title>test2</title>
+    <meta name="viewport" content="width=device-width" />
+	<script type="text/javascript"
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+	<script type="text/javascript">
+        $(document).ready(function () {
 
+		 $('#ajaxBtn').click(function(){
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-    <!-- local css scripts -->
-    <link rel ="stylesheet" href="styles/resultsPage.css">
-
-    <!--Map Box API -->
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
-
-
-    <!-- Slider-Pro -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slider-pro/1.5.0/js/jquery.sliderPro.min.js"></script>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/slider-pro/1.5.0/css/slider-pro.min.css' rel='stylesheet' />
-
-
-    <!-- Graph Visualization Package -->
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css' rel='stylesheet' />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
-
-
-    <script src="JS/resultsPage.js/"></script>
-    </head>
+			$.post('http://techsailsrestful.us-east-2.elasticbeanstalk.com',   // url
+			   { myData: 'This is my data.' }, // data to be submit
+			   function(data, status, jqXHR) {// success callback
+						$('p').append('status: ' + status + ', data: ' + data);
+				});
+			});
+    });s
+    </script>
+</head>
 <body>
-
-  <!--Background -->
-<div class = "container-fluid h-100 blueColor">
-
-     <!--Top Search Bar -->
-    <div class="container-fluid">
-      <div class="row rounded topRow">
-            <div class="col-lg-4 ">
-
-              <form>
-                <div class="input-group pt-3 ml-5">
-                  <input type="search" class=" form-control" id="searchbar" placeholder="Search for ...">
-                     <span class="input-group-btn ml-4">
-                         <button class="btn btn-light" type="button">Search</button>
-                     </span>
-                </div>
-              </form>
-                <button type = "submit" onclick="getJSONData()">Values</button>
-            </div>
-        </div>
-    </div><!--Top Search Bar End-->
-
-
-
-
-
-
-
-</div>
-
+	<h1> jQuery post() method demo
+	</h1>
+	<input type="button" id="ajaxBtn" value="Send POST request" />
+	<p>
+	</p>
 </body>
 </html>
