@@ -4,7 +4,7 @@ var numRows = 5;
 var numCol= 2;
 var itemArray = [0,0,0,0,0,0,0,0,0,0];
 var recArray = [0,0,0,0];
-var priorityBox = [0,0,0,0,0,0];
+var priorityBox = [0,0,0,0];
 var myVar = localStorage['ID'] || '0';
 var myVar1 = localStorage['ID_name'] || '0';
 var myVar2 = localStorage['ID_pic'] || '0';
@@ -14,6 +14,11 @@ var myVar6 = localStorage['ID_pic3'] || '0';
 var myVar7 = localStorage['ID_pic4'] || '0';
 var myVar3 = localStorage['ID_cat'] || '0';
 var myVar8 = localStorage['searchRec'] || '0';
+var myVar9 = localStorage['searchCap'] || '0';
+var myVar10 = localStorage['ID_pic1_c'] || '0';
+var myVar11 = localStorage['ID_pic2_c'] || '0';
+var myVar12 = localStorage['ID_pic3_c'] || '0';
+var myVar13 = localStorage['ID_pic4_c'] || '0';
 console.log("SEarhc ID = " + localStorage['searchRec']);
 function dTable() {
     getData1();
@@ -132,6 +137,9 @@ function linkResultsPage() {
             $.getJSON(localStorage['searchInput'], function (result) {
                 //console.log(result);
                 $.each(result, function (i, field) {
+                    if(i === 100) {
+        return false;
+    }
                     let product = new Product();
                     $.each(field, function (key, value) {
                         if (key === "imgSrc") {
@@ -179,14 +187,10 @@ var c1 = 0;
 var c2 = 0;
 var c3 = 0;
 var c4 = 0;
-var c5 = 0;
-var c6 = 0;
 var Timer1;
 var Timer2;
 var Timer3;
 var Timer4;
-var Timer5;
-var Timer6;
 function reply_mouseover(clicked_id)
 {
             if(clicked_id === "box1"){
@@ -204,14 +208,6 @@ function reply_mouseover(clicked_id)
             else if(clicked_id === "box4") {
                 //console.log("ibox4");
                 Timer4 = setInterval(myCounter4, 1000);
-            }
-            else if(clicked_id === "box5"){
-                //console.log("ibox5");
-                Timer5 = setInterval(myCounter5, 1000);
-            }
-            else if(clicked_id === "box6"){
-                //console.log("ibox6");
-                Timer6 = setInterval(myCounter6, 1000);
             }
  }
  function reply_mouseOut(clicked_id) {
@@ -239,41 +235,27 @@ function reply_mouseover(clicked_id)
                 priorityBox[3] = c4;
                 clearTimeout(Timer4);
             }
-            else if(clicked_id === "box5"){
-                //console.log(c5);
-               // console.log("lbox5");
-                priorityBox[4] = c5;
-               clearTimeout(Timer5);
-            }
-            else if(clicked_id === "box6"){
-                //console.log(c6);
-                //console.log("lbox6");
-                priorityBox[5] = c6;
-                 clearTimeout(Timer6);
-             }
  }
  function myCounter1() {++c1;}
-function myCounter2() {++c2;}
-function myCounter3() {++c3;}
-function myCounter4() {++c4;}
-function myCounter5() {++c5;}
-function myCounter6() {++c6;}
+ function myCounter2() {++c2;}
+ function myCounter3() {++c3;}
+ function myCounter4() {++c4;}
+
  function printPriorityBox(){
     for(var i = 0; i < priorityBox.length; ++i){
         console.log("Box " + (i+1).toString() + " = " + priorityBox[i].toString());
     }
-}
+ }
  function colChange(){
     var maxValue = Math.max(priorityBox);
     var total = 0;
     for(var i = 0; i < priorityBox.length; ++i){
         total += priorityBox[i];
     }
-    var perCol = [0,0,0];
+    var perCol = [0,0];
      //find column most used
     perCol[0] = Math.round(((priorityBox[0] + priorityBox[1])/total) * 100);
     perCol[1] = Math.round(((priorityBox[2] + priorityBox[3])/total) * 100);
-    perCol[2] = Math.round(((priorityBox[4] + priorityBox[5])/total) * 100);
     var maxIndex = 0;
     var restOfItems = [];
     for(var i = 1; i < perCol.length; ++i){
@@ -288,41 +270,24 @@ function myCounter6() {++c6;}
     colIdArray.push(document.getElementById("flexCol2"));
     colIdArray.push(document.getElementById("flex3"));
     colIdArray.push(document.getElementById("flex4"));
-    colIdArray.push(document.getElementById("flexCol3"));
-    colIdArray.push(document.getElementById("flex5"));
-    colIdArray.push(document.getElementById("flex6"));
 
     //if all columns the same
-    if(perCol[0] === perCol[1] === perCol[2]){
+    if(perCol[0] === perCol[1]){
         colIdArray[0].style.width = "100%";
         colIdArray[3].style.width = "100%";
-        colIdArray[6].style.width = "100%";
     }
-    else{
-        if(colIdArray[maxIndex * 3]){
-           colIdArray[maxIndex * 3].style.width = "60%";
-           for(var i = 0; i < 3; ++i){
-               if(maxIndex !== i){
-                   restOfItems.push(i);
-               }
-           }
-           if(restOfItems[0] === restOfItems[1]){
-               colIdArray[restOfItems[0]*3].style.width = "50%";
-               colIdArray[restOfItems[1]*3].style.width = "50%";
-           }
-           else if(restOfItems[0] > restOfItems[1]){
-               colIdArray[restOfItems[0]*3].style.width = "50%";
-               colIdArray[restOfItems[1]*3].style.width = "30%";
-           }
-           else{
-               colIdArray[restOfItems[0]*3].style.width = "30%";
-               colIdArray[restOfItems[1]*3].style.width = "50%";
-           }
-        }
+    else if(perCol[0] > perCol[1]){
+
+        colIdArray[0].style.width = "70";
+        colIdArray[3].style.width = "30%";
+    }
+    else if(perCol[0] < perCol[1]){
+        colIdArray[0].style.width = "30%";
+        colIdArray[3].style.width = "70%";
 
     }
 
-
+    //boxes inside columns
     if(priorityBox[0]  > priorityBox[1]){
         colIdArray[1].style.height = "75%";
         colIdArray[2].style.height = "25%";
@@ -348,19 +313,6 @@ function myCounter6() {++c6;}
         colIdArray[4].style.height = "25%";
         colIdArray[5].style.height = "75%";
     }
-
-    if(priorityBox[4]  > priorityBox[5]){
-        colIdArray[7].style.height = "75%";
-        colIdArray[8].style.height = "25%";
-    }
-    else if(priorityBox[4] === priorityBox[5]) {
-        colIdArray[7].style.height = "50%";
-        colIdArray[8].style.height = "50%";
-    }
-    else{
-        colIdArray[7].style.height = "25%";
-        colIdArray[8].style.height = "75%";
-    }
     printPriorityBox();
  /*
     var col1 = document.getElementById("flexCol1");
@@ -376,9 +328,12 @@ function myCounter6() {++c6;}
 
 function getRecommendedProducts(){
 
-    localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRecommendation/" + localStorage['ID'] + "/4/similar"
+    localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/" + localStorage['ID'] + "/4/sim"
 }
+function getCompatibleProducts(){
 
+    localStorage['searchCap'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/" + localStorage['ID'] + "/4/comp"
+}
 function getRecommendData() {
 
     $(document).ready(function () {
@@ -440,3 +395,4 @@ function getRecommendData() {
      end = new Date().getTime();
   }
 }
+

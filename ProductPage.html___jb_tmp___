@@ -1,5 +1,5 @@
 <!-- custom JS functions -->
-<script src="JS/productPage.js"></script>
+<script src="oldStuff/productPage.js"></script>
 
 <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -38,7 +38,7 @@
     <title>test2</title>
 
 
-    <script src="JS/resultsPage.js/"></script>
+    <script src="oldStuff/resultsPage.js/"></script>
     </head>
 <body>
 
@@ -62,7 +62,9 @@
             </div>
         </div>
     </div><!--Top Search Bar End-->
-<script>getJSONData()</script>
+<script>getJSONData();
+getJSONData1()
+</script>
 
 
 
@@ -180,9 +182,28 @@
           </div>
            <div id = "flex6" class="d-flex" style='width:100%; height:50%;'>
              <div id = "box6" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded  margin1">
+                 <!--
                  <div id='map' style='width:100%; height:97%;' class = "col center rounded">
                      <!--<script>getData()</script>-->
                     <!-- <script>createMap()</script>-->
+                  <div  class="d-flex flex-column" style='width:100%; height:100%;'>
+                         <div class="d-flex flex-row" style='width:100%; height:100%;'>
+                                <div class="d-flex greenColor" style='width:100%; height:100%;'>
+                                    <img class = "img-fluid btn" src = "images/Apple1.jpg"  onclick="reply_click1C(this.id)" onload = "this.src = setCapImg1()" width = 100% height= 100%>
+                                </div>
+                                <div class="d-flex orangeColor" style='width:100%; height:100%;'>
+                                     <img class = "img-fluid btn" src = "images/Apple1.jpg"  onclick="reply_click2C(this.id)" onload = "this.src = setCapImg2()" width = 100% height= 100%>
+                                </div>
+                        </div>
+                          <div class="d-flex flex-row" style='width:100%; height:100%;'>
+                                <div class="d-flex yellowColor" style='width:100%; height:100%;'>
+                                     <img class = "img-fluid btn" src = "images/Apple1.jpg" onclick="reply_click3C(this.id)" onload = "this.src = setCapImg3()" width = 100% height= 100%>
+                                </div>
+                                <div class="d-flex redColor" style='width:100%; height:100%;'>
+                                     <img class = "img-fluid btn" src = "images/Apple1.jpg" onclick="reply_click4C(this.id)" onload = "this.src = setCapImg4()" width = 100% height= 100%>
+                                </div>
+                        </div>
+                     </div>
                  </div>
               </div>
           </div>

@@ -1,0 +1,111 @@
+<!-- custom JS functions -->
+<script src="JS/frontpage_new.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <!-- local css scripts -->
+    <link rel ="stylesheet" href="styles/resultsPage.css">
+
+    <!--Map Box API -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+
+
+    <!-- Slider-Pro -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slider-pro/1.5.0/js/jquery.sliderPro.min.js"></script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/slider-pro/1.5.0/css/slider-pro.min.css' rel='stylesheet' />
+
+
+    <!-- Graph Visualization Package -->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css' rel='stylesheet' />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles/main.css">
+    <meta charset="UTF-8">
+    <title>test2</title>
+
+
+
+    </head>
+<body onload = "RTable();STable();setMainImage();setProductInfo()">
+
+  <!--Background -->
+<div class = "container-fluid h-100 blueColor">
+
+     <!--Top Search Bar -->
+    <div class="container-fluid">
+      <div class="row rounded topRow">
+            <div class="col-lg-4 ">
+<!--
+              <form>
+                <div class="input-group pt-3 ml-5">
+                  <input type="search" class=" form-control" id="searchbar" placeholder="Search for ...">
+                     <span class="input-group-btn ml-4">
+                         <button class="btn btn-light" type="button">Search</button>
+                     </span>
+                </div>
+              </form>
+
+                -->
+                <button type = "submit" onclick="colChange()">Values</button>
+            </div>
+        </div>
+    </div><!--Top Search Bar End-->
+
+
+
+
+
+    <div class="d-flex flex-row " style='width:100%; height:89%;' >
+
+        <!--Coloumn 1-->
+       <div id = "flexCol1" class="d-flex flex-column" style='width:50%; height:100%;'>
+             <div id = "flex1" class="d-flex"  style='width:100%; height:50%;'>
+                <div id = "box1" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1 redColor" style= height:98%;' >
+                    <img id = "mainImg" src="images/searchLogo.jpg" class="rounded imgFit mx-auto d-block" alt="Responsive image">
+                </div>
+          </div>
+           <div id = "flex2" class="d-flex" style='width:100%; height:50%;'>
+             <div id = "box2" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1" style= height:97%; >
+                 <p>Summary</p>
+                 <p id = "p1">Info</p>
+              </div>
+          </div>
+       </div>
+
+        <!--Coloumn 2-->
+        <div id = "flexCol2" class="d-flex flex-column" style='width:50%; height:100%;'>
+             <div id = "flex3" class="d-flex" style='width:100%; height:50%;'>
+                <div id = "box3"  onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col rounded colSide margin1 marginRL" style= height:97%; >
+
+              </div>
+          </div>
+           <div  id = "flex4" class="d-flex" style='width:100%; height:50%;'>
+
+             <div id = "box4" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1 marginRL" style= height:97%;>
+
+
+              </div>
+          </div>
+       </div>
+
+
+       </div>
+
+</div>
+
+</body>
+</html>
