@@ -22,7 +22,7 @@ var myVar7 = localStorage['ID_pic4'] || '0';
 var myVar3 = localStorage['ID_cat'] || '0';
 var myVar8 = localStorage['searchRec'] || '0';
 var myVar9 = localStorage['searchCap'] || '0';
-var myVar10 = localStorage['ID_pic1_c'] || '0';
+var averagePrice = localStorage['averagePrice'] || '0';
 var myVar11 = localStorage['ID_pic2_c'] || '0';
 var myVar12 = localStorage['ID_pic3_c'] || '0';
 var myVar13 = localStorage['ID_pic4_c'] || '0';
@@ -30,7 +30,9 @@ var searchInput = localStorage['searchInput'] || '0';
 var myVar99 = localStorage['searchSim'] || '0';
 var myVar133 = localStorage['ID_price'] || '0';
 var myVar33 = localStorage['ID_brand'] || '0';
-
+var myVardfafd =  localStorage['currentCollect'] || '0';
+var totalCollect = 3;
+var currentCollect = 0;
 function setInput(){
     var tempValue = '';
     var value = document.getElementById("searchbar").value;
@@ -48,7 +50,7 @@ function setInput(){
       }
 
     localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + searchBy + "/" + tempValue;
-    if(min !== '' && max !== '') {
+    if(min !== '' || max !== '') {
         if (max === '') {
             min = 0;
         }
@@ -216,10 +218,7 @@ function linkResultsPage() {
 {
         //gets item number
         var num = Number(clicked_id);
-       // alert("num = " + num);
-       // alert("itemArray = " + itemArray[num]);
-        //alert("id = " + dataArray[itemArray[num]].id);
-        localStorage['ID'] = dataArray[itemArray[num]].id; // only string
+        localStorage['ID'] = dataArray[itemArray[num]].id;
         var itemIndexInLocalArray = itemArray[num];
         localStorage['ID_name'] = dataArray[itemIndexInLocalArray].name;
         localStorage['ID_pic'] = dataArray[itemIndexInLocalArray].img_src;
@@ -227,9 +226,34 @@ function linkResultsPage() {
         localStorage['ID_price'] = dataArray[itemIndexInLocalArray].price;
         localStorage['ID_brand'] = dataArray[itemIndexInLocalArray].brand;
 
-        alert(localStorage['ID_brand']);
+        updateAveragePrice(dataArray[itemIndexInLocalArray].price);
 }
+function updateAveragePrice(x){
+    if(isNaN(localStorage['currentCollect'])){
+        localStorage['averagePrice'] = 0;
 
+        averagePrice = x;
+        localStorage['averagePrice'] = averagePrice;
+        localStorage['currentCollect'] = 0;
+        currentCollect =  Number(localStorage['currentCollect']);
+        ++currentCollect;
+        localStorage['currentCollect'] = currentCollect;
+    }
+    else{
+        averagePrice = Number(localStorage['averagePrice']);
+        averagePrice += x;
+        localStorage['averagePrice'] = averagePrice;
+        currentCollect =  Number(localStorage['currentCollect']);
+        ++currentCollect;
+        localStorage['currentCollect'] = currentCollect;
+    }
+
+    if(totalCollect === currentCollect){
+        localStorage['currentCollect'] = "NaN";
+        alert("average = " + averagePrice/totalCollect);
+    }
+    alert(localStorage['currentCollect']);
+}
 var c1 = 0;
 var c2 = 0;
 var c3 = 0;
@@ -412,8 +436,8 @@ var colIdArray = [];
         numColI= 3;
     }
     else if(colIdArray[1].style.height === "60%" && colIdArray[0].style.width === "35%"){
-        numRowsI = 0;
-        numColI = 0;
+        numRowsI = 4;
+        numColI = 1;
     }
     else if(colIdArray[1].style.height === "40%" && colIdArray[0].style.width === "65%"||colIdArray[1].style.height === "50%" && colIdArray[0].style.width === "65%"){
         numRowsI = 2;
@@ -551,8 +575,8 @@ function RTable() {
                          for (var k = 0; k < x; ++k) {//col
                              var idString = (j*numRowsR + k).toString();
                              stringValue += "<td>" +
-                                 "<div  class=\"d-flex\" style='width:100%; height:100%;'>" +
-                                 "<img tag = '"+index+"' id = 'rec"+index+"' class = \"img-fluid btn rounded imgFit creamColor btn-primary shadow\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id)'>"+
+                                 "<div  class=\"d-flex marginMainImageNormal\" style='width:100%; height:95%;'>" +
+                                 "<img tag = '"+index+"' id = 'rec"+index+"' class = \" img-fluid btn rounded imgCarFit creamColor btn-primary shadow\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id)'>"+
                                  "</div>";
                              ++index;
                          }
@@ -576,12 +600,12 @@ function STable() {
                      var stringValue =
                          "<div  class=\"d-flex flex-column\" style='width:100%; height:100%;'>Similar Items";
                      for (var j = 0; j < y; ++j) {//rows
-                         stringValue += "<div class=\"d-flex\" style='width:100%; height:100%;'>"
+                         stringValue += "<div class=\"d-flex mx-auto\" style='width:100%; height:100%;'>"
                          for (var k = 0; k < x; ++k) {//col
                              var idString = (j*numRowsR + k).toString();
                              stringValue += "<td>" +
-                                 "<div  class=\"d-flex\" style='width:100%; height:100%;'>" +
-                                 "<img id = 'sim"+index+"' class = \"img-fluid btn rounded imgFit creamColor btn-primary shadow\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id)'>"+
+                                 "<div  class=\"d-flex marginMainImageNormal\" style='width:100%; height:95%;'>" +
+                                 "<img id = 'sim"+index+"' class = \"img btn rounded imgCarFit creamColor btn-primary shadow\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id)'>"+
                                  "</div>";
                              ++index;
                          }
@@ -599,8 +623,6 @@ function STable() {
 
 function dImage() {
              $("#dynamic_table4").ready(function () {
-                 //creates x images on sameonclick='reply_click(this.id)' row
-
                  function numTable(x, y) {
                      var index = 1;
                      var stringValue =
@@ -719,8 +741,8 @@ function reply_ProPage(clicked_id)
              localStorage['ID_price'] = recArray[num].price;
              localStorage['ID_brand'] = recArray[num].brand;
              location.reload();
-        //$.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
-        updateData(localStorage['prevID'],localStorage['ID']);
+        $.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
+        //updateData(localStorage['prevID'],localStorage['ID']);
 
 
 }
@@ -755,4 +777,7 @@ function updateData(id1,id2) {
             alert(thrownError);
         }
     });
+}
+function clearStuff(){
+   localStorage.clear();
 }

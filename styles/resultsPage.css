@@ -251,5 +251,6 @@ width: 100%;
 }
 
 .marginMainImageNormal {
-    margin: 5px !important;
+    margin-right: 20px !important;
+    margin-left: 20px !important;
 }
