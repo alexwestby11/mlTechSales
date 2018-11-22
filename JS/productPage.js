@@ -25,8 +25,9 @@ function createMap()
 
         brandar='';
     customSearchResults(brands,categories,150)
-    storeAsJson(brands);
+    //storeAsJson(brands);
     summarize();
+    postUpdate("1","2","oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
 
 }
 
@@ -425,17 +426,6 @@ function getRetailers()
             }
         });
     })
-                    var src = document.getElementById("image"+i.toString());
-                    src.appendChild(img);
-                }
-            },
-            error: function (error) {
-                console.log(error);
-                //jason = JSON.parse(data);
-                //console.log(jason);
-            }
-        });
-    })
 }
 
 
@@ -529,7 +519,30 @@ function storeUserSearchData(givenArray)
      console.log('retrievedObject: ', JSON.parse(retrievedObject));
  }
 
+function postUpdate(itemA,itemB,token)
+{
+    var saveData = $.ajax({
+        type: "POST",
+        url: "http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"
+            +itemA
+            +"/"
+            +itemB
+            +"/"
+            +token,
+        success: function(resultData){
+            alert("Save Complete");
+        },
+        error: function(error)
+        {
+            alert(error)
+        }
+    });
 
+
+
+
+
+}
 
 
 

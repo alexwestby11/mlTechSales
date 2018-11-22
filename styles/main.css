@@ -101,7 +101,43 @@
     width: 100%;
     height: 100%;
 }
-img {
+.img {
     width: 100%;
     height: auto;
+}
+.scrollable {
+    height:90%;
+    width:90%;
+    overflow-y: auto;
+}
+
+
+.scrollbar {
+    background-color: #F5F5F5;
+    float: left;
+    height: 300px;
+    margin-bottom: 25px;
+    margin-left: 22px;
+    margin-top: 40px;
+    width: 65px;
+    overflow-y: scroll;
+}
+
+.force-overflow {
+    min-height: 450px;
+}
+
+#style-1::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+}
+.h1 {
+    color: white;
+    font-size:14pt;
+    line-height: 1.7em;
+}
+.bodyText{
+    font-size:11pt;
+    line-height: 1.5em;
+    height:90%;
 }
