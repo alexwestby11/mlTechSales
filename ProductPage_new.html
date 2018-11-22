@@ -40,7 +40,7 @@
 
 
     </head>
-<body onload = "RTable();STable();setMainImage();setProductInfo()">
+<body onload = "RTable();STable();setProductInfo();dImage();">
 
   <!--Background -->
 <div class = "container-fluid h-100 blueColor">
@@ -58,7 +58,6 @@
                      </span>
                 </div>
               </form>
-
                 -->
                 <button type = "submit" onclick="colChange()">Values</button>
             </div>
@@ -75,37 +74,67 @@
        <div id = "flexCol1" class="d-flex flex-column" style='width:50%; height:100%;'>
              <div id = "flex1" class="d-flex"  style='width:100%; height:50%;'>
                 <div id = "box1" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1 redColor" style= height:98%;' >
-                    <img id = "mainImg" src="images/searchLogo.jpg" class="rounded imgFit mx-auto d-block" alt="Responsive image">
+
+
+                        <!--main image-->
+
+
+
+
                 </div>
           </div>
            <div id = "flex2" class="d-flex" style='width:100%; height:50%;'>
              <div id = "box2" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1" style= height:97%; >
-                 <p>Summary</p>
-                 <p id = "p1">Info</p>
+
+
+                 <!--Buttons-->
+
+                 <div class = "d-flex flex-column">
+                     <div class = "d-flex" style='width:100%; height:10%;'>
+                         <ul class="nav nav-pills">
+                            <li class="active"><a data-toggle="pill" href="#home">Home</a></li>
+                            <li><a data-toggle="pill" href="#menu1">Menu 1</a></li>
+                            <li><a data-toggle="pill" href="#menu2">Menu 2</a></li>
+                            <li><a data-toggle="pill" href="#menu3">Menu 3</a></li>
+                          </ul>
+                    </div>
+                 <!--Info based on Buttons-->
+                     <div class = "d-flex">
+                  <div class="tab-content">
+                    <div id="Info" class="tab-pane fade in active ">
+                      <h5>Product Information</h5>
+                      <p style="height:70%;width:100%;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" id = "p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div id="Summary" class="tab-pane fade">
+                      <h3>Menu 1</h3>
+                      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                    <div id="Links" class="tab-pane fade">
+                      <h3>Menu 2</h3>
+                      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    </div>
+                    <div id="Map" class="tab-pane fade">
+                      <h3>Menu 3</h3>
+                      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    </div>
+                  </div>
+                 </div>
+                 </div>
               </div>
           </div>
        </div>
-
         <!--Coloumn 2-->
         <div id = "flexCol2" class="d-flex flex-column" style='width:50%; height:100%;'>
              <div id = "flex3" class="d-flex" style='width:100%; height:50%;'>
                 <div id = "box3"  onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col rounded colSide margin1 marginRL" style= height:97%; >
-
               </div>
           </div>
            <div  id = "flex4" class="d-flex" style='width:100%; height:50%;'>
-
              <div id = "box4" onmouseleave="reply_mouseOut(this.id)" onmouseenter="reply_mouseover(this.id)" class="col colSide rounded margin1 marginRL" style= height:97%;>
-
-
               </div>
           </div>
        </div>
-
-
        </div>
-
 </div>
-
 </body>
 </html>

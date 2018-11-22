@@ -6,6 +6,8 @@ var numRowsR = 3;
 var numColR= 2;
 var numRowsS = 3;
 var numColS= 2;
+var numRowsI = 2;
+var numColI = 1;
 var itemArray = [0,0,0,0,0,0,0,0,0,0];
 var recArray = [];
 var simArray = [];
@@ -30,9 +32,33 @@ var myVar133 = localStorage['ID_price'] || '0';
 var myVar33 = localStorage['ID_brand'] || '0';
 
 function setInput(){
+    var tempValue = '';
     var value = document.getElementById("searchbar").value;
-    localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/name/" + value;
-    console.log(localStorage['searchInput']);
+
+    var searchBy = document.getElementById("searchBy").value;
+     var min = document.getElementById("minPrice").value;
+      var max = document.getElementById("maxPrice").value;
+
+      for(var i = 0; i < value.length; ++i){
+          if(value[i] === ' '){
+              tempValue += "/";
+          }else{
+              tempValue += value[i];
+          }
+      }
+
+    localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + searchBy + "/" + tempValue;
+    if(min !== '' && max !== '') {
+        if (max === '') {
+            min = 0;
+        }
+        if (max === '') {
+            max = 0;
+        }
+        localStorage['searchInput'] += "/price/" + min + "/" + max;
+    }
+
+    alert(localStorage['searchInput']);
 }
 
 
@@ -166,11 +192,14 @@ function linkResultsPage() {
                         else if (key === "price") {
                             product.price = value;
                         }
-                        else if (key === "manfacturer") {
+                        else if (key === "manufacturer") {
                             product.brand = value;
                         }
                          else if (key === "id") {
                             product.id = value;
+                        }
+                        else if (key === "category") {
+                            product.category = value;
                         }
 
                     });
@@ -189,7 +218,7 @@ function linkResultsPage() {
         var num = Number(clicked_id);
        // alert("num = " + num);
        // alert("itemArray = " + itemArray[num]);
-        alert("id = " + dataArray[itemArray[num]].id);
+        //alert("id = " + dataArray[itemArray[num]].id);
         localStorage['ID'] = dataArray[itemArray[num]].id; // only string
         var itemIndexInLocalArray = itemArray[num];
         localStorage['ID_name'] = dataArray[itemIndexInLocalArray].name;
@@ -198,7 +227,7 @@ function linkResultsPage() {
         localStorage['ID_price'] = dataArray[itemIndexInLocalArray].price;
         localStorage['ID_brand'] = dataArray[itemIndexInLocalArray].brand;
 
-        alert(localStorage['ID_price']);
+        alert(localStorage['ID_brand']);
 }
 
 var c1 = 0;
@@ -260,7 +289,7 @@ function reply_mouseover(clicked_id)
 function myCounter2() {++c2;}
 function myCounter3() {++c3;}
 function myCounter4() {++c4;}
- function printPriorityBox(){
+function printPriorityBox(){
     for(var i = 0; i < priorityBox.length; ++i){
         console.log("Box " + (i+1).toString() + " = " + priorityBox[i].toString());
     }
@@ -372,10 +401,33 @@ var colIdArray = [];
         numRowsS = 2;
         numColS = 2;
     }
+
+    //Images items
+    if(colIdArray[1].style.height === "50%" && colIdArray[0].style.width === "50%"){
+        numRowsI = 3;
+        numColI= 1;
+    }
+    else if(colIdArray[1].style.height === "60%" && colIdArray[0].style.width === "65%"){
+         numRowsI = 3;
+        numColI= 3;
+    }
+    else if(colIdArray[1].style.height === "60%" && colIdArray[0].style.width === "35%"){
+        numRowsI = 0;
+        numColI = 0;
+    }
+    else if(colIdArray[1].style.height === "40%" && colIdArray[0].style.width === "65%"||colIdArray[1].style.height === "50%" && colIdArray[0].style.width === "65%"){
+        numRowsI = 2;
+        numColI = 4;
+    }
+    else if((colIdArray[1].style.height === "40%" && colIdArray[0].style.width === "35%") ||colIdArray[1].style.height === "50%" && colIdArray[0].style.width === "35%"){
+        numRowsI = 3;
+        numColI = 1;
+    }
     getRecommendData(numColR*numRowsR);
     getSimData(numColS*numRowsS);
     RTable();
     STable();
+    dImage()
     printPriorityBox();
  /*
     var col1 = document.getElementById("flexCol1");
@@ -418,11 +470,14 @@ function getRecommendData(x) {
                         else if (key === "price") {
                             product.price = value;
                         }
-                        else if (key === "manfacturer") {
+                        else if (key === "manufacturer") {
                             product.brand = value;
                         }
                          else if (key === "id") {
                             product.id = value;
+                        }
+                         else if (key === "category") {
+                            product.category = value;
                         }
                     });
 
@@ -459,11 +514,14 @@ function getSimData(x) {
                         else if (key === "price") {
                             product.price = value;
                         }
-                        else if (key === "manfacturer") {
+                        else if (key === "manufacturer") {
                             product.brand = value;
                         }
                          else if (key === "id") {
                             product.id = value;
+                        }
+                         else if (key === "category") {
+                            product.category = value;
                         }
                     });
 
@@ -512,7 +570,6 @@ function RTable() {
 
 function STable() {
              $("#dynamic_table2").ready(function () {
-                 //creates x images on sameonclick='reply_click(this.id)' row
                   getSimData(numRowsS*numColS);
                  function numTable(x, y) {
                      var index = 0;
@@ -539,6 +596,64 @@ function STable() {
 
               });
 }
+
+function dImage() {
+             $("#dynamic_table4").ready(function () {
+                 //creates x images on sameonclick='reply_click(this.id)' row
+
+                 function numTable(x, y) {
+                     var index = 1;
+                     var stringValue =
+                         "<div class =\"d-flex flex-row\"  style='width:100%; height:100%;'>" +
+                         "<div class = \"d-flex justify-content-center snowColor rounded\"  style='width:75%; height:100%;'>" +
+                         "<img id = \"carImg0\" src=\"images/searchLogo.jpg\" class= \" shadow rounded imgFit mx-auto d-block\" alt= \"Responsive image\">"+
+                         "</div>";
+
+                     for (var j = 0; j < y; ++j) {//rows
+                         stringValue += "<div class =\"d-flex flex-column justify-content-center\"  style='width:25%; height:100%;'>"
+                         for (var k = 0; k < x; ++k) {//col
+                             stringValue += "<div class =\"d-flex shadow\"  style='width:100%; height:100%;'>" +
+                                 "<img id = 'carImg"+index+"' src=\"images/searchLogo.jpg\"  class=\"rounded p-1 mx-auto imgCarFitFit btn-primary btn \" alt=\"Responsive image\">" +
+                                 "</div>";
+                             ++index;
+                         }
+                         stringValue += "</div>";
+                     }
+                      stringValue += "</div>";
+
+                     return stringValue;
+                 }
+                 $('#box1').html(numTable(numRowsI, numColI));
+                  $('#tab_logic').append('<div id="box1" ></div>');
+                  setMainImage(numRowsI*numColI+1);
+
+              });
+}
+
+function CImages() {
+             $("#dynamic_table3").ready(function () {
+
+                 function numPics(x) {
+                     var stringValue = '';
+                     for (var j = 0; j < x; ++j) {//rows
+                         if (j === 0) {
+                             stringValue += "<div class=\"carousel-item active\">"
+                         } else {
+                             stringValue += "<div class=\"carousel-item\">"
+                         }
+
+                         stringValue += "<img id = 'carImg" + j + "' class= \"rounded imgFit mx-auto d-block\" src= \"images/Apple1.jpg\" alt= 'Slide " + j + "' >" +
+                             "</div>";
+
+                     }
+
+                     return stringValue;
+                 }
+                 $('#dCarousel').html(numPics(5));
+                  $('#tab_logic').append('<div id="dcarousel" ></div>');
+                    setMainImage();
+              });
+}
 function setRecImages(x){
 
 
@@ -557,14 +672,16 @@ function setSimImages(x){
             }
 }
 
-function setMainImage(){
-     document.getElementById("mainImg").src = localStorage['ID_pic'];
+function setMainImage(x){
+    for(var i = 0; i < x; ++i) {
+        document.getElementById("carImg" + i.toString()).src = localStorage['ID_pic'];
+    }
 }
 
 function setProductInfo(){
-    var value = document.getElementById("box2");
-    value.innerHTML = "Product Information" + "<br>" +
-        "<strong>Price:</strong>" + "<br>" + localStorage["ID_name"] + "<br>" +
+    var value = document.getElementById("p1");
+    value.innerHTML =
+        "<strong>Price:</strong>" + "<br>" + "$" + localStorage["ID_price"] + "<br>" +
         "<strong>Brand:</strong>" + "<br>" + localStorage["ID_brand"] + "<br>" +
         "<strong>Category:</strong>" + "<br>" + localStorage["ID_cat"] + "<br>" +
         "<strong>Information:</strong>" + "<br>" + localStorage["ID_name"];
@@ -590,26 +707,20 @@ function reply_ProPage(clicked_id)
         if(bool === 0){
             localStorage['prevID'] =  localStorage['ID'];
             localStorage['ID'] = recArray[num].id;
-            localStorage['ID_pic'] = recArray[num].img_src;
-            localStorage['ID_name'] = recArray[num].name;
-            localStorage['ID_cat'] = recArray[num].category;
-            alert("prev = " + localStorage['prevID'] + "<br>" +
-            "next = " + localStorage['ID']);
-
-            location.reload();
         }
         else{
             localStorage['prevID'] =  localStorage['ID'];
             localStorage['ID'] = simArray[num].id;
-            localStorage['ID_pic'] = simArray[num].img_src;
-            localStorage['ID_name'] = simArray[num].name;
-            localStorage['ID_cat'] = simArray[num].category;
-             alert("prev = " + localStorage['prevID'] + "<br>" +
-            "next =" + localStorage['ID']);
-            location.reload();
         }
-        $.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
 
+         localStorage['ID_pic'] = recArray[num].img_src;
+         localStorage['ID_name'] = recArray[num].name;
+            localStorage['ID_cat'] = recArray[num].category;
+             localStorage['ID_price'] = recArray[num].price;
+             localStorage['ID_brand'] = recArray[num].brand;
+             location.reload();
+        //$.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
+        updateData(localStorage['prevID'],localStorage['ID']);
 
 
 }
@@ -627,4 +738,21 @@ function reply_ProPage(clicked_id)
 
   }
  }
+function updateData(id1,id2) {
+    alert("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+ id1 +"/" + id2);
+    $.ajax({
+        url: "http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+ id1 +"/" + id2,
+        type: "POST",
+        data: {"tokenString": "oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm"},
+        contentType: "application/json",
+        dataType: "json",
+        success: function (result) {
+            alert("Success");
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
 
+            alert("error" + xhr.status);
+            alert(thrownError);
+        }
+    });
+}
