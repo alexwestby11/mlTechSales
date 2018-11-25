@@ -11,7 +11,8 @@
 }
 
 .snowColor{
-    background: snow;
+    background: rgba(255,255,255,0.9);
+
 }
 
 .lightcyanColor{
@@ -32,6 +33,7 @@
 
 .lightBlueColor{
     background: #bee5eb;
+
 }
 
 .greyColor{
@@ -39,7 +41,6 @@
 }
 
 .darkBlue{
-    height:10%;
     background:rgba(0,81,114,.4);
 }
 .pageBackground{
@@ -180,6 +181,28 @@
     outline: none !important;
 }
 
+.btnImg-primary {
+    outline: none !important;
+    box-shadow: none;
+     -webkit-transition: all 1s ease; /* Safari and Chrome */
+    -moz-transition: all 1s ease; /* Firefox */
+    -ms-transition: all 1s ease; /* IE 9 */
+    -o-transition: all 1s ease; /* Opera */
+    transition: all 1s ease;
+     background: rgba(1,1,1,0);
+}
+.btnImg-primary:hover, .btn-primary:focus, .btn-primary:active {
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+    transform:scale(1.25);
+    outline: none !important;
+    box-shadow: none;
+    outline: none !important;
+    background: rgba(1,1,1,0);
+}
+
 .W {
 width: 100%;
 }
@@ -250,7 +273,50 @@ width: 100%;
     margin-bottom: 5px !important;
 }
 
+
+
+.X{
+    height: auto;
+    max-width: 100%;
+}
+
+.fixedImg
+{
+    height: auto;
+    width: auto;
+}
+.fixedBox {
+    width: 100%; /* or whatever width you want. */
+    max-width: 100%; /* or whatever width you want. */
+}
+
+
+.img1 {
+  display: block;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+    object-position: center;
+}
+
+
+.btnNextImg-primary {
+    outline: none !important;
+    box-shadow: none;
+
+}
+.btnNextImg-primary:hover, .btnNextImg--primary:focus, .btnNextImg--primary:active {
+    outline: none !important;
+    box-shadow: none;
+    outline: none !important;
+    background: lightgray;
+}
+
 .marginMainImageNormal {
     margin-right: 20px !important;
     margin-left: 20px !important;
+}
+.marginProductLogo {
+    margin-right: 0.5vmax !important;
+    margin-left: 0.5vmax !important;
 }

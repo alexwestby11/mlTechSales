@@ -262,23 +262,28 @@ var Timer1;
 var Timer2;
 var Timer3;
 var Timer4;
+
+var Timer1m;
+var Timer2m;
+var Timer3m;
+var Timer4m;
 function reply_mouseover(clicked_id)
 {
             if(clicked_id === "box1"){
                 //console.log("ibox1");
-                 Timer1 = setInterval(myCounter1, 1000);
+                 Timer1 = setInterval(myCounter1, 500);
             }
             else if(clicked_id === "box2"){
                // console.log("ibox2");
-                Timer2 = setInterval(myCounter2, 1000);
+                Timer2 = setInterval(myCounter2, 500);
             }
             else if(clicked_id === "box3"){
                 //console.log("ibox3");
-                Timer3 = setInterval(myCounter3, 1000);
+                Timer3 = setInterval(myCounter3, 500);
             }
             else if(clicked_id === "box4") {
                 //console.log("ibox4");
-                Timer4 = setInterval(myCounter4, 1000);
+                Timer4 = setInterval(myCounter4, 500);
             }
 
  }
@@ -306,6 +311,27 @@ function reply_mouseover(clicked_id)
                 //console.log("lbox4");
                 priorityBox[3] = c4;
                 clearTimeout(Timer4);
+            }
+
+ }
+ function reply_mousemove(clicked_id)
+{
+            if(clicked_id === "box1"){
+
+                        Timer1 = setInterval(myCounter1, 1000);
+
+            }
+            else if(clicked_id === "box2"){
+               // console.log("ibox2");
+                Timer2 = setInterval(myCounter2, 1000);
+            }
+            else if(clicked_id === "box3"){
+                //console.log("ibox3");
+                Timer3 = setInterval(myCounter3, 1000);
+            }
+            else if(clicked_id === "box4") {
+                //console.log("ibox4");
+                Timer4 = setInterval(myCounter4, 1000);
             }
 
  }
@@ -367,85 +393,127 @@ var colIdArray = [];
         colIdArray[2].style.height = "60%";
     }
 
-    if(priorityBox[2]  > priorityBox[3]){
-        colIdArray[4].style.height = "60%";
-        colIdArray[5].style.height = "40%";
-
-    }
-    else if(priorityBox[2] === priorityBox[3]) {
+    if((Number(priorityBox[2]) - Number(priorityBox[3])) <= 50) {
         colIdArray[4].style.height = "50%";
         colIdArray[5].style.height = "50%";
 
     }
-    else{
-        colIdArray[4].style.height = "40%";
-        colIdArray[5].style.height = "60%";
+
+    var num = Math.abs(priorityBox[2] - priorityBox[3]);
+    if(num <= 50) {
+        colIdArray[4].style.height = "50%";
+        colIdArray[5].style.height = "50%";
+
     }
+    else if(priorityBox[2]  > priorityBox[3]){
+        colIdArray[4].style.height = "65%";
+        colIdArray[5].style.height = "35%";
+
+    }
+    else if(priorityBox[2] < priorityBox[3]){
+        colIdArray[4].style.height = "35%";
+        colIdArray[5].style.height = "65%";
+    }
+
 
     //Compatoable items
     if(colIdArray[5].style.height === "50%" && colIdArray[3].style.width === "50%"){
         numRowsR = 3;
         numColR= 2;
+        console.log("1");
     }
-    else if(colIdArray[5].style.height === "60%" && colIdArray[3].style.width === "65%"){
-         numRowsR = 5;
-        numColR= 3;
+    else if(colIdArray[5].style.height === "65%" && colIdArray[3].style.width === "65%"){
+         numRowsR = 3;
+        numColR= 2;
+        console.log("2");
     }
-    else if(colIdArray[5].style.height === "60%" && colIdArray[3].style.width === "35%"){
+    else if(colIdArray[5].style.height === "65%" && colIdArray[3].style.width === "35%"){
         numRowsR = 2;
         numColR= 3;
+        console.log("3");
     }
-    else if(colIdArray[5].style.height === "40%" && colIdArray[3].style.width === "65%"||colIdArray[5].style.height === "50%" && colIdArray[3].style.width === "65%"){
-        numRowsR = 4;
+    else if(colIdArray[5].style.height === "35%" && colIdArray[3].style.width === "65%"){
+        numRowsR = 3;
+        numColR= 1;
+        console.log("4");
+    }
+    else if((colIdArray[5].style.height === "35%" && colIdArray[3].style.width === "35%")){
+        numRowsR = 2;
+        numColR= 1;
+        console.log("5");
+    }
+    else if(colIdArray[5].style.height === "50%" && colIdArray[3].style.width === "35%"){
+        numRowsR = 2;
         numColR= 2;
     }
-    else if((colIdArray[5].style.height === "40%" && colIdArray[3].style.width === "35%") ||colIdArray[5].style.height === "50%" && colIdArray[3].style.width === "35%"){
-        numRowsR = 2;
+   else if (colIdArray[5].style.height === "50%" && colIdArray[3].style.width === "65%"){
+       numRowsR = 4;
         numColR= 2;
     }
 
-    //Sim items
+     //Similaritems
     if(colIdArray[4].style.height === "50%" && colIdArray[3].style.width === "50%"){
         numRowsS = 3;
         numColS= 2;
+        console.log("1");
     }
-    else if(colIdArray[4].style.height === "60%" && colIdArray[3].style.width === "65%"){
-         numRowsS = 5;
-        numColS= 3;
+    else if(colIdArray[4].style.height === "65%" && colIdArray[3].style.width === "65%"){
+         numRowsS = 3;
+        numColS= 2;
+        console.log("2");
     }
-    else if(colIdArray[4].style.height === "60%" && colIdArray[3].style.width === "35%"){
+    else if(colIdArray[4].style.height === "65%" && colIdArray[3].style.width === "35%"){
         numRowsS = 2;
         numColS= 3;
+        console.log("3");
     }
-    else if(colIdArray[4].style.height === "40%" && colIdArray[3].style.width === "65%"||colIdArray[4].style.height === "50%" && colIdArray[3].style.width === "65%"){
-        numRowsS = 4;
-        numColS = 2;
+    else if(colIdArray[4].style.height === "35%" && colIdArray[3].style.width === "65%"){
+        numRowsS = 3;
+        numColS= 1;
+        console.log("4");
     }
-    else if((colIdArray[4].style.height === "40%" && colIdArray[3].style.width === "35%") ||colIdArray[4].style.height === "50%" && colIdArray[3].style.width === "35%"){
+    else if((colIdArray[4].style.height === "35%" && colIdArray[3].style.width === "35%")){
         numRowsS = 2;
-        numColS = 2;
+        numColS= 1;
+        console.log("5");
+    }
+    else if(colIdArray[4].style.height === "50%" && colIdArray[3].style.width === "35%"){
+        numRowsS = 2;
+        numColS= 2;
+    }
+   else if (colIdArray[4].style.height === "50%" && colIdArray[3].style.width === "65%"){
+       numRowsS = 4;
+        numColS= 2;
     }
 
     //Images items
     if(colIdArray[1].style.height === "50%" && colIdArray[0].style.width === "50%"){
-        numRowsI = 3;
+        numRowsI = 2;
         numColI= 1;
     }
     else if(colIdArray[1].style.height === "60%" && colIdArray[0].style.width === "65%"){
          numRowsI = 3;
-        numColI= 3;
+        numColI= 1;
     }
     else if(colIdArray[1].style.height === "60%" && colIdArray[0].style.width === "35%"){
-        numRowsI = 4;
-        numColI = 1;
+        numRowsI = 0;
+        numColI = 0;
     }
-    else if(colIdArray[1].style.height === "40%" && colIdArray[0].style.width === "65%"||colIdArray[1].style.height === "50%" && colIdArray[0].style.width === "65%"){
+    else if(colIdArray[1].style.height === "40%" && colIdArray[0].style.width === "65%"){
         numRowsI = 2;
-        numColI = 4;
+        numColI = 2;
     }
-    else if((colIdArray[1].style.height === "40%" && colIdArray[0].style.width === "35%") ||colIdArray[1].style.height === "50%" && colIdArray[0].style.width === "35%"){
-        numRowsI = 3;
-        numColI = 1;
+    else if((colIdArray[1].style.height === "40%" && colIdArray[0].style.width === "35%")){
+        numRowsI = 0;
+        numColI = 0;
+    }
+    else if(colIdArray[1].style.height === "50%" && colIdArray[0].style.width === "35%"){
+        numRowsI = 0;
+        numColI = 0;
+    }
+    else if(colIdArray[1].style.height === "50%" && colIdArray[0].style.width === "65%"){
+        numRowsI = 2;
+        numColI = 2;
     }
     getRecommendData(numColR*numRowsR);
     getSimData(numColS*numRowsS);
@@ -461,7 +529,7 @@ var colIdArray = [];
 */
      //console.log("Col 1 = " + percentCol1);
    // console.log("Col 2 = " + percentCol2);
-   // console.log("Col 3 = " + percentCol3);
+    //console.log("Number = " + Number(priorityBox[2]));
 }
 
 
@@ -560,7 +628,6 @@ function getSimData(x) {
 
 }
 
-
 function RTable() {
              $("#dynamic_table1").ready(function () {
                  //creates x images on same row
@@ -574,9 +641,10 @@ function RTable() {
                          stringValue += "<div class=\"d-flex\" style='width:100%; height:100%;'>"
                          for (var k = 0; k < x; ++k) {//col
                              var idString = (j*numRowsR + k).toString();
-                             stringValue += "<td>" +
-                                 "<div  class=\"d-flex marginMainImageNormal\" style='width:100%; height:95%;'>" +
-                                 "<img tag = '"+index+"' id = 'rec"+index+"' class = \" img-fluid btn rounded imgCarFit creamColor btn-primary shadow\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id)'>"+
+                             stringValue +=
+                                 "<div  class=\"d-flex marginMainImageNormal  btn-primary rounded\"style= 'height:95%;width:100%; '>" +
+
+                                 "<img tag = '"+index+"' id = 'rec"+index+"' class = \"img rounded creamColor shadow-lg img1\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id)'>"+
                                  "</div>";
                              ++index;
                          }
@@ -600,12 +668,13 @@ function STable() {
                      var stringValue =
                          "<div  class=\"d-flex flex-column\" style='width:100%; height:100%;'>Similar Items";
                      for (var j = 0; j < y; ++j) {//rows
-                         stringValue += "<div class=\"d-flex mx-auto\" style='width:100%; height:100%;'>"
+                         stringValue += "<div class=\"d-flex\" style='width:100%; height:100%;'>"
                          for (var k = 0; k < x; ++k) {//col
-                             var idString = (j*numRowsR + k).toString();
-                             stringValue += "<td>" +
-                                 "<div  class=\"d-flex marginMainImageNormal\" style='width:100%; height:95%;'>" +
-                                 "<img id = 'sim"+index+"' class = \"img btn rounded imgCarFit creamColor btn-primary shadow\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id)'>"+
+                             stringValue +=
+                                 "<div class=\"d-flex marginMainImageNormal btn-primary rounded\" style= 'height:95%;width:100%;'>" +
+
+                                "<img  id = 'sim"+index+"' class = \"img rounded creamColor shadow-lg img1\" src='images/Apple1.jpg' onclick='reply_ProPage(this.id)'>"+
+
                                  "</div>";
                              ++index;
                          }
@@ -624,23 +693,44 @@ function STable() {
 function dImage() {
              $("#dynamic_table4").ready(function () {
                  function numTable(x, y) {
-                     var index = 1;
-                     var stringValue =
-                         "<div class =\"d-flex flex-row\"  style='width:100%; height:100%;'>" +
-                         "<div class = \"d-flex justify-content-center snowColor rounded\"  style='width:75%; height:100%;'>" +
-                         "<img id = \"carImg0\" src=\"images/searchLogo.jpg\" class= \" shadow rounded imgFit mx-auto d-block\" alt= \"Responsive image\">"+
-                         "</div>";
-
+                     var index = 0;
+                     var stringValue = "<div class = \"d-flex flex-row vertical-align justify-content-around\" >";
+                     var dheight = Math.round(x/80);
                      for (var j = 0; j < y; ++j) {//rows
-                         stringValue += "<div class =\"d-flex flex-column justify-content-center\"  style='width:25%; height:100%;'>"
+                        stringValue += "<div class = \"d-flex flex-column\" >";
                          for (var k = 0; k < x; ++k) {//col
-                             stringValue += "<div class =\"d-flex shadow\"  style='width:100%; height:100%;'>" +
-                                 "<img id = 'carImg"+index+"' src=\"images/searchLogo.jpg\"  class=\"rounded p-1 mx-auto imgCarFitFit btn-primary btn \" alt=\"Responsive image\">" +
+                             stringValue +=
+                                "<div class = \"col-fluid justify-content-center snowColor rounded btnImg-primary\"  style='height: 30%; padding: 20px;'>\n" +
+                                 "<img id = 'addImg"+index+"' src=\"images/searchLogo.jpg\" class= \" shadow rounded imgFit mx-auto d-block\" alt= \"Responsive image\">\n" +
                                  "</div>";
                              ++index;
                          }
                          stringValue += "</div>";
                      }
+
+                     //middle image
+                        stringValue +=" <div class = \"d-flex flex-column\" style='width:100%; height:100%;'>" +
+                        "<div class = \"d-flex \"  style='width:100%; height:100%;'>" +
+                            "<button class = \"btn btnNextImg-primary\"  style='width:5%; height:100%;float:right; position: relative'>" +
+                            " <span class=\"glyphicon glyphicon-menu-left\" style='float: right'></span></button>" +
+                        "<img id = \"mainImage\" src=\"images/searchLogo.jpg\" class= \" img rounded creamColor shadow img1\" alt= \"Responsive image\">" +
+                             "<button class = \"btn btnNextImg-primary\"  style='width:5%; height:100%;'>" +
+                            " <span class=\"glyphicon glyphicon-menu-right\"></span></button>" +
+                        "</div>" +
+                        "</div>";
+
+                     for (var j = 0; j < y; ++j) {//rows
+                        stringValue += "<div class = \"d-flex flex-column\" >";
+                         for (var k = 0; k < x; ++k) {//col
+                             stringValue +=
+                                "<div class = \"col-fluid justify-content-center snowColor rounded btnImg-primary\"  style='height:30%; padding: 20px;'>\n" +
+                                 "<img id = 'addImg"+index+"' src=\"images/searchLogo.jpg\" class= \" shadow rounded imgFit mx-auto d-block\" alt= \"Responsive image\">\n" +
+                                 "</div>";
+                             ++index;
+                         }
+                         stringValue += "</div>";
+                     }
+
                       stringValue += "</div>";
 
                      return stringValue;
@@ -652,30 +742,7 @@ function dImage() {
               });
 }
 
-function CImages() {
-             $("#dynamic_table3").ready(function () {
 
-                 function numPics(x) {
-                     var stringValue = '';
-                     for (var j = 0; j < x; ++j) {//rows
-                         if (j === 0) {
-                             stringValue += "<div class=\"carousel-item active\">"
-                         } else {
-                             stringValue += "<div class=\"carousel-item\">"
-                         }
-
-                         stringValue += "<img id = 'carImg" + j + "' class= \"rounded imgFit mx-auto d-block\" src= \"images/Apple1.jpg\" alt= 'Slide " + j + "' >" +
-                             "</div>";
-
-                     }
-
-                     return stringValue;
-                 }
-                 $('#dCarousel').html(numPics(5));
-                  $('#tab_logic').append('<div id="dcarousel" ></div>');
-                    setMainImage();
-              });
-}
 function setRecImages(x){
 
 
@@ -695,12 +762,20 @@ function setSimImages(x){
 }
 
 function setMainImage(x){
+    document.getElementById("mainImage").src = localStorage['ID_pic'];
     for(var i = 0; i < x; ++i) {
-        document.getElementById("carImg" + i.toString()).src = localStorage['ID_pic'];
+        //document.getElementById("mainImage" + i.toString()).src = localStorage['ID_pic'];
     }
 }
 
 function setProductInfo(){
+    var space = "  ";
+     var mainName = document.getElementById("mainName");
+     var x = localStorage["ID_name"];
+     var y = x.split(' ').slice(0,3).join(' ');
+     y = space.concat(y);
+     y= y.concat(space);
+    mainName.innerHTML = y;
     var value = document.getElementById("p1");
     value.innerHTML =
         "<strong>Price:</strong>" + "<br>" + "$" + localStorage["ID_price"] + "<br>" +
@@ -711,6 +786,7 @@ function setProductInfo(){
 
 function reply_ProPage(clicked_id)
 {
+    alert(clicked_id);
         var bool = 0;
         var num;
         var value = clicked_id;
@@ -729,18 +805,25 @@ function reply_ProPage(clicked_id)
         if(bool === 0){
             localStorage['prevID'] =  localStorage['ID'];
             localStorage['ID'] = recArray[num].id;
+            localStorage['ID_pic'] = recArray[num].img_src;
+            localStorage['ID_name'] = recArray[num].name;
+            localStorage['ID_cat'] = recArray[num].category;
+            localStorage['ID_price'] = recArray[num].price;
+            localStorage['ID_brand'] = recArray[num].brand;
         }
         else{
             localStorage['prevID'] =  localStorage['ID'];
             localStorage['ID'] = simArray[num].id;
+            localStorage['ID_pic'] = simArray[num].img_src;
+            localStorage['ID_name'] = simArray[num].name;
+            localStorage['ID_cat'] = simArray[num].category;
+            localStorage['ID_price'] = simArray[num].price;
+            localStorage['ID_brand'] = simArray[num].brand;
+
         }
 
-         localStorage['ID_pic'] = recArray[num].img_src;
-         localStorage['ID_name'] = recArray[num].name;
-            localStorage['ID_cat'] = recArray[num].category;
-             localStorage['ID_price'] = recArray[num].price;
-             localStorage['ID_brand'] = recArray[num].brand;
-             location.reload();
+
+        location.reload();
         $.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
         //updateData(localStorage['prevID'],localStorage['ID']);
 

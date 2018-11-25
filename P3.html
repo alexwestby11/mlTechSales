@@ -44,31 +44,27 @@
 
 
     </head>
-<body onload = "RTable();STable();setProductInfo();dImage()">
+<body onload = "RTable();STable();setProductInfo();dImage();">
 
   <!--Background -->
 <div class = "container-fluid h-100 lightBlueColor">
 
      <!--Top Search Bar -->
-    <div class="row-fluid darkBlue">
-      <div class="d-flex flex-row">
-          <!--Logo-->
-          <div class = "col roundedB">
-               <div class="d-flex vertical-align"  style='height: 10%;width:5%;float: left'>
-                   <div class="d-block marginProductLogo"  style = 'float: left'>
-                    <img src="images/Logo/logo2.png" class="rounded-circle shadow-lg snowColor" onclick="colChange()" alt="TechSails Logo" width="180" height="180">
-                   </div>
-               </div>
-              <!--Name bar-->
-               <div class="d-flex vertical-align"  style='height: 10%;max-width: 100%'>
-                   <div class="d-block marginProductLogo snowColor vertical-align" style = 'float: left;border-radius: 10px;'>
-                    <h4 id = "mainName">Name</h4>
-                   </div>
-               </div>
-          </div><!--
-            <div class="col-fluid">
+    <div class="container-fluid">
+      <div class="row rounded topRow">
+            <div class="col-lg-4 ">
+<!--
+              <form>
+                <div class="input-group pt-3 ml-5">
+                  <input type="search" class=" form-control" id="searchbar" placeholder="Search for ...">
+                     <span class="input-group-btn ml-4">
+                         <button class="btn btn-light" type="button">Search</button>
+                     </span>
+                </div>
+              </form>
+                -->
                 <button type = "submit" onclick="colChange()">Values</button>
-            </div>-->
+            </div>
         </div>
     </div><!--Top Search Bar End-->
 
@@ -82,38 +78,13 @@
        <div id = "flexCol1" class="d-flex flex-column" style='width:50%; height:100%;'>
              <div id = "flex1" class="d-flex"  style='width:100%; height:50%;'>
                 <div id = "box1" onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseover(this.id)" class="col snowColor rounded margin1 " style= height:98%;' >
+
+
                         <!--main image-->
-<!--
-                        <div class = "d-flex flex-row vertical-align justify-content-around" >
-                            <div class = "d-flex flex-column" >
-                             <div class = "col-fluid justify-content-center snowColor rounded btnImg-primary"  style='height:40%; padding: 30px;'>
-                             <img id = "carImfg01" src="images/searchLogo.jpg" class= " shadow rounded imgFit mx-auto d-block" alt= "Responsive image">
-                             </div>
-                                <div class = "col-fluid justify-content-center snowColor rounded btnImg-primary"  style=' height:40%; padding: 30px;'>
-                             <img id = "carImg02" src="images/searchLogo.jpg" class= " shadow rounded imgFit mx-auto d-block" alt= "Responsive image">
-                             </div>
-                            </div>
 
-                                 <!--Main Image
-                               <div class = "d-flex flex-column" >
-                                 <div class = "col-fluid justify-content-center snowColor rounded"  style='width:auto; height:auto;'>
-                                 <img id = "carImg07" src="images/searchLogo.jpg" class= " img rounded creamColor shadow img1 d-block" alt= "Responsive image">
-                                 </div>
-                               </div>
-                             <!--Main Image End
 
-                            <div class = "d-flex flex-column" >
-                             <div class = "col-fluid justify-content-center snowColor rounded btnImg-primary"  style=' height:40%; padding: 30px;'>
-                             <img id = "carImg03" src="images/searchLogo.jpg" class= " shadow rounded imgFit mx-auto d-block" alt= "Responsive image">
-                             </div>
-                                <div class = "col-fluid justify-content-center snowColor rounded btnImg-primary"  style=' height:40%; padding: 30px;'>
-                             <img id = "carImg04" src="images/searchLogo.jpg" class= " shadow rounded imgFit mx-auto d-block" alt= "Responsive image">
-                             </div>
-                            </div>
 
-                        </div>
 
-                    <!-->
                 </div>
           </div>
            <div id = "flex2" class="d-flex" style='width:100%; height:50%;'>
