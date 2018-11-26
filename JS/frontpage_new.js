@@ -38,11 +38,15 @@ var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.j
 var addPicsIndexArray = [0,1,2,3,4,5,6,7];
 function setInput(){
     var tempValue = '';
+
+
     var value = document.getElementById("searchbar").value;
 
-    var searchBy = document.getElementById("searchBy").value;
-     var min = document.getElementById("minPrice").value;
-      var max = document.getElementById("maxPrice").value;
+
+
+   // var searchBy = document.getElementById("searchBy").value;
+   //  var min = document.getElementById("minPrice").value;
+    //  var max = document.getElementById("maxPrice").value;
 
       for(var i = 0; i < value.length; ++i){
           if(value[i] === ' '){
@@ -52,7 +56,8 @@ function setInput(){
           }
       }
 
-    localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + searchBy + "/" + tempValue;
+    localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue;
+      /*
     if(min !== '' || max !== '') {
         if (max === '') {
             min = 0;
@@ -61,8 +66,8 @@ function setInput(){
             max = 0;
         }
         localStorage['searchInput'] += "/price/" + min + "/" + max;
-    }
-
+    }*/
+    document.getElementById("searchbar1").value = localStorage['searchInput'];
     alert(localStorage['searchInput']);
 }
 
@@ -645,9 +650,9 @@ function RTable() {
                          for (var k = 0; k < x; ++k) {//col
                              var idString = (j*numRowsR + k).toString();
                              stringValue +=
-                                 "<div  class=\"d-flex marginMainImageNormal  btn-primary rounded\"style= 'height:95%;width:100%; '>" +
+                                 "<div  class=\"d-flex marginMainImageNormal  btn-primary rounded\"style= 'border: 1px solid gainsboro;height:95%;width:100%; '>" +
 
-                                 "<img tag = '"+index+"' id = 'rec"+index+"' class = \"img rounded creamColor shadow-lg img1\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id)'>"+
+                                 "<img tag = '"+index+"' id = 'rec"+index+"' class = \"img rounded creamColor shadow img1\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id)'>"+
                                  "</div>";
                              ++index;
                          }
@@ -674,9 +679,9 @@ function STable() {
                          stringValue += "<div class=\"d-flex\" style='width:100%; height:100%;'>"
                          for (var k = 0; k < x; ++k) {//col
                              stringValue +=
-                                 "<div class=\"d-flex marginMainImageNormal btn-primary rounded\" style= 'height:95%;width:100%;'>" +
+                                 "<div class=\"d-flex marginMainImageNormal btn-primary rounded\" style= 'border: 1px solid gainsboro;height:95%;width:100%;'>" +
 
-                                "<img  id = 'sim"+index+"' class = \"img rounded creamColor shadow-lg img1\" src='images/Apple1.jpg' onclick='reply_ProPage(this.id)'>"+
+                                "<img  id = 'sim"+index+"' class = \"img rounded creamColor shadow img1\" src='images/Apple1.jpg' onclick='reply_ProPage(this.id)'>"+
 
                                  "</div>";
                              ++index;

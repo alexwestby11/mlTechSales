@@ -40,7 +40,9 @@
     background: rgba(223,219,212,1.0);
 }
 
-
+.darkBlue{
+    background:rgba(0,81,114,.4);
+}
 .pageBackground{
    background:rgba(0,91,124,1.0);
 }
@@ -87,8 +89,8 @@
 
 
 .marginTitle {
-    margin-right: 1vmin !important;
-    margin-left: 1vmin !important;
+    margin-right: 0.5vmin !important;
+    margin-left: 0.5vmin !important;
 }
 
 .marginSearchBar {
@@ -324,4 +326,20 @@ width: 100%;
 
 .frontBackground{
     background: url("/images/Logo/logo1.png");
+}
+
+.titleText {
+    color: whitesmoke;
+    font-family: custom1;
+    text-shadow:
+    -1px -1px 0 TEAL,
+    1px -1px 0 TEAL,
+    -1px 1px 0 TEAL,
+    1px 1px 0 TEAL;
+
+}
+
+@font-face {
+font-family: "custom1";
+src: url("../fonts/BenguiatGothicStd-HeavyObl.otf");
 }

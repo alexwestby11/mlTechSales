@@ -12,36 +12,40 @@
 
 <!-- local js scripts -->
 <script src="JS/frontpage_new.js"></script>
- <link rel ="stylesheet" href="styles/frontpage.css">
-
 
 
 <!-- local css scripts -->
+<link rel ="stylesheet" href="styles/resultsPage.css">
 <!------ Include the above in youritemArray[num] HEAD tag ---------->
 <!DOCTYPE html>
 <html lang="en">
-<head><title>Results Page</title>
+<head><title>TechSails</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="images/Logo/logo3.png">
 </head>
 <body onload = "dTable();">
-<div class="container-fluid h-100 pageBackground palFont">
+<div class="container-fluid h-100 palFont">
 
 <div class="container-fluid">
-    <div class="d-flex flex-row darkBlue rounded justify-content-center" style="height: 15%">
-    <div class="d-flex flex-column rounded">
-    <div class="d-flex titleText ">
-        <p>Tech Sails</p>
-    </div>
-    <div class="d-flex justify-content-center vertical-align" style="padding-bottom: 0%">
-        <p><b><i>Sailing Through the Competiton</i></b></p>
-    </div>
+    <div class="d-flex flex-row darkBlue rounded" style="align-items:center;height: 10%">
+
+           <div class="d-flex vertical-align" style="margin-right: 5px" >
+                   <div class="d-block marginProductLogo">
+                    <img src="images/Logo/logo2.png" class="rounded-circle"  alt="TechSails Logo" width="40" height="40">
+                   </div>
+               </div>
+
+
+    <div class="d-flex" style="width: 50%">
+        <input type="search" class="form-control" id="searchbar1" placeholder="Search for ..." value = >
+         <span class="input-group-btn">
+             <button class="btn btn-light" type="button" onclick="setInput();linkResultsPage()">Search</button>
+         </span>
     </div>
 
     </div>
     <!--
-    <div class="row-fluid text-center marginTitle rounded shadow">
+    <div class="row-fluid text-center darkBlue marginTitle rounded shadow">
         <div class="col titleText">
                 <p>Tech Sails</p>
 			    <div class="row flex-row titleSubText ">
@@ -67,7 +71,7 @@
 
 <!--results-->
 <div class="container-fluid palFont">
-    <div class="col shadow blueColor mT rounded">
+    <div class="col shadow darkBlue mT rounded">
             <table class="table-fluid W rounded" id="d_table" width="100%">
                 <!- Custom Table-->
             </table>
