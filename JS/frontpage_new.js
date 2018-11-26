@@ -33,6 +33,9 @@ var myVar33 = localStorage['ID_brand'] || '0';
 var myVardfafd =  localStorage['currentCollect'] || '0';
 var totalCollect = 3;
 var currentCollect = 0;
+var addPicsIndex = 0;
+var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.jpg','images/Logo/logo1.png','images/Logo/logo2.png','images/Logo/logo3.png','images/Logo/logo4.png','images/Logo/logo5.png'];
+var addPicsIndexArray = [0,1,2,3,4,5,6,7];
 function setInput(){
     var tempValue = '';
     var value = document.getElementById("searchbar").value;
@@ -693,15 +696,16 @@ function STable() {
 function dImage() {
              $("#dynamic_table4").ready(function () {
                  function numTable(x, y) {
-                     var index = 0;
+                     var index = 1;
                      var stringValue = "<div class = \"d-flex flex-row vertical-align justify-content-around\" >";
-                     var dheight = Math.round(x/80);
                      for (var j = 0; j < y; ++j) {//rows
-                        stringValue += "<div class = \"d-flex flex-column\" >";
+                        stringValue += "<div class = \"d-flex flex-column justify-content-center vertical-align\" style='width:auto%; height:100%;' >";
                          for (var k = 0; k < x; ++k) {//col
                              stringValue +=
-                                "<div class = \"col-fluid justify-content-center snowColor rounded btnImg-primary\"  style='height: 30%; padding: 20px;'>\n" +
-                                 "<img id = 'addImg"+index+"' src=\"images/searchLogo.jpg\" class= \" shadow rounded imgFit mx-auto d-block\" alt= \"Responsive image\">\n" +
+                             "<div class=\"d-flex redColor marginMainImageNormal btnImg-primary  greenColor rounded\" style= 'height:5vmax;width:5vmax;margin-top: 5%;margin-bottom: 5%;'>" +
+
+                                "<img id = 'mainImg"+index+"' class = \"img rounded creamColor shadow-lg img1\" src='images/Apple1.jpg' onclick='replyMainImage(this.id)'>"+
+
                                  "</div>";
                              ++index;
                          }
@@ -709,22 +713,28 @@ function dImage() {
                      }
 
                      //middle image
-                        stringValue +=" <div class = \"d-flex flex-column\" style='width:100%; height:100%;'>" +
-                        "<div class = \"d-flex \"  style='width:100%; height:100%;'>" +
-                            "<button class = \"btn btnNextImg-primary\"  style='width:5%; height:100%;float:right; position: relative'>" +
-                            " <span class=\"glyphicon glyphicon-menu-left\" style='float: right'></span></button>" +
-                        "<img id = \"mainImage\" src=\"images/searchLogo.jpg\" class= \" img rounded creamColor shadow img1\" alt= \"Responsive image\">" +
-                             "<button class = \"btn btnNextImg-primary\"  style='width:5%; height:100%;'>" +
-                            " <span class=\"glyphicon glyphicon-menu-right\"></span></button>" +
-                        "</div>" +
+                        stringValue +=" <div class = \"d-flex flex-column vertical-align justify-content-center\" style='max-width:80%; height:100%;'>" +
+                        "<div class = \"d-flex d-block\"  style='width:100%; height:100%;'>";
+                            if(x*y === 0) {
+                                 stringValue += "<button id = \"left\" class = \"btn btnNextImg-primary\" onclick='replyMainButtons(this.id)' style='width:5%; height:100%;'>" +
+                                " <span class=\"glyphicon glyphicon-menu-left\"   style='float: right'></span></button>";
+                            }
+                        stringValue += "<img id = \"mainImg0\" src=\"images/searchLogo.jpg\" class= \" img rounded creamColor img2\" alt= \"Responsive image\">";
+                            if(x*y === 0) {
+                                stringValue +="<button id = \"right\" class = \"btn btnNextImg-primary \"  onclick='replyMainButtons(this.id)' style='width:5%; height:100%;'>" +
+                                " <span class=\"glyphicon glyphicon-menu-right\" style='float: left'></span></button>";
+                            }
+                        stringValue +="</div>" +
                         "</div>";
 
-                     for (var j = 0; j < y; ++j) {//rows
-                        stringValue += "<div class = \"d-flex flex-column\" >";
+                         for (var j = 0; j < y; ++j) {//rows
+                        stringValue += "<div class = \"d-flex flex-column justify-content-center vertical-align\" style='width:auto%; height:100%;' >";
                          for (var k = 0; k < x; ++k) {//col
                              stringValue +=
-                                "<div class = \"col-fluid justify-content-center snowColor rounded btnImg-primary\"  style='height:30%; padding: 20px;'>\n" +
-                                 "<img id = 'addImg"+index+"' src=\"images/searchLogo.jpg\" class= \" shadow rounded imgFit mx-auto d-block\" alt= \"Responsive image\">\n" +
+                             "<div class=\"d-flex redColor marginMainImageNormal btnImg-primary  greenColor rounded\" style= 'height:5vmax;width:5vmax;margin-top: 5%;margin-bottom: 5%;'>" +
+
+                                "<img id = 'mainImg"+index+"' class = \"img rounded creamColor shadow-lg img1\" src='images/Apple1.jpg' onclick='replyMainImage(this.id)'>"+
+
                                  "</div>";
                              ++index;
                          }
@@ -737,7 +747,7 @@ function dImage() {
                  }
                  $('#box1').html(numTable(numRowsI, numColI));
                   $('#tab_logic').append('<div id="box1" ></div>');
-                  setMainImage(numRowsI*numColI+1);
+                  setMainImage(numRowsI*numColI*2+1);
 
               });
 }
@@ -762,9 +772,11 @@ function setSimImages(x){
 }
 
 function setMainImage(x){
-    document.getElementById("mainImage").src = localStorage['ID_pic'];
+    addPicsArray[0] = localStorage['ID_pic'];
+    addPicsIndexArray = [0,1,2,3,4,5,6,7];
+
     for(var i = 0; i < x; ++i) {
-        //document.getElementById("mainImage" + i.toString()).src = localStorage['ID_pic'];
+            document.getElementById("mainImg" + i.toString()).src = addPicsArray[i];
     }
 }
 
@@ -830,6 +842,40 @@ function reply_ProPage(clicked_id)
 
 }
 
+function replyMainImage(clicked_id)
+{
+        //check if sim/comp product
+        var num = '';
+        for(var i = 7; i < clicked_id.length; ++i){
+            num += clicked_id[i];
+        }
+        document.getElementById("mainImg0").src = addPicsArray[addPicsIndexArray[Number(num)]]
+        document.getElementById(clicked_id).src = addPicsArray[addPicsIndexArray[addPicsIndex]];
+        var value = addPicsIndexArray[Number(num)];
+        addPicsIndexArray[Number(num)] = addPicsIndexArray[addPicsIndex];
+        addPicsIndexArray[addPicsIndex] = value;
+
+
+}
+
+function replyMainButtons(clicked_id)
+{
+        if(clicked_id === "right"){
+            ++addPicsIndex;
+        }
+        else if(clicked_id === "left"){
+            addPicsIndex = addPicsIndex - 1;
+        }
+        if(addPicsIndex < 0){
+            addPicsIndex = addPicsArray.length-1;
+        }
+         if(addPicsIndex >= addPicsArray.length){
+            addPicsIndex = 0;
+        }
+        document.getElementById("mainImg0").src = addPicsArray[addPicsIndex];
+
+}
+
 
  class Product {
   constructor() {
@@ -863,4 +909,9 @@ function updateData(id1,id2) {
 }
 function clearStuff(){
    localStorage.clear();
+}
+
+function changeMainImage(index){
+    document.getElementById("mainImage").src = addPicsArray[index];
+    addPicsIndex = index;
 }

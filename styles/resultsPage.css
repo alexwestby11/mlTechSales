@@ -11,7 +11,7 @@
 }
 
 .snowColor{
-    background: rgba(255,255,255,0.9);
+    background: white;
 
 }
 
@@ -32,7 +32,7 @@
 }
 
 .lightBlueColor{
-    background: #bee5eb;
+    background: white;
 
 }
 
@@ -40,11 +40,9 @@
     background: rgba(223,219,212,1.0);
 }
 
-.darkBlue{
-    background:rgba(0,81,114,.4);
-}
+
 .pageBackground{
-   background:rgba(0,91,124,.2);
+   background:rgba(0,91,124,1.0);
 }
 
 .creamColor{
@@ -112,9 +110,8 @@
 }
 /* Font Size */
 .titleText {
-    font-size: 3vmax;
+    font-size: 1vmax;
     text-align: center;
-    padding-top: 1vmin;
 }
 
 .titleSubText {
@@ -122,9 +119,7 @@
     text-align: center;
 }
 
-.heightBox {
-    height: 60%;
-}
+
 
 .searchImg{
     background-image: url('../images/searchLogo.jpg');
@@ -299,7 +294,13 @@ width: 100%;
     object-position: center;
 }
 
-
+.img2 {
+  display: block;
+  max-width: 20vmax;
+  height: 100%;
+  object-fit: contain;
+    object-position: center;
+}
 .btnNextImg-primary {
     outline: none !important;
     box-shadow: none;
@@ -319,4 +320,8 @@ width: 100%;
 .marginProductLogo {
     margin-right: 0.5vmax !important;
     margin-left: 0.5vmax !important;
+}
+
+.frontBackground{
+    background: url("/images/Logo/logo1.png");
 }

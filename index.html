@@ -24,20 +24,21 @@
 
 
 <body>
-<div class="container-fluid pageBackground">
+<div class="container-fluid pageBackground h-100">
 <!-- Title -->
-<div class="container-fluid">
-    <div class="row h-25 text-center darkBlue marginTitle shadow">
-        <div class="col-lg-4 col-sm-offset-4 container titleText">
-		<img id="logo" src="images/Logo/logo2.png" class="rounded" alt="TechSails Logo">
+<div class="d-flex flex-row darkBlue rounded justify-content-center" style="height: 15%">
+    <div class="d-flex flex-column rounded">
+    <div class="d-flex titleText ">
         <p>Tech Sails</p>
-        <div class="col container titleSubText">
-                <p>Sailing Through the Competiton</p>
-        </div>
-        </div>
+    </div>
+    <div class="d-flex justify-content-center vertical-align" style="padding-bottom: 0%">
+        <p><b><i>Sailing Through the Competiton</i></b></p>
+    </div>
+    </div>
 
     </div>
-</div>
+
+    <!--
 <div class="container-fluid">
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
 
@@ -99,14 +100,15 @@
   </div>
 </nav>
 </div>
-
+-->
 
 <!-- Search Bar -->
+     <div class="d-flex vertical-align snowColor shadow-sm rounded" style="background: ghostwhite;height: 2%;margin-right: 2%;margin-left: 2%;margin-top: 2%" ></div>
 <div class="container-fluid">
-<div class="row h-auto marginBasic">
+<div class="row marginBasic justify-content-center vertical-align darkBlue shadow-lg" style="height: auto; padding: 1%;">
    <!--  <div class="col darkBlue2 shadow-lg  marginSearchTopL imageBorder" ></div> -->
-
-<div class="col container marginSearchBar darkBlue shadow-lg">
+<!--
+<div class="col container marginSearchBar darkBlue shadow-lg vertical-align">
   <form>
     <div class="input-group marginSearchTop shadow-sm">
 	
@@ -126,23 +128,40 @@
          </span>
     </div>
   </form>
-</div>
+</div>-->
+                    <div class="d-flex vertical-align" style="margin-right: 5px" >
+                   <div class="d-block marginProductLogo">
+                    <img src="images/Logo/logo2.png" class="rounded-circle"  alt="TechSails Logo" width="40" height="40">
+                   </div>
+               </div>
+
+
+    <div class="d-flex" style="width: 50%">
+        <input type="search" class="form-control" id="searchbar" placeholder="Search for ...">
+         <span class="input-group-btn">
+             <button class="btn btn-light" type="button" onclick="linkResultsPage()">Search</button>
+         </span>
+    </div>
+
+
+
+
    <!--  <div class="col darkBlue2 shadow-lg imageBorder marginSearchTopR"></div> -->
 
 </div>
-
+    <div class="d-flex vertical-align snowColor shadow-sm  rounded" style="background: ghostwhite;height: 2%;margin-right: 1%;margin-left: 1%;margin-bottom: 2%" ></div>
 <!-- Catergory Boxes -->
 <div class="container-fluid">
-    <div class="row flex-row marginBasic heightBox">
-        <div class="col greyColor marginLeftEnd shadow-lg">.col-sm-4</div>
-        <div class="col greyColor marginBox shadow-lg">.col-sm-4</div>
-        <div class="col greyColor marginBox shadow-lg">.col-sm-4</div>
-        <div class="col greyColor marginRightEnd shadow-lg">.col-sm-4</div>
+    <div class="row flex-row marginBasic"style="height: 55%">
+        <div class="col snowColor marginLeftEnd shadow-lg">.col-sm-4</div>
+        <div class="col snowColor marginBox shadow-lg">.col-sm-4</div>
+        <div class="col snowColor marginBox shadow-lg">.col-sm-4</div>
+        <div class="col snowColor marginRightEnd shadow-lg">.col-sm-4</div>
     </div>
 </div>
     </div>
 </div>
 </body>
-
+</div>
 
 </html>
