@@ -113,13 +113,13 @@ function dTable() {
                              stringValue +=  "<div class=\"col-fluid\" style='width:100%; height:100%;font-size: large;text-align: center'><p>No Results</p></div>";
                         }
                      for (var j = 0; j < y; ++j) {//rows
-                         stringValue += "<div class=\"d-flex flex-row vertical-align\" style='width:100%; height:100%;'>";
+                         stringValue += "<div class=\"d-flex flex-row vertical-align\" style='width:inherit; height:100%;'>";
                          for (var k = 0; k < x; ++k) {//col
                              var idString = (j*numRows + k).toString();
                              stringValue +=
                                  "<div  id = '"+idString+"' class=\"d-flex flex-column marginMainImageNormal btn btnImg1-primary rounded shadow-sm\" onclick=\"linkProductPage();reply_click(this.id);\" style= 'border: 1px solid gainsboro;height:95%;width:100%;background: white;margin: 0.5%'>" +
-                                 "<div class=\"col-fluid \" style='text-align: center;font-size: large;'><b></b></div>"+
-                                 "<input type=\"image\" src= \"images/Apple1.jpg\" class = \"d-block btn img tableRowHeight rounded  img3\" style='align-self:center'>" +
+                                 "<div class=\"col-fluid \" style='text-align: center;font-size: large;width: 100%'><b></b></div>"+
+                                 "<input type=\"image\" src= \"images/Apple1.jpg\" class = \"d-block btn img rounded  img3\" style='align-self:center'>" +
                                   "<div class=\"col-fluid justify-content-center\" style='text-align: center; font-weight: bold;'><b></b></div>" +
                                  "</div>";
                              ++index;
@@ -151,7 +151,14 @@ function dTable() {
                var prd = document.getElementById(string);
                prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
                var name = (prd.getElementsByTagName("b")[0]);
-               name.innerHTML = dataArray[dx].name.split(' ').slice(0,3).join(' ');
+               var txt = name.innerHTML = dataArray[dx].name;
+               if(txt.length > 25){
+                   txt = txt.split(' ').slice(0,2).join(' ');
+                    if(txt.length > 25){
+                    txt = txt.split(' ').slice(0,1).join(' ');
+                 }
+               }
+               name.innerHTML = dataArray[dx].name = txt;
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].brand +"<br>" + '$' + dataArray[dx].price;
                itemArray[j*numRows + k] = dx;
@@ -170,7 +177,14 @@ function dTable() {
                var prd = document.getElementById(string);
                prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
                var name = (prd.getElementsByTagName("b")[0]);
-               name.innerHTML = dataArray[dx].name.split(' ').slice(0,3).join(' ');
+                var txt = name.innerHTML = dataArray[dx].name;
+               if(txt.length > 30){
+                   txt = txt.split(' ').slice(0,2).join(' ');
+                    if(txt.length > 25){
+                    txt = txt.split(' ').slice(0,1).join(' ');
+                 }
+               }
+               name.innerHTML = dataArray[dx].name = txt;
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].brand +"<br>" + '$' + dataArray[dx].price;
                  itemArray[j*numRows + k] = dx;
@@ -189,7 +203,14 @@ function dTable() {
                var prd = document.getElementById(string);
                prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
                var name = (prd.getElementsByTagName("b")[0]);
-               name.innerHTML = dataArray[dx].name.split(' ').slice(0,3).join(' ');
+                var txt = name.innerHTML = dataArray[dx].name;
+               if(txt.length > 25){
+                   txt = txt.split(' ').slice(0,2).join(' ');
+                    if(txt.length > 30){
+                    txt = txt.split(' ').slice(0,1).join(' ');
+                 }
+               }
+               name.innerHTML = dataArray[dx].name = txt;
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].brand +"<br>" + '$' + dataArray[dx].price;
                  itemArray[j*numRows + k] = dx;
