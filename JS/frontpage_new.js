@@ -1,13 +1,21 @@
 var dataArray = [];
-var z_idx;
+var z_idx = localStorage['results_index'] || '0';
 var numRows = 5;
 var numCol= 2;
+
+var numRowsR = localStorage['numRowsR'] || '3';
+var numColR= localStorage['numColR'] || '2';
+var numRowsS = localStorage['numRowsS'] || '3';
+var numColS= localStorage['numColS'] || '2';
+var numRowsI = localStorage['numRowsI'] || '2';
+var numColI = localStorage['numColI'] || '1';
+/*
 var numRowsR = 3;
 var numColR= 2;
 var numRowsS = 3;
 var numColS= 2;
 var numRowsI = 2;
-var numColI = 1;
+var numColI = 1;*/
 var itemArray = [0,0,0,0,0,0,0,0,0,0];
 var recArray = [];
 var simArray = [];
@@ -24,49 +32,66 @@ var myVar8 = localStorage['searchRec'] || '0';
 var myVar9 = localStorage['searchCap'] || '0';
 var averagePrice = localStorage['averagePrice'] || '0';
 var myVar11 = localStorage['value'] || '0';
-var myVar12 = localStorage['ID_pic3_c'] || '0';
 var myVar13 = localStorage['ID_pic4_c'] || '0';
 var searchInput = localStorage['searchInput'] || '0';
 var myVar99 = localStorage['searchSim'] || '0';
 var myVar133 = localStorage['ID_price'] || '0';
 var myVar33 = localStorage['ID_brand'] || '0';
 var myVardfafd =  localStorage['currentCollect'] || '0';
+var results = localStorage['results_index'] || '0';
 var totalCollect = 3;
 var currentCollect = 0;
 var addPicsIndex = 0;
-var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.jpg','images/Logo/logo1.png','images/Logo/logo2.png','images/Logo/logo3.png','images/Logo/logo4.png','images/Logo/logo5.png'];
+var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.jpg','images/Logo/logo1.png','images/Logo/logo2.png','images/Logo/logo3.png','images/Logo/logo4.png','images/Logo/logo5.png','images/Logo/logo5.png'];
 var addPicsIndexArray = [0,1,2,3,4,5,6,7];
 var isResults = 1;
+var c1 = 0;
+var c2 = 0;
+var c3 = 0;
+var c4 = 0;
+var Timer1 = 0;
+var Timer2 = 0;
+var Timer3 = 0;
+var Timer4 = 0;
+
+
+
 function setInput(){
     var tempValue = '';
 
 
     var value = document.getElementById("searchbar").value;
     localStorage['value'] = value;
+    var temp  = value.replace(/\s/g, '');
    // var searchBy = document.getElementById("searchBy").value;
    //  var min = document.getElementById("minPrice").value;
     //  var max = document.getElementById("maxPrice").value;
-
-      for(var i = 0; i < value.length; ++i){
-          if(value[i] === ' '){
-              tempValue += "/";
-          }else{
-              tempValue += value[i];
-          }
-      }
+    var letters = /^[0-9a-zA-Z]+$/;
+    if(temp.match(letters)) {
+        //alert('Your registration number have accepted : you can try another');
+        if (value.length < 75) {
+            for (var i = 0; i < value.length; ++i) {
+                if (value[i] === ' ') {
+                    tempValue += "/";
+                } else {
+                    tempValue += value[i];
+                }
+            }
+            linkResultsPage();
+        }
+        else {
+           alert('Try again');
+        }
+    }
+    else{
+       alert('Try again');
+    }
 
     localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue;
-      /*
-    if(min !== '' || max !== '') {
-        if (max === '') {
-            min = 0;
-        }
-        if (max === '') {
-            max = 0;
-        }
-        localStorage['searchInput'] += "/price/" + min + "/" + max;
-    }*/
-    alert(localStorage['searchInput']);
+
+   // alert(localStorage['searchInput']);
+    z_idx = 0;
+    localStorage['results_index'] = z_idx;
 }
 
 
@@ -133,7 +158,8 @@ function dTable() {
                  $('#d_table').html(numTable(numRows, numCol));
                   $('#tab_logic').append('<div id="d_table" ></div>');
               });
-             console.log(dataArray.length);
+
+
      }
  function linkProductPage()
 {
@@ -143,13 +169,15 @@ function dTable() {
     return (j*numRows + k).toString();
 }
  function changeImage(x,y,z){
-    var dx = z;
+    var dx =  Number(localStorage['results_index']);
 
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
               var string = (j*numRows + k).toString();
                var prd = document.getElementById(string);
-               prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
+               if(typeof dataArray[dx] !== 'undefined'){
+                   $('#' + string).css('visibility', 'visible');
+                    prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
                var name = (prd.getElementsByTagName("b")[0]);
                var txt = name.innerHTML = dataArray[dx].name;
                if(txt.length > 25){
@@ -162,87 +190,125 @@ function dTable() {
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].brand +"<br>" + '$' + dataArray[dx].price;
                itemArray[j*numRows + k] = dx;
-               //itemArray[j*numRows + k] = j*numRows + k;
+
                dataArray[dx].index = dx;
+               }
+                else{
+                     $('#' + string).css('visibility', 'hidden');
+               }
                ++ dx;
           }
+           z_idx = dx;
+          localStorage['results_index'] = z_idx;
       }
-    z_idx = dx;
+
+      console.log(z_idx);
 }
  function nextImage(x,y,z){
-    var dx = z;
-      for (var j = 0; j < y; ++j) {//rows
-          for (var k = 0; k < x; ++k) {//col
-               var string = (j*numRows + k).toString();
-               var prd = document.getElementById(string);
-               prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
-               var name = (prd.getElementsByTagName("b")[0]);
-                var txt = name.innerHTML = dataArray[dx].name;
-               if(txt.length > 30){
-                   txt = txt.split(' ').slice(0,2).join(' ');
-                    if(txt.length > 25){
-                    txt = txt.split(' ').slice(0,1).join(' ');
+    var dx = Number(localStorage['results_index']) ;
+     if(dx < dataArray.length) {
+         for (var j = 0; j < y; ++j) {//rows
+             for (var k = 0; k < x; ++k) {//col
+                 var string = (j * numRows + k).toString();
+                 var prd = document.getElementById(string);
+                 if (typeof dataArray[dx] !== 'undefined' || dx < dataArray.length) {
+                     $('#' + string).css('visibility', 'visible');
+                     prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
+                     var name = (prd.getElementsByTagName("b")[0]);
+                     var txt = name.innerHTML = dataArray[dx].name;
+                     if (txt.length > 25) {
+                         txt = txt.split(' ').slice(0, 2).join(' ');
+                         if (txt.length > 25) {
+                             txt = txt.split(' ').slice(0, 1).join(' ');
+                         }
+                     }
+                     name.innerHTML = dataArray[dx].name = txt;
+                     var info = (prd.getElementsByTagName("div")[1]);
+                     info.innerHTML = dataArray[dx].brand + "<br>" + '$' + dataArray[dx].price;
+                     itemArray[j * numRows + k] = dx;
+
+                     dataArray[dx].index = dx;
                  }
-               }
-               name.innerHTML = dataArray[dx].name = txt;
-               var info = (prd.getElementsByTagName("div")[1]);
-               info.innerHTML = dataArray[dx].brand +"<br>" + '$' + dataArray[dx].price;
-                 itemArray[j*numRows + k] = dx;
-              //itemArray[j*numRows + k] = j*numRows + k;
-               dataArray[dx].index = dx;
-                ++dx;
-          }
-      }
-    z_idx = dx;
+                 else {
+
+                     $('#' + string).css('visibility', 'hidden');
+                 }
+                 ++dx;
+             }
+         }
+          z_idx = dx;
+         localStorage['results_index'] = z_idx;
+     }
+     console.log(z_idx);
 }
+
+
  function prevImage(x,y,z){
-    var dx = z - (numRows*numCol)*2;
-      for (var j = 0; j < y; ++j) {//rows
-          for (var k = 0; k < x; ++k) {//col
-               var string = (j*numRows + k).toString();
-               var prd = document.getElementById(string);
-               prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
-               var name = (prd.getElementsByTagName("b")[0]);
-                var txt = name.innerHTML = dataArray[dx].name;
-               if(txt.length > 25){
-                   txt = txt.split(' ').slice(0,2).join(' ');
-                    if(txt.length > 30){
-                    txt = txt.split(' ').slice(0,1).join(' ');
-                 }
-               }
-               name.innerHTML = dataArray[dx].name = txt;
-               var info = (prd.getElementsByTagName("div")[1]);
-               info.innerHTML = dataArray[dx].brand +"<br>" + '$' + dataArray[dx].price;
-                 itemArray[j*numRows + k] = dx;
-               dataArray[dx].index = dx;
-              // itemArray[j*numRows + k] = j*numRows + k;
+    var dx = Number(localStorage['results_index']) - (numRows*numCol)*2;
+    if(dx >= 0) {
+        for (var j = 0; j < y; ++j) {//rows
+            for (var k = 0; k < x; ++k) {//col
+                var string = (j * numRows + k).toString();
+                var prd = document.getElementById(string);
+                if (typeof dataArray[dx] !== 'undefined') {
+                    $('#' + string).css('visibility', 'visible');
+                    prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
+                    var name = (prd.getElementsByTagName("b")[0]);
+                    var txt = name.innerHTML = dataArray[dx].name;
+                    if (txt.length > 25) {
+                        txt = txt.split(' ').slice(0, 2).join(' ');
+                        if (txt.length > 25) {
+                            txt = txt.split(' ').slice(0, 1).join(' ');
+                        }
+                    }
+                    name.innerHTML = dataArray[dx].name = txt;
+                    var info = (prd.getElementsByTagName("div")[1]);
+                    info.innerHTML = dataArray[dx].brand + "<br>" + '$' + dataArray[dx].price;
+                    itemArray[j * numRows + k] = dx;
+
+                    dataArray[dx].index = dx;
+                }
+                else {
+                    $('#' + string).css('visibility', 'hidden');
+                }
                 ++dx;
-          }
-      }
-    z_idx = dx;
+            }
+        }
+         z_idx = dx;
+        localStorage['results_index'] = z_idx;
+    }
+
+    console.log(z_idx);
 }
+
 function nextButton(){
     nextImage(numRows,numCol,z_idx);
   //console.log(z_idx);
 }
+
  function prevButton(){
     prevImage(numRows,numCol,z_idx);
 //console.log(z_idx);
 }
- function setImage(x,y){
+
+function setImage(x,y){
     return dataArray[x*y].img_src;
 }
+
  function setName(x,y){
     return dataArray[x*y].name;
 }
- function productPage(){
+
+function productPage(){
      window.location.href = 'productPage.html';
 }
+
 function linkResultsPage() {
   window.location.href = 'resultsPage_new.html';
 
 }
- function getData1() {
+
+function getData1() {
     $(document).ready(function () {
             $.getJSON(localStorage['searchInput'], function (result) {
                 //console.log(result);
@@ -299,6 +365,8 @@ function linkResultsPage() {
         localStorage['ID_cat'] = dataArray[itemIndexInLocalArray].category;
         localStorage['ID_price'] = dataArray[itemIndexInLocalArray].price;
         localStorage['ID_brand'] = dataArray[itemIndexInLocalArray].brand;
+        localStorage['results_index'] = z_idx - 10;
+       // alert(localStorage['results_index']);
 
         updateAveragePrice(dataArray[itemIndexInLocalArray].price);
 }
@@ -324,40 +392,34 @@ function updateAveragePrice(x){
 
     if(totalCollect === currentCollect){
         localStorage['currentCollect'] = "NaN";
-        alert("average = " + averagePrice/totalCollect);
+        //alert("average = " + averagePrice/totalCollect);
     }
-    alert(localStorage['currentCollect']);
+   // alert(localStorage['currentCollect']);
 }
-var c1 = 0;
-var c2 = 0;
-var c3 = 0;
-var c4 = 0;
-var Timer1;
-var Timer2;
-var Timer3;
-var Timer4;
 
-var Timer1m;
-var Timer2m;
-var Timer3m;
-var Timer4m;
+
+
 function reply_mouseover(clicked_id)
 {
             if(clicked_id === "box1"){
                 //console.log("ibox1");
                  Timer1 = setInterval(myCounter1, 500);
+                 localStorage['Timer1'] = Timer1;
             }
             else if(clicked_id === "box2"){
                // console.log("ibox2");
                 Timer2 = setInterval(myCounter2, 500);
+                localStorage['Timer2'] = Timer2;
             }
             else if(clicked_id === "box3"){
                 //console.log("ibox3");
                 Timer3 = setInterval(myCounter3, 500);
+                localStorage['Timer3'] = Timer3;
             }
             else if(clicked_id === "box4") {
                 //console.log("ibox4");
                 Timer4 = setInterval(myCounter4, 500);
+                localStorage['Timer4'] = Timer4;
             }
 
  }
@@ -366,24 +428,28 @@ function reply_mouseover(clicked_id)
                 //console.log(c1);
                 //console.log("lbox1");
                 priorityBox[0] = c1;
+                 localStorage['c1'] = c1;
                  clearTimeout(Timer1);
             }
             else if(clicked_id === "box2"){
                 //console.log(c2);
                // console.log("lbox2");
                 priorityBox[1] = c2;
+                localStorage['c2'] = c2;
                 clearTimeout(Timer2);
             }
             else if(clicked_id === "box3"){
                 //console.log(c3);
                 //console.log("lbox3");
                  priorityBox[2] = c3;
+                 localStorage['c3'] = c3;
                 clearTimeout(Timer3);
             }
             else if(clicked_id === "box4"){
                 //console.log(c4);
                 //console.log("lbox4");
                 priorityBox[3] = c4;
+                localStorage['c4'] = c4;
                 clearTimeout(Timer4);
             }
 
@@ -419,6 +485,7 @@ function printPriorityBox(){
     }
 }
  function colChange(){
+    console.log("up");
     var maxValue = Math.max(priorityBox);
     var total = 0;
     for(var i = 0; i < priorityBox.length; ++i){
@@ -473,6 +540,8 @@ var colIdArray = [];
 
     }
 
+
+
     var num = Math.abs(priorityBox[2] - priorityBox[3]);
     if(num <= 50) {
         colIdArray[4].style.height = "50%";
@@ -494,101 +563,155 @@ var colIdArray = [];
     if(colIdArray[5].style.height === "50%" && colIdArray[3].style.width === "50%"){
         numRowsR = 3;
         numColR= 2;
+        localStorage['numRowsR'] = '3';
+        localStorage['numColR'] = '2';
         console.log("1");
     }
     else if(colIdArray[5].style.height === "65%" && colIdArray[3].style.width === "65%"){
          numRowsR = 4;
         numColR= 2;
+          localStorage['numRowsR'] = '4';
+        localStorage['numColR'] = '2';
         console.log("2");
     }
     else if(colIdArray[5].style.height === "65%" && colIdArray[3].style.width === "35%"){
         numRowsR = 2;
         numColR= 3;
+          localStorage['numRowsR'] = '2';
+        localStorage['numColR'] = '3';
         console.log("3");
     }
     else if(colIdArray[5].style.height === "35%" && colIdArray[3].style.width === "65%"){
         numRowsR = 4;
         numColR= 1;
+         localStorage['numRowsR'] = '4';
+        localStorage['numColR'] = '1';
         console.log("4");
     }
     else if((colIdArray[5].style.height === "35%" && colIdArray[3].style.width === "35%")){
         numRowsR = 2;
         numColR= 1;
+        localStorage['numRowsR'] = '2';
+        localStorage['numColR'] = '1';
         console.log("5");
     }
     else if(colIdArray[5].style.height === "50%" && colIdArray[3].style.width === "35%"){
         numRowsR = 2;
         numColR= 2;
+        localStorage['numRowsR'] = '2';
+        localStorage['numColR'] = '1';
     }
    else if (colIdArray[5].style.height === "50%" && colIdArray[3].style.width === "65%"){
        numRowsR = 4;
         numColR= 2;
+        localStorage['numRowsR'] = '4';
+        localStorage['numColR'] = '2';
     }
 
      //Similaritems
     if(colIdArray[4].style.height === "50%" && colIdArray[3].style.width === "50%"){
         numRowsS = 3;
         numColS= 2;
+         localStorage['numRowsS'] = '3';
+        localStorage['numColS'] = '2';
         console.log("1");
     }
     else if(colIdArray[4].style.height === "65%" && colIdArray[3].style.width === "65%"){
          numRowsS = 4;
         numColS= 2;
+            localStorage['numRowsS'] = '4';
+        localStorage['numColS'] = '2';
         console.log("2");
     }
     else if(colIdArray[4].style.height === "65%" && colIdArray[3].style.width === "35%"){
         numRowsS = 2;
         numColS= 3;
+            localStorage['numRowsS'] = '2';
+        localStorage['numColS'] = '3';
         console.log("3");
     }
     else if(colIdArray[4].style.height === "35%" && colIdArray[3].style.width === "65%"){
         numRowsS = 4;
         numColS= 1;
+         localStorage['numRowsS'] = '4';
+        localStorage['numColS'] = '1';
         console.log("4");
     }
     else if((colIdArray[4].style.height === "35%" && colIdArray[3].style.width === "35%")){
         numRowsS = 2;
         numColS= 1;
+         localStorage['numRowsS'] = '2';
+        localStorage['numColS'] = '1';
         console.log("5");
     }
     else if(colIdArray[4].style.height === "50%" && colIdArray[3].style.width === "35%"){
         numRowsS = 2;
         numColS= 2;
+          localStorage['numRowsS'] = '2';
+        localStorage['numColS'] = '2';
     }
    else if (colIdArray[4].style.height === "50%" && colIdArray[3].style.width === "65%"){
        numRowsS = 4;
         numColS= 2;
+          localStorage['numRowsS'] = '4';
+        localStorage['numColS'] = '2';
     }
 
     //Images items
     if(colIdArray[1].style.height === "50%" && colIdArray[0].style.width === "50%"){
         numRowsI = 2;
         numColI= 1;
+        localStorage['numRowsI'] = '2';
+        localStorage['numColI'] = '1';
     }
     else if(colIdArray[1].style.height === "60%" && colIdArray[0].style.width === "65%"){
          numRowsI = 3;
         numColI= 1;
+        localStorage['numRowsI'] = '3';
+        localStorage['numColI'] = '1';
     }
     else if(colIdArray[1].style.height === "60%" && colIdArray[0].style.width === "35%"){
         numRowsI = 0;
         numColI = 0;
+          localStorage['numRowsI'] = '0';
+        localStorage['numColI'] = '0';
     }
     else if(colIdArray[1].style.height === "40%" && colIdArray[0].style.width === "65%"){
         numRowsI = 2;
         numColI = 2;
+        localStorage['numRowsI'] = '2';
+        localStorage['numColI'] = '2';
     }
     else if((colIdArray[1].style.height === "40%" && colIdArray[0].style.width === "35%")){
         numRowsI = 0;
         numColI = 0;
+        localStorage['numRowsI'] = '0';
+        localStorage['numColI'] = '0';
     }
     else if(colIdArray[1].style.height === "50%" && colIdArray[0].style.width === "35%"){
         numRowsI = 0;
         numColI = 0;
+        localStorage['numRowsI'] = '0';
+        localStorage['numColI'] = '0';
     }
     else if(colIdArray[1].style.height === "50%" && colIdArray[0].style.width === "65%"){
         numRowsI = 2;
         numColI = 2;
+        localStorage['numRowsI'] = '2';
+        localStorage['numColI'] = '2';
     }
+    localStorage['colIdArray[0]H'] =  colIdArray[0].style.height;
+    localStorage['colIdArray[1]H'] =  colIdArray[1].style.height;
+    localStorage['colIdArray[2]H'] =  colIdArray[2].style.height;
+    localStorage['colIdArray[3]H'] =  colIdArray[3].style.height;
+    localStorage['colIdArray[4]H'] =  colIdArray[4].style.height;
+    localStorage['colIdArray[5]H'] =  colIdArray[5].style.height;
+    localStorage['colIdArray[0]W'] =  colIdArray[0].style.width;
+    localStorage['colIdArray[1]W'] =  colIdArray[1].style.width;
+    localStorage['colIdArray[2]W'] =  colIdArray[2].style.width;
+    localStorage['colIdArray[3]W'] =  colIdArray[3].style.width;
+    localStorage['colIdArray[4]W'] =  colIdArray[4].style.width;
+    localStorage['colIdArray[5]W'] =  colIdArray[5].style.width;
     getRecommendData(numColR*numRowsR);
     getSimData(numColS*numRowsS);
     RTable();
@@ -869,7 +992,7 @@ function setProductInfo(){
 
 function reply_ProPage(clicked_id)
 {
-    alert(clicked_id);
+    //alert(clicked_id);
         var bool = 0;
         var num;
         var value = clicked_id;
@@ -959,30 +1082,5 @@ function replyMainButtons(clicked_id)
       this.category = '';
 
   }
- }
-function updateData(id1,id2) {
-    alert("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+ id1 +"/" + id2);
-    $.ajax({
-        url: "http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+ id1 +"/" + id2,
-        type: "POST",
-        data: {"tokenString": "oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm"},
-        contentType: "application/json",
-        dataType: "json",
-        success: function (result) {
-            alert("Success");
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-
-            alert("error" + xhr.status);
-            alert(thrownError);
-        }
-    });
-}
-function clearStuff(){
-   localStorage.clear();
 }
 
-function changeMainImage(index){
-    document.getElementById("mainImage").src = addPicsArray[index];
-    addPicsIndex = index;
-}

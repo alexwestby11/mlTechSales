@@ -63,7 +63,7 @@
               <!--Name bar-->
                <div class="d-flex vertical-align"  style='height: 10%;max-width: 100%'>
                    <div class="d-block marginProductLogo snowColor vertical-align" style = 'float: left;border-radius: 10px;'>
-                    <h4 id = "mainName">Name</h4>
+                    <h4 id = "mainName" onclick="localStorage.clear()">Name</h4>
                    </div>
                </div>
           </div><!--
@@ -167,6 +167,20 @@
           </div>
        </div>
        </div>
+    <script>
+    (document.getElementById("flexCol1").style.height =  localStorage['colIdArray[0]H'] || '100%');
+    (document.getElementById("flexCol1").style.width =  localStorage['colIdArray[0]W'] || '100%');
+    (document.getElementById("flex1").style.height =  localStorage['colIdArray[1]H'] || '100%');
+    (document.getElementById("flex1").style.width =  localStorage['colIdArray[1]W'] || '100%');
+    (document.getElementById("flex2").style.height =  localStorage['colIdArray[2]H'] || '100%');
+    (document.getElementById("flex2").style.width =  localStorage['colIdArray[2]W'] || '100%');
+    (document.getElementById("flexCol2").style.height =  localStorage['colIdArray[3]H'] || '100%');
+    (document.getElementById("flexCol2").style.width =  localStorage['colIdArray[3]W'] || '100%');
+    (document.getElementById("flex3").style.height =  localStorage['colIdArray[4]H'] || '100%');
+    (document.getElementById("flex3").style.width =  localStorage['colIdArray[4]W'] || '100%');
+    (document.getElementById("flex4").style.height =  localStorage['colIdArray[5]H'] || '100%');
+    (document.getElementById("flex4").style.width =  localStorage['colIdArray[5]W'] || '100%');
+</script>
 </div>
 </body>
 </html>
