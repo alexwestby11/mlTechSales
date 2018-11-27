@@ -42,8 +42,6 @@ function setInput(){
 
     var value = document.getElementById("searchbar").value;
 
-
-
    // var searchBy = document.getElementById("searchBy").value;
    //  var min = document.getElementById("minPrice").value;
     //  var max = document.getElementById("maxPrice").value;
@@ -67,7 +65,6 @@ function setInput(){
         }
         localStorage['searchInput'] += "/price/" + min + "/" + max;
     }*/
-    document.getElementById("searchbar1").value = localStorage['searchInput'];
     alert(localStorage['searchInput']);
 }
 
@@ -84,7 +81,7 @@ function dTable() {
                          for (var k = 0; k < x; ++k) {//col
                              var idString = (j*numRows + k).toString();
                              stringValue += "<td>" +
-                                 "<div id = '"+idString+"' onclick=\"reply_click(this.id)\"  class=\"row-fluid rounded creamColor margin1 btn-primary shadow blackText\" width = \"100%\" height = \"100%\">" +
+                                 "<div id = '"+idString+"' onclick=\"reply_click(this.id)\"  class=\"row-fluid rounded creamColor margin1 btn-primary shadow blackText\" style='border: 1px solid gainsboro;'>" +
                                  "<div class=\"col-fluid text-center\" ><h6>Value</h6></div>"+
                                  "<input tag = \"img\"  type=\"image\" src= \"images/Apple1.jpg\" class = \"btn img tableRowHeight rounded W\" onclick=\"linkProductPage(); \" >" +
                                  "<div class=\"col-fluid text-center\">Info<br> Stuff <br> stuff</div>" +
@@ -116,7 +113,7 @@ function dTable() {
                var prd = document.getElementById(string);
                prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
                var name = (prd.getElementsByTagName("h6")[0]);
-               name.innerHTML = dataArray[dx].name.substring(0,15);
+               name.innerHTML = dataArray[dx].name.split(' ').slice(0,3).join(' ');
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
                itemArray[j*numRows + k] = dx;
@@ -135,7 +132,7 @@ function dTable() {
                var prd = document.getElementById(string);
                prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
                var name = (prd.getElementsByTagName("h6")[0]);
-               name.innerHTML = dataArray[dx].name.substring(0,15);
+               name.innerHTML = dataArray[dx].name.split(' ').slice(0,3).join(' ');
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
                  itemArray[j*numRows + k] = dx;
@@ -154,7 +151,7 @@ function dTable() {
                var prd = document.getElementById(string);
                prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
                var name = (prd.getElementsByTagName("h6")[0]);
-               name.innerHTML = dataArray[dx].name.substring(0,15);
+               name.innerHTML = dataArray[dx].name.split(' ').slice(0,3).join(' ');
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].price +"<br>" + dataArray[dx].brand;
                  itemArray[j*numRows + k] = dx;
@@ -431,7 +428,7 @@ var colIdArray = [];
         console.log("1");
     }
     else if(colIdArray[5].style.height === "65%" && colIdArray[3].style.width === "65%"){
-         numRowsR = 3;
+         numRowsR = 4;
         numColR= 2;
         console.log("2");
     }
@@ -441,7 +438,7 @@ var colIdArray = [];
         console.log("3");
     }
     else if(colIdArray[5].style.height === "35%" && colIdArray[3].style.width === "65%"){
-        numRowsR = 3;
+        numRowsR = 4;
         numColR= 1;
         console.log("4");
     }
@@ -466,7 +463,7 @@ var colIdArray = [];
         console.log("1");
     }
     else if(colIdArray[4].style.height === "65%" && colIdArray[3].style.width === "65%"){
-         numRowsS = 3;
+         numRowsS = 4;
         numColS= 2;
         console.log("2");
     }
@@ -476,7 +473,7 @@ var colIdArray = [];
         console.log("3");
     }
     else if(colIdArray[4].style.height === "35%" && colIdArray[3].style.width === "65%"){
-        numRowsS = 3;
+        numRowsS = 4;
         numColS= 1;
         console.log("4");
     }
@@ -854,7 +851,7 @@ function replyMainImage(clicked_id)
         for(var i = 7; i < clicked_id.length; ++i){
             num += clicked_id[i];
         }
-        document.getElementById("mainImg0").src = addPicsArray[addPicsIndexArray[Number(num)]]
+        document.getElementById("mainImg0").src = addPicsArray[addPicsIndexArray[Number(num)]];
         document.getElementById(clicked_id).src = addPicsArray[addPicsIndexArray[addPicsIndex]];
         var value = addPicsIndexArray[Number(num)];
         addPicsIndexArray[Number(num)] = addPicsIndexArray[addPicsIndex];
