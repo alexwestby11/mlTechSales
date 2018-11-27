@@ -38,7 +38,7 @@
 
 
     <div class="d-flex" style="width: 50%">
-        <input type="search" class="form-control" id="searchbar1" placeholder="Search for ..." value = >
+        <input type="search" class="form-control" id="searchbar" placeholder="Search for ..." value = >
          <span class="input-group-btn">
              <button class="btn btn-light" type="button" onclick="setInput();linkResultsPage()">Search</button>
          </span>
@@ -67,15 +67,27 @@
         </div>
 
     </div>-->
+     <div class="d-flex flex-row rounded shadow-sm justify-content-around" style="border:1px solid gainsboro;align-items:center;height: 5%;margin-top: 1%;">
+         <div class="d-flex">
+        <button class = "btn float-left" type = "submit" onclick="prevButton();" style="margin-left:1% ">Prev</button>
+         </div>
+         <div id = "searched" class="d-flex ">
+            <script> document.getElementById("searched").innerHTML = localStorage['value'];</script>
+         </div>
+           <div class="d-flex ">
+         <button class = "btn float-right" type = "submit" onclick="nextButton();" style="margin-right:1%;">Next</button>
+         </div>
+
+    </div>
 </div>
 
 
 <!--results-->
 <div class="container-fluid palFont">
-    <div class="col shadow mT rounded" style="background: white;">
-            <table class="table-fluid W rounded" id="d_table" width="100%">
+    <div class="col shadow-sm mT rounded" style="border:1px solid gainsboro;:background: white;">
+            <div class="d-flex rounded" id="d_table" style = "width: 100%;height:75%">
                 <!- Custom Table-->
-            </table>
+            </div>
 	</div>
 </div>
 

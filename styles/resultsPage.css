@@ -296,6 +296,15 @@ width: 100%;
     object-position: center;
 }
 
+.img3 {
+  display: block;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+    object-position: center;
+    overflow: hidden;
+}
+
 .img2 {
   display: block;
   max-width: 20vmax;
@@ -306,7 +315,7 @@ width: 100%;
 .btnNextImg-primary {
     outline: none !important;
     box-shadow: none;
-
+   background: white;
 }
 .btnNextImg-primary:hover, .btnNextImg--primary:focus, .btnNextImg--primary:active {
     outline: none !important;
@@ -342,4 +351,26 @@ width: 100%;
 @font-face {
 font-family: "custom1";
 src: url("../fonts/BenguiatGothicStd-HeavyObl.otf");
+}
+
+.btnImg1-primary {
+    outline: none !important;
+    box-shadow: none;
+     -webkit-transition: all 1s ease; /* Safari and Chrome */
+    -moz-transition: all 1s ease; /* Firefox */
+    -ms-transition: all 1s ease; /* IE 9 */
+    -o-transition: all 1s ease; /* Opera */
+    transition: all 1s ease;
+     background: rgba(1,1,1,0);
+}
+.btnImg1-primary:hover, .btnImg1-primary:focus, .btnImg1-primary:active {
+    -webkit-transform:scale(1.05); /* Safari and Chrome */
+    -moz-transform:scale(1.05); /* Firefox */
+    -ms-transform:scale(1.05); /* IE 9 */
+    -o-transform:scale(1.05); /* Opera */
+    transform:scale(1.05);
+    outline: none !important;
+    box-shadow: none;
+    outline: none !important;
+    background: rgba(1,1,1,0);
 }
