@@ -40,6 +40,7 @@ var myVar33 = localStorage['ID_brand'] || '0';
 var myVardfafd =  localStorage['currentCollect'] || '0';
 var results = localStorage['results_index'] || '0';
 var resultsds = localStorage['ID_type'] || '0';
+
 var totalCollect = 3;
 var currentCollect = 0;
 var addPicsIndex = 0;
@@ -160,7 +161,7 @@ function dTable() {
                     txt = txt.split(' ').slice(0,1).join(' ');
                  }
                }
-               name.innerHTML = dataArray[dx].name = txt;
+               name.innerHTML = txt;
                var info = (prd.getElementsByTagName("div")[1]);
                info.innerHTML = dataArray[dx].brand +"<br>" + '$' + dataArray[dx].price;
                itemArray[j*numRows + k] = dx;
@@ -196,7 +197,7 @@ function dTable() {
                              txt = txt.split(' ').slice(0, 1).join(' ');
                          }
                      }
-                     name.innerHTML = dataArray[dx].name = txt;
+                     name.innerHTML = txt;
                      var info = (prd.getElementsByTagName("div")[1]);
                      info.innerHTML = dataArray[dx].brand + "<br>" + '$' + dataArray[dx].price;
                      itemArray[j * numRows + k] = dx;
@@ -235,7 +236,7 @@ function dTable() {
                             txt = txt.split(' ').slice(0, 1).join(' ');
                         }
                     }
-                    name.innerHTML = dataArray[dx].name = txt;
+                    name.innerHTML = txt;
                     var info = (prd.getElementsByTagName("div")[1]);
                     info.innerHTML = dataArray[dx].brand + "<br>" + '$' + dataArray[dx].price;
                     itemArray[j * numRows + k] = dx;
@@ -295,6 +296,7 @@ function getData1() {
                         }
                         else if (key === "name") {
                             product.name = value;
+                             localStorage['ID_FullName'] = value;
                         }
                         else if (key === "price") {
                             product.price = value;
@@ -337,6 +339,8 @@ function getData1() {
         var num = Number(clicked_id);
         localStorage['ID'] = dataArray[itemArray[num]].id;
         var itemIndexInLocalArray = itemArray[num];
+        localStorage['ID_FullName'] = dataArray[itemIndexInLocalArray].name;
+        console.log(localStorage['ID_FullName']);
         localStorage['ID_name'] = dataArray[itemIndexInLocalArray].name;
         localStorage['ID_pic'] = dataArray[itemIndexInLocalArray].img_src;
         localStorage['ID_cat'] = dataArray[itemIndexInLocalArray].category;
@@ -961,7 +965,7 @@ function setMainImage(x){
 function setProductInfo(){
     var space = "  ";
      var mainName = document.getElementById("mainName");
-     var x = localStorage["ID_name"];
+     var x = localStorage['ID_name'];
      var y = x.split(' ').slice(0,3).join(' ');
      y = space.concat(y);
      y= y.concat(space);
@@ -971,7 +975,7 @@ function setProductInfo(){
         "<strong>Price:</strong>" + "<br>" + "$" + localStorage["ID_price"] + "<br>" +
         "<strong>Brand:</strong>" + "<br>" + localStorage["ID_brand"] + "<br>" +
         "<strong>Category:</strong>" + "<br>" + localStorage["ID_cat"] + "<br>" +
-        "<strong>Information:</strong>" + "<br>" + localStorage["ID_name"];
+        "<strong>Information:</strong>" + "<br>" + localStorage['ID_name'];
 }
 
 function reply_ProPage(clicked_id)
@@ -1001,6 +1005,7 @@ function reply_ProPage(clicked_id)
             localStorage['ID_price'] = recArray[num].price;
             localStorage['ID_brand'] = recArray[num].brand;
             localStorage['ID_type'] = recArray[num].type;
+
         }
         else{
             localStorage['prevID'] =  localStorage['ID'];
@@ -1010,7 +1015,8 @@ function reply_ProPage(clicked_id)
             localStorage['ID_cat'] = simArray[num].category;
             localStorage['ID_price'] = simArray[num].price;
             localStorage['ID_brand'] = simArray[num].brand;
-            localStorage['ID_type'] = recArray[num].type;
+            localStorage['ID_type'] = simArray[num].type;
+
 
         }
 
