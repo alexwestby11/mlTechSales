@@ -1,0 +1,376 @@
+/* colors */
+.blueColor{
+    background: PALETURQUOISE;
+}
+.redColor{
+    background: red;
+}
+
+.greenColor{
+    background: green;
+}
+
+.snowColor{
+    background: white;
+
+}
+
+.lightcyanColor{
+    background: AZURE;
+}
+
+.pinkColor{
+    background: deeppink;
+}
+
+.orangeColor{
+    background: orange;
+}
+
+.yellowColor{
+    background: yellow;
+}
+
+.lightBlueColor{
+    background: white;
+
+}
+
+.greyColor{
+    background: rgba(223,219,212,1.0);
+}
+
+.darkBlue{
+    background:rgba(0,81,114,.4);
+}
+.pageBackground{
+   background:rgba(0,91,124,1.0);
+}
+
+.creamColor{
+   background: white;
+}
+
+/* Border curves */
+.imageBorder{
+    border-radius: 5px;
+}
+
+/* margins */
+.marginBasic {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+     border-radius: 5px;
+}
+
+.marginLeftEnd {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    margin-right: 10px !important;
+    border-radius: 5px;
+}
+
+.marginRightEnd {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    margin-left: 10px !important;
+    border-radius: 5px;
+}
+
+.marginBox {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+    border-radius: 5px;
+}
+
+
+.marginTitle {
+    margin-right: 0.5vmin !important;
+    margin-left: 0.5vmin !important;
+}
+
+.marginSearchBar {
+    margin-top: 10px !important;
+    border-radius: 5px;
+}
+.marginSearchTop {
+    margin-top: 25px !important;
+}
+
+.marginSearchTopL {
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+}
+
+.marginSearchTopR {
+    margin-top: 10px !important;
+    margin-left: 10px !important;
+}
+/* Font Size */
+.titleText {
+    font-size: 1vmax;
+    text-align: center;
+}
+
+.titleSubText {
+    font-size: 1vmax;
+    text-align: center;
+}
+
+
+
+.searchImg{
+    background-image: url('../images/searchLogo.jpg');
+    width: 34px;
+    height: 34px;
+}
+
+.paddingTop{
+    padding-top: 0.25%;
+}
+
+.paddingBottom{
+    padding-bottom: 0.25%;
+}
+.marginRL{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.margin1{
+    margin-top: 5px;
+     margin-bottom: 5px;
+}
+
+.roundedB{
+   border-bottom-right-radius: 0.5vmin;
+    border-bottom-left-radius: 0.5vmin;
+}
+.roundedT{
+   border-top-right-radius: 0.5vmin;
+    border-top-left-radius: 0.5vmin;
+}
+/*This is modifying the btn-primary colors but you could create your own .btn-something class as well*/
+.btn-primary {
+
+    outline: none !important;
+    box-shadow: none;
+     -webkit-transition: all 1s ease; /* Safari and Chrome */
+    -moz-transition: all 1s ease; /* Firefox */
+    -ms-transition: all 1s ease; /* IE 9 */
+    -o-transition: all 1s ease; /* Opera */
+    transition: all 1s ease;
+     background-color: RGB(238, 238, 238);
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+     -webkit-transform:scale(1.025); /* Safari and Chrome */
+    -moz-transform:scale(1.025); /* Firefox */
+    -ms-transform:scale(1.025); /* IE 9 */
+    -o-transform:scale(1.025); /* Opera */
+     transform:scale(1.025);
+      outline: none !important;
+    box-shadow: none;
+     background-color: white;
+    outline: none !important;
+}
+
+.btnImg-primary {
+    outline: none !important;
+    box-shadow: none;
+     -webkit-transition: all 1s ease; /* Safari and Chrome */
+    -moz-transition: all 1s ease; /* Firefox */
+    -ms-transition: all 1s ease; /* IE 9 */
+    -o-transition: all 1s ease; /* Opera */
+    transition: all 1s ease;
+     background: rgba(1,1,1,0);
+}
+.btnImg-primary:hover, .btn-primary:focus, .btn-primary:active {
+    -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+    transform:scale(1.25);
+    outline: none !important;
+    box-shadow: none;
+    outline: none !important;
+    background: rgba(1,1,1,0);
+}
+
+.W {
+width: 100%;
+}
+
+.mT {
+margin-top: 0.75%;
+}
+
+
+div{
+    color: black;
+}
+.blackText{
+    color: black;
+    font-weight: bold;
+}
+
+.palFont{
+    font-family: Calibri;
+}
+
+.flewRow{
+    flex: 0 1 auto;
+}
+
+.tableRowHeight{
+   height: 14vmax;
+}
+
+.carousel-inner img {
+  margin: auto;
+}
+
+.rTable{
+    table-layout: fixed;
+width: 100%;
+}
+
+.imgFit{
+    height: 100%;
+    width: auto;
+}
+.imgCarFit{
+    height: auto;
+    width: 100%;
+}
+.wordFit{
+    overflow: scroll;
+}
+
+.carousel-inner > .item {
+    position: relative;
+    display: none;
+    -webkit-transition: 1000s ease-in-out left;
+    -moz-transition: 1000s ease-in-out left;
+    -o-transition: 1000s ease-in-out left;
+    transition: 1000s ease-in-out left;
+}
+
+.marginMainImage{
+    margin-right: 20px !important;
+}
+
+.marginMainImageTop {
+    margin-top: 5px !important;
+}
+.marginMainImageBottom {
+    margin-bottom: 5px !important;
+}
+
+
+
+.X{
+    height: auto;
+    max-width: 100%;
+}
+
+.fixedImg
+{
+    height: auto;
+    width: auto;
+}
+.fixedBox {
+    width: 100%; /* or whatever width you want. */
+    max-width: 100%; /* or whatever width you want. */
+}
+
+
+.img1 {
+  display: block;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+    object-position: center;
+}
+
+.img3 {
+  display: block;
+  width: inherit;
+  height: inherit;
+  object-fit: contain;
+    object-position: center;
+    overflow: hidden;
+}
+
+.img2 {
+  display: block;
+  max-width: 20vmax;
+  height: 100%;
+  object-fit: contain;
+    object-position: center;
+}
+.btnNextImg-primary {
+    outline: none !important;
+    box-shadow: none;
+   background: white;
+}
+.btnNextImg-primary:hover, .btnNextImg--primary:focus, .btnNextImg--primary:active {
+    outline: none !important;
+    box-shadow: none;
+    outline: none !important;
+    background: lightgray;
+}
+
+.marginMainImageNormal {
+    margin-right: 20px !important;
+    margin-left: 20px !important;
+}
+.marginProductLogo {
+    margin-right: 0.5vmax !important;
+    margin-left: 0.5vmax !important;
+}
+
+.frontBackground{
+    background: url("/images/Logo/logo1.png");
+}
+
+.titleText {
+    color: whitesmoke;
+    font-family: custom1;
+    text-shadow:
+    -1px -1px 0 TEAL,
+    1px -1px 0 TEAL,
+    -1px 1px 0 TEAL,
+    1px 1px 0 TEAL;
+
+}
+
+@font-face {
+font-family: "custom1";
+src: url("../fonts/BenguiatGothicStd-HeavyObl.otf");
+}
+
+.btnImg1-primary {
+    outline: none !important;
+    box-shadow: none;
+     -webkit-transition: all 1s ease; /* Safari and Chrome */
+    -moz-transition: all 1s ease; /* Firefox */
+    -ms-transition: all 1s ease; /* IE 9 */
+    -o-transition: all 1s ease; /* Opera */
+    transition: all 1s ease;
+     background: rgba(1,1,1,0);
+}
+.btnImg1-primary:hover, .btnImg1-primary:focus, .btnImg1-primary:active {
+    -webkit-transform:scale(1.05); /* Safari and Chrome */
+    -moz-transform:scale(1.05); /* Firefox */
+    -ms-transform:scale(1.05); /* IE 9 */
+    -o-transform:scale(1.05); /* Opera */
+    transform:scale(1.05);
+    outline: none !important;
+    box-shadow: none;
+    outline: none !important;
+    background: rgba(1,1,1,0);
+}
