@@ -39,6 +39,7 @@ var myVar133 = localStorage['ID_price'] || '0';
 var myVar33 = localStorage['ID_brand'] || '0';
 var myVardfafd =  localStorage['currentCollect'] || '0';
 var results = localStorage['results_index'] || '0';
+var resultsds = localStorage['ID_type'] || '0';
 var totalCollect = 3;
 var currentCollect = 0;
 var addPicsIndex = 0;
@@ -96,33 +97,6 @@ function setInput(){
 
 
 
-function dTable1() {
-    getData1();
-             $("#dynamic_table").ready(function () {
-                 //creates x images on same row
-                 function numTable(x, y) {
-                     var stringValue = '';
-                     for (var j = 0; j < y; ++j) {//rows
-                         stringValue += "<tr>";
-                         for (var k = 0; k < x; ++k) {//col
-                             var idString = (j*numRows + k).toString();
-                             stringValue += "<td>" +
-                                 "<div id = '"+idString+"' onclick=\"reply_click(this.id)\"  class=\"row-fluid rounded  btn-primary shadow-sm blackText \" style='background: white;align-items:center;border: 1px solid slategray;'>" +
-                                 "<div class=\"d-flex justify-content-center d-block \" style='align-items: center'><h6>Value</h6></div>"+
-                                 "<input tag = \"img\"  type=\"image\" src= \"images/Apple1.jpg\" class = \"d-block redColor btn img tableRowHeight rounded  img1\" onclick=\"linkProductPage();\"style='align-self: center'>" +
-                                 "<div class=\"d-flex justify-content-center\" style='text-align: center'>Info<br> Stuff <br> stuff</div>" +
-                                 "</div>" +
-                                 "</td>";
-                         }
-                         stringValue += "</td> ";
-                     }
-                     return stringValue;
-                 }
-                 $('#d_table').html(numTable(numRows, numCol));
-                  $('#tab_logic').append('<div id="d_table' + (1) + '"></div>');
-              });
-             console.log(dataArray.length);
-     }
 
 
 
@@ -334,6 +308,9 @@ function getData1() {
                         else if (key === "category") {
                             product.category = value;
                         }
+                        else if (key === "type") {
+                            product.type = value;
+                        }
 
                     });
                     dataArray.push(product);
@@ -365,6 +342,7 @@ function getData1() {
         localStorage['ID_cat'] = dataArray[itemIndexInLocalArray].category;
         localStorage['ID_price'] = dataArray[itemIndexInLocalArray].price;
         localStorage['ID_brand'] = dataArray[itemIndexInLocalArray].brand;
+         localStorage['ID_type'] = dataArray[itemIndexInLocalArray].type;
         localStorage['results_index'] = z_idx - 10;
        // alert(localStorage['results_index']);
 
@@ -768,6 +746,9 @@ function getRecommendData(x) {
                          else if (key === "category") {
                             product.category = value;
                         }
+                         else if (key === "type") {
+                            product.type = value;
+                        }
                     });
 
                     recArray.push(product)
@@ -811,6 +792,9 @@ function getSimData(x) {
                         }
                          else if (key === "category") {
                             product.category = value;
+                        }
+                         else if (key === "type") {
+                            product.type = value;
                         }
                     });
 
@@ -1016,6 +1000,7 @@ function reply_ProPage(clicked_id)
             localStorage['ID_cat'] = recArray[num].category;
             localStorage['ID_price'] = recArray[num].price;
             localStorage['ID_brand'] = recArray[num].brand;
+            localStorage['ID_type'] = recArray[num].type;
         }
         else{
             localStorage['prevID'] =  localStorage['ID'];
@@ -1025,6 +1010,7 @@ function reply_ProPage(clicked_id)
             localStorage['ID_cat'] = simArray[num].category;
             localStorage['ID_price'] = simArray[num].price;
             localStorage['ID_brand'] = simArray[num].brand;
+            localStorage['ID_type'] = recArray[num].type;
 
         }
 
