@@ -2,7 +2,7 @@ var dataArray = [];
 var z_idx = localStorage['results_index'] || '0';
 var numRows = 5;
 var numCol= 2;
-
+var numClicked = localStorage['numClicked'] || '0';
 var numRowsR = localStorage['numRowsR'] || '3';
 var numColR= localStorage['numColR'] || '2';
 var numRowsS = localStorage['numRowsS'] || '3';
@@ -374,7 +374,8 @@ function updateAveragePrice(x){
 
     if(totalCollect === currentCollect){
         localStorage['currentCollect'] = "NaN";
-        //alert("average = " + averagePrice/totalCollect);
+        localStorage['averagePrice'] = averagePrice/totalCollect;
+        alert("average = " +  localStorage['averagePrice']);
     }
    // alert(localStorage['currentCollect']);
 }
@@ -547,35 +548,35 @@ var colIdArray = [];
         numColR= 2;
         localStorage['numRowsR'] = '3';
         localStorage['numColR'] = '2';
-        console.log("1");
+        //console.log("1");
     }
     else if(colIdArray[5].style.height === "65%" && colIdArray[3].style.width === "65%"){
          numRowsR = 4;
         numColR= 2;
           localStorage['numRowsR'] = '4';
         localStorage['numColR'] = '2';
-        console.log("2");
+       // console.log("2");
     }
     else if(colIdArray[5].style.height === "65%" && colIdArray[3].style.width === "35%"){
         numRowsR = 2;
         numColR= 3;
           localStorage['numRowsR'] = '2';
         localStorage['numColR'] = '3';
-        console.log("3");
+        //console.log("3");
     }
     else if(colIdArray[5].style.height === "35%" && colIdArray[3].style.width === "65%"){
         numRowsR = 4;
         numColR= 1;
          localStorage['numRowsR'] = '4';
         localStorage['numColR'] = '1';
-        console.log("4");
+        //console.log("4");
     }
     else if((colIdArray[5].style.height === "35%" && colIdArray[3].style.width === "35%")){
         numRowsR = 2;
         numColR= 1;
         localStorage['numRowsR'] = '2';
         localStorage['numColR'] = '1';
-        console.log("5");
+       // console.log("5");
     }
     else if(colIdArray[5].style.height === "50%" && colIdArray[3].style.width === "35%"){
         numRowsR = 2;
@@ -596,14 +597,14 @@ var colIdArray = [];
         numColS= 2;
          localStorage['numRowsS'] = '3';
         localStorage['numColS'] = '2';
-        console.log("1");
+        //console.log("1");
     }
     else if(colIdArray[4].style.height === "65%" && colIdArray[3].style.width === "65%"){
          numRowsS = 4;
         numColS= 2;
             localStorage['numRowsS'] = '4';
         localStorage['numColS'] = '2';
-        console.log("2");
+       // console.log("2");
     }
     else if(colIdArray[4].style.height === "65%" && colIdArray[3].style.width === "35%"){
         numRowsS = 2;
@@ -617,7 +618,7 @@ var colIdArray = [];
         numColS= 1;
          localStorage['numRowsS'] = '4';
         localStorage['numColS'] = '1';
-        console.log("4");
+        //console.log("4");
     }
     else if((colIdArray[4].style.height === "35%" && colIdArray[3].style.width === "35%")){
         numRowsS = 2;
@@ -1020,8 +1021,28 @@ function reply_ProPage(clicked_id)
 
         }
 
+        if(localStorage['numClicked'] == undefined || localStorage['numClicked'] == 0){
+            numClicked = 0;
+            ++numClicked;
+            localStorage['numClicked'] = numClicked;
+        }
+        else{
+            numClicked = parseInt(localStorage['numClicked']);
+            ++numClicked;
+            localStorage['numClicked'] = numClicked;
+        }
 
-        location.reload();
+        alert(localStorage['numClicked']);
+
+        if(numClicked == 5){
+            localStorage['numClicked'] = 0;
+            location.reload();
+            colChange();
+        }
+        else{
+              location.reload();
+        }
+
         $.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
         //updateData(localStorage['prevID'],localStorage['ID']);
 
