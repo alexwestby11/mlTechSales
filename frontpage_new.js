@@ -582,7 +582,7 @@ var colIdArray = [];
         numRowsR = 2;
         numColR= 2;
         localStorage['numRowsR'] = '2';
-        localStorage['numColR'] = '1';
+        localStorage['numColR'] = '2';
     }
    else if (colIdArray[5].style.height === "50%" && colIdArray[3].style.width === "65%"){
        numRowsR = 4;
@@ -699,7 +699,7 @@ var colIdArray = [];
     getSimData(numColS*numRowsS);
     RTable();
     STable();
-    dImage()
+    dImage();
     printPriorityBox();
  /*
     var col1 = document.getElementById("flexCol1");
@@ -1032,10 +1032,11 @@ function reply_ProPage(clicked_id)
             localStorage['numClicked'] = numClicked;
         }
 
-        alert(localStorage['numClicked']);
+       // alert(localStorage['numClicked']);
 
         if(numClicked == 5){
             localStorage['numClicked'] = 0;
+
             location.reload();
             colChange();
         }
