@@ -355,10 +355,7 @@ function getRecommended(givenItem,func)
                 func(relatedProducts,relatedImages);
             },
             error: function (error) {
-                console.log(error);
-               // alert("no good "+JSON.stringify(error));
-                //jason = JSON.parse(data);
-                //console.log(jason);
+                //console.log(error);
             }
         });
     })

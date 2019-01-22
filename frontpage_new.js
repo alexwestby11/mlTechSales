@@ -9,13 +9,6 @@ var numRowsS = localStorage['numRowsS'] || '3';
 var numColS= localStorage['numColS'] || '2';
 var numRowsI = localStorage['numRowsI'] || '2';
 var numColI = localStorage['numColI'] || '1';
-/*
-var numRowsR = 3;
-var numColR= 2;
-var numRowsS = 3;
-var numColS= 2;
-var numRowsI = 2;
-var numColI = 1;*/
 var itemArray = [0,0,0,0,0,0,0,0,0,0];
 var recArray = [];
 var simArray = [];
@@ -333,6 +326,9 @@ function getData1() {
     });
 }
 
+
+
+///Only works on results page
  function reply_click(clicked_id)
 {
         //gets item number
@@ -386,22 +382,22 @@ function reply_mouseover(clicked_id)
 {
             if(clicked_id === "box1"){
                 //console.log("ibox1");
-                 Timer1 = setInterval(myCounter1, 500);
+                 Timer1 = setInterval(myCounter1, 100);
                  localStorage['Timer1'] = Timer1;
             }
             else if(clicked_id === "box2"){
                // console.log("ibox2");
-                Timer2 = setInterval(myCounter2, 500);
+                Timer2 = setInterval(myCounter2, 100);
                 localStorage['Timer2'] = Timer2;
             }
             else if(clicked_id === "box3"){
                 //console.log("ibox3");
-                Timer3 = setInterval(myCounter3, 500);
+                Timer3 = setInterval(myCounter3, 100);
                 localStorage['Timer3'] = Timer3;
             }
             else if(clicked_id === "box4") {
                 //console.log("ibox4");
-                Timer4 = setInterval(myCounter4, 500);
+                Timer4 = setInterval(myCounter4, 100);
                 localStorage['Timer4'] = Timer4;
             }
 
@@ -437,27 +433,7 @@ function reply_mouseover(clicked_id)
             }
 
  }
- function reply_mousemove(clicked_id)
-{
-            if(clicked_id === "box1"){
 
-                        Timer1 = setInterval(myCounter1, 1000);
-
-            }
-            else if(clicked_id === "box2"){
-               // console.log("ibox2");
-                Timer2 = setInterval(myCounter2, 1000);
-            }
-            else if(clicked_id === "box3"){
-                //console.log("ibox3");
-                Timer3 = setInterval(myCounter3, 1000);
-            }
-            else if(clicked_id === "box4") {
-                //console.log("ibox4");
-                Timer4 = setInterval(myCounter4, 1000);
-            }
-
- }
  function myCounter1() {++c1;}
 function myCounter2() {++c2;}
 function myCounter3() {++c3;}
@@ -468,8 +444,6 @@ function printPriorityBox(){
     }
 }
  function colChange(){
-    console.log("up");
-    var maxValue = Math.max(priorityBox);
     var total = 0;
     for(var i = 0; i < priorityBox.length; ++i){
         total += priorityBox[i];
@@ -517,7 +491,7 @@ var colIdArray = [];
         colIdArray[2].style.height = "60%";
     }
 
-    if((Number(priorityBox[2]) - Number(priorityBox[3])) <= 50) {
+    if(Math.abs(Number(priorityBox[2]) - Number(priorityBox[3])) >= 10) {
         colIdArray[4].style.height = "50%";
         colIdArray[5].style.height = "50%";
 
@@ -526,7 +500,7 @@ var colIdArray = [];
 
 
     var num = Math.abs(priorityBox[2] - priorityBox[3]);
-    if(num <= 50) {
+    if(num >= 10) {
         colIdArray[4].style.height = "50%";
         colIdArray[5].style.height = "50%";
 
@@ -701,15 +675,9 @@ var colIdArray = [];
     STable();
     dImage();
     printPriorityBox();
- /*
-    var col1 = document.getElementById("flexCol1");
-    col1.style.width = (percentCol1 + '%').toString();
-     var box1 = document.getElementById("box1");
-    col1.style.height = (percentCol1 + '%').toString();
-*/
-     //console.log("Col 1 = " + percentCol1);
-   // console.log("Col 2 = " + percentCol2);
-    //console.log("Number = " + Number(priorityBox[2]));
+    alert(Timer1);
+    alert(Timer2);
+    alert(Timer3);
 }
 
 
@@ -1045,9 +1013,6 @@ function reply_ProPage(clicked_id)
         }
 
         $.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
-        //updateData(localStorage['prevID'],localStorage['ID']);
-
-
 }
 
 function replyMainImage(clicked_id)
