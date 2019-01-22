@@ -2,7 +2,8 @@ var dataArray = [];
 var z_idx = localStorage['results_index'] || '0';
 var numRows = 5;
 var numCol= 2;
-
+var lowerBoundPrice=0;
+var upperBoundPrice=0;
 var numRowsR = localStorage['numRowsR'] || '3';
 var numColR= localStorage['numColR'] || '2';
 var numRowsS = localStorage['numRowsS'] || '3';
@@ -16,6 +17,7 @@ var numRowsS = 3;
 var numColS= 2;
 var numRowsI = 2;
 var numColI = 1;*/
+var avgPriceArray=[];
 var itemArray = [0,0,0,0,0,0,0,0,0,0];
 var recArray = [];
 var simArray = [];
@@ -362,6 +364,7 @@ function updateAveragePrice(x){
         currentCollect =  Number(localStorage['currentCollect']);
         ++currentCollect;
         localStorage['currentCollect'] = currentCollect;
+        //alert('average price:'+ localStorage['averagePrice'])
     }
     else{
         averagePrice = Number(localStorage['averagePrice']);
@@ -370,14 +373,24 @@ function updateAveragePrice(x){
         currentCollect =  Number(localStorage['currentCollect']);
         ++currentCollect;
         localStorage['currentCollect'] = currentCollect;
+       // alert('average price:'+ localStorage['averagePrice'])
+        avgPriceArray.push(x)
+
+
     }
 
     if(totalCollect === currentCollect){
+
         localStorage['currentCollect'] = "NaN";
+        alert('average price:'+ averagePrice/totalCollect)
         //alert("average = " + averagePrice/totalCollect);
     }
    // alert(localStorage['currentCollect']);
 }
+
+
+
+
 
 
 
@@ -1074,5 +1087,26 @@ function replyMainButtons(clicked_id)
       this.category = '';
 
   }
+}
+
+function averageArray(arrayGiven)
+{
+    var sum=0;
+    for(var i=0; i<=arrayGiven.length-1;i++)
+    {
+        sum+=arrayGiven[i];
+    }
+    return sum/arrayGiven.length
+}
+
+function stdDevArray(arrayGiven)
+{
+    avg=averageArray(arrayGiven)
+    squares=0;
+    for(var i=0; i<=arrayGiven.length-1;i++)
+    {
+        squares+=Math.pow((arrayGiven[i]-avg),2)
+    }
+    return squares/(arrayGiven.length-1);
 }
 
