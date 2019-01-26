@@ -1,7 +1,17 @@
+//Arrays
 var dataArray = [];
-var z_idx = localStorage['results_index'] || '0';
+var recArray = [];
+var simArray = [];
+var itemArray = [0,0,0,0,0,0,0,0,0,0];
+var priorityBox = [0,0,0,0];
+var addPicsIndexArray = [0,1,2,3,4,5,6,7];
+
+//Size of results Page
 var numRows = 5;
 var numCol= 2;
+
+
+var z_idx = localStorage['results_index'] || '0';
 var numClicked = localStorage['numClicked'] || '0';
 var numRowsR = localStorage['numRowsR'] || '3';
 var numColR= localStorage['numColR'] || '2';
@@ -9,17 +19,12 @@ var numRowsS = localStorage['numRowsS'] || '3';
 var numColS= localStorage['numColS'] || '2';
 var numRowsI = localStorage['numRowsI'] || '2';
 var numColI = localStorage['numColI'] || '1';
-var itemArray = [0,0,0,0,0,0,0,0,0,0];
-var recArray = [];
-var simArray = [];
-var priorityBox = [0,0,0,0];
+
+
+
 var myVar = localStorage['ID'] || '10';
 var myVar1 = localStorage['ID_name'] || '0';
 var myVar2 = localStorage['ID_pic'] || '0';
-var myVar4 = localStorage['ID_pic1'] || '0';
-var myVar5 = localStorage['ID_pic2'] || '0';
-var myVar6 = localStorage['ID_pic3'] || '0';
-var myVar7 = localStorage['ID_pic4'] || '0';
 var myVar3 = localStorage['ID_cat'] || '0';
 var myVar8 = localStorage['searchRec'] || '0';
 var myVar9 = localStorage['searchCap'] || '0';
@@ -34,11 +39,13 @@ var myVardfafd =  localStorage['currentCollect'] || '0';
 var results = localStorage['results_index'] || '0';
 var resultsds = localStorage['ID_type'] || '0';
 
+
+
 var totalCollect = 3;
 var currentCollect = 0;
 var addPicsIndex = 0;
 var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.jpg','images/Logo/logo1.png','images/Logo/logo2.png','images/Logo/logo3.png','images/Logo/logo4.png','images/Logo/logo5.png','images/Logo/logo5.png'];
-var addPicsIndexArray = [0,1,2,3,4,5,6,7];
+
 var isResults = 1;
 var c1 = 0;
 var c2 = 0;
@@ -48,9 +55,9 @@ var Timer1 = 0;
 var Timer2 = 0;
 var Timer3 = 0;
 var Timer4 = 0;
+var timerArray = [Timer1,Timer2,Timer3,Timer4];
 
-
-
+//checks Input
 function setInput(){
     var tempValue = '';
 
@@ -58,9 +65,6 @@ function setInput(){
     var value = document.getElementById("searchbar").value;
     localStorage['value'] = value;
     var temp  = value.replace(/\s/g, '');
-   // var searchBy = document.getElementById("searchBy").value;
-   //  var min = document.getElementById("minPrice").value;
-    //  var max = document.getElementById("maxPrice").value;
     var letters = /^[0-9a-zA-Z]+$/;
     if(temp.match(letters)) {
         //alert('Your registration number have accepted : you can try another');
@@ -83,8 +87,6 @@ function setInput(){
     }
 
     localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue;
-
-   // alert(localStorage['searchInput']);
     z_idx = 0;
     localStorage['results_index'] = z_idx;
 }
@@ -133,10 +135,8 @@ function dTable() {
 {
     location.href = "ProductPage_new.html";
 }
- function idValue(j,k){
-    return (j*numRows + k).toString();
-}
- function changeImage(x,y,z){
+
+ function changeImage(x,y){
     var dx =  Number(localStorage['results_index']);
 
       for (var j = 0; j < y; ++j) {//rows
@@ -170,9 +170,11 @@ function dTable() {
           localStorage['results_index'] = z_idx;
       }
 
-      console.log(z_idx);
+     // console.log(z_idx);
 }
- function nextImage(x,y,z){
+
+
+ function nextImage(x,y){
     var dx = Number(localStorage['results_index']) ;
      if(dx < dataArray.length) {
          for (var j = 0; j < y; ++j) {//rows
@@ -251,29 +253,14 @@ function dTable() {
 
 function nextButton(){
     nextImage(numRows,numCol,z_idx);
-  //console.log(z_idx);
 }
 
  function prevButton(){
     prevImage(numRows,numCol,z_idx);
-//console.log(z_idx);
-}
-
-function setImage(x,y){
-    return dataArray[x*y].img_src;
-}
-
- function setName(x,y){
-    return dataArray[x*y].name;
-}
-
-function productPage(){
-     window.location.href = 'productPage.html';
 }
 
 function linkResultsPage() {
   window.location.href = 'resultsPage_new.html';
-
 }
 
 function getData1() {
@@ -381,52 +368,40 @@ function updateAveragePrice(x){
 function reply_mouseover(clicked_id)
 {
             if(clicked_id === "box1"){
-                //console.log("ibox1");
                  Timer1 = setInterval(myCounter1, 100);
                  localStorage['Timer1'] = Timer1;
             }
             else if(clicked_id === "box2"){
-               // console.log("ibox2");
                 Timer2 = setInterval(myCounter2, 100);
                 localStorage['Timer2'] = Timer2;
             }
             else if(clicked_id === "box3"){
-                //console.log("ibox3");
                 Timer3 = setInterval(myCounter3, 100);
                 localStorage['Timer3'] = Timer3;
             }
             else if(clicked_id === "box4") {
-                //console.log("ibox4");
                 Timer4 = setInterval(myCounter4, 100);
                 localStorage['Timer4'] = Timer4;
             }
-
  }
+
  function reply_mouseOut(clicked_id) {
             if(clicked_id === "box1"){
-                //console.log(c1);
-                //console.log("lbox1");
                 priorityBox[0] = c1;
                  localStorage['c1'] = c1;
                  clearTimeout(Timer1);
             }
             else if(clicked_id === "box2"){
-                //console.log(c2);
-               // console.log("lbox2");
                 priorityBox[1] = c2;
                 localStorage['c2'] = c2;
                 clearTimeout(Timer2);
             }
             else if(clicked_id === "box3"){
-                //console.log(c3);
-                //console.log("lbox3");
                  priorityBox[2] = c3;
                  localStorage['c3'] = c3;
                 clearTimeout(Timer3);
             }
             else if(clicked_id === "box4"){
-                //console.log(c4);
-                //console.log("lbox4");
                 priorityBox[3] = c4;
                 localStorage['c4'] = c4;
                 clearTimeout(Timer4);
@@ -443,6 +418,7 @@ function printPriorityBox(){
         console.log("Box " + (i+1).toString() + " = " + priorityBox[i].toString());
     }
 }
+
  function colChange(){
     var total = 0;
     for(var i = 0; i < priorityBox.length; ++i){
@@ -491,16 +467,17 @@ var colIdArray = [];
         colIdArray[2].style.height = "60%";
     }
 
-    if(Math.abs(Number(priorityBox[2]) - Number(priorityBox[3])) >= 10) {
-        colIdArray[4].style.height = "50%";
-        colIdArray[5].style.height = "50%";
+    //if(Math.abs(Number(priorityBox[2]) - Number(priorityBox[3])) >= 10) {
+    //    colIdArray[4].style.height = "50%";
+      //  colIdArray[5].style.height = "50%";
 
-    }
+    //}
 
 
 
-    var num = Math.abs(priorityBox[2] - priorityBox[3]);
-    if(num >= 10) {
+   // var num = Math.abs(priorityBox[2] - priorityBox[3]);
+    //alert(num);
+    if(priorityBox[2] === priorityBox[3]) {
         colIdArray[4].style.height = "50%";
         colIdArray[5].style.height = "50%";
 
@@ -515,8 +492,6 @@ var colIdArray = [];
         colIdArray[5].style.height = "65%";
     }
 
-
-    //Compatoable items
     if(colIdArray[5].style.height === "50%" && colIdArray[3].style.width === "50%"){
         numRowsR = 3;
         numColR= 2;
@@ -675,9 +650,9 @@ var colIdArray = [];
     STable();
     dImage();
     printPriorityBox();
-    alert(Timer1);
-    alert(Timer2);
-    alert(Timer3);
+    alert("Timer1 = " + Timer1 + "\n" +"Timer2 = " + Timer2 + "\n" + "Timer3 = " + Timer3 + "\n" + "Timer4 = " + Timer4 + "\n");
+
+
 }
 
 
@@ -863,7 +838,6 @@ function dImage() {
                          stringValue += "</div>";
                      }
 
-                     //middle image
                         stringValue +=" <div class = \"d-flex flex-column vertical-align justify-content-center\" style='max-width:80%; height:100%;'>" +
                         "<div class = \"d-flex d-block\"  style='width:100%; height:100%;'>";
                             if(x*y === 0) {
@@ -1002,7 +976,7 @@ function reply_ProPage(clicked_id)
 
        // alert(localStorage['numClicked']);
 
-        if(numClicked == 5){
+        if(numClicked === 5){
             localStorage['numClicked'] = 0;
 
             location.reload();
@@ -1047,6 +1021,22 @@ function replyMainButtons(clicked_id)
         }
         document.getElementById("mainImg0").src = addPicsArray[addPicsIndex];
 
+}
+
+function initialBoxSize(){
+
+   (document.getElementById("flexCol1").style.height =  localStorage['colIdArray[0]H'] || '100%');
+    (document.getElementById("flexCol1").style.width =  localStorage['colIdArray[0]W'] || '100%');
+    (document.getElementById("flex1").style.height =  localStorage['colIdArray[1]H'] || '100%');
+    (document.getElementById("flex1").style.width =  localStorage['colIdArray[1]W'] || '100%');
+    (document.getElementById("flex2").style.height =  localStorage['colIdArray[2]H'] || '100%');
+    (document.getElementById("flex2").style.width =  localStorage['colIdArray[2]W'] || '100%');
+    (document.getElementById("flexCol2").style.height =  localStorage['colIdArray[3]H'] || '100%');
+    (document.getElementById("flexCol2").style.width =  localStorage['colIdArray[3]W'] || '100%');
+    (document.getElementById("flex3").style.height =  localStorage['colIdArray[4]H'] || '100%');
+    (document.getElementById("flex3").style.width =  localStorage['colIdArray[4]W'] || '100%');
+    (document.getElementById("flex4").style.height =  localStorage['colIdArray[5]H'] || '100%');
+    (document.getElementById("flex4").style.width =  localStorage['colIdArray[5]W'] || '100%');
 }
 
 
