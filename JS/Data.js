@@ -1,15 +1,4 @@
-class Product {
-  constructor() {
-      this.id = '';
-      this.type = '';
-      this.img_src = '';
-      this.name = '';
-      this.brand = '';
-      this.price = '';
-      this.category = '';
 
-  }
-}
 
 function getData1() {
     $(document).ready(function () {
