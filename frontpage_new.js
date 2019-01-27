@@ -997,10 +997,11 @@ function reply_ProPage(clicked_id)
             localStorage['ID_price'] = simArray[num].price;
             localStorage['ID_brand'] = simArray[num].brand;
             localStorage['ID_type'] = simArray[num].type;
-
-
         }
 
+        avgPriceArray = (JSON.parse(localStorage.getItem("avgPriceArray"))).map(Number);
+        avgPriceArray.push(localStorage['ID_price'])
+        localStorage.setItem("avgPriceArray", JSON.stringify(avgPriceArray));
 
         location.reload();
         $.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
