@@ -62,9 +62,14 @@ var flag = localStorage['flag'] || '0';
 
 function initialSet(){
         console.log(flag);
-    if(flag === '0') {
+   /// if(flag === '0') {
         var cBox = [];
         var tempArray = ["Cables", "Desktop", "Gaming", "Media", "Mobile Computer", "Notebooks", "Photography", "Storage Medium"];
+
+        for (var i = 0; i < tempArray.length; ++i) {
+            cBox[tempArray[i]] = new Box();
+        }
+
 
         for (var i = 0; i < tempArray.length; ++i) {
             cBox[tempArray[i]] = new Box();
@@ -75,11 +80,8 @@ function initialSet(){
 
 
        // console.log("here1");
-    }
-    else{
-           value = JSON.parse(localStorage.getItem("cBox")).map(Number);
-                 console.log(value);
-    }
+   // }
+
 
     flag = '1';
     localStorage['flag'] = '1';
