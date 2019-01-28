@@ -56,33 +56,27 @@ var Timer1 = 0;
 var Timer2 = 0;
 var Timer3 = 0;
 var Timer4 = 0;
-var value;
+var catArray = [];
 var flag = localStorage['flag'] || '0';
 
 
 function initialSet(){
-        console.log(flag);
-   /// if(flag === '0') {
-        var cBox = [];
-        var tempArray = ["Cables", "Desktop", "Gaming", "Media", "Mobile Computer", "Notebooks", "Photography", "Storage Medium"];
+        if(flag === '0') {
+            var cBox = [];
+            var categorys = ["Cables", "Desktop", "Gaming", "Media", "Mobile Computer", "Notebooks", "Photography", "Storage Medium"];
+            var tempArray = []
+            for(var i = 0; i < categorys.length; ++i){
+                tempArray.push(categorys[i]);
+                tempArray.push(0);
+                tempArray.push(0);
+                tempArray.push(0);
+                tempArray.push(0);
 
-        for (var i = 0; i < tempArray.length; ++i) {
-            cBox[tempArray[i]] = new Box();
+            }
+            localStorage.category = JSON.stringify(tempArray);
         }
-
-
-        for (var i = 0; i < tempArray.length; ++i) {
-            cBox[tempArray[i]] = new Box();
-        }
-        localStorage.setItem("cBox",JSON.stringify(cBox));
-        console.log(cBox["Cables"].box1);
-        //cBox = JSON.parse(localStorage.getItem("cBox")).map(Number);
-
-
-       // console.log("here1");
-   // }
-
-
+        catArray = JSON.parse(localStorage.category);
+        alert(catArray);
     flag = '1';
     localStorage['flag'] = '1';
 }
@@ -100,13 +94,21 @@ class Product {
   }
 }
 
-class Box {
-  constructor() {
-      this.box1 = 0;
-      this.box2 = 0;
-      this.box3 = 0;
-      this.box4 = 0;
-  }
+function updateBoxSize(cat){
+
+   for(var i = 0; i < catArray.length; i += 5){
+       if(catArray[i] === cat){
+           catArray[i+1] = box1;
+           catArray[i+2] = box2;
+           catArray[i+3] = box3;
+           catArray[i+4] = box4;
+           break;
+       }
+
+   }
+    localStorage.category = JSON.stringify(catArray);
+
+
 }
 
 //checks Input
@@ -296,6 +298,7 @@ function linkResultsPage() {
         localStorage['ID_name'] = dataArray[itemIndexInLocalArray].name;
         localStorage['ID_pic'] = dataArray[itemIndexInLocalArray].img_src;
         localStorage['ID_cat'] = dataArray[itemIndexInLocalArray].category;
+        localStorage['prev_cat'] = dataArray[itemIndexInLocalArray].category;
         localStorage['ID_price'] = dataArray[itemIndexInLocalArray].price;
         localStorage['ID_brand'] = dataArray[itemIndexInLocalArray].brand;
          localStorage['ID_type'] = dataArray[itemIndexInLocalArray].type;

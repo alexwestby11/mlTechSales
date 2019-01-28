@@ -387,7 +387,9 @@ function reply_ProPage(clicked_id)
 
         if(numClicked === 5){
             localStorage['numClicked'] = 0;
+            updateBoxSize(localStorage['prev_cat'])
             colChange();
+            localStorage['prev_cat'] = localStorage['ID_cat'];
             localStorage['c1'] = '0';
             localStorage['c2'] = '0';
             localStorage['c3'] = '0';
