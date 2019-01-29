@@ -3,7 +3,7 @@ var dataArray = [];
 var recArray = [];
 var simArray = [];
 var itemArray = [0,0,0,0,0,0,0,0,0,0];
-var box1 = localStorage['c1'] || '0';
+var box1
 var box2 = localStorage['c2'] || '0';
 var box3 = localStorage['c3'] || '0';
 var box4 = localStorage['c4'] || '0';
@@ -60,6 +60,20 @@ var catArray = [];
 var flag = localStorage['flag'] || '0';
 
 
+function initilizeBoxes(cat){
+    for(var i = 0; i < catArray.length; i += 5){
+       if(catArray[i] === cat){
+          var box1 = catArray[i+1];
+          var box2 = catArray[i+2];
+          var box3 = catArray[i+3];
+          var box4 = catArray[i+4];
+          priorityBox = [parseInt(box1),parseInt(box2),parseInt(box3),parseInt(box4)];
+          break;
+       }
+   }
+
+}
+
 function initialSet(){
         if(flag === '0') {
             var cBox = [];
@@ -94,21 +108,17 @@ class Product {
   }
 }
 
-function updateBoxSize(cat){
-
+function updateBoxValue(cat){
    for(var i = 0; i < catArray.length; i += 5){
        if(catArray[i] === cat){
-           catArray[i+1] = box1;
-           catArray[i+2] = box2;
-           catArray[i+3] = box3;
-           catArray[i+4] = box4;
+           catArray[i+1] = parseInt(catArray[i+1]) + parseInt(box1);
+           catArray[i+2] = parseInt(catArray[i+2]) + parseInt(box1);
+           catArray[i+3] = parseInt(catArray[i+3]) + parseInt(box1);
+           catArray[i+4] = parseInt(catArray[i+4]) + parseInt(box1);
+           localStorage.category = JSON.stringify(catArray);
            break;
        }
-
    }
-    localStorage.category = JSON.stringify(catArray);
-
-
 }
 
 //checks Input
@@ -301,11 +311,12 @@ function linkResultsPage() {
         localStorage['prev_cat'] = dataArray[itemIndexInLocalArray].category;
         localStorage['ID_price'] = dataArray[itemIndexInLocalArray].price;
         localStorage['ID_brand'] = dataArray[itemIndexInLocalArray].brand;
-         localStorage['ID_type'] = dataArray[itemIndexInLocalArray].type;
+        localStorage['ID_type'] = dataArray[itemIndexInLocalArray].type;
         localStorage['results_index'] = z_idx - 10;
-       // alert(localStorage['results_index']);
 
         updateAveragePrice(dataArray[itemIndexInLocalArray].price);
+        initialBoxSize(localStorage['ID_cat']);
+
 }
 
 
@@ -334,7 +345,7 @@ function updateAveragePrice(x){
         localStorage['averagePrice'] = averagePrice/totalCollect;
         alert("average = " +  localStorage['averagePrice']);
     }
-   // alert(localStorage['currentCollect']);
+
 }
 
 function replyMainImage(clicked_id)

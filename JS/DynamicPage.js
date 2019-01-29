@@ -46,6 +46,7 @@ function reply_mouseOver(clicked_id)
 function myCounter2() {++c2;}
 function myCounter3() {++c3;}
 function myCounter4() {++c4;}
+
 function printPriorityBox(){
     for(var i = 0; i < priorityBox.length; ++i){
         console.log("Box " + (i+1).toString() + " = " + priorityBox[i].toString());
@@ -77,7 +78,7 @@ var colIdArray = [];
     colIdArray.push(document.getElementById("flex3"));
     colIdArray.push(document.getElementById("flex4"));
 
-    alert(perCol[0] + "\n" + perCol[1]);
+    //+-alert(perCol[0] + "\n" + perCol[1]);
     //if all columns the same
     if(perCol[0] === perCol[1]){
         colIdArray[0].style.width = "50%";
@@ -334,8 +335,8 @@ function reply_ProPage(clicked_id)
 {
     //alert(clicked_id);
         var bool = 0;
-        var num;
         var value = clicked_id;
+        localStorage['prev_cat'] = localStorage['ID_cat'];
         //check if sim/comp product
         var num = '';
         for(var i = 3; i < clicked_id.length; ++i){
@@ -382,12 +383,12 @@ function reply_ProPage(clicked_id)
             ++numClicked;
             localStorage['numClicked'] = numClicked;
         }
-
+   initialBoxSize(localStorage['ID_cat']);
        // alert(localStorage['numClicked']);
 
         if(numClicked === 5){
             localStorage['numClicked'] = 0;
-            updateBoxSize(localStorage['prev_cat'])
+            updateBoxSize(localStorage['prev_cat']);
             colChange();
             localStorage['prev_cat'] = localStorage['ID_cat'];
             localStorage['c1'] = '0';
