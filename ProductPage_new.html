@@ -1,4 +1,12 @@
 
+<!-- custom JS functions -->
+<script src="frontpage_new.js"></script>
+<script src="productPage.js"></script>
+<script src="JS/Data.js"></script>
+<script src="JS/DynamicTables.js"></script>
+<script src="JS/DynamicPage.js"></script>
+
+
 <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
@@ -94,43 +102,12 @@
         <!--Coloumn 1-->
        <div id = "flexCol1" class="d-flex flex-column" style='width:50%; height:100%;'>
              <div id = "flex1" class="d-flex"  style='width:100%; height:50%;'>
-                <div id = "box1" onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseover(this.id)" class="col shadow-sm rounded margin1 " style= 'border: 1px solid gainsboro;height:98%;' >
-                        <!--main image-->
-<!--
-                        <div class = "d-flex flex-row vertical-align justify-content-around" >
-                            <div class = "d-flex flex-column" >
-                             <div class = "col-fluid justify-content-center snowColor rounded btnImg-primary"  style='height:40%; padding: 30px;'>
-                             <img id = "carImfg01" src="images/searchLogo.jpg" class= " shadow rounded imgFit mx-auto d-block" alt= "Responsive image">
-                             </div>
-                                <div class = "col-fluid justify-content-center snowColor rounded btnImg-primary"  style=' height:40%; padding: 30px;'>
-                             <img id = "carImg02" src="images/searchLogo.jpg" class= " shadow rounded imgFit mx-auto d-block" alt= "Responsive image">
-                             </div>
-                            </div>
+                <div id = "box1" onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseOver(this.id)" class="col shadow-sm rounded margin1 " style= 'border: 1px solid gainsboro;height:98%;' >
 
-                                 <!--Main Image
-                               <div class = "d-flex flex-column" >
-                                 <div class = "col-fluid justify-content-center snowColor rounded"  style='width:auto; height:auto;'>
-                                 <img id = "carImg07" src="images/searchLogo.jpg" class= " img rounded creamColor shadow img1 d-block" alt= "Responsive image">
-                                 </div>
-                               </div>
-                             <!--Main Image End
-
-                            <div class = "d-flex flex-column" >
-                             <div class = "col-fluid justify-content-center snowColor rounded btnImg-primary"  style=' height:40%; padding: 30px;'>
-                             <img id = "carImg03" src="images/searchLogo.jpg" class= " shadow rounded imgFit mx-auto d-block" alt= "Responsive image">
-                             </div>
-                                <div class = "col-fluid justify-content-center snowColor rounded btnImg-primary"  style=' height:40%; padding: 30px;'>
-                             <img id = "carImg04" src="images/searchLogo.jpg" class= " shadow rounded imgFit mx-auto d-block" alt= "Responsive image">
-                             </div>
-                            </div>
-
-                        </div>
-
-                    <!-->
                 </div>
           </div>
            <div id = "flex2" class="d-flex" style='width:100%; height:50%;'>
-             <div id = "box2" onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseover(this.id)"  class="col shadow-sm rounded margin1" style= "border: 1px solid gainsboro;height:97%"; >
+             <div id = "box2" onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseOver(this.id)"  class="col shadow-sm rounded margin1" style= "border: 1px solid gainsboro;height:97%"; >
 
 
                  <!--Buttons-->
@@ -176,28 +153,18 @@
         <!--Coloumn 2-->
         <div id = "flexCol2" class="d-flex flex-column" style='width:50%; height:100%;'>
              <div id = "flex3" class="d-flex" style='width:100%; height:50%;'>
-                <div id = "box3"  onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseover(this.id)"  class="col shadow-sm  margin1 marginRL" style= "border: 1px solid gainsboro;height:97%"; >
+                <div id = "box3"  onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseOver(this.id)"  class="col shadow-sm  margin1 marginRL" style= "border: 1px solid gainsboro;height:97%"; >
               </div>
           </div>
            <div  id = "flex4" class="d-flex" style='width:100%; height:50%;'>
-             <div id = "box4" onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseover(this.id)" class="col shadow-sm rounded margin1 marginRL" style= "border: 1px solid gainsboro;height:97%";>
+             <div id = "box4" onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseOver(this.id)" class="col shadow-sm rounded margin1 marginRL" style= "border: 1px solid gainsboro;height:97%";>
               </div>
           </div>
        </div>
        </div>
     <script>
-    (document.getElementById("flexCol1").style.height =  localStorage['colIdArray[0]H'] || '100%');
-    (document.getElementById("flexCol1").style.width =  localStorage['colIdArray[0]W'] || '100%');
-    (document.getElementById("flex1").style.height =  localStorage['colIdArray[1]H'] || '100%');
-    (document.getElementById("flex1").style.width =  localStorage['colIdArray[1]W'] || '100%');
-    (document.getElementById("flex2").style.height =  localStorage['colIdArray[2]H'] || '100%');
-    (document.getElementById("flex2").style.width =  localStorage['colIdArray[2]W'] || '100%');
-    (document.getElementById("flexCol2").style.height =  localStorage['colIdArray[3]H'] || '100%');
-    (document.getElementById("flexCol2").style.width =  localStorage['colIdArray[3]W'] || '100%');
-    (document.getElementById("flex3").style.height =  localStorage['colIdArray[4]H'] || '100%');
-    (document.getElementById("flex3").style.width =  localStorage['colIdArray[4]W'] || '100%');
-    (document.getElementById("flex4").style.height =  localStorage['colIdArray[5]H'] || '100%');
-    (document.getElementById("flex4").style.width =  localStorage['colIdArray[5]W'] || '100%');
+        initialBoxSize();
+        initialSet();
     getRetailers();
 </script>
 </div>

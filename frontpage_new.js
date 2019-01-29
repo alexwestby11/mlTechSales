@@ -1,15 +1,35 @@
+//Arrays
 var dataArray = [];
-var z_idx = localStorage['results_index'] || '0';
+var recArray = [];
+var simArray = [];
+var itemArray = [0,0,0,0,0,0,0,0,0,0];
+var box1
+var box2 = localStorage['c2'] || '0';
+var box3 = localStorage['c3'] || '0';
+var box4 = localStorage['c4'] || '0';
+
+var priorityBox = [parseInt(box1),parseInt(box2),parseInt(box3),parseInt(box4)];
+var addPicsIndexArray = [0,1,2,3,4,5,6,7];
+
+//Size of results Page
 var numRows = 5;
 var numCol= 2;
+
 var lowerBoundPrice=0;
 var upperBoundPrice=0;
+
+
+
+var z_idx = localStorage['results_index'] || '0';
+var numClicked = localStorage['numClicked'] || '0';
+
 var numRowsR = localStorage['numRowsR'] || '3';
 var numColR= localStorage['numColR'] || '2';
 var numRowsS = localStorage['numRowsS'] || '3';
 var numColS= localStorage['numColS'] || '2';
 var numRowsI = localStorage['numRowsI'] || '2';
 var numColI = localStorage['numColI'] || '1';
+
 /*
 var numRowsR = 3;
 var numColR= 2;
@@ -23,13 +43,12 @@ var itemArray = [0,0,0,0,0,0,0,0,0,0];
 var recArray = [];
 var simArray = [];
 var priorityBox = [0,0,0,0];
+
+
+
 var myVar = localStorage['ID'] || '10';
 var myVar1 = localStorage['ID_name'] || '0';
 var myVar2 = localStorage['ID_pic'] || '0';
-var myVar4 = localStorage['ID_pic1'] || '0';
-var myVar5 = localStorage['ID_pic2'] || '0';
-var myVar6 = localStorage['ID_pic3'] || '0';
-var myVar7 = localStorage['ID_pic4'] || '0';
 var myVar3 = localStorage['ID_cat'] || '0';
 var myVar8 = localStorage['searchRec'] || '0';
 var myVar9 = localStorage['searchCap'] || '0';
@@ -48,7 +67,7 @@ var totalCollect = 3;
 var currentCollect = 0;
 var addPicsIndex = 0;
 var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.jpg','images/Logo/logo1.png','images/Logo/logo2.png','images/Logo/logo3.png','images/Logo/logo4.png','images/Logo/logo5.png','images/Logo/logo5.png'];
-var addPicsIndexArray = [0,1,2,3,4,5,6,7];
+
 var isResults = 1;
 var c1 = 0;
 var c2 = 0;
@@ -58,9 +77,72 @@ var Timer1 = 0;
 var Timer2 = 0;
 var Timer3 = 0;
 var Timer4 = 0;
+var catArray = [];
+var flag = localStorage['flag'] || '0';
 
 
+function initilizeBoxes(cat){
+    for(var i = 0; i < catArray.length; i += 5){
+       if(catArray[i] === cat){
+          var box1 = catArray[i+1];
+          var box2 = catArray[i+2];
+          var box3 = catArray[i+3];
+          var box4 = catArray[i+4];
+          priorityBox = [parseInt(box1),parseInt(box2),parseInt(box3),parseInt(box4)];
+          break;
+       }
+   }
 
+}
+
+function initialSet(){
+        if(flag === '0') {
+            var cBox = [];
+            var categorys = ["Cables", "Desktop", "Gaming", "Media", "Mobile Computer", "Notebooks", "Photography", "Storage Medium"];
+            var tempArray = []
+            for(var i = 0; i < categorys.length; ++i){
+                tempArray.push(categorys[i]);
+                tempArray.push(0);
+                tempArray.push(0);
+                tempArray.push(0);
+                tempArray.push(0);
+
+            }
+            localStorage.category = JSON.stringify(tempArray);
+        }
+        catArray = JSON.parse(localStorage.category);
+        alert(catArray);
+    flag = '1';
+    localStorage['flag'] = '1';
+}
+//Classes
+class Product {
+  constructor() {
+      this.id = '';
+      this.type = '';
+      this.img_src = '';
+      this.name = '';
+      this.brand = '';
+      this.price = '';
+      this.category = '';
+
+  }
+}
+
+function updateBoxValue(cat){
+   for(var i = 0; i < catArray.length; i += 5){
+       if(catArray[i] === cat){
+           catArray[i+1] = parseInt(catArray[i+1]) + parseInt(box1);
+           catArray[i+2] = parseInt(catArray[i+2]) + parseInt(box1);
+           catArray[i+3] = parseInt(catArray[i+3]) + parseInt(box1);
+           catArray[i+4] = parseInt(catArray[i+4]) + parseInt(box1);
+           localStorage.category = JSON.stringify(catArray);
+           break;
+       }
+   }
+}
+
+//checks Input
 function setInput(){
     var tempValue = '';
 
@@ -68,9 +150,6 @@ function setInput(){
     var value = document.getElementById("searchbar").value;
     localStorage['value'] = value;
     var temp  = value.replace(/\s/g, '');
-   // var searchBy = document.getElementById("searchBy").value;
-   //  var min = document.getElementById("minPrice").value;
-    //  var max = document.getElementById("maxPrice").value;
     var letters = /^[0-9a-zA-Z]+$/;
     if(temp.match(letters)) {
         //alert('Your registration number have accepted : you can try another');
@@ -93,8 +172,6 @@ function setInput(){
     }
 
     localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue;
-
-   // alert(localStorage['searchInput']);
     z_idx = 0;
     localStorage['results_index'] = z_idx;
 }
@@ -104,49 +181,13 @@ function setInput(){
 
 
 
-function dTable() {
-    getData1();
-             $("#dynamic_table").ready(function () {
-                 //creates x images on same row
-                     function numTable(x, y) {
-                     var index = 0;
-                     var stringValue =
-                         "<div  class=\"d-flex flex-column vertical-align\" style='width:100%; height:100%;'>";
-                        if(x === 0 && y === 0){
-                             stringValue +=  "<div class=\"col-fluid\" style='width:100%; height:100%;font-size: large;text-align: center'><p>No Results</p></div>";
-                        }
-                     for (var j = 0; j < y; ++j) {//rows
-                         stringValue += "<div class=\"d-flex flex-row vertical-align\" style='width:inherit; height:100%;'>";
-                         for (var k = 0; k < x; ++k) {//col
-                             var idString = (j*numRows + k).toString();
-                             stringValue +=
-                                 "<div  id = '"+idString+"' class=\"d-flex flex-column marginMainImageNormal btn btnImg1-primary rounded shadow-sm\" onclick=\"linkProductPage();reply_click(this.id);\" style= 'border: 1px solid gainsboro;height:95%;width:100%;background: white;margin: 0.5%'>" +
-                                 "<div class=\"col-fluid \" style='text-align: center;font-size: large;width: 100%'><b></b></div>"+
-                                 "<input type=\"image\" src= \"images/Apple1.jpg\" class = \"d-block btn img rounded  img3\" style='align-self:center'>" +
-                                  "<div class=\"col-fluid justify-content-center\" style='text-align: center; font-weight: bold;'><b></b></div>" +
-                                 "</div>";
-                             ++index;
-                         }
-                         stringValue += "</div>";
-                     }
-                      stringValue += "</div>";
 
-                     return stringValue;
-                 }
-                 $('#d_table').html(numTable(numRows, numCol));
-                  $('#tab_logic').append('<div id="d_table" ></div>');
-              });
-
-
-     }
  function linkProductPage()
 {
     location.href = "ProductPage_new.html";
 }
- function idValue(j,k){
-    return (j*numRows + k).toString();
-}
- function changeImage(x,y,z){
+
+ function changeImage(x,y){
     var dx =  Number(localStorage['results_index']);
 
       for (var j = 0; j < y; ++j) {//rows
@@ -180,9 +221,11 @@ function dTable() {
           localStorage['results_index'] = z_idx;
       }
 
-      console.log(z_idx);
+     // console.log(z_idx);
 }
- function nextImage(x,y,z){
+
+
+ function nextImage(x,y){
     var dx = Number(localStorage['results_index']) ;
      if(dx < dataArray.length) {
          for (var j = 0; j < y; ++j) {//rows
@@ -261,81 +304,20 @@ function dTable() {
 
 function nextButton(){
     nextImage(numRows,numCol,z_idx);
-  //console.log(z_idx);
 }
 
  function prevButton(){
     prevImage(numRows,numCol,z_idx);
-//console.log(z_idx);
-}
-
-function setImage(x,y){
-    return dataArray[x*y].img_src;
-}
-
- function setName(x,y){
-    return dataArray[x*y].name;
-}
-
-function productPage(){
-     window.location.href = 'productPage.html';
 }
 
 function linkResultsPage() {
   window.location.href = 'resultsPage_new.html';
-
 }
 
-function getData1() {
-    $(document).ready(function () {
-            $.getJSON(localStorage['searchInput'], function (result) {
-                //console.log(result);
-                $.each(result, function (i, field) {
 
-                    let product = new Product();
-                    $.each(field, function (key, value) {
-                        if (key === "imgSrc") {
-                            product.img_src = value;
-                        }
-                        else if (key === "name") {
-                            product.name = value;
-                             localStorage['ID_FullName'] = value;
-                        }
-                        else if (key === "price") {
-                            product.price = value;
-                        }
-                        else if (key === "manufacturer") {
-                            product.brand = value;
-                        }
-                         else if (key === "id"  ) {
-                            product.id = value;
-                        }
-                        else if (key === "category") {
-                            product.category = value;
-                        }
-                        else if (key === "type") {
-                            product.type = value;
-                        }
 
-                    });
-                    dataArray.push(product);
-                });
-                if(dataArray.length === 1 && dataArray[0].id == "0"){
-                   isResults = 0;
-                     numRows = 0;
-                    numCol= 0;
-                    dTable();
-                }
-                else{
-                    isResults = 1;
 
-                }
-                changeImage(numRows,numCol,0);
-
-            });
-    });
-}
-
+///Only works on results page
  function reply_click(clicked_id)
 {
         //gets item number
@@ -347,14 +329,21 @@ function getData1() {
         localStorage['ID_name'] = dataArray[itemIndexInLocalArray].name;
         localStorage['ID_pic'] = dataArray[itemIndexInLocalArray].img_src;
         localStorage['ID_cat'] = dataArray[itemIndexInLocalArray].category;
+        localStorage['prev_cat'] = dataArray[itemIndexInLocalArray].category;
         localStorage['ID_price'] = dataArray[itemIndexInLocalArray].price;
         localStorage['ID_brand'] = dataArray[itemIndexInLocalArray].brand;
-         localStorage['ID_type'] = dataArray[itemIndexInLocalArray].type;
+        localStorage['ID_type'] = dataArray[itemIndexInLocalArray].type;
         localStorage['results_index'] = z_idx - 10;
-       // alert(localStorage['results_index']);
 
         updateAveragePrice(dataArray[itemIndexInLocalArray].price);
+        initialBoxSize(localStorage['ID_cat']);
+
 }
+
+
+
+
+
 
 
 
@@ -1008,6 +997,7 @@ function reply_ProPage(clicked_id)
         //updateData(localStorage['prevID'],localStorage['ID']);
 
 
+
 }
 
 function replyMainImage(clicked_id)
@@ -1041,22 +1031,24 @@ function replyMainButtons(clicked_id)
             addPicsIndex = 0;
         }
         document.getElementById("mainImg0").src = addPicsArray[addPicsIndex];
+}
 
+function initialBoxSize(){
+    (document.getElementById("flexCol1").style.height =  localStorage['colIdArray[0]H'] || '100%');
+    (document.getElementById("flexCol1").style.width =  localStorage['colIdArray[0]W'] || '100%');
+    (document.getElementById("flex1").style.height =  localStorage['colIdArray[1]H'] || '100%');
+    (document.getElementById("flex1").style.width =  localStorage['colIdArray[1]W'] || '100%');
+    (document.getElementById("flex2").style.height =  localStorage['colIdArray[2]H'] || '100%');
+    (document.getElementById("flex2").style.width =  localStorage['colIdArray[2]W'] || '100%');
+    (document.getElementById("flexCol2").style.height =  localStorage['colIdArray[3]H'] || '100%');
+    (document.getElementById("flexCol2").style.width =  localStorage['colIdArray[3]W'] || '100%');
+    (document.getElementById("flex3").style.height =  localStorage['colIdArray[4]H'] || '100%');
+    (document.getElementById("flex3").style.width =  localStorage['colIdArray[4]W'] || '100%');
+    (document.getElementById("flex4").style.height =  localStorage['colIdArray[5]H'] || '100%');
+    (document.getElementById("flex4").style.width =  localStorage['colIdArray[5]W'] || '100%');
 }
 
 
- class Product {
-  constructor() {
-      this.id = '';
-      this.type = '';
-      this.img_src = '';
-      this.name = '';
-      this.brand = '';
-      this.price = '';
-      this.category = '';
-
-  }
-}
 
 function averageArray(arrayGiven)
 {
