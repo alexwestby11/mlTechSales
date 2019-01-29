@@ -1,6 +1,6 @@
 var recArray = [0,0,0,0];
 var capArray = [0,0,0,0];
-
+var numClicked = localStorage['numClicked'] || '0';
 
 function createMap()
 {
@@ -355,10 +355,7 @@ function getRecommended(givenItem,func)
                 func(relatedProducts,relatedImages);
             },
             error: function (error) {
-                console.log(error);
-               // alert("no good "+JSON.stringify(error));
-                //jason = JSON.parse(data);
-                //console.log(jason);
+                //console.log(error);
             }
         });
     })
@@ -771,6 +768,7 @@ function reply_click2(clicked_id)
         localStorage['ID'] = recArray[1].id;
         localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/name/" + localStorage['ID'] ;
         localStorage['ID_pic'] = recArray[1].img_src;
+
         document.location.reload();
 }
 
@@ -784,6 +782,7 @@ function reply_click3(clicked_id)
         localStorage['ID'] = recArray[2].id;
         localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/name/" + localStorage['ID'] ;
         localStorage['ID_pic'] = recArray[2].img_src;
+
         document.location.reload();
 }
 
