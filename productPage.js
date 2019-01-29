@@ -1,3 +1,9 @@
+
+$(window).on("load",function() {
+    $("body").addClass('all-loaded');
+});
+
+
 var recArray = [0,0,0,0];
 var capArray = [0,0,0,0];
 var numClicked = localStorage['numClicked'] || '0';
@@ -550,6 +556,8 @@ function getUPC(queryString)
 
 function getRetailers()
 {
+$(window).on('load', function() {
+    // your code here
     var name=localStorage['ID_name'];
 	$(document).ready(function() {
         var alpha = $.ajax({
@@ -585,6 +593,7 @@ function getRetailers()
         });
     })
 	imageSearcher();
+	});
 }
 
 
@@ -871,8 +880,8 @@ function imageSearcher()
             },
             success: function (data) {
 
-                    var i=0;
-					while(i<=7) {
+                    var i=1;
+					while(i<=8) {
 
 							var imgValue = document.getElementById("mainImg"+i.toString());
 							if(data.value[i]==null)

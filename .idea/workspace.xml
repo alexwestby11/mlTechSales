@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81c09b6a-cacc-4d3f-90b2-7dc15bb22c42" name="Default Changelist" comment="added where to buy products function">
+    <list default="true" id="81c09b6a-cacc-4d3f-90b2-7dc15bb22c42" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/JS/DynamicPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/JS/DynamicPage.js" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/frontpage_new.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontpage_new.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -198,6 +200,50 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-645106515">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.checkout.remote" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="css" value="1" />
+          <entry key="html" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="1" />
+          <entry key="HTML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="css" value="3" />
+          <entry key="html" value="50" />
+          <entry key="js" value="1008" />
+          <entry key="txt" value="70" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="CSS" value="3" />
+          <entry key="HTML" value="50" />
+          <entry key="JavaScript" value="1008" />
+          <entry key="PLAIN_TEXT" value="70" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -289,6 +335,15 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/styles/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1938">
+              <caret line="114" column="1" selection-start-line="114" selection-start-column="1" selection-end-line="114" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -311,7 +366,6 @@
       <find>localStorage['value']</find>
       <find>clear</find>
       <find>localStorage['colIdArray[0]']</find>
-      <find>alert</find>
       <find>summarize</find>
       <find>ID_name</find>
       <find>type</find>
@@ -368,7 +422,6 @@
         <option value="$PROJECT_DIR$/data/data2.json" />
         <option value="$PROJECT_DIR$/productPage_new.html" />
         <option value="$PROJECT_DIR$/test1.html" />
-        <option value="$PROJECT_DIR$/styles/main.css" />
         <option value="$PROJECT_DIR$/resultsPage.html" />
         <option value="$PROJECT_DIR$/JS/frontpage.js" />
         <option value="$PROJECT_DIR$/ProductPage.html" />
@@ -388,7 +441,9 @@
         <option value="$PROJECT_DIR$/productPage.js" />
         <option value="$PROJECT_DIR$/JS/DynamicTables.js" />
         <option value="$PROJECT_DIR$/resultsPage_new.html" />
+
         <option value="$PROJECT_DIR$/JS/Data.js" />
+
         <option value="$PROJECT_DIR$/ProductPage_new.html" />
         <option value="$PROJECT_DIR$/frontpage_new.js" />
         <option value="$PROJECT_DIR$/JS/DynamicPage.js" />
@@ -407,10 +462,12 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+
     <option name="x" value="-9" />
     <option name="y" value="-15" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
+
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -418,7 +475,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -456,6 +512,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -485,22 +542,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.test2.html">
+  <component name="RunManager" selected="Unknown.Unnamed2007251272">
     <configuration name="Unnamed" type="FirefoxRemoteDebugType" factoryName="Firefox Remote">
       <method v="2" />
     </configuration>
     <configuration name="test2.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/mlTechSales/test2.html">
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Firefox Remote.Unnamed" />
-      <item itemvalue="JavaScript Debug.test2.html" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JavaScript Debug.test2.html" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -592,13 +640,28 @@
       <option name="project" value="LOCAL" />
       <updated>1542567708964</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="changed product images">
+      <created>1547750616416</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1547750616416</updated>
+    </task>
+    <task id="LOCAL-00011" summary="worked on average price">
+      <created>1548200614048</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1548200614049</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="62812000" />
   </component>
   <component name="ToolWindowManager">
+
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
@@ -614,6 +677,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" sideWeight="0.49928468" weight="0.32963988" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007153" side_tool="true" weight="0.32963988" />
@@ -642,6 +706,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" sideWeight="0.49928468" weight="0.32963988" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007153" side_tool="true" weight="0.32963988" />
@@ -673,7 +738,9 @@
     <MESSAGE value="Putting Related Items on page" />
     <MESSAGE value="Adding Custom Image Search" />
     <MESSAGE value="added where to buy products function" />
-    <option name="LAST_COMMIT_MESSAGE" value="added where to buy products function" />
+    <MESSAGE value="changed product images" />
+    <MESSAGE value="worked on average price" />
+    <option name="LAST_COMMIT_MESSAGE" value="worked on average price" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Dynamic Pages/p1.html" />
@@ -697,13 +764,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="82" column="3" lean-forward="true" selection-start-line="82" selection-start-column="3" selection-end-line="82" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -736,6 +796,7 @@
     <entry file="file://$PROJECT_DIR$/oldStuff/resultsPage.js" />
     <entry file="file://$PROJECT_DIR$/JS/frontpage_new.js" />
     <entry file="file://$PROJECT_DIR$/styles/frontpage.css">
+
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="488">
           <caret line="122" selection-start-line="122" selection-end-line="122" />
@@ -794,7 +855,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/styles/resultsPage.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="30" column="35" lean-forward="true" selection-start-line="30" selection-start-column="35" selection-end-line="31" selection-end-column="25" />
