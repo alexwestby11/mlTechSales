@@ -3,7 +3,7 @@ var dataArray = [];
 var recArray = [];
 var simArray = [];
 var itemArray = [0,0,0,0,0,0,0,0,0,0];
-var box1
+var box1 = localStorage['c1'] || '0';
 var box2 = localStorage['c2'] || '0';
 var box3 = localStorage['c3'] || '0';
 var box4 = localStorage['c4'] || '0';
@@ -14,6 +14,9 @@ var addPicsIndexArray = [0,1,2,3,4,5,6,7];
 //Size of results Page
 var numRows = 5;
 var numCol= 2;
+
+//aLEXES sTUFF
+var avgPriceArray=[];
 
 
 var z_idx = localStorage['results_index'] || '0';
@@ -320,33 +323,6 @@ function linkResultsPage() {
 }
 
 
-function updateAveragePrice(x){
-    if(isNaN(localStorage['currentCollect'])){
-        localStorage['averagePrice'] = 0;
-
-        averagePrice = x;
-        localStorage['averagePrice'] = averagePrice;
-        localStorage['currentCollect'] = 0;
-        currentCollect =  Number(localStorage['currentCollect']);
-        ++currentCollect;
-        localStorage['currentCollect'] = currentCollect;
-    }
-    else{
-        averagePrice = Number(localStorage['averagePrice']);
-        averagePrice += x;
-        localStorage['averagePrice'] = averagePrice;
-        currentCollect =  Number(localStorage['currentCollect']);
-        ++currentCollect;
-        localStorage['currentCollect'] = currentCollect;
-    }
-
-    if(totalCollect === currentCollect){
-        localStorage['currentCollect'] = "NaN";
-        localStorage['averagePrice'] = averagePrice/totalCollect;
-        alert("average = " +  localStorage['averagePrice']);
-    }
-
-}
 
 function replyMainImage(clicked_id)
 {
@@ -396,5 +372,77 @@ function initialBoxSize(){
     (document.getElementById("flex4").style.width =  localStorage['colIdArray[5]W'] || '100%');
 }
 
+/*OLD
+function updateAveragePrice(x){
+    if(isNaN(localStorage['currentCollect'])){
+        localStorage['averagePrice'] = 0;
 
+        averagePrice = x;
+        localStorage['averagePrice'] = averagePrice;
+        localStorage['currentCollect'] = 0;
+        currentCollect =  Number(localStorage['currentCollect']);
+        ++currentCollect;
+        localStorage['currentCollect'] = currentCollect;
+    }
+    else{
+        averagePrice = Number(localStorage['averagePrice']);
+        averagePrice += x;
+        localStorage['averagePrice'] = averagePrice;
+        currentCollect =  Number(localStorage['currentCollect']);
+        ++currentCollect;
+        localStorage['currentCollect'] = currentCollect;
+    }
 
+    if(totalCollect === currentCollect){
+        localStorage['currentCollect'] = "NaN";
+        localStorage['averagePrice'] = averagePrice/totalCollect;
+        alert("average = " +  localStorage['averagePrice']);
+    }
+
+}*/
+
+function updateAveragePrice(x){
+    if(isNaN(localStorage['currentCollect'])){
+        localStorage['averagePrice'] = 0;
+
+        //avgPriceArray = (JSON.parse(localStorage.getItem("avgPriceArray"))).map(Number);
+        avgPriceArray.push(x)
+        localStorage.setItem("avgPriceArray", JSON.stringify(avgPriceArray));
+        var argo= (JSON.parse(localStorage.getItem("avgPriceArray"))).map(Number);
+        averagePrice = x;
+        localStorage['averagePrice'] = averagePrice;
+        localStorage['currentCollect'] = 0;
+        currentCollect =  Number(localStorage['currentCollect']);
+        ++currentCollect;
+        localStorage['currentCollect'] = currentCollect;
+        //alert('average price:'+ localStorage['averagePrice'])
+    }
+    else{
+        avgPriceArray = (JSON.parse(localStorage.getItem("avgPriceArray"))).map(Number);
+        avgPriceArray.push(x)
+        localStorage.setItem("avgPriceArray", JSON.stringify(avgPriceArray));
+        averagePrice = Number(localStorage['averagePrice']);
+        averagePrice += x;
+        localStorage['averagePrice'] = averagePrice;
+        currentCollect =  Number(localStorage['currentCollect']);
+        ++currentCollect;
+        localStorage['currentCollect'] = currentCollect;
+       // alert('average price:'+ localStorage['averagePrice'])
+
+    }
+
+    if(currentCollect  >= totalCollect) {
+
+        avgPriceArray = (JSON.parse(localStorage.getItem("avgPriceArray"))).map(Number);
+        lowerBoundPrice=oneSigmaMinus(avgPriceArray)
+        if(lowerBoundPrice<0)
+        {
+            lowerBoundPrice=0
+        }
+        upperBoundPrice=oneSigmaPlus(avgPriceArray)
+       // localStorage['currentCollect'] = "NaN";
+        //alert('average price:'+ averagePrice/totalCollect)
+        //alert("average = " + averagePrice/totalCollect);
+    }
+   // alert(localStorage['currentCollect']);
+}
