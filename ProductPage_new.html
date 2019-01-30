@@ -1,0 +1,156 @@
+<!-- custom JS functions -->
+<script src="frontpage_new.js"></script>
+<script src="productPage.js"></script>
+<script src="JS/Data.js"></script>
+<script src="JS/DynamicTables.js"></script>
+<script src="JS/DynamicPage.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <!-- local css scripts -->
+    <link rel ="stylesheet" href="styles/resultsPage.css">
+
+    <!--Map Box API -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
+
+
+    <!-- Slider-Pro -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slider-pro/1.5.0/js/jquery.sliderPro.min.js"></script>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/slider-pro/1.5.0/css/slider-pro.min.css' rel='stylesheet' />
+
+
+    <!-- Graph Visualization Package -->
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css' rel='stylesheet' />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles/main.css">
+    <meta charset="UTF-8">
+     <link rel="icon" href="images/Logo/logo3.png">
+    <title>Product Page</title>
+<link rel="icon" href="images/Logo/logo3.png">
+
+
+    </head>
+<body onload = "RTable();STable();setProductInfo();dImage()">
+
+  <!--Background -->
+<div class = "container-fluid h-100">
+
+     <!--Top Search Bar -->
+    <div class="row-fluid darkBlue">
+      <div class="d-flex flex-row">
+          <!--Logo-->
+          <div class = "col roundedB">
+               <div class="d-flex vertical-align"  style='height: 10%;width:5%;float: left'>
+                   <div class="d-block marginProductLogo"  style = 'float: left'>
+                    <img src="images/Logo/logo2.png" class="rounded-circle shadow-lg snowColor" onclick="colChange()" alt="TechSails Logo" width="180" height="180">
+                   </div>
+               </div>
+              <!--Name bar-->
+               <div class="d-flex vertical-align"  style='height: 10%;max-width: 100%'>
+                   <div class="d-block marginProductLogo snowColor vertical-align" style = 'float: left;border-radius: 10px;'>
+                    <h4 id = "mainName" onclick="localStorage.clear()">Name</h4>
+                   </div>
+               </div>
+          </div><!--
+            <div class="col-fluid">
+                <button type = "submit" onclick="colChange()">Values</button>
+            </div>-->
+        </div>
+    </div><!--Top Search Bar End-->
+
+
+
+
+
+    <div class="d-flex flex-row " style='width:100%; height:89%;' >
+
+        <!--Coloumn 1-->
+       <div id = "flexCol1" class="d-flex flex-column" style='width:50%; height:100%;'>
+             <div id = "flex1" class="d-flex"  style='width:100%; height:50%;'>
+                <div id = "box1" onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseOver(this.id)" class="col shadow-sm rounded margin1 " style= 'border: 1px solid gainsboro;height:98%;' >
+
+                </div>
+          </div>
+           <div id = "flex2" class="d-flex" style='width:100%; height:50%;'>
+             <div id = "box2" onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseOver(this.id)"  class="col shadow-sm rounded margin1" style= "border: 1px solid gainsboro;height:97%"; >
+
+
+                 <!--Buttons-->
+
+                 <div class = "d-flex flex-column">
+
+                         <ul class="nav nav-pills">
+                            <li class="active"><a data-toggle="pill" href="#Info">Info</a></li>
+                            <li><a data-toggle="pill" href="#Summary">Summary</a></li>
+                            <li><a data-toggle="pill" href="#Links">Links</a></li>
+                           <!-- <li><a data-toggle="pill" href="#Map">Map</a></li>-->
+                          </ul>
+
+                 <!--Info based on Buttons-->
+
+                  <div class="tab-content">
+                    <div id="Info" class="tab-pane fade in active ">
+                      <p style="height:80%;width:100%;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" id = "p1"></p>
+                    </div>
+                     <div id="Summary" class="tab-pane fade">
+						<script>summarize("p2","Desktop Computer")</script>
+                      <h3>Summary</h3>
+                      <p style="height:70%;width:100%;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" id = "p2"></p>
+                    </div>
+                    <div id="Links" class="tab-pane fade">
+                      <h3>Links</h3>
+					  	<a id='Link0' href="">Store 1.</a><br>
+						<a id='Link1' href="">Store 2.</a><br>
+						<a id='Link2' href="">Store 3.</a><br>
+						<a id='Link3' href="">Store 4.</a><br>
+
+                      <p style="height:70%;width:100%;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" id = "p3"></p>
+                    </div><!--
+                    <div id="Map" class="tab-pane fade">
+                      <h3>Map</h3>
+                      <p style="height:70%;width:100%;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" id = "p4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>-->
+                  </div>
+                 </div>
+              </div>
+          </div>
+       </div>
+        <!--Coloumn 2-->
+        <div id = "flexCol2" class="d-flex flex-column" style='width:50%; height:100%;'>
+             <div id = "flex3" class="d-flex" style='width:100%; height:50%;'>
+                <div id = "box3"  onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseOver(this.id)"  class="col shadow-sm  margin1 marginRL" style= "border: 1px solid gainsboro;height:97%"; >
+              </div>
+          </div>
+           <div  id = "flex4" class="d-flex" style='width:100%; height:50%;'>
+             <div id = "box4" onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseOver(this.id)" class="col shadow-sm rounded margin1 marginRL" style= "border: 1px solid gainsboro;height:97%";>
+              </div>
+          </div>
+       </div>
+       </div>
+    <script>
+        initialBoxSize();
+        initialSet();
+    getRetailers();
+</script>
+</div>
+</body>
+</html>
