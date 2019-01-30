@@ -63,7 +63,9 @@ var catArray = [];
 var flag = localStorage['flag'] || '0';
 
 
-function initilizeBoxes(cat){
+function initBoxes(cat){
+
+
     for(var i = 0; i < catArray.length; i += 5){
        if(catArray[i] === cat){
           var box1 = catArray[i+1];
@@ -74,6 +76,8 @@ function initilizeBoxes(cat){
           break;
        }
    }
+   alert("Boxes Initilized" + "\n" +
+   "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
 
 }
 
@@ -81,7 +85,7 @@ function initialSet(){
         if(flag === '0') {
             var cBox = [];
             var categorys = ["Cables", "Desktop", "Gaming", "Media", "Mobile Computer", "Notebooks", "Photography", "Storage Medium"];
-            var tempArray = []
+            var tempArray = [];
             for(var i = 0; i < categorys.length; ++i){
                 tempArray.push(categorys[i]);
                 tempArray.push(0);
@@ -93,7 +97,7 @@ function initialSet(){
             localStorage.category = JSON.stringify(tempArray);
         }
         catArray = JSON.parse(localStorage.category);
-        alert(catArray);
+      //  alert(catArray);
     flag = '1';
     localStorage['flag'] = '1';
 }
@@ -111,6 +115,8 @@ class Product {
   }
 }
 
+
+//Update Value in existing box
 function updateBoxValue(cat){
    for(var i = 0; i < catArray.length; i += 5){
        if(catArray[i] === cat){
@@ -372,10 +378,14 @@ function initialBoxSize(){
     (document.getElementById("flex4").style.width =  localStorage['colIdArray[5]W'] || '100%');
 }
 
+
 /*OLD
+
 function updateAveragePrice(x){
     if(isNaN(localStorage['currentCollect'])){
         localStorage['averagePrice'] = 0;
+
+
 
         averagePrice = x;
         localStorage['averagePrice'] = averagePrice;
@@ -383,14 +393,18 @@ function updateAveragePrice(x){
         currentCollect =  Number(localStorage['currentCollect']);
         ++currentCollect;
         localStorage['currentCollect'] = currentCollect;
+
     }
     else{
+
         averagePrice = Number(localStorage['averagePrice']);
         averagePrice += x;
         localStorage['averagePrice'] = averagePrice;
         currentCollect =  Number(localStorage['currentCollect']);
         ++currentCollect;
         localStorage['currentCollect'] = currentCollect;
+
+
     }
 
     if(totalCollect === currentCollect){
@@ -400,4 +414,5 @@ function updateAveragePrice(x){
     }
 
 }*/
+
 

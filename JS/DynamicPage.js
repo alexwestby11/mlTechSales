@@ -315,12 +315,12 @@ function setMainImage(x){
 }
 
 function setProductInfo(){
-    var space = "  ";
+     var space = "  ";
      var mainName = document.getElementById("mainName");
      var x = localStorage['ID_name'];
      var y = x.split(' ').slice(0,3).join(' ');
      y = space.concat(y);
-     y= y.concat(space);
+     y = y.concat(space);
     mainName.innerHTML = y;
     var value = document.getElementById("p1");
     value.innerHTML =
@@ -383,7 +383,7 @@ function reply_ProPage(clicked_id)
             ++numClicked;
             localStorage['numClicked'] = numClicked;
         }
-   initialBoxSize(localStorage['ID_cat']);
+        initialBoxSize(localStorage['ID_cat']);
        // alert(localStorage['numClicked']);
 
         if(numClicked === 5){
@@ -407,3 +407,4 @@ function reply_ProPage(clicked_id)
 
         $.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
 }
+
