@@ -55,7 +55,11 @@
 
   <!--Background -->
 <div class = "container-fluid h-100">
-    <
+     <script>
+         initBoxes(localStorage['ID_type']);
+
+
+</script>
      <!--Top Search Bar -->
     <div class="row-fluid darkBlue">
       <div class="d-flex flex-row">
@@ -149,9 +153,6 @@
        </div>
        </div>
     <script>
-        initBoxes(localStorage['ID_cat']);
-        initialBoxSize();
-        initialSet();
 
 
     getRetailers();

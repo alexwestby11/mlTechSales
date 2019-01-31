@@ -383,12 +383,12 @@ function reply_ProPage(clicked_id)
             ++numClicked;
             localStorage['numClicked'] = numClicked;
         }
-        initialBoxSize(localStorage['ID_cat']);
+        initialBoxSize(localStorage['ID_type']);
        // alert(localStorage['numClicked']);
 
         if(numClicked === 5){
             localStorage['numClicked'] = 0;
-            updateBoxSize(localStorage['prev_cat']);
+           // updateBoxSize(localStorage['prev_cat']);
             colChange();
             localStorage['prev_cat'] = localStorage['ID_cat'];
             localStorage['c1'] = '0';

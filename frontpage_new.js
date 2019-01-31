@@ -59,15 +59,15 @@ var Timer1 = 0;
 var Timer2 = 0;
 var Timer3 = 0;
 var Timer4 = 0;
-var catArray = [];
+var typeArray = [];
 var flag = localStorage['flag'] || '0';
 
 
-function initBoxes(cat){
+function initBoxes(type){
 
 
-    for(var i = 0; i < catArray.length; i += 5){
-       if(catArray[i] === cat){
+    for(var i = 0; i < typeArray.length; i += 5){
+       if(catArray[i] === type){
           var box1 = catArray[i+1];
           var box2 = catArray[i+2];
           var box3 = catArray[i+3];
@@ -76,28 +76,27 @@ function initBoxes(cat){
           break;
        }
    }
-   alert("Boxes Initilized" + "\n" +
+   alert("type = " +  type + "\n" +"Boxes Initilized" + "\n" +
    "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
 
 }
 
 function initialSet(){
         if(flag === '0') {
-            var cBox = [];
-            var categorys = ["Cables", "Desktop", "Gaming", "Media", "Mobile Computer", "Notebooks", "Photography", "Storage Medium"];
+            var typeTempArray = ["Camera", "Camera Lens", "Charger/Adapter", "Controller", "Desktop PC", "Docking Station", "DVD/BluRay Players", "External Hard Drive","External Solid State Drive","Game","Gaming Console","HDMI Cable","Headset","Keyboard","Laptop Charger","Monitor","Notebook","Notebook Case","Printer","SD Card","Smartphone","Speaker","Tablet","TV","USB Cable","USB Flash Drive"];
             var tempArray = [];
-            for(var i = 0; i < categorys.length; ++i){
-                tempArray.push(categorys[i]);
+            for(var i = 0; i < typeTempArray.length; ++i){
+                tempArray.push(typeTempArray[i]);
                 tempArray.push(0);
                 tempArray.push(0);
                 tempArray.push(0);
                 tempArray.push(0);
 
             }
-            localStorage.category = JSON.stringify(tempArray);
+            localStorage.type = JSON.stringify(tempArray);
         }
-        catArray = JSON.parse(localStorage.category);
-      //  alert(catArray);
+        typeArray = JSON.parse(localStorage.type);
+      alert("here = " + typeArray);
     flag = '1';
     localStorage['flag'] = '1';
 }
