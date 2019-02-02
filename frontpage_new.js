@@ -92,7 +92,7 @@ function initBoxes(type){
 
 function initialSet(){
         if(flag === '0') {
-            var typeTempArray = ["Camera", "Camera Lens", "Charger/Adapter", "Controller", "Desktop PC", "Docking Station", "DVD/BluRay Players", "External Hard Drive","External Solid State Drive","Game","Gaming Console","HDMI Cable","Headset","Keyboard","Laptop Charger","Monitor","Notebook","Notebook Case","Printer","SD Card","Smartphone","Speaker","Tablet","TV","USB Cable","USB Flash Drive"];
+            var typeTempArray = ["Camera", "Camera Lens", "Charger/Adapter", "Controller", "Desktop PC", "Docking Station", "DVD/BluRay Players", "External Hard Drive","External Solid State Drive","Game","Gaming Console","HDMI Cable","Headset","Keyboard","Laptop Charger","Monitor","Notebook","Notebook Case","Printer","SD Card","Smartphone","Speaker","Tablet","TV","USB Cable","USB Flash Drive", "Mouse"];
             var tempArray = [];
             for(var i = 0; i < typeTempArray.length; ++i){
 
