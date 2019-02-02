@@ -3,10 +3,10 @@ var dataArray = [];
 var recArray = [];
 var simArray = [];
 var itemArray = [0,0,0,0,0,0,0,0,0,0];
-var box1 = localStorage['c1'] || '0';
-var box2 = localStorage['c2'] || '0';
-var box3 = localStorage['c3'] || '0';
-var box4 = localStorage['c4'] || '0';
+var box1 = 0;
+var box2 = 0;
+var box3 = 0;
+var box4 = 0;
 
 var priorityBox = [parseInt(box1),parseInt(box2),parseInt(box3),parseInt(box4)];
 var addPicsIndexArray = [0,1,2,3,4,5,6,7];
@@ -62,20 +62,29 @@ var Timer4 = 0;
 var typeArray = [];
 var flag = localStorage['flag'] || '0';
 
+const numToChangeBox = 3;
 
 function initBoxes(type){
+    var index = 0;
 
-
-    for(var i = 0; i < typeArray.length; i += 5){
-       if(catArray[i] === type){
-          var box1 = catArray[i+1];
-          var box2 = catArray[i+2];
-          var box3 = catArray[i+3];
-          var box4 = catArray[i+4];
+    for(var i = 0; i < typeArray.length; i += 6){
+       if(typeArray[i] === type){
+          box1 = typeArray[i+1];
+          box2 = typeArray[i+2];
+          box3 = typeArray[i+3];
+          box4 = typeArray[i+4];
+          index = typeArray[i+5];
+          if(index === numToChangeBox){
+              typeArray[i+5] = 0;
+          }
           priorityBox = [parseInt(box1),parseInt(box2),parseInt(box3),parseInt(box4)];
           break;
        }
    }
+
+   //if(index === numToChangeBox  ||   localStorage['prevType'] !==  localStorage['ID_type']){
+       colChange();
+
    alert("type = " +  type + "\n" +"Boxes Initilized" + "\n" +
    "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
 
@@ -86,19 +95,32 @@ function initialSet(){
             var typeTempArray = ["Camera", "Camera Lens", "Charger/Adapter", "Controller", "Desktop PC", "Docking Station", "DVD/BluRay Players", "External Hard Drive","External Solid State Drive","Game","Gaming Console","HDMI Cable","Headset","Keyboard","Laptop Charger","Monitor","Notebook","Notebook Case","Printer","SD Card","Smartphone","Speaker","Tablet","TV","USB Cable","USB Flash Drive"];
             var tempArray = [];
             for(var i = 0; i < typeTempArray.length; ++i){
+
+                //type
                 tempArray.push(typeTempArray[i]);
+
+                //box data
                 tempArray.push(0);
                 tempArray.push(0);
                 tempArray.push(0);
+                tempArray.push(0);
+
+                //index data
                 tempArray.push(0);
 
             }
             localStorage.type = JSON.stringify(tempArray);
         }
         typeArray = JSON.parse(localStorage.type);
-      alert("here = " + typeArray);
-    flag = '1';
-    localStorage['flag'] = '1';
+        alert("flag = " + flag + "\n" + "here = " + typeArray);
+        flag = '1';
+        localStorage['flag'] = flag;
+
+
+}
+
+function setTypeArray(){
+       typeArray = JSON.parse(localStorage.type);
 }
 //Classes
 class Product {
@@ -116,17 +138,22 @@ class Product {
 
 
 //Update Value in existing box
-function updateBoxValue(cat){
-   for(var i = 0; i < catArray.length; i += 5){
-       if(catArray[i] === cat){
-           catArray[i+1] = parseInt(catArray[i+1]) + parseInt(box1);
-           catArray[i+2] = parseInt(catArray[i+2]) + parseInt(box1);
-           catArray[i+3] = parseInt(catArray[i+3]) + parseInt(box1);
-           catArray[i+4] = parseInt(catArray[i+4]) + parseInt(box1);
-           localStorage.category = JSON.stringify(catArray);
+function updateBoxValue(type){
+   for(var i = 0; i <  typeArray.length; i += 6){
+       if(typeArray[i] === type){
+
+            typeArray[i+1] = parseInt(typeArray[i+1]) + parseInt(box1);
+            typeArray[i+2] = parseInt(typeArray[i+2]) + parseInt(box2);
+            typeArray[i+3] = parseInt(typeArray[i+3]) + parseInt(box3);
+            typeArray[i+4] = parseInt(typeArray[i+4]) + parseInt(box4);
+            typeArray[i+5] = parseInt(typeArray[i+5]) + 1;
+           localStorage.type = JSON.stringify(typeArray);
            break;
        }
    }
+      alert("type = " +  type + "\n" +"Boxes updated" + "\n" +
+   "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
+      alert("UpdateArray = " + typeArray);
 }
 
 //checks Input

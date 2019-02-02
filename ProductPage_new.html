@@ -56,7 +56,11 @@
   <!--Background -->
 <div class = "container-fluid h-100">
      <script>
-         initBoxes(localStorage['ID_type']);
+         //sets the typeArray from local storage
+         setTypeArray();
+
+         //gets the values set in the temp array
+
 
 
 </script>
@@ -154,7 +158,7 @@
        </div>
     <script>
 
-
+ initBoxes(localStorage['ID_type']);
     getRetailers();
     saveCategory();
 

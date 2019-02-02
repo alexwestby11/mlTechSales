@@ -21,23 +21,23 @@ function reply_mouseOver(clicked_id)
  function reply_mouseOut(clicked_id) {
             if(clicked_id === "box1"){
                 priorityBox[0] += c1;
-                 localStorage['c1'] =  priorityBox[0];
+                 box1 =  priorityBox[0];
                  clearTimeout(Timer1);
             }
             else if(clicked_id === "box2"){
                 priorityBox[1] += c2;
-                localStorage['c2'] =  priorityBox[1];
+                box2 =  priorityBox[1];
                 clearTimeout(Timer2);
             }
             else if(clicked_id === "box3"){
                  priorityBox[2] += c3;
-                 localStorage['c3'] = priorityBox[2];
-                clearTimeout(Timer3);
+                 box3 = priorityBox[2];
+                 clearTimeout(Timer3);
             }
             else if(clicked_id === "box4"){
-                priorityBox[3] += c4;
-                localStorage['c4'] =  priorityBox[3];
-                clearTimeout(Timer4);
+                 priorityBox[3] += c4;
+                 box4 =  priorityBox[3];
+                 clearTimeout(Timer4);
             }
 
  }
@@ -351,6 +351,7 @@ function reply_ProPage(clicked_id)
         num = Number(num);
         if(bool === 0){
             localStorage['prevID'] =  localStorage['ID'];
+            localStorage['prevType'] =  localStorage['ID_type'];
             localStorage['ID'] = recArray[num].id;
             localStorage['ID_pic'] = recArray[num].img_src;
             localStorage['ID_name'] = recArray[num].name;
@@ -358,10 +359,12 @@ function reply_ProPage(clicked_id)
             localStorage['ID_price'] = recArray[num].price;
             localStorage['ID_brand'] = recArray[num].brand;
             localStorage['ID_type'] = recArray[num].type;
+             updateBoxValue(localStorage['prevType']);
 
         }
         else{
             localStorage['prevID'] =  localStorage['ID'];
+             localStorage['prevType'] =  localStorage['ID_type'];
             localStorage['ID'] = simArray[num].id;
             localStorage['ID_pic'] = simArray[num].img_src;
             localStorage['ID_name'] = simArray[num].name;
@@ -369,9 +372,9 @@ function reply_ProPage(clicked_id)
             localStorage['ID_price'] = simArray[num].price;
             localStorage['ID_brand'] = simArray[num].brand;
             localStorage['ID_type'] = simArray[num].type;
-
-
+              updateBoxValue(localStorage['prevType']);
         }
+
 
         if(localStorage['numClicked'] === undefined || localStorage['numClicked'] === 0){
             numClicked = 0;
@@ -383,27 +386,12 @@ function reply_ProPage(clicked_id)
             ++numClicked;
             localStorage['numClicked'] = numClicked;
         }
-        initialBoxSize(localStorage['ID_type']);
        // alert(localStorage['numClicked']);
 
-        if(numClicked === 5){
-            localStorage['numClicked'] = 0;
-           // updateBoxSize(localStorage['prev_cat']);
-            colChange();
-            localStorage['prev_cat'] = localStorage['ID_cat'];
-            localStorage['c1'] = '0';
-            localStorage['c2'] = '0';
-            localStorage['c3'] = '0';
-            localStorage['c4'] = '0';
-            priorityBox[0] = 0;
-            priorityBox[1] = 0;
-            priorityBox[2] = 0;
-            priorityBox[3] = 0;
-            location.reload();
-        }
-        else{
-              location.reload();
-        }
+
+
+       location.reload();
+
 
         $.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
 }
