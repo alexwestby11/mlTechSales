@@ -85,8 +85,8 @@ function initBoxes(type){
    //if(index === numToChangeBox  ||   localStorage['prevType'] !==  localStorage['ID_type']){
        colChange();
 
-   alert("type = " +  type + "\n" +"Boxes Initilized" + "\n" +
-   "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
+   //alert("type = " +  type + "\n" +"Boxes Initilized" + "\n" +
+ //  "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
 
 }
 
@@ -112,7 +112,7 @@ function initialSet(){
             localStorage.type = JSON.stringify(tempArray);
         }
         typeArray = JSON.parse(localStorage.type);
-        alert("flag = " + flag + "\n" + "here = " + typeArray);
+        //alert("flag = " + flag + "\n" + "here = " + typeArray);
         flag = '1';
         localStorage['flag'] = flag;
 
@@ -151,9 +151,9 @@ function updateBoxValue(type){
            break;
        }
    }
-      alert("type = " +  type + "\n" +"Boxes updated" + "\n" +
-   "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
-      alert("UpdateArray = " + typeArray);
+     // alert("type = " +  type + "\n" +"Boxes updated" + "\n" +
+  // "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
+     // alert("UpdateArray = " + typeArray);
 }
 
 //checks Input
