@@ -372,7 +372,7 @@ function reply_ProPage(clicked_id)
 
 
         }
-
+           updateAveragePrice(localStorage['ID_price'])
         if(localStorage['numClicked'] === undefined || localStorage['numClicked'] === 0){
             numClicked = 0;
             ++numClicked;
