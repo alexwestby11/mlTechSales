@@ -92,24 +92,26 @@ function initBoxes(type){
 
 function initialSet(){
         if(flag === '0') {
-            var typeTempArray = ["Camera", "Camera Lens", "Charger/Adapter", "Controller", "Desktop PC", "Docking Station", "DVD/BluRay Players", "External Hard Drive","External Solid State Drive","Game","Gaming Console","HDMI Cable","Headset","Keyboard","Laptop Charger","Monitor","Notebook","Notebook Case","Printer","SD Card","Smartphone","Speaker","Tablet","TV","USB Cable","USB Flash Drive", "Mouse"];
-            var tempArray = [];
-            for(var i = 0; i < typeTempArray.length; ++i){
+            var typeTempArray = ["Camera", "Camera Lens", "Charger_Adapter", "Controller", "Desktop PC", "Docking Station", "DVD_BR Player", "External Hard Dr", "External Solid S", "Game", "Gaming Console", "HDMI Cable", "Headset", "Keyboard", "Laptop Charger", "Monitor", "Notebook", "Notebook Case", "Printer", "SD Card", "Smartphone", "Speaker", "Tablet", "TV", "USB Cable", "USB Flash Drive", "Mouse"];
+            for (var i = 0; i < typeTempArray.length; ++i) {
+                var tempArray = [];
+                for (var i = 0; i < typeTempArray.length; ++i) {
 
-                //type
-                tempArray.push(typeTempArray[i]);
+                    //type
+                    tempArray.push(typeTempArray[i]);
 
-                //box data
-                tempArray.push(0);
-                tempArray.push(0);
-                tempArray.push(0);
-                tempArray.push(0);
+                    //box data
+                    tempArray.push(0);
+                    tempArray.push(0);
+                    tempArray.push(0);
+                    tempArray.push(0);
 
-                //index data
-                tempArray.push(0);
+                    //index data
+                    tempArray.push(0);
 
+                }
+                localStorage.type = JSON.stringify(tempArray);
             }
-            localStorage.type = JSON.stringify(tempArray);
         }
         typeArray = JSON.parse(localStorage.type);
         //alert("flag = " + flag + "\n" + "here = " + typeArray);
