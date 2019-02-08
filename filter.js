@@ -1,4 +1,4 @@
-function saveCategory(){
+var isFirst=true
 var jsonObj = {
 "Type":{
     "Camera":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
@@ -31,15 +31,12 @@ var jsonObj = {
     }
 }
 
-localStorage['prices']=JSON.stringify(jsonObj)
-
-var priceStats= JSON.parse(localStorage.getItem("prices"));
-var alex=1
-
-}
-
 function averageArray(arrayGiven)
 {
+    if(arrayGiven.length==0)
+    {
+        return null
+    }
     var sum=0;
     for(var i=0; i<=arrayGiven.length-1;i++)
     {
@@ -50,6 +47,10 @@ function averageArray(arrayGiven)
 
 function stdDevArray(arrayGiven)
 {
+    if(arrayGiven.length===0)
+    {
+        return null
+    }
     avg=averageArray(arrayGiven)
     squares=0;
     for(var i=0; i<=arrayGiven.length-1;i++)
@@ -74,14 +75,18 @@ function oneSigmaMinus(arrayGiven)
 
 function updateAveragePrice(x){
 
-
+        if(localStorage['prices']==null)
+        {
+            localStorage.setItem('prices',JSON.stringify(jsonObj))
+            isFirst=false
+        }
+        avgPriceArray
         var typeString = localStorage['ID_type']
         var typeJSON = (JSON.parse(localStorage['prices']));
         typeJSON['Type'][typeString]['AvgPriceArray'].push(x);
         typeJSON['Type'][typeString]['Count']=typeJSON['Type'][typeString]['Count']+1;
-        localStorage.setItem('prices',JSON.stringify(typeJSON))
 
-        if(currentCollect  >= totalCollect) {
+
 
         lowerBoundPrice=oneSigmaMinus(avgPriceArray)
         if(lowerBoundPrice<0)
@@ -89,5 +94,8 @@ function updateAveragePrice(x){
             lowerBoundPrice=0
         }
         upperBoundPrice=oneSigmaPlus(avgPriceArray)
-    }// alert(localStorage['currentCollect']);
-    }
+        typeJSON['Type'][typeString]["UpperBound"]=upperBoundPrice
+        typeJSON['Type'][typeString]["LowerBound"]=lowerBoundPrice
+        localStorage.setItem('prices',JSON.stringify(typeJSON))
+}// alert(localStorage['currentCollect']);
+
