@@ -49,7 +49,7 @@ var totalCollect = 3;
 var currentCollect = 0;
 var addPicsIndex = 0;
 var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.jpg','images/Logo/logo1.png','images/Logo/logo2.png','images/Logo/logo3.png','images/Logo/logo4.png','images/Logo/logo5.png','images/Logo/logo5.png'];
-
+var typeArrayFixed = ["Notebook","Monitor","Notebook case","Mouse","Laptop Charger","Keyboard","HDMI Cable","Docking Station","Speaker","Tablet","Smartphone","SD Card","Printer","DVD_BR Player","Desktop PC","Controller","Charger_Adapter","Camera","Headset","External Hard Dr","External Solid S","Game","Gaming Console","USB Flash Drive","USB Cable","Camera Lens","TV"];
 var isResults = 1;
 var c1 = 0;
 var c2 = 0;
@@ -92,7 +92,7 @@ function initBoxes(type){
 
 function initialSet(){
         if(flag === '0') {
-            var typeTempArray = ["Camera", "Camera Lens", "Charger_Adapter", "Controller", "Desktop PC", "Docking Station", "DVD_BR Player", "External Hard Dr", "External Solid S", "Game", "Gaming Console", "HDMI Cable", "Headset", "Keyboard", "Laptop Charger", "Monitor", "Notebook", "Notebook Case", "Printer", "SD Card", "Smartphone", "Speaker", "Tablet", "TV", "USB Cable", "USB Flash Drive", "Mouse"];
+            var typeTempArray = typeArrayFixed;
             for (var i = 0; i < typeTempArray.length; ++i) {
                 var tempArray = [];
                 for (var i = 0; i < typeTempArray.length; ++i) {
