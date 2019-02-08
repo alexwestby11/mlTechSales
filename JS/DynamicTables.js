@@ -15,15 +15,15 @@ function RTable() {
                          for (var k = 0; k < x; ++k) {//col
                              var idString = (j*numRowsR + k).toString();
                              stringValue +=
-                                 "<div  class=\"d-flex marginMainImageNormal  btn-primary rounded\"style= 'border: 1px solid gainsboro;height:95%;width:100%; '>" +
+                                 "<div  class=\"d-flex marginMainImageNormal  btn-primary rounded\"style= 'border: 1px solid gainsboro;height:95%;width:100%;'>" +
 
                                  "<img tag = '"+index+"' id = 'rec"+index+"' class = \"img rounded shadow img1\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id)'>"+
                                  "</div>";
                              ++index;
                          }
-                         stringValue += "</div> ";
+                         stringValue += "</div>";
                      }
-                      stringValue += "</div> ";
+                      stringValue += "</div>";
 
                      return stringValue;
                  }

@@ -56,7 +56,15 @@
 
   <!--Background -->
 <div class = "container-fluid h-100">
-    <
+     <script>
+         //sets the typeArray from local storage
+         setTypeArray();
+
+         //gets the values set in the temp array
+
+
+
+</script>
      <!--Top Search Bar -->
     <div class="row-fluid darkBlue">
       <div class="d-flex flex-row">
@@ -150,11 +158,8 @@
        </div>
        </div>
     <script>
-        initBoxes(localStorage['ID_cat']);
-        initialBoxSize();
-        initialSet();
 
-
+ initBoxes(localStorage['ID_type']);
     getRetailers();
     averageArrayTest();
 </script>
