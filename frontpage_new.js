@@ -62,6 +62,7 @@ var Timer4 = 0;
 var typeArray = [];
 var flag = localStorage['flag'] || '0';
 
+
 const numToChangeBox = 3;
 
 function initBoxes(type){
@@ -352,7 +353,8 @@ function linkResultsPage() {
         localStorage['results_index'] = z_idx - 10;
 
         updateAveragePrice(dataArray[itemIndexInLocalArray].price);
-        initialBoxSize(localStorage['ID_cat']);
+        initialBoxSize(localStorage['ID_type']);
+        updateType(localStorage['ID_type']);
 
 }
 

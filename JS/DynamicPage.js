@@ -333,7 +333,7 @@ function setProductInfo(){
 //Used to click on products(similar/compatible items) in Product page
 function reply_ProPage(clicked_id)
 {
-    //alert(clicked_id);
+
         var bool = 0;
         var value = clicked_id;
         localStorage['prev_cat'] = localStorage['ID_cat'];
@@ -389,7 +389,7 @@ function reply_ProPage(clicked_id)
         }
        // alert(localStorage['numClicked']);
 
-
+         updateType(localStorage['ID_type']);
 
        location.reload();
 

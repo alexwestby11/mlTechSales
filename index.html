@@ -11,6 +11,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 <script src="frontpage_new.js"></script>
+<script src="JS/FrontpageCategory.js"></script>
 
 
 <!DOCTYPE html>
@@ -26,7 +27,7 @@
 
 <body>
 <div class="container-fluid h-100" style="background: white">
-    <script> initialSet();</script>
+    <script> initialSet(); setTypeFrontPage();</script>
 <!-- Title -->
 <div class="d-flex flex-row darkBlue rounded justify-content-center" style="height: 15%">
     <div class="d-flex flex-column rounded">
@@ -155,10 +156,10 @@
 <!-- Catergory Boxes -->
 <div class="container-fluid">
     <div class="row flex-row marginBasic"style="height: 55%">
-        <div class="col marginLeftEnd shadow-sm" style="border: 2px solid gainsboro;">.</div>
-        <div class="col marginBox shadow-sm" style="border: 2px solid gainsboro;"></div>
-        <div class="col marginBox shadow-sm" style="border: 2px solid gainsboro;"></div>
-        <div class="col marginRightEnd shadow-sm" style="border: 2px solid gainsboro;"></div>
+        <div id = "type1" class="col marginLeftEnd shadow-sm" style="border: 2px solid gainsboro;">0</div>
+        <div id = "type2" class="col marginBox shadow-sm" style="border: 2px solid gainsboro;">1</div>
+        <div id = "type3" class="col marginBox shadow-sm" style="border: 2px solid gainsboro;">2</div>
+        <div id = "type4" class="col marginRightEnd shadow-sm" style="border: 2px solid gainsboro;">3</div>
     </div>
 </div>
     </div>
