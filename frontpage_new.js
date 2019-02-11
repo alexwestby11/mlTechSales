@@ -143,7 +143,7 @@ function updateType(type){
 function sortType(){
         var max;
         var topValuesTypes = [0,0,0,0];
-        var topValuesTypesNames = [0,0,0,0];
+        var topValuesTypesNames = [typeArray[0],typeArray[7],typeArray[14],typeArray[21]];
         max = topValuesTypes[0];
         console.log(typeArray.length);
           for(var i = 7; i < typeArray.length; i+=7) {
