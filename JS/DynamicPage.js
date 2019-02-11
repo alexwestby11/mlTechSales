@@ -389,7 +389,7 @@ function reply_ProPage(clicked_id)
         }
        // alert(localStorage['numClicked']);
 
-         updateType(localStorage['ID_type']);
+        updateType(localStorage['ID_type']);
 
        location.reload();
 

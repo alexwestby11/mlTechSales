@@ -49,7 +49,7 @@ var totalCollect = 3;
 var currentCollect = 0;
 var addPicsIndex = 0;
 var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.jpg','images/Logo/logo1.png','images/Logo/logo2.png','images/Logo/logo3.png','images/Logo/logo4.png','images/Logo/logo5.png','images/Logo/logo5.png'];
-var typeArrayFixed = ["Notebook","Monitor","Notebook case","Mouse","Laptop Charger","Keyboard","HDMI Cable","Docking Station","Speaker","Tablet","Smartphone","SD Card","Printer","DVD_BR Player","Desktop PC","Controller","Charger_Adapter","Camera","Headset","External Hard Dr","External Solid S","Game","Gaming Console","USB Flash Drive","USB Cable","Camera Lens","TV"];
+var typeArrayFixed = ["Notebook","Monitor","Noteboook Case","Mouse","Laptop Charger","Keyboard","HDMI Cable","Docking Station","Speaker","Tablet","Smartphone","SD Card","Printer","DVD_BR Player","Desktop PC","Controller","Charger_Adapter","Camera","Headset","External Hard Dr","External Solid S","Game","Gaming Console","USB Flash Drive","USB Cable","Camera Lens","TV"];
 var isResults = 1;
 var c1 = 0;
 var c2 = 0;
@@ -68,7 +68,7 @@ const numToChangeBox = 3;
 function initBoxes(type){
     var index = 0;
 
-    for(var i = 0; i < typeArray.length; i += 6){
+    for(var i = 0; i < typeArray.length; i += 7){
        if(typeArray[i] === type){
           box1 = typeArray[i+1];
           box2 = typeArray[i+2];
@@ -86,8 +86,8 @@ function initBoxes(type){
    //if(index === numToChangeBox  ||   localStorage['prevType'] !==  localStorage['ID_type']){
        colChange();
 
-   //alert("type = " +  type + "\n" +"Boxes Initilized" + "\n" +
- //  "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
+   alert("type = " +  type + "\n" +"Boxes Initilized" + "\n" +
+  "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
 
 }
 
@@ -110,16 +110,74 @@ function initialSet(){
                     //index data
                     tempArray.push(0);
 
+                     //type count
+                    tempArray.push(0);
+
                 }
                 localStorage.type = JSON.stringify(tempArray);
             }
         }
         typeArray = JSON.parse(localStorage.type);
-        //alert("flag = " + flag + "\n" + "here = " + typeArray);
+        alert("flag = " + flag + "\n" + "here = " + typeArray);
         flag = '1';
         localStorage['flag'] = flag;
 
 
+}
+
+function updateType(type){
+        var temp = '';
+        for(var i = 0; i < typeArray.length; i+=7) {
+            if(type === typeArray[i]){
+                temp = typeArray[i];
+                typeArray[i+6] = parseInt(typeArray[i+6]) + 1;
+                break;
+            }
+        }
+        localStorage.type = JSON.stringify(typeArray);
+        alert("Updated " + type + "\n" + typeArray);
+
+}
+
+
+function sortType(){
+        var max;
+        var typeIndex = [0,0,0,0];
+  max = typeIndex[0];
+          for(var i = 1; i < typeArray.length; i+=7) {
+
+              if(max < parseInt(typeArray[i+6])){
+                  max = parseInt(typeArray[i+6]);
+                  typeIndex[0] = i;
+              }
+          }
+    max = typeIndex[1];
+           for(var i = 2; i < typeArray.length; i+=7) {
+
+              if(max < parseInt(typeArray[i+6]) && (parseInt(typeArray[i+6]) !== typeIndex[0])){
+                  max = parseInt(typeArray[i+6]);
+                  typeIndex[1] = i;
+              }
+          }
+
+          max = typeIndex[2];
+           for(var i = 3; i < typeArray.length; i+=7) {
+
+              if(max < typeArray[i] && (typeArray[i] !== typeIndex[0]) && (typeArray[i] !== typeIndex[1])){
+                  max = typeArray[i];
+                  typeIndex[2] = i;
+              }
+          }
+
+      max = typeIndex[3];
+           for(var i = 4; i < typeArray.length; i+=7) {
+              if(max < typeArray[i] && (typeArray[i] !== typeIndex[0]) && (typeArray[i] !== typeIndex[1]) && (typeArray[i] !== typeIndex[2])){
+                  max = typeArray[i];
+                  typeIndex[3] = i;
+              }
+          }
+
+          alert(typeIndex);
 }
 
 function setTypeArray(){
@@ -142,7 +200,7 @@ class Product {
 
 //Update Value in existing box
 function updateBoxValue(type){
-   for(var i = 0; i <  typeArray.length; i += 6){
+   for(var i = 0; i <  typeArray.length; i += 7){
        if(typeArray[i] === type){
 
             typeArray[i+1] = parseInt(typeArray[i+1]) + parseInt(box1);
@@ -352,9 +410,10 @@ function linkResultsPage() {
         localStorage['ID_type'] = dataArray[itemIndexInLocalArray].type;
         localStorage['results_index'] = z_idx - 10;
 
-        updateAveragePrice(dataArray[itemIndexInLocalArray].price);
+       // updateType(localStorage['ID_type']);
+
+       // updateAveragePrice(dataArray[itemIndexInLocalArray].price);
         initialBoxSize(localStorage['ID_type']);
-        updateType(localStorage['ID_type']);
 
 }
 
@@ -408,41 +467,5 @@ function initialBoxSize(){
     (document.getElementById("flex4").style.width =  localStorage['colIdArray[5]W'] || '100%');
 }
 
-
-/*OLD
-
-function updateAveragePrice(x){
-    if(isNaN(localStorage['currentCollect'])){
-        localStorage['averagePrice'] = 0;
-
-
-
-        averagePrice = x;
-        localStorage['averagePrice'] = averagePrice;
-        localStorage['currentCollect'] = 0;
-        currentCollect =  Number(localStorage['currentCollect']);
-        ++currentCollect;
-        localStorage['currentCollect'] = currentCollect;
-
-    }
-    else{
-
-        averagePrice = Number(localStorage['averagePrice']);
-        averagePrice += x;
-        localStorage['averagePrice'] = averagePrice;
-        currentCollect =  Number(localStorage['currentCollect']);
-        ++currentCollect;
-        localStorage['currentCollect'] = currentCollect;
-
-
-    }
-
-    if(totalCollect === currentCollect){
-        localStorage['currentCollect'] = "NaN";
-        localStorage['averagePrice'] = averagePrice/totalCollect;
-        alert("average = " +  localStorage['averagePrice']);
-    }
-
-}*/
 
 
