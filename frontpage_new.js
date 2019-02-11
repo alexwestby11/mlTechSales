@@ -142,42 +142,45 @@ function updateType(type){
 
 function sortType(){
         var max;
-        var typeIndex = [0,0,0,0];
-  max = typeIndex[0];
-          for(var i = 1; i < typeArray.length; i+=7) {
-
+        var topValuesTypes = [0,0,0,0];
+        var topValuesTypesNames = [0,0,0,0];
+        max = topValuesTypes[0];
+        console.log(typeArray.length);
+          for(var i = 7; i < typeArray.length; i+=7) {
+                console.log(typeArray[i+6] + " " + typeArray[i]);
               if(max < parseInt(typeArray[i+6])){
                   max = parseInt(typeArray[i+6]);
-                  typeIndex[0] = i;
+                  topValuesTypesNames[0] = typeArray[i];
+
               }
           }
-    max = typeIndex[1];
-           for(var i = 2; i < typeArray.length; i+=7) {
+          max = topValuesTypes[1];
+           for(var i = 14; i < typeArray.length; i+=7) {
 
-              if(max < parseInt(typeArray[i+6]) && (parseInt(typeArray[i+6]) !== typeIndex[0])){
+              if(max < parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0])){
                   max = parseInt(typeArray[i+6]);
-                  typeIndex[1] = i;
+                   topValuesTypesNames[1] = typeArray[i];
               }
           }
 
-          max = typeIndex[2];
-           for(var i = 3; i < typeArray.length; i+=7) {
+          max = topValuesTypes[2];
+           for(var i = 21; i < typeArray.length; i+=7) {
 
-              if(max < typeArray[i] && (typeArray[i] !== typeIndex[0]) && (typeArray[i] !== typeIndex[1])){
-                  max = typeArray[i];
-                  typeIndex[2] = i;
+              if(max < parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0]) && (typeArray[i] !== topValuesTypesNames[1])){
+                  max = parseInt(typeArray[i+6]);
+                   topValuesTypesNames[2] = typeArray[i];
               }
           }
 
-      max = typeIndex[3];
-           for(var i = 4; i < typeArray.length; i+=7) {
-              if(max < typeArray[i] && (typeArray[i] !== typeIndex[0]) && (typeArray[i] !== typeIndex[1]) && (typeArray[i] !== typeIndex[2])){
-                  max = typeArray[i];
-                  typeIndex[3] = i;
+         max = topValuesTypes[3];
+           for(var i = 28; i < typeArray.length; i+=7) {
+              if(max < parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0]) && (typeArray[i] !== topValuesTypesNames[1]) && (typeArray[i] !== topValuesTypesNames[2])){
+                     max = parseInt(typeArray[i+6]);
+                    topValuesTypesNames[3] = typeArray[i];
               }
           }
 
-          alert(typeIndex);
+          alert(topValuesTypesNames);
 }
 
 function setTypeArray(){
