@@ -176,9 +176,18 @@ function sortType(){
            for(var i = 28; i < typeArray.length; i+=7) {
               if(max < parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0]) && (typeArray[i] !== topValuesTypesNames[1]) && (typeArray[i] !== topValuesTypesNames[2])){
                      max = parseInt(typeArray[i+6]);
-                    topValuesTypesNames[3] = typeArray[i];
+                     topValuesTypesNames[3] = typeArray[i];
               }
           }
+
+          var idValue;
+           for(var i = 0; i < topValuesTypesNames.length; ++i) {
+                idValue = "type" + String(i+1);
+                document.getElementById(idValue).innerHTML = topValuesTypesNames[i];
+           }
+
+
+
 
           alert(topValuesTypesNames);
 }
@@ -186,6 +195,15 @@ function sortType(){
 function setTypeArray(){
        typeArray = JSON.parse(localStorage.type);
 }
+
+
+
+
+
+
+
+
+
 //Classes
 class Product {
   constructor() {
