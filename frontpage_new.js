@@ -27,7 +27,6 @@ var numRowsS = localStorage['numRowsS'] || '3';
 var numColS= localStorage['numColS'] || '2';
 var numRowsI = localStorage['numRowsI'] || '2';
 var numColI = localStorage['numColI'] || '1';
-
 var myVar = localStorage['ID'] || '10';
 var myVar1 = localStorage['ID_name'] || '0';
 var myVar2 = localStorage['ID_pic'] || '0';
@@ -209,8 +208,7 @@ function setInput(){
            z_idx = dx;
           localStorage['results_index'] = z_idx;
       }
-
-     // console.log(z_idx);
+     // console.log(z_idx)
 }
 
 
@@ -379,41 +377,7 @@ function initialBoxSize(){
 }
 
 
-/*OLD
 
-function updateAveragePrice(x){
-    if(isNaN(localStorage['currentCollect'])){
-        localStorage['averagePrice'] = 0;
-
-
-
-        averagePrice = x;
-        localStorage['averagePrice'] = averagePrice;
-        localStorage['currentCollect'] = 0;
-        currentCollect =  Number(localStorage['currentCollect']);
-        ++currentCollect;
-        localStorage['currentCollect'] = currentCollect;
-
-    }
-    else{
-
-        averagePrice = Number(localStorage['averagePrice']);
-        averagePrice += x;
-        localStorage['averagePrice'] = averagePrice;
-        currentCollect =  Number(localStorage['currentCollect']);
-        ++currentCollect;
-        localStorage['currentCollect'] = currentCollect;
-
-
-    }
-
-    if(totalCollect === currentCollect){
-        localStorage['currentCollect'] = "NaN";
-        localStorage['averagePrice'] = averagePrice/totalCollect;
-        alert("average = " +  localStorage['averagePrice']);
-    }
-
-}*/
 
 
 function createSessionID()
