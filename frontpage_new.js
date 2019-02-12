@@ -324,6 +324,7 @@ function linkResultsPage() {
         localStorage['results_index'] = z_idx - 10;
 
         updateAveragePrice(dataArray[itemIndexInLocalArray].price);
+        updateBrand(dataArray[itemIndexInLocalArray].brand,dataArray[itemIndexInLocalArray].type)
         initialBoxSize(localStorage['ID_cat']);
 
 }
@@ -342,8 +343,6 @@ function replyMainImage(clicked_id)
         var value = addPicsIndexArray[Number(num)];
         addPicsIndexArray[Number(num)] = addPicsIndexArray[addPicsIndex];
         addPicsIndexArray[addPicsIndex] = value;
-
-
 }
 
 function replyMainButtons(clicked_id)

@@ -146,48 +146,50 @@ var brands=
     ]
 var jsonObj = {
     "Price":
-    [{
-        "Camera":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Camera Lens":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Charger/Adapter":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Controller":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Desktop PC":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Docking Station":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "DVD/BluRay Players":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "External Hard Drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "External Solid State Drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Game":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Gaming Console":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "HDMI Cable":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Headset":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Keyboard":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Laptop Charger":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Monitor":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Mouse":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Notebook":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Noteboook Case":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Printer":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "SD Card":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Smartphone":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Speaker":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "Tablet":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "TV":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "USB Cable":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]},
-        "USB Flash Drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[]}
-    }],
-    "Brand":
     {
-
-
+        "Camera":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Camera Lens":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Charger/Adapter":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Controller":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Desktop PC":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Docking Station":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "DVD/BluRay Players":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "External Hard Drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "External Solid State Drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Game":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Gaming Console":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "HDMI Cable":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Headset":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Keyboard":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Laptop Charger":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Monitor":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Mouse":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Notebook":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Notebook Case":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Printer":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "SD Card":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Smartphone":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Speaker":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "Tablet":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "TV":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "USB Cable":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
+        "USB Flash Drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}}
     }
 }
 
-function addJSONParameter(givenJSONObj)
+function addJSONParameter()
 {
-    for(i=0; i<=brands.length-1;++i)
+   var givenObj=JSON.parse(localStorage['prices'])
+   for(category in givenObj["Price"])
+   {
+    for(var i=0; i<=brands.length-1;++i)
     {
-        givenJSONObj['Brand'][brands[i]]['Count']=0
+        var givenCompany=brands[i]
+        givenObj["Price"][category]["Brand"][givenCompany]={"Count":0}
     }
+   }
+    localStorage.setItem('prices',JSON.stringify(givenObj))
+
 }
 
 function averageArray(arrayGiven)
@@ -234,40 +236,64 @@ function oneSigmaMinus(arrayGiven)
 
 function updateAveragePrice(x)
 {
-
-        if(localStorage['prices']==null)
-        {
-            localStorage.setItem('prices',JSON.stringify(jsonObj))
-            isFirst=false
-        }
-
-        var typeString = localStorage['ID_type']
-        var typeJSON = (JSON.parse(localStorage['prices']));
-        typeJSON['Price']=typeJSON['Price'].sort(function(a, b){return b.Count - a.Count})
-
-        typeJSON['Price'][typeString]['AvgPriceArray'].push(x);
-        var avgPriceArray=typeJSON['Price'][typeString]['AvgPriceArray'].map(Number)
-        typeJSON['Price'][typeString]['Count']=typeJSON['Price'][typeString]['Count']+1;
-
-        var lowerBoundPrice=oneSigmaMinus(avgPriceArray)
-        if(lowerBoundPrice<0)
-        {
-            lowerBoundPrice=0
-        }
-        var upperBoundPrice=oneSigmaPlus(avgPriceArray)
-        typeJSON['Price'][typeString]["UpperBound"]=upperBoundPrice
-        typeJSON['Price'][typeString]["LowerBound"]=lowerBoundPrice
-        localStorage.setItem('prices',JSON.stringify(typeJSON))
-}
-function updateBrand(brand)
-{
-
-    if(localStorage['prices']!=null)
+    if(localStorage['prices']==null)
     {
-        var localJSON=JSON.parse(localStorage['prices'])
-        localJSON["Brand"][brand]["Count"]=localJSON["Brand"][brand]["Count"]+1
+        localStorage.setItem('prices',JSON.stringify(jsonObj))
+        isFirst=false
     }
 
+    var typeString = localStorage['ID_type']
+    var typeJSON = (JSON.parse(localStorage['prices']));
+
+
+    typeJSON['Price'][typeString]['AvgPriceArray'].push(x);
+    var avgPriceArray=typeJSON['Price'][typeString]['AvgPriceArray'].map(Number)
+    typeJSON['Price'][typeString]['Count']=typeJSON['Price'][typeString]['Count']+1;
+
+    var lowerBoundPrice=oneSigmaMinus(avgPriceArray)
+    if(lowerBoundPrice<0)
+    {
+        lowerBoundPrice=0
+    }
+    var upperBoundPrice=oneSigmaPlus(avgPriceArray)
+    typeJSON['Price'][typeString]["UpperBound"]=upperBoundPrice
+    typeJSON['Price'][typeString]["LowerBound"]=lowerBoundPrice
+    localStorage.setItem('prices',JSON.stringify(typeJSON))
+
+
 
 }
 
+function updateBrand(brand,givenType)
+{
+    var localJSON=JSON.parse(localStorage['prices'])
+    if(localJSON['Price'][givenType]["Brand"][brand]==null)
+    {
+        addJSONParameter()
+        localJSON=JSON.parse(localStorage['prices'])
+    }
+    localJSON['Price'][givenType]["Brand"][brand]["Count"]=localJSON['Price'][givenType]["Brand"][brand]["Count"]+1
+    localStorage.setItem('prices',JSON.stringify(localJSON))
+    mostUsedBrand(givenType)
+}
+ function mostUsedBrand(productType)
+ {
+     mostUsed=[]
+     if(localStorage['prices']==null)
+     {
+        return null
+     }
+     var obj=JSON.parse(localStorage['prices'])
+     var brandObj=obj["Price"][productType]["Brand"]
+     var arrayBrandObj = Object.keys(brandObj).map(function(key) {
+         return [key, brandObj[key].Count];});
+     arrayBrandObj=arrayBrandObj.sort((a, b) => a[1] - b[1])
+     var al=1;
+
+ }
+
+function customQuery()
+{
+
+
+}
