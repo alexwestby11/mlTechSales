@@ -49,7 +49,7 @@ var totalCollect = 3;
 var currentCollect = 0;
 var addPicsIndex = 0;
 var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.jpg','images/Logo/logo1.png','images/Logo/logo2.png','images/Logo/logo3.png','images/Logo/logo4.png','images/Logo/logo5.png','images/Logo/logo5.png'];
-var typeArrayFixed = ["Notebook","Monitor","Noteboook Case","Mouse","Laptop Charger","Keyboard","HDMI Cable","Docking Station","Speaker","Tablet","Smartphone","SD Card","Printer","DVD_BR Player","Desktop PC","Controller","Charger_Adapter","Camera","Headset","External Hard Dr","External Solid S","Game","Gaming Console","USB Flash Drive","USB Cable","Camera Lens","TV"];
+var typeArrayFixed = ["Notebook","Monitor","Notebook Case","Mouse","Laptop Charger","Keyboard","HDMI Cable","Docking Station","Speaker","Tablet","Smartphone","SD Card","Printer","DVD_BR Player","Desktop PC","Controller","Charger_Adapter","Camera","Headset","External Hard Dr","External Solid S","Game","Gaming Console","USB Flash Drive","USB Cable","Camera Lens","TV"];
 var isResults = 1;
 var c1 = 0;
 var c2 = 0;
@@ -146,7 +146,7 @@ function sortType(){
         var topValuesTypesNames = [typeArray[0],typeArray[7],typeArray[14],typeArray[21]];
         max = topValuesTypes[0];
         console.log(typeArray.length);
-          for(var i = 7; i < typeArray.length; i+=7) {
+          for(var i = 0; i < typeArray.length; i+=7) {
                 console.log(typeArray[i+6] + " " + typeArray[i]);
               if(max < parseInt(typeArray[i+6])){
                   max = parseInt(typeArray[i+6]);
@@ -155,36 +155,52 @@ function sortType(){
               }
           }
           max = topValuesTypes[1];
-           for(var i = 14; i < typeArray.length; i+=7) {
+           for(var i = 0; i < typeArray.length; i+=7) {
 
               if(max < parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0])){
-                  max = parseInt(typeArray[i+6]);
+
                    topValuesTypesNames[1] = typeArray[i];
+              }
+              if((typeArray[i] === topValuesTypesNames[0])){
+                   max = parseInt(typeArray[i+6]);
+                   topValuesTypesNames[1] = typeArray[(i + 7) % typeArray.length];
               }
           }
 
           max = topValuesTypes[2];
-           for(var i = 21; i < typeArray.length; i+=7) {
+           for(var i = 0; i < typeArray.length; i+=7) {
 
-              if(max < parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0]) && (typeArray[i] !== topValuesTypesNames[1])){
+              if(max < parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0] && typeArray[i] !== topValuesTypesNames[1])){
                   max = parseInt(typeArray[i+6]);
                    topValuesTypesNames[2] = typeArray[i];
+              }
+               if(typeArray[i] === topValuesTypesNames[0] || typeArray[i] === topValuesTypesNames[1]){
+                    max = parseInt(typeArray[i+6]);
+                   topValuesTypesNames[2] = typeArray[(i + 7) % typeArray.length];
               }
           }
 
          max = topValuesTypes[3];
-           for(var i = 28; i < typeArray.length; i+=7) {
-              if(max < parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0]) && (typeArray[i] !== topValuesTypesNames[1]) && (typeArray[i] !== topValuesTypesNames[2])){
+           for(var i = 0; i < typeArray.length; i+=7) {
+              if(max < parseInt(typeArray[i+6])){
                      max = parseInt(typeArray[i+6]);
                      topValuesTypesNames[3] = typeArray[i];
+              }
+              if((typeArray[i] === topValuesTypesNames[0] || typeArray[i] === topValuesTypesNames[1] || typeArray[i] === topValuesTypesNames[2])){
+                    max = parseInt(typeArray[i+6]);
+                  topValuesTypesNames[3] = typeArray[(i + 7) % typeArray.length];
               }
           }
 
           var idValue;
+           var idValue1;
            for(var i = 0; i < topValuesTypesNames.length; ++i) {
-                idValue = "type" + String(i+1);
-                document.getElementById(idValue).innerHTML = topValuesTypesNames[i];
+                idValue = "typeImg" + String(i+1);
+                idValue1 = "type" + String(i+1);
+                document.getElementById(idValue).src = "images/clipart/" + topValuesTypesNames[i] + ".png";
+                document.getElementById(idValue1).innerHTML = topValuesTypesNames[i];
            }
+
 
 
 
