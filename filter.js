@@ -288,12 +288,13 @@ function updateBrand(brand,givenType)
      var arrayBrandObj = Object.keys(brandObj).map(function(key) {
          return [key, brandObj[key].Count];});
      arrayBrandObj=arrayBrandObj.sort((a, b) => a[1] - b[1])
-     var al=1;
 
  }
 
 function customQuery()
 {
-
-
+/*
+    if()
+    ''/price/1000/5000
+*/
 }
