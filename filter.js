@@ -145,6 +145,11 @@ var brands=
         'Hitachi','TCL','Hitachi(r)'
     ]
 var jsonObj = {
+    "Macro":
+    {
+        "Price":0,
+        "Performance":0
+    }
     "Price":
     {
         "Camera":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
@@ -175,6 +180,68 @@ var jsonObj = {
         "USB Cable":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
         "USB Flash Drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}}
     }
+        "Brand":
+    {
+        "Camera":{},
+        "Camera Lens":{},
+        "Charger/Adapter":{},
+        "Controller":{},
+        "Desktop PC":{},
+        "Docking Station":{},
+        "DVD/BluRay Players":{},
+        "External Hard Drive":{},
+        "External Solid State Drive":{},
+        "Game":{},
+        "Gaming Console":{},
+        "HDMI Cable":{},
+        "Headset":{},
+        "Keyboard":{},
+        "Laptop Charger":{},
+        "Monitor":{},
+        "Mouse":{},
+        "Notebook":{},
+        "Notebook Case":{},
+        "Printer":{},
+        "SD Card":{},
+        "Smartphone":{},
+        "Speaker":{},
+        "Tablet":{},
+        "TV":{},
+        "USB Cable":{},
+        "USB Flash Drive":{}
+    },
+
+        "Performance":
+    {
+        "Camera":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}}},
+        "Camera Lens":{},
+        "Charger/Adapter":{},
+        "Controller":{},
+        "Desktop PC":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}}},
+        "Docking Station":{},
+        "DVD/BluRay Players":{},
+        "External Hard Drive":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}}},
+        "External Solid State Drive":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}}},
+        "Game":{},
+        "Gaming Console":{},
+        "HDMI Cable":{},
+        "Headset":{},
+        "Keyboard":{},
+        "Laptop Charger":{},
+        "Monitor":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}}},
+        "Mouse":{},
+        "Notebook":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}}},
+        "Notebook Case":{},
+        "Printer":{},
+        "SD Card":{},
+        "Smartphone":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}}},
+        "Speaker":{},
+        "Tablet":{},
+        "TV":{},
+        "USB Cable":{},
+        "USB Flash Drive":{}
+    },
+
 }
 
 function addJSONParameter()
@@ -276,8 +343,9 @@ function updateBrand(brand,givenType)
     localStorage.setItem('prices',JSON.stringify(localJSON))
     mostUsedBrand(givenType)
 }
+
  function mostUsedBrand(productType)
- {
+{
      mostUsed=[]
      if(localStorage['prices']==null)
      {
@@ -288,8 +356,50 @@ function updateBrand(brand,givenType)
      var arrayBrandObj = Object.keys(brandObj).map(function(key) {
          return [key, brandObj[key].Count];});
      arrayBrandObj=arrayBrandObj.sort((a, b) => a[1] - b[1])
+}
 
- }
+function updateCapability(brand,givenType)
+{
+    var localJSON=JSON.parse(localStorage['prices'])
+    if(localJSON['Price'][givenType]["Brand"][brand]==null)
+    {
+        addJSONParameter()
+        localJSON=JSON.parse(localStorage['prices'])
+    }
+    localJSON['Price'][givenType]["Brand"][brand]["Count"]=localJSON['Price'][givenType]["Brand"][brand]["Count"]+1
+    localStorage.setItem('prices',JSON.stringify(localJSON))
+    mostUsedBrand(givenType)
+}
+
+
+function filterCapability(brand,givenType,stat,value)
+{
+     if(localStorage['prices']==null)
+    {
+        localStorage.setItem('prices',JSON.stringify(jsonObj))
+        isFirst=false
+    }
+
+    var typeString = localStorage['ID_type']
+    var typeJSON = (JSON.parse(localStorage['prices']));
+
+
+    typeJSON['Performance'][typeString][stat]['AvgPriceArray'].push(value);
+    typeJSON['Performance'][typeString][stat]['Count']=typeJSON['Price'][typeString]['Count']+1;
+
+    var lowerBoundPrice=oneSigmaMinus(avgPriceArray)
+    if(lowerBoundPrice<0)
+    {
+        lowerBoundPrice=0
+    }
+    var upperBoundPrice=oneSigmaPlus(avgPriceArray)
+    typeJSON['Performance'][typeString][stat]["UpperBound"]=upperBoundPrice
+    typeJSON['Performance'][typeString][stat]["LowerBound"]=lowerBoundPrice
+    localStorage.setItem('prices',JSON.stringify(typeJSON))
+}
+
+
+
 
 function customQuery()
 {
@@ -298,3 +408,5 @@ function customQuery()
     ''/price/1000/5000
 */
 }
+
+
