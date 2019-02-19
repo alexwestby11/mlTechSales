@@ -145,50 +145,52 @@ function sortType(){
         var topValuesTypes = [0,0,0,0];
         var topValuesTypesNames = [typeArray[0],typeArray[7],typeArray[14],typeArray[21]];
         max = topValuesTypes[0];
+
         console.log(typeArray.length);
           for(var i = 0; i < typeArray.length; i+=7) {
                 console.log(typeArray[i+6] + " " + typeArray[i]);
-              if(max < parseInt(typeArray[i+6])){
+              if(max <= parseInt(typeArray[i+6])){
                   max = parseInt(typeArray[i+6]);
                   topValuesTypesNames[0] = typeArray[i];
 
               }
           }
+
           max = topValuesTypes[1];
            for(var i = 0; i < typeArray.length; i+=7) {
 
-              if(max < parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0])){
+              if(max <= parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0])){
 
                    topValuesTypesNames[1] = typeArray[i];
               }
               if((typeArray[i] === topValuesTypesNames[0])){
-                   max = parseInt(typeArray[i+6]);
-                   topValuesTypesNames[1] = typeArray[(i + 7) % typeArray.length];
+                   max = parseInt(typeArray[(i+6+7) % (typeArray.length -1)]);
+                   topValuesTypesNames[1] = typeArray[(i + 7) % typeArray.length-1];
               }
           }
 
           max = topValuesTypes[2];
            for(var i = 0; i < typeArray.length; i+=7) {
 
-              if(max < parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0] && typeArray[i] !== topValuesTypesNames[1])){
-                  max = parseInt(typeArray[i+6]);
+              if(max <= parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0] && typeArray[i] !== topValuesTypesNames[1])){
+                   max = parseInt(typeArray[i+6]);
                    topValuesTypesNames[2] = typeArray[i];
               }
                if(typeArray[i] === topValuesTypesNames[0] || typeArray[i] === topValuesTypesNames[1]){
-                    max = parseInt(typeArray[i+6]);
-                   topValuesTypesNames[2] = typeArray[(i + 7) % typeArray.length];
+                   max = parseInt(typeArray[(i+6+7) % (typeArray.length -1)]);
+                   topValuesTypesNames[2] = typeArray[(i + 7) % typeArray.length-1];
               }
           }
 
          max = topValuesTypes[3];
            for(var i = 0; i < typeArray.length; i+=7) {
-              if(max < parseInt(typeArray[i+6])){
+              if(max <= parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0] && typeArray[i] !== topValuesTypesNames[1] && typeArray[i] !== topValuesTypesNames[2])){
                      max = parseInt(typeArray[i+6]);
                      topValuesTypesNames[3] = typeArray[i];
               }
               if((typeArray[i] === topValuesTypesNames[0] || typeArray[i] === topValuesTypesNames[1] || typeArray[i] === topValuesTypesNames[2])){
-                    max = parseInt(typeArray[i+6]);
-                  topValuesTypesNames[3] = typeArray[(i + 7) % typeArray.length];
+                  max = parseInt(typeArray[(i+6+7) % (typeArray.length -1)]);
+                  topValuesTypesNames[3] = typeArray[(i + 7) % typeArray.length-1];
               }
           }
 
@@ -206,6 +208,36 @@ function sortType(){
 
 
           alert(topValuesTypesNames);
+}
+
+function sortType1(){
+    var items = [];
+     var topValuesTypesNames = [typeArray[0],typeArray[7],typeArray[14],typeArray[21]];
+        for(var i = 0; i < typeArray.length; i += 7) {
+            var temp = new Item(); // ReferenceError
+            temp.number = parseInt(typeArray[i+6]);
+            temp.type = typeArray[i];
+            items.push(temp);
+        }
+
+        items.sort(function(a, b) {
+            return a.number - b.number;
+        });
+
+        topValuesTypesNames[0] = items[items.length-1].type;
+        topValuesTypesNames[1] = items[items.length-2].type;
+        topValuesTypesNames[2] = items[items.length-3].type;
+        topValuesTypesNames[3] = items[items.length-4].type;
+
+
+
+        for(var i = 0; i < topValuesTypesNames.length; ++i) {
+                idValue = "typeImg" + String(i+1);
+                idValue1 = "type" + String(i+1);
+                document.getElementById(idValue).src = "images/clipart/" + topValuesTypesNames[i] + ".png";
+                document.getElementById(idValue1).innerHTML = topValuesTypesNames[i];
+           }
+
 }
 
 function setTypeArray(){
@@ -231,6 +263,14 @@ class Product {
       this.price = '';
       this.category = '';
 
+  }
+}
+
+//Classes
+class Item {
+  constructor() {
+      this.type = "";
+      this.number = 0;
   }
 }
 
