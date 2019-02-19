@@ -118,7 +118,7 @@ function initialSet(){
             }
         }
         typeArray = JSON.parse(localStorage.type);
-        alert("flag = " + flag + "\n" + "here = " + typeArray);
+        //alert("flag = " + flag + "\n" + "here = " + typeArray);
         flag = '1';
         localStorage['flag'] = flag;
 
@@ -135,82 +135,14 @@ function updateType(type){
             }
         }
         localStorage.type = JSON.stringify(typeArray);
-        alert("Updated " + type + "\n" + typeArray);
+       // alert("Updated " + type + "\n" + typeArray);
 
 }
+
+
 
 
 function sortType(){
-        var max;
-        var topValuesTypes = [0,0,0,0];
-        var topValuesTypesNames = [typeArray[0],typeArray[7],typeArray[14],typeArray[21]];
-        max = topValuesTypes[0];
-
-        console.log(typeArray.length);
-          for(var i = 0; i < typeArray.length; i+=7) {
-                console.log(typeArray[i+6] + " " + typeArray[i]);
-              if(max <= parseInt(typeArray[i+6])){
-                  max = parseInt(typeArray[i+6]);
-                  topValuesTypesNames[0] = typeArray[i];
-
-              }
-          }
-
-          max = topValuesTypes[1];
-           for(var i = 0; i < typeArray.length; i+=7) {
-
-              if(max <= parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0])){
-
-                   topValuesTypesNames[1] = typeArray[i];
-              }
-              if((typeArray[i] === topValuesTypesNames[0])){
-                   max = parseInt(typeArray[(i+6+7) % (typeArray.length -1)]);
-                   topValuesTypesNames[1] = typeArray[(i + 7) % typeArray.length-1];
-              }
-          }
-
-          max = topValuesTypes[2];
-           for(var i = 0; i < typeArray.length; i+=7) {
-
-              if(max <= parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0] && typeArray[i] !== topValuesTypesNames[1])){
-                   max = parseInt(typeArray[i+6]);
-                   topValuesTypesNames[2] = typeArray[i];
-              }
-               if(typeArray[i] === topValuesTypesNames[0] || typeArray[i] === topValuesTypesNames[1]){
-                   max = parseInt(typeArray[(i+6+7) % (typeArray.length -1)]);
-                   topValuesTypesNames[2] = typeArray[(i + 7) % typeArray.length-1];
-              }
-          }
-
-         max = topValuesTypes[3];
-           for(var i = 0; i < typeArray.length; i+=7) {
-              if(max <= parseInt(typeArray[i+6]) && (typeArray[i] !== topValuesTypesNames[0] && typeArray[i] !== topValuesTypesNames[1] && typeArray[i] !== topValuesTypesNames[2])){
-                     max = parseInt(typeArray[i+6]);
-                     topValuesTypesNames[3] = typeArray[i];
-              }
-              if((typeArray[i] === topValuesTypesNames[0] || typeArray[i] === topValuesTypesNames[1] || typeArray[i] === topValuesTypesNames[2])){
-                  max = parseInt(typeArray[(i+6+7) % (typeArray.length -1)]);
-                  topValuesTypesNames[3] = typeArray[(i + 7) % typeArray.length-1];
-              }
-          }
-
-          var idValue;
-           var idValue1;
-           for(var i = 0; i < topValuesTypesNames.length; ++i) {
-                idValue = "typeImg" + String(i+1);
-                idValue1 = "type" + String(i+1);
-                document.getElementById(idValue).src = "images/clipart/" + topValuesTypesNames[i] + ".png";
-                document.getElementById(idValue1).innerHTML = topValuesTypesNames[i];
-           }
-
-
-
-
-
-          alert(topValuesTypesNames);
-}
-
-function sortType1(){
     var items = [];
      var topValuesTypesNames = [typeArray[0],typeArray[7],typeArray[14],typeArray[21]];
         for(var i = 0; i < typeArray.length; i += 7) {
