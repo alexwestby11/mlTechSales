@@ -61,7 +61,7 @@ var Timer3 = 0;
 var Timer4 = 0;
 var typeArray = [];
 var flag = localStorage['flag'] || '0';
-
+var topValuesTypesNames = [typeArray[0],typeArray[7],typeArray[14],typeArray[21]];
 
 const numToChangeBox = 3;
 
@@ -86,8 +86,8 @@ function initBoxes(type){
    //if(index === numToChangeBox  ||   localStorage['prevType'] !==  localStorage['ID_type']){
        colChange();
 
-   alert("type = " +  type + "\n" +"Boxes Initilized" + "\n" +
-  "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
+   //alert("type = " +  type + "\n" +"Boxes Initilized" + "\n" +
+  //"box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
 
 }
 
@@ -135,7 +135,7 @@ function updateType(type){
             }
         }
         localStorage.type = JSON.stringify(typeArray);
-       // alert("Updated " + type + "\n" + typeArray);
+       alert("Updated " + type + "\n" + typeArray);
 
 }
 
@@ -144,7 +144,7 @@ function updateType(type){
 
 function sortType(){
     var items = [];
-     var topValuesTypesNames = [typeArray[0],typeArray[7],typeArray[14],typeArray[21]];
+
         for(var i = 0; i < typeArray.length; i += 7) {
             var temp = new Item(); // ReferenceError
             temp.number = parseInt(typeArray[i+6]);
@@ -161,7 +161,7 @@ function sortType(){
         topValuesTypesNames[2] = items[items.length-3].type;
         topValuesTypesNames[3] = items[items.length-4].type;
 
-
+        console.log(items);
 
         for(var i = 0; i < topValuesTypesNames.length; ++i) {
                 idValue = "typeImg" + String(i+1);
@@ -260,8 +260,37 @@ function setInput(){
     localStorage['results_index'] = z_idx;
 }
 
+function pressedType1(){
+     localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + topValuesTypesNames[0];
+        z_idx = 0;
+    localStorage['results_index'] = z_idx;
+    localStorage['value'] = "Type: " + topValuesTypesNames[0];
+     linkResultsPage();
+}
 
+function pressedType2(){
+     localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + topValuesTypesNames[1];
+     z_idx = 0;
+     localStorage['results_index'] = z_idx;
+     localStorage['value'] = "Type: " + topValuesTypesNames[1];
+     linkResultsPage();
+}
 
+function pressedType3(){
+     localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + topValuesTypesNames[2];
+     z_idx = 0;
+     localStorage['results_index'] = z_idx;
+     localStorage['value'] = "Type: " + topValuesTypesNames[2];
+     linkResultsPage();
+}
+
+function pressedType4(){
+     localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + topValuesTypesNames[3];
+     z_idx = 0;
+     localStorage['results_index'] = z_idx;
+     localStorage['value'] = "Type: " + topValuesTypesNames[3];
+     linkResultsPage();
+}
 
 
 
