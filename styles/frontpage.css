@@ -139,3 +139,11 @@ src: url("../fonts/BenguiatGothicStd-HeavyObl.otf");
 .tableRowHeight{
    height: 14vmax;
 }
+
+.imgFront {
+  opacity: 0.9;
+}
+
+.imgFront:hover {
+  opacity: 1;
+}

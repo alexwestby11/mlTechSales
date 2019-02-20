@@ -48,7 +48,7 @@ var totalCollect = 3;
 var currentCollect = 0;
 var addPicsIndex = 0;
 var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.jpg','images/Logo/logo1.png','images/Logo/logo2.png','images/Logo/logo3.png','images/Logo/logo4.png','images/Logo/logo5.png','images/Logo/logo5.png'];
-
+var typeArrayFixed = ["Notebook","Monitor","Notebook Case","Mouse","Laptop Charger","Keyboard","HDMI Cable","Docking Station","Speaker","Tablet","Smartphone","SD Card","Printer","DVD_BR Player","Desktop PC","Controller","Charger_Adapter","Camera","Headset","External Hard Dr","External Solid S","Game","Gaming Console","USB Flash Drive","USB Cable","Camera Lens","TV"];
 var isResults = 1;
 var c1 = 0;
 var c2 = 0;
@@ -60,13 +60,14 @@ var Timer3 = 0;
 var Timer4 = 0;
 var typeArray = [];
 var flag = localStorage['flag'] || '0';
+var topValuesTypesNames = [typeArray[0],typeArray[7],typeArray[14],typeArray[21]];
 
 const numToChangeBox = 3;
 
 function initBoxes(type){
     var index = 0;
 
-    for(var i = 0; i < typeArray.length; i += 6){
+    for(var i = 0; i < typeArray.length; i += 7){
        if(typeArray[i] === type){
           box1 = typeArray[i+1];
           box2 = typeArray[i+2];
@@ -84,11 +85,12 @@ function initBoxes(type){
    alert("Boxes Initilized" + "\n" +
    "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
     sessionID()
+
 }
 
 function initialSet(){
         if(flag === '0') {
-            var typeTempArray = ["Camera", "Camera Lens", "Charger_Adapter", "Controller", "Desktop PC", "Docking Station", "DVD_BR Player", "External Hard Dr", "External Solid S", "Game", "Gaming Console", "HDMI Cable", "Headset", "Keyboard", "Laptop Charger", "Monitor", "Notebook", "Notebook Case", "Printer", "SD Card", "Smartphone", "Speaker", "Tablet", "TV", "USB Cable", "USB Flash Drive", "Mouse"];
+            var typeTempArray = typeArrayFixed;
             for (var i = 0; i < typeTempArray.length; ++i) {
                 var tempArray = [];
                 for (var i = 0; i < typeTempArray.length; ++i) {
@@ -105,6 +107,9 @@ function initialSet(){
                     //index data
                     tempArray.push(0);
 
+                     //type count
+                    tempArray.push(0);
+
                 }
                 localStorage.type = JSON.stringify(tempArray);
             }
@@ -117,9 +122,65 @@ function initialSet(){
 
 }
 
+function updateType(type){
+        var temp = '';
+        for(var i = 0; i < typeArray.length; i+=7) {
+            if(type === typeArray[i]){
+                temp = typeArray[i];
+                typeArray[i+6] = parseInt(typeArray[i+6]) + 1;
+                break;
+            }
+        }
+        localStorage.type = JSON.stringify(typeArray);
+       alert("Updated " + type + "\n" + typeArray);
+
+}
+
+
+
+
+function sortType(){
+    var items = [];
+
+        for(var i = 0; i < typeArray.length; i += 7) {
+            var temp = new Item(); // ReferenceError
+            temp.number = parseInt(typeArray[i+6]);
+            temp.type = typeArray[i];
+            items.push(temp);
+        }
+
+        items.sort(function(a, b) {
+            return a.number - b.number;
+        });
+
+        topValuesTypesNames[0] = items[items.length-1].type;
+        topValuesTypesNames[1] = items[items.length-2].type;
+        topValuesTypesNames[2] = items[items.length-3].type;
+        topValuesTypesNames[3] = items[items.length-4].type;
+
+        console.log(items);
+
+        for(var i = 0; i < topValuesTypesNames.length; ++i) {
+                idValue = "typeImg" + String(i+1);
+                idValue1 = "type" + String(i+1);
+                document.getElementById(idValue).src = "images/clipart/" + topValuesTypesNames[i] + ".png";
+                document.getElementById(idValue1).innerHTML = topValuesTypesNames[i];
+           }
+
+}
+
 function setTypeArray(){
        typeArray = JSON.parse(localStorage.type);
 }
+
+
+
+
+
+
+
+
+
 //Classes
 class Product {
   constructor() {
@@ -134,10 +195,18 @@ class Product {
   }
 }
 
+//Classes
+class Item {
+  constructor() {
+      this.type = "";
+      this.number = 0;
+  }
+}
+
 
 //Update Value in existing box
 function updateBoxValue(type){
-   for(var i = 0; i <  typeArray.length; i += 6){
+   for(var i = 0; i <  typeArray.length; i += 7){
        if(typeArray[i] === type){
 
             typeArray[i+1] = parseInt(typeArray[i+1]) + parseInt(box1);
@@ -189,8 +258,37 @@ function setInput(){
     localStorage['results_index'] = z_idx;
 }
 
+function pressedType1(){
+     localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + topValuesTypesNames[0];
+        z_idx = 0;
+    localStorage['results_index'] = z_idx;
+    localStorage['value'] = "Type: " + topValuesTypesNames[0];
+     linkResultsPage();
+}
 
+function pressedType2(){
+     localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + topValuesTypesNames[1];
+     z_idx = 0;
+     localStorage['results_index'] = z_idx;
+     localStorage['value'] = "Type: " + topValuesTypesNames[1];
+     linkResultsPage();
+}
 
+function pressedType3(){
+     localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + topValuesTypesNames[2];
+     z_idx = 0;
+     localStorage['results_index'] = z_idx;
+     localStorage['value'] = "Type: " + topValuesTypesNames[2];
+     linkResultsPage();
+}
+
+function pressedType4(){
+     localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + topValuesTypesNames[3];
+     z_idx = 0;
+     localStorage['results_index'] = z_idx;
+     localStorage['value'] = "Type: " + topValuesTypesNames[3];
+     linkResultsPage();
+}
 
 
 
@@ -347,9 +445,11 @@ function linkResultsPage() {
         localStorage['ID_type'] = dataArray[itemIndexInLocalArray].type;
         localStorage['results_index'] = z_idx - 10;
 
+
         updateAveragePrice(dataArray[itemIndexInLocalArray].price);
         updateBrand(dataArray[itemIndexInLocalArray].brand,dataArray[itemIndexInLocalArray].type)
         initialBoxSize(localStorage['ID_cat']);
+
 
 }
 
@@ -405,6 +505,7 @@ function initialBoxSize(){
 
 
 
+
 function createSessionID()
 {
     if (localStorage['sessionID']==null)
@@ -443,6 +544,7 @@ function createSessionID()
                     {
                         localStorage['username']=data.username
                     }
+
 
                     console.log("Got Username")
                 }
