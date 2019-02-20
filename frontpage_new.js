@@ -159,7 +159,7 @@ function setInput(){
     }
 
    // localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue;
-    localStorage['searchInput']="http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue+ "/price/1000/5000"
+    localStorage['searchInput']="http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue+ "/getInfo/"+localStorage['Brand0']
     z_idx = 0;
     localStorage['results_index'] = z_idx;
 }
@@ -389,21 +389,21 @@ function createSessionID()
     }
 
 
-        $(document).ready(function() {
-        var alpha = $.ajax({
-            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
-            dataType: 'json',
-            type: 'POST',
-            success: function (data) {
-                {
-                    console.log("Sent Session ID")
-                }
-            },
-            error: function (error) {
-                console.log(error);
+    $(document).ready(function() {
+    var alpha = $.ajax({
+        url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
+        dataType: 'json',
+        type: 'POST',
+        success: function (data) {
+            {
+                console.log("Sent Session ID")
             }
-        });
-    })
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+})
 
 
 

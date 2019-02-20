@@ -149,7 +149,7 @@ var jsonObj = {
     {
         "Price":0,
         "Performance":0
-    }
+    },
     "Price":
     {
         "Camera":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
@@ -179,7 +179,7 @@ var jsonObj = {
         "TV":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
         "USB Cable":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}},
         "USB Flash Drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{}}
-    }
+    },
         "Brand":
     {
         "Camera":{},
@@ -327,8 +327,6 @@ function updateAveragePrice(x)
     typeJSON['Price'][typeString]["LowerBound"]=lowerBoundPrice
     localStorage.setItem('prices',JSON.stringify(typeJSON))
 
-
-
 }
 
 function updateBrand(brand,givenType)
@@ -356,6 +354,9 @@ function updateBrand(brand,givenType)
      var arrayBrandObj = Object.keys(brandObj).map(function(key) {
          return [key, brandObj[key].Count];});
      arrayBrandObj=arrayBrandObj.sort((a, b) => a[1] - b[1])
+     localStorage['Brand0']=arrayBrandObj[arrayBrandObj.length-1][0]
+     localStorage['Brand1']=arrayBrandObj[arrayBrandObj.length-2][0]
+     localStorage['Brand2']=arrayBrandObj[arrayBrandObj.length-3][0]
 }
 
 function updateCapability(brand,givenType)
