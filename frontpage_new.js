@@ -27,7 +27,6 @@ var numRowsS = localStorage['numRowsS'] || '3';
 var numColS= localStorage['numColS'] || '2';
 var numRowsI = localStorage['numRowsI'] || '2';
 var numColI = localStorage['numColI'] || '1';
-
 var myVar = localStorage['ID'] || '10';
 var myVar1 = localStorage['ID_name'] || '0';
 var myVar2 = localStorage['ID_pic'] || '0';
@@ -83,11 +82,9 @@ function initBoxes(type){
        }
    }
 
-   //if(index === numToChangeBox  ||   localStorage['prevType'] !==  localStorage['ID_type']){
-       colChange();
-
-   //alert("type = " +  type + "\n" +"Boxes Initilized" + "\n" +
-  //"box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
+   alert("Boxes Initilized" + "\n" +
+   "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
+    sessionID()
 
 }
 
@@ -255,7 +252,8 @@ function setInput(){
        alert('Try again');
     }
 
-    localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue;
+   // localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue;
+    localStorage['searchInput']="http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue+ "/getInfo/"+localStorage['Brand0']
     z_idx = 0;
     localStorage['results_index'] = z_idx;
 }
@@ -333,8 +331,7 @@ function pressedType4(){
            z_idx = dx;
           localStorage['results_index'] = z_idx;
       }
-
-     // console.log(z_idx);
+     // console.log(z_idx)
 }
 
 
@@ -448,10 +445,11 @@ function linkResultsPage() {
         localStorage['ID_type'] = dataArray[itemIndexInLocalArray].type;
         localStorage['results_index'] = z_idx - 10;
 
-       // updateType(localStorage['ID_type']);
 
-       // updateAveragePrice(dataArray[itemIndexInLocalArray].price);
-        initialBoxSize(localStorage['ID_type']);
+        updateAveragePrice(dataArray[itemIndexInLocalArray].price);
+        updateBrand(dataArray[itemIndexInLocalArray].brand,dataArray[itemIndexInLocalArray].type)
+        initialBoxSize(localStorage['ID_cat']);
+
 
 }
 
@@ -469,8 +467,6 @@ function replyMainImage(clicked_id)
         var value = addPicsIndexArray[Number(num)];
         addPicsIndexArray[Number(num)] = addPicsIndexArray[addPicsIndex];
         addPicsIndexArray[addPicsIndex] = value;
-
-
 }
 
 function replyMainButtons(clicked_id)
@@ -507,3 +503,55 @@ function initialBoxSize(){
 
 
 
+
+
+
+function createSessionID()
+{
+    if (localStorage['sessionID']==null)
+    {
+        localStorage['sessionID']=Math.random().toString(36).substring(7) + Math.random().toString(36).substring(7);
+        localStorage['username']=''
+    }
+
+
+    $(document).ready(function() {
+    var alpha = $.ajax({
+        url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
+        dataType: 'json',
+        type: 'POST',
+        success: function (data) {
+            {
+                console.log("Sent Session ID")
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+})
+
+
+
+        $(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
+            dataType: 'json',
+            type: 'GET',
+            success: function (data) {
+                {
+                    if(data.username!=null)
+                    {
+                        localStorage['username']=data.username
+                    }
+
+
+                    console.log("Got Username")
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    })
+}
