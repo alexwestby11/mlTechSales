@@ -81,7 +81,7 @@ function initBoxes(type){
           break;
        }
    }
-
+    colChange();
    alert("Boxes Initilized" + "\n" +
    "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
     sessionID()
@@ -153,7 +153,7 @@ function sortType(){
             return a.number - b.number;
         });
 
-        topValuesTypesNames[0] = items[items.length-1].type;
+        topValuesTypesNames[0] = items[items.length-1].type;e
         topValuesTypesNames[1] = items[items.length-2].type;
         topValuesTypesNames[2] = items[items.length-3].type;
         topValuesTypesNames[3] = items[items.length-4].type;
@@ -172,13 +172,6 @@ function sortType(){
 function setTypeArray(){
        typeArray = JSON.parse(localStorage.type);
 }
-
-
-
-
-
-
-
 
 
 //Classes
@@ -555,3 +548,6 @@ function createSessionID()
         });
     })
 }
+
+
+
