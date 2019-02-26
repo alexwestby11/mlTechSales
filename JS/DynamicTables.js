@@ -188,21 +188,11 @@ function dFilter() {
                                  lowerBound = arr[j][1];
                                  upperBound = arr[j][2];
 
-                                stringValue += "<div class='d-flex'>"
-                                  + "<span id = 'RangeText11' class='font-weight-bold indigo-text'>0</span>"
-                                  +"<form class='range-field'>"
-                                  + "<input id = 'Range1' class='border-1' type='range' min='0' max='100' >"
-                                  + "</form>"
-                                  + "<span id = 'RangeText12' class='font-weight-bold indigo-text'>100</span>"
-                                  + "</div>";
-
-                                 stringValue += "<div class='d-flex '>"
-                                  + "<span id = 'RangeText21' class='font-weight-bold indigo-text'>0</span>"
-                                  +"<form class='range-field'>"
-                                  + "<input id = 'Range2' class='border-1' type='range' min='0' max='100' >"
-                                  + "</form>"
-                                  + "<span id = 'RangeText22' class='font-weight-bold indigo-text'>100</span>"
-                                  + "</div>";
+                                 stringValue += "<p>" +
+                                     "<label for=\"amount\">Price range:</label>" +
+                                     "<input type=\"text\" id=\"amount\" readonly style=\"border:0; color:#f6931f; font-weight:bold;\">" +
+                                     "</p>";
+                                 stringValue += "<div id=\"slider-range\"></div>";
 
                                  i = arr[j].length;
 
@@ -227,23 +217,28 @@ function dFilter() {
                  }
                  $('#dFilter').html(createGUI(filterGUI));
                   $('#tab_logic').append('<div id="dFilter" ></div>');
-                  setLimits(upperBound,lowerBound);
+                  customSlider(upperBound,lowerBound);
 
              });
 }
 
-function setLimits(upper,lower){
-   let slider1 = document.getElementById("Range1");
-  addSelectControl()
-   slider1.max = lower;
-   document.getElementById("RangeText12").innerHTML = lower;
-   document.getElementById("RangeText21").innerHTML = lower;
 
-   let slider2 = document.getElementById("Range2");
-   slider2.min = lower;
-   slider2.max = upper;
-   document.getElementById("RangeText22").innerHTML = upper;
-}
+
+    function customSlider(upper,lower) {
+          $(function () {
+              $("#slider-range").slider({
+                  range: true,
+                  min: 0,
+                  max: 10000,
+                  values: [lower, upper],
+                  slide: function (event, ui) {
+                      $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                  }
+              });
+              $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                  " - $" + $("#slider-range").slider("values", 1));
+          });
+      }
 
 
 
