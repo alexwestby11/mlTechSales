@@ -82,8 +82,8 @@ function initBoxes(type){
        }
    }
     colChange();
-   alert("Boxes Initilized" + "\n" +
-   "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
+  // alert("Boxes Initilized" + "\n" +
+  // "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
     sessionID()
 
 }
@@ -149,11 +149,12 @@ function sortType(){
             items.push(temp);
         }
 
+        //sorts item
         items.sort(function(a, b) {
             return a.number - b.number;
         });
 
-        topValuesTypesNames[0] = items[items.length-1].type;e
+        topValuesTypesNames[0] = items[items.length-1].type;
         topValuesTypesNames[1] = items[items.length-2].type;
         topValuesTypesNames[2] = items[items.length-3].type;
         topValuesTypesNames[3] = items[items.length-4].type;
@@ -548,6 +549,5 @@ function createSessionID()
         });
     })
 }
-
 
 

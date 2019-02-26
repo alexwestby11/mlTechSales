@@ -128,9 +128,9 @@ function dImage() {
 //Results Page items
 function dTable() {
     getData1();
-             $("#dynamic_filter").ready(function () {
+             $("#dynamic_table").ready(function () {
                  //creates x images on same row
-                     function numTable(x, y) {
+                     function numTable(x,y) {
                      var index = 0;
                      var stringValue =
                          "<div  class=\"d-flex flex-column vertical-align\" style='width:100%; height:100%;'>";
@@ -162,40 +162,89 @@ function dTable() {
 
      }
 
+     var filterGUI = [["Brand","Sony","TLC","Amazon"],
+         ["Price","100","200"]];
 
      //Results Page items
 function dFilter() {
-    getData1();
-             $("#dynamic_table").ready(function () {
+            var upperBound;
+            let lowerBound;
+             $("#dynamic_filter").ready(function () {
                  //creates x images on same row
-                     function numTable(x, y) {
-                     var index = 0;
-                     var stringValue =
-                         "<div  class=\"d-flex flex-column vertical-align\" style='width:100%; height:100%;'>";
-                        if(x === 0 && y === 0){
-                             stringValue +=  "<div class=\"col-fluid\" style='width:100%; height:100%;font-size: large;text-align: center'><p>No Results</p></div>";
-                        }
-                     for (var j = 0; j < y; ++j) {//rows
-                         stringValue += "<div class=\"d-flex flex-row vertical-align\" style='width:inherit; height:100%;'>";
-                         for (var k = 0; k < x; ++k) {//col
-                             var idString = (j*numRows + k).toString();
-                             stringValue +=
-                                 "<div  id = '"+idString+"' class=\"d-flex flex-column marginMainImageNormal btn btnImg1-primary rounded shadow-sm\" onclick=\"linkProductPage();reply_click(this.id);\" style= 'border: 1px solid gainsboro;height:95%;width:100%;background: white;margin: 0.5%'>" +
-                                 "<div class=\"col-fluid \" style='text-align: center;font-size: large;width: 100%'><b></b></div>"+
-                                 "<input type=\"image\" src= \"images/Apple1.jpg\" class = \"d-block btn img rounded  img3\" style='align-self:center'>" +
-                                  "<div class=\"col-fluid justify-content-center\" style='text-align: center; font-weight: bold;'><b></b></div>" +
-                                 "</div>";
-                             ++index;
+
+                     function createGUI(arr) {
+                     var stringValue = "<form>";
+
+                     for (var j = 0; j < arr.length; ++j) {//rows
+                         var size = arr[j].length;
+                          stringValue +=  "<div class= 'dropdown'>";
+
+                            stringValue += arr[j][0];
+
+                          stringValue +=  "</div>";
+                         for(var i = 1; i < size; ++i){
+
+                             if(arr[j][0] === "Price"){
+                                 lowerBound = arr[j][1];
+                                 upperBound = arr[j][2];
+
+                                stringValue += "<div class='d-flex'>"
+                                  + "<span id = 'RangeText11' class='font-weight-bold indigo-text'>0</span>"
+                                  +"<form class='range-field'>"
+                                  + "<input id = 'Range1' class='border-1' type='range' min='0' max='100' >"
+                                  + "</form>"
+                                  + "<span id = 'RangeText12' class='font-weight-bold indigo-text'>100</span>"
+                                  + "</div>";
+
+                                 stringValue += "<div class='d-flex '>"
+                                  + "<span id = 'RangeText21' class='font-weight-bold indigo-text'>0</span>"
+                                  +"<form class='range-field'>"
+                                  + "<input id = 'Range2' class='border-1' type='range' min='0' max='100' >"
+                                  + "</form>"
+                                  + "<span id = 'RangeText22' class='font-weight-bold indigo-text'>100</span>"
+                                  + "</div>";
+
+                                 i = arr[j].length;
+
+                             }else{
+                                 stringValue +=  "<div  class= 'checkbox'>"
+                                  + "<label><input  type= 'checkbox' value= ''>"
+                                  + arr[j][i]
+                                  + "</label>"
+                                  +  "</div>";
+
+
+                             }
+
+
+
                          }
-                         stringValue += "</div>";
+
                      }
-                      stringValue += "</div>";
+                      stringValue += "</form>";
 
                      return stringValue;
                  }
-                 $('#d_table').html(numTable(numRows, numCol));
-                  $('#tab_logic').append('<div id="d_table" ></div>');
-              });
+                 $('#dFilter').html(createGUI(filterGUI));
+                  $('#tab_logic').append('<div id="dFilter" ></div>');
+                  setLimits(upperBound,lowerBound);
+
+             });
+}
+
+function setLimits(upper,lower){
+   let slider1 = document.getElementById("Range1");
+  addSelectControl()
+   slider1.max = lower;
+   document.getElementById("RangeText12").innerHTML = lower;
+   document.getElementById("RangeText21").innerHTML = lower;
+
+   let slider2 = document.getElementById("Range2");
+   slider2.min = lower;
+   slider2.max = upper;
+   document.getElementById("RangeText22").innerHTML = upper;
+}
 
 
-     }
+
+
