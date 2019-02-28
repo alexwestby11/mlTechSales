@@ -178,8 +178,10 @@ function dFilter() {
                      for (var j = 0; j < arr.length; ++j) {//rows
                          var size = arr[j].length;
                           stringValue +=  "<div class= 'dropdown'>";
+                            if(arr[j][0] !== "Price"){
+                                stringValue += arr[j][0];
+                            }
 
-                            stringValue += arr[j][0];
 
                           stringValue +=  "</div>";
                          for(var i = 1; i < size; ++i){
@@ -198,7 +200,7 @@ function dFilter() {
 
                              }else{
                                  stringValue +=  "<div  class= 'checkbox'>"
-                                  + "<label><input  type= 'checkbox' value= ''>"
+                                  + "<label>&emsp;<input  type= 'checkbox' value= '' checked>"
                                   + arr[j][i]
                                   + "</label>"
                                   +  "</div>";
