@@ -254,8 +254,7 @@ function setInput(){
 
 function pressedType1(){
      localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + topValuesTypesNames[0];
-        z_idx = 0;
-    localStorage['results_index'] = z_idx;
+
     localStorage['value'] = "Type: " + topValuesTypesNames[0];
      linkResultsPage();
 }
@@ -417,10 +416,6 @@ function nextButton(){
 function linkResultsPage() {
   window.location.href = 'resultsPage_new.html';
 }
-
-
-
-
 ///Only works on results page
  function reply_click(clicked_id)
 {
