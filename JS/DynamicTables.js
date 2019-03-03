@@ -169,6 +169,7 @@ function dTable() {
 function dFilter() {
             var upperBound;
             let lowerBound;
+            let index = 0;
              $("#dynamic_filter").ready(function () {
                  //creates x images on same row
 
@@ -178,6 +179,7 @@ function dFilter() {
                      for (var j = 0; j < arr.length; ++j) {//rows
                          var size = arr[j].length;
                           stringValue +=  "<div class= 'dropdown'>";
+
                             if(arr[j][0] !== "Price"){
                                 stringValue += arr[j][0];
                             }
@@ -199,12 +201,13 @@ function dFilter() {
                                  i = arr[j].length;
 
                              }else{
+
                                  stringValue +=  "<div  class= 'checkbox'>"
-                                  + "<label>&emsp;<input  type= 'checkbox' value= '' checked>"
+                                  + "<label>&emsp;<input id = 'Index"+index+"'  type= 'checkbox' value= '' checked>"
                                   + arr[j][i]
                                   + "</label>"
                                   +  "</div>";
-
+                                  ++index;
 
                              }
 
@@ -226,6 +229,7 @@ function dFilter() {
 
 
 
+
     function customSlider(upper,lower) {
           $(function () {
               $("#slider-range").slider({
@@ -235,15 +239,50 @@ function dFilter() {
                   values: [lower, upper],
                   slide: function (event, ui) {
                       $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                      //valueUpper = upper;
+                     // valueLower = lower;
                   }
+
               });
               $("#amount").val("$" + $("#slider-range").slider("values", 0) +
                   " - $" + $("#slider-range").slider("values", 1));
           });
       }
-
-
-
 function printOut(){
     console.log("here");
+}
+
+
+function getFilterChanges(arr){
+        let valueUpper = $("#slider-range").slider("values",1);
+        let valueLower = $("#slider-range").slider("values",0);
+        let filterArray = [];
+        let index = 0;
+        for(let i = 0; i < arr.length; ++i){
+            let temp = arr[i];
+            if(temp[0] === "Price") {
+                filterArray.push(temp[0]);
+                 filterArray.push(valueLower);
+                  filterArray.push(valueUpper);
+            }
+            else{
+                 filterArray.push(temp[0]);
+                for(let j = 1; j < temp.length; ++j){
+                    var checkedBox = document.getElementById("Index" + index.toString());
+                   if(checkedBox  !== null){
+                       if(checkedBox.checked === false){
+                           filterArray.push(false);
+                       }
+                       else{
+                             filterArray.push(true);
+                       }
+                       ++index;
+                   }
+                   else{
+                       break;
+                   }
+                }
+            }
+        }
+        console.log(filterArray);
 }

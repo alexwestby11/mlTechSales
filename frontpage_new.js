@@ -433,8 +433,6 @@ function linkResultsPage() {
         localStorage['ID_brand'] = dataArray[itemIndexInLocalArray].brand;
         localStorage['ID_type'] = dataArray[itemIndexInLocalArray].type;
         localStorage['results_index'] = z_idx - 10;
-
-
         updateAveragePrice(dataArray[itemIndexInLocalArray].price);
         updateBrand(dataArray[itemIndexInLocalArray].brand,dataArray[itemIndexInLocalArray].type)
         initialBoxSize(localStorage['ID_cat']);
