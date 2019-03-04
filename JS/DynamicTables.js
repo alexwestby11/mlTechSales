@@ -129,9 +129,9 @@ function dImage() {
 //Results Page items
 function dTable() {
     getData1();
-             $("#dynamic_filter").ready(function () {
+             $("#dynamic_table").ready(function () {
                  //creates x images on same row
-                     function numTable(x, y) {
+                     function numTable(x,y) {
                      var index = 0;
                      var stringValue =
                          "<div  class=\"d-flex flex-column vertical-align\" style='width:100%; height:100%;'>";
@@ -163,40 +163,130 @@ function dTable() {
 
      }
 
+     var filterGUI = [["Computer","CPU","RAM","Memory"],["Brand","Sony","TLC","Amazon"],
+         ["Price","100","200"]];
 
      //Results Page items
 function dFilter() {
-    getData1();
-             $("#dynamic_table").ready(function () {
+            var upperBound;
+            let lowerBound;
+            let index = 0;
+             $("#dynamic_filter").ready(function () {
                  //creates x images on same row
-                     function numTable(x, y) {
-                     var index = 0;
-                     var stringValue =
-                         "<div  class=\"d-flex flex-column vertical-align\" style='width:100%; height:100%;'>";
-                        if(x === 0 && y === 0){
-                             stringValue +=  "<div class=\"col-fluid\" style='width:100%; height:100%;font-size: large;text-align: center'><p>No Results</p></div>";
-                        }
-                     for (var j = 0; j < y; ++j) {//rows
-                         stringValue += "<div class=\"d-flex flex-row vertical-align\" style='width:inherit; height:100%;'>";
-                         for (var k = 0; k < x; ++k) {//col
-                             var idString = (j*numRows + k).toString();
-                             stringValue +=
-                                 "<div  id = '"+idString+"' class=\"d-flex flex-column marginMainImageNormal btn btnImg1-primary rounded shadow-sm\" onclick=\"linkProductPage();reply_click(this.id);\" style= 'border: 1px solid gainsboro;height:95%;width:100%;background: white;margin: 0.5%'>" +
-                                 "<div class=\"col-fluid \" style='text-align: center;font-size: large;width: 100%'><b></b></div>"+
-                                 "<input type=\"image\" src= \"images/Apple1.jpg\" class = \"d-block btn img rounded  img3\" style='align-self:center'>" +
-                                  "<div class=\"col-fluid justify-content-center\" style='text-align: center; font-weight: bold;'><b></b></div>" +
-                                 "</div>";
-                             ++index;
+
+                     function createGUI(arr) {
+                     var stringValue = "<form>";
+
+                     for (var j = 0; j < arr.length; ++j) {//rows
+                         var size = arr[j].length;
+                          stringValue +=  "<div class= 'dropdown'>";
+
+                            if(arr[j][0] !== "Price"){
+                                stringValue += arr[j][0];
+                            }
+
+
+                          stringValue +=  "</div>";
+                         for(var i = 1; i < size; ++i){
+
+                             if(arr[j][0] === "Price"){
+                                 lowerBound = arr[j][1];
+                                 upperBound = arr[j][2];
+
+                                 stringValue += "<p>" +
+                                     "<label for=\"amount\">Price range:</label>" +
+                                     "<input type=\"text\" id=\"amount\" readonly style=\"border:0; color:#f6931f; font-weight:bold;\">" +
+                                     "</p>";
+                                 stringValue += "<div id=\"slider-range\" ></div>";
+
+                                 i = arr[j].length;
+
+                             }else{
+
+                                 stringValue +=  "<div  class= 'checkbox'>"
+                                  + "<label>&emsp;<input id = 'Index"+index+"'  type= 'checkbox' value= '' checked>"
+                                  + arr[j][i]
+                                  + "</label>"
+                                  +  "</div>";
+                                  ++index;
+
+                             }
+
+
+
                          }
-                         stringValue += "</div>";
+
                      }
-                      stringValue += "</div>";
+                      stringValue += "</form>";
 
                      return stringValue;
                  }
-                 $('#d_table').html(numTable(numRows, numCol));
-                  $('#tab_logic').append('<div id="d_table" ></div>');
+                 $('#dFilter').html(createGUI(filterGUI));
+                  $('#tab_logic').append('<div id="dFilter" ></div>');
+                  customSlider(upperBound,lowerBound);
+
+             });
+}
+
+
+
+
+    function customSlider(upper,lower) {
+          $(function () {
+              $("#slider-range").slider({
+                  range: true,
+                  min: 0,
+                  max: 10000,
+                  values: [lower, upper],
+                  slide: function (event, ui) {
+                      $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                      //valueUpper = upper;
+                     // valueLower = lower;
+                  }
+
               });
+              $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                  " - $" + $("#slider-range").slider("values", 1));
+          });
+      }
 
 
-     }
+function getFilterChanges(arr){
+        let valueUpper = $("#slider-range").slider("values",1);
+        let valueLower = $("#slider-range").slider("values",0);
+        let filterArray = {};
+        let index = 0;
+        for(let i = 0; i < arr.length; ++i){
+            let temp = arr[i];
+            if(temp[0] === "Price") {
+                //filterArray.push(temp[0]);
+                filterArray["Price"]={"lower":valueLower,"upper":valueUpper};
+
+            }
+            else{
+                filterArray[temp[0].toString()] = [];
+                for(let j = 1; j < temp.length; ++j){
+                    var checkedBox = document.getElementById("Index" + index.toString());
+                     if(checkedBox !== null) {
+                         let tempDict = new dict();
+                         tempDict.name = temp[j];
+                         tempDict.state = checkedBox.checked;
+                         filterArray[temp[0].toString()].push(tempDict);
+                         ++index;
+                     }
+                   else{
+                       break;
+                   }
+                }
+            }
+        }
+        console.log(filterArray);
+}
+
+
+class dict {
+    constructor(name, state) {
+        this.name = name;
+        this.state = state;
+    }
+}

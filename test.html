@@ -1,28 +1,44 @@
+
+<!-- custom JS functions -->
+<script src="filter.js"></script>
+<script src="filterTest.js"></script>
 <script src="frontpage_new.js"></script>
+<script src="productPage.js"></script>
+<script src="JS/Data.js"></script>
+<script src="JS/DynamicTables.js"></script>
 <script src="JS/DynamicPage.js"></script>
-<script src="JS/DynamicTest.js"></script>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Slider - Range slider</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head>
-<body>
+<body onload="dFilter();">
 
 
-    <form>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Option 1</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="">Option 2</label>
-    </div>
-    <div class="checkbox disabled">
-      <label><input type="checkbox" value="" disabled>Option 3</label>
-    </div>
-  </form>
+<div class ="d-flex" style = "width: 15%">
+    <div id="dFiltfer"></div>
+</div>
 
-
-
+<div class="container">
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Filter
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+      <div class ="d-flex" style = "padding: 5%">
+        <div id="dFilter"></div>
+        </div>
+    </ul>
+  </div>
+</div>
 </body>
 </html>

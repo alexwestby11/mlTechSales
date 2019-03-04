@@ -389,13 +389,20 @@ function reply_ProPage(clicked_id)
             ++numClicked;
             localStorage['numClicked'] = numClicked;
         }
-       // alert(localStorage['numClicked']);
-
         updateType(localStorage['ID_type']);
 
-       location.reload();
+        if(bool === 0){
+             localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + recArray[num].type;
+             localStorage['value'] = "Type: " + recArray[num].type;
+             z_idx = 0;
+             localStorage['results_index'] = z_idx;
+             getData1();
+             linkResultsPage();
+        }else{
+            location.reload();
+        }
 
 
-        $.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
+       $.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
 }
 

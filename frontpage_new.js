@@ -83,9 +83,11 @@ function initBoxes(type){
        }
    }
     colChange();
+
    //alert("Boxes Initilized" + "\n" +
    "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n";
    // sessionID()
+
 
 }
 
@@ -146,6 +148,7 @@ function sortType(){
             items.push(temp);
         }
 
+        //sorts item
         items.sort(function(a, b) {
             return a.number - b.number;
         });
@@ -250,8 +253,7 @@ function setInput(){
 
 function pressedType1(){
      localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + topValuesTypesNames[0];
-        z_idx = 0;
-    localStorage['results_index'] = z_idx;
+
     localStorage['value'] = "Type: " + topValuesTypesNames[0];
      linkResultsPage();
 }
@@ -413,10 +415,6 @@ function nextButton(){
 function linkResultsPage() {
   window.location.href = 'resultsPage_new.html';
 }
-
-
-
-
 ///Only works on results page
  function reply_click(clicked_id)
 {
@@ -434,8 +432,6 @@ function linkResultsPage() {
         localStorage['ID_brand'] = dataArray[itemIndexInLocalArray].brand;
         localStorage['ID_type'] = dataArray[itemIndexInLocalArray].type;
         localStorage['results_index'] = z_idx - 10;
-
-
         updateAveragePrice(dataArray[itemIndexInLocalArray].price);
         updateBrand(dataArray[itemIndexInLocalArray].brand,dataArray[itemIndexInLocalArray].type)
         initialBoxSize(localStorage['ID_cat']);
@@ -522,6 +518,5 @@ function createSessionID()
     });
 })
 }
-
 
 
