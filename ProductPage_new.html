@@ -6,7 +6,7 @@
 <script src="JS/Data.js"></script>
 <script src="JS/DynamicTables.js"></script>
 <script src="JS/DynamicPage.js"></script>
-<script src="JS/FrontpageCategory.js"></script>
+
 
 
 <!-- Latest compiled and minified CSS -->
@@ -29,9 +29,6 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.50.0/mapbox-gl.css' rel='stylesheet' />
 
 
-    <!-- Slider-Pro -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slider-pro/1.5.0/js/jquery.sliderPro.min.js"></script>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/slider-pro/1.5.0/css/slider-pro.min.css' rel='stylesheet' />
 
 
     <!-- Graph Visualization Package -->
@@ -41,6 +38,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +55,7 @@
 
 
     </head>
-<body onload = "RTable();STable();setProductInfo();dImage();">
+<body onload = "setProductInfo();">
 
   <!--Background -->
 <div class = "container-fluid h-100">
@@ -93,7 +95,6 @@
 
 
     <div class="d-flex flex-row " style='width:100%; height:89%;' >
-
         <!--Coloumn 1-->
        <div id = "flexCol1" class="d-flex flex-column" style='width:50%; height:100%;'>
              <div id = "flex1" class="d-flex"  style='width:100%; height:50%;'>
@@ -161,8 +162,20 @@
 
  initBoxes(localStorage['ID_type']);
     getRetailers();
-    averageArrayTest();
+    //averageArrayTest();
 </script>
 </div>
 </body>
+<script>
+    $(window).bind("load", function() {
+    loadingPage();
+});
+</script>
+<div id="loading">
+  <img  src="images/loading.gif" alt="Loading..." />
+</div>
 </html>
+
+
+
+
