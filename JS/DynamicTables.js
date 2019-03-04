@@ -162,7 +162,7 @@ function dTable() {
 
      }
 
-     var filterGUI = [["Brand","Sony","TLC","Amazon"],
+     var filterGUI = [["Computer","CPU","RAM","Memory"],["Brand","Sony","TLC","Amazon"],
          ["Price","100","200"]];
 
      //Results Page items
@@ -248,36 +248,31 @@ function dFilter() {
                   " - $" + $("#slider-range").slider("values", 1));
           });
       }
-function printOut(){
-    console.log("here");
-}
 
 
 function getFilterChanges(arr){
         let valueUpper = $("#slider-range").slider("values",1);
         let valueLower = $("#slider-range").slider("values",0);
-        let filterArray = [];
+        let filterArray = {};
         let index = 0;
         for(let i = 0; i < arr.length; ++i){
             let temp = arr[i];
             if(temp[0] === "Price") {
-                filterArray.push(temp[0]);
-                 filterArray.push(valueLower);
-                  filterArray.push(valueUpper);
+                //filterArray.push(temp[0]);
+                filterArray["Price"]={"lower":valueLower,"upper":valueUpper};
+
             }
             else{
-                 filterArray.push(temp[0]);
+                filterArray[temp[0].toString()] = [];
                 for(let j = 1; j < temp.length; ++j){
                     var checkedBox = document.getElementById("Index" + index.toString());
-                   if(checkedBox  !== null){
-                       if(checkedBox.checked === false){
-                           filterArray.push(false);
-                       }
-                       else{
-                             filterArray.push(true);
-                       }
-                       ++index;
-                   }
+                     if(checkedBox !== null) {
+                         let tempDict = new dict();
+                         tempDict.name = temp[j];
+                         tempDict.state = checkedBox.checked;
+                         filterArray[temp[0].toString()].push(tempDict);
+                         ++index;
+                     }
                    else{
                        break;
                    }
@@ -285,4 +280,12 @@ function getFilterChanges(arr){
             }
         }
         console.log(filterArray);
+}
+
+
+class dict {
+    constructor(name, state) {
+        this.name = name;
+        this.state = state;
+    }
 }

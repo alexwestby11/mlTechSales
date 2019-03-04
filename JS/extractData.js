@@ -28,25 +28,6 @@ class Product {
     this.price = '';
     this.category = '';
   }
-  // Getter
-  get getImg() {
-    return this.img_src;
-  }
-  get getName() {
-    return this.name;
-  }
-  get getBrand() {
-    return this.brand;
-  }
-  get getPrice() {
-    return this.price;
-  }
-  get getCategory() {
-    return this.category;
-  }
-
-
-
 }
 
 var xmlhttp = new XMLHttpRequest();
