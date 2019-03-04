@@ -1,4 +1,5 @@
 //Arrays
+
 var dataArray = [];
 var recArray = [];
 var simArray = [];
@@ -82,9 +83,9 @@ function initBoxes(type){
        }
    }
     colChange();
-   alert("Boxes Initilized" + "\n" +
-   "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n");
-    sessionID()
+   //alert("Boxes Initilized" + "\n" +
+   "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n";
+   // sessionID()
 
 }
 
@@ -118,8 +119,6 @@ function initialSet(){
         //alert("flag = " + flag + "\n" + "here = " + typeArray);
         flag = '1';
         localStorage['flag'] = flag;
-
-
 }
 
 function updateType(type){
@@ -132,8 +131,6 @@ function updateType(type){
             }
         }
         localStorage.type = JSON.stringify(typeArray);
-       alert("Updated " + type + "\n" + typeArray);
-
 }
 
 
@@ -153,7 +150,7 @@ function sortType(){
             return a.number - b.number;
         });
 
-        topValuesTypesNames[0] = items[items.length-1].type;e
+        topValuesTypesNames[0] = items[items.length-1].type;
         topValuesTypesNames[1] = items[items.length-2].type;
         topValuesTypesNames[2] = items[items.length-3].type;
         topValuesTypesNames[3] = items[items.length-4].type;
@@ -492,6 +489,7 @@ function initialBoxSize(){
     (document.getElementById("flex3").style.width =  localStorage['colIdArray[4]W'] || '100%');
     (document.getElementById("flex4").style.height =  localStorage['colIdArray[5]H'] || '100%');
     (document.getElementById("flex4").style.width =  localStorage['colIdArray[5]W'] || '100%');
+    createSessionID()
 }
 
 
@@ -506,16 +504,16 @@ function createSessionID()
         localStorage['sessionID']=Math.random().toString(36).substring(7) + Math.random().toString(36).substring(7);
         localStorage['username']=''
     }
-
+    var localID=localStorage['sessionID']
 
     $(document).ready(function() {
     var alpha = $.ajax({
-        url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
+        url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/user/'+ localID +'/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm',
         dataType: 'json',
         type: 'POST',
         success: function (data) {
             {
-                console.log("Sent Session ID")
+                var alel= 5;
             }
         },
         error: function (error) {
@@ -523,30 +521,6 @@ function createSessionID()
         }
     });
 })
-
-
-
-        $(document).ready(function() {
-        var alpha = $.ajax({
-            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/price/20/21',
-            dataType: 'json',
-            type: 'GET',
-            success: function (data) {
-                {
-                    if(data.username!=null)
-                    {
-                        localStorage['username']=data.username
-                    }
-
-
-                    console.log("Got Username")
-                }
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
-    })
 }
 
 
