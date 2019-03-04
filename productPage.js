@@ -1,5 +1,7 @@
 var recArray = [0,0,0,0];
 var capArray = [0,0,0,0];
+localStorage['isLoaded']='0';
+var isLoaded=0;
 var numClicked = localStorage['numClicked'] || '0';
 
 function createMap()
@@ -130,10 +132,7 @@ function createGraph(relatedProductsNames,relatedProductImages){
 
         }
     });
-
-
-
-    }
+}
 
 function addNodes(nodes,edges,givenNode,fromNode) {
     nodes.add({ id: givenNode,
@@ -150,8 +149,9 @@ function addNodes(nodes,edges,givenNode,fromNode) {
                 });
     edges.add({from: fromNode, to: givenNode});
 
-
 }
+
+
 function deleteNodes(nodes,edges,parentNode,childrenNodes)
 {
     for(var i=0; i<=childrenNodes.length-1;++i)
@@ -161,11 +161,13 @@ function deleteNodes(nodes,edges,parentNode,childrenNodes)
     }
 }
 
+
 function reply_click(clicked_id)
 {
         //gets item number
         var num = Number(clicked_id);
 }
+
 
 
 
@@ -211,8 +213,6 @@ function getJSONData() {
             error: function (error) {
                 console.log(error);
                 alert("no goodsa "+JSON.stringify(error));
-                //jason = JSON.parse(data);
-                //console.log(jason);
             }
         });
     })
@@ -250,19 +250,15 @@ function getJSONData1() {
                         }
                     });
                     capArray[i] = product;
-                    //console.log(capArray[i].img_src);
                 });
                  localStorage['ID_pic1_c'] = capArray[0].img_src;
                 localStorage['ID_pic2_c'] = capArray[1].img_src;
                 localStorage['ID_pic3_c'] = capArray[2].img_src;
                 localStorage['ID_pic4_c'] = capArray[3].img_src;
-               // alert(data[0].id)
             },
             error: function (error) {
                 console.log(error);
                 alert("no goodsa "+JSON.stringify(error));
-                //jason = JSON.parse(data);
-                //console.log(jason);
             }
         });
     })
@@ -320,9 +316,7 @@ function getSpecs(searchString)
             },
             error: function (error) {
                 console.log(error);
-                //alert("no good "+JSON.stringify(error));
-                //jason = JSON.parse(data);
-                //console.log(jason);
+
             }
         });
     })
@@ -340,12 +334,9 @@ function getRecommended(givenItem,func)
             dataType: 'json',
             type: 'GET',
             success: function (data) {
-                //alert(JSON.stringify(data));
-                // for(var i=0; i<=imageIDs.length-1;++i)
                 var relatedImages=[];
                 var relatedProducts=[];
                 {
-                    //alert(data[i].imgSrc)
                     for(var i=0; i<=2; i++)
                     {
                         relatedImages.push(data[i].imgSrc);
@@ -353,9 +344,10 @@ function getRecommended(givenItem,func)
                     }
                 }
                 func(relatedProducts,relatedImages);
+                isLoaded=isLoaded+1
+                console.log(isLoaded+ "asdfasdfasdf")
             },
             error: function (error) {
-                //console.log(error);
             }
         });
     })
@@ -364,41 +356,6 @@ function getRecommended(givenItem,func)
 
 
 
-
-function imageSearch()
-{
-
-        $(document).ready(function() {
-            var alpha = $.ajax({
-                url: 'https://contextualwebsearch.com/api/Search/ImageSearchAPI?]',
-                dataType: 'json',
-                type: 'GET',
-                data:{count:"500",
-                     q:"laptop",
-                    autoCorrect:"true"
-                    },
-                success: function (data) {
-                    //alert(JSON.stringify(data));
-                    // for(var i=0; i<=imageIDs.length-1;++i)
-                    for(var i=0; i<=3;++i)
-                    {
-                        //alert(data[i].imgSrc)
-                        var img = document.createElement("img");
-                        img.src =data.value[i].url;
-
-                        var src = document.getElementById("image"+i.toString());
-                        src.appendChild(img);
-                    }
-                },
-                error: function (error) {
-                    console.log(error);
-                  //  alert("no good "+JSON.stringify(error));
-                    //jason = JSON.parse(data);
-                    //console.log(jason);
-                }
-            });
-        })
-}
 
 
 function getSpecs(searchString)
@@ -455,6 +412,7 @@ function getRecommended(givenItem,func)
                     }
                 }
                 func(relatedProducts,relatedImages);
+                isLoaded=isLoaded+1
             },
             error: function (error) {
                 console.log(error);
@@ -496,6 +454,7 @@ function placeImages()
 						}
 
                     }
+                    isLoaded=isLoaded+1
 					    /*
 						var img = document.createElement("img");
                         img.src =data.value[i].url;
@@ -526,11 +485,8 @@ function getUPC(queryString)
                 autoCorrect:"false"
             },
             success: function (data) {
-                //alert(JSON.stringify(data));
-                // for(var i=0; i<=imageIDs.length-1;++i)
                 for(var i=0; i<=3;++i)
                 {
-                    //alert(data[i].imgSrc)
                     var imgA = document.createElement("img");
                     img.src =data.value[i].url;
 
@@ -540,9 +496,6 @@ function getUPC(queryString)
                 },
                 error: function (error) {
                     console.log(error);
-                  //  alert("no good "+JSON.stringify(error));
-                    //jason = JSON.parse(data);
-                    //console.log(jason);
                 }
             });
         })
@@ -574,6 +527,7 @@ function getRetailers()
 					console.log(src);
 					src.href=data.items[i].url;
 				}
+				isLoaded=isLoaded+1
 
             },
             error: function (error) {
@@ -606,20 +560,6 @@ function summarize(div,product)
 	///console.log(localStorage['ID_type']);
 	searchPage= searchPage.split(' ').join('+');
 
-	/*
-	searchPage= searchPage.split(',').slice(0,1).join('');
-	if(type==="Desktop" || type==="Notebook")
-	{
-		type+="%20"+"Computer"
-		searchPage=type;
-	}
-	else
-	{
-		searchPage=type;
-	}
-
-	var title= 'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles='+searchPage;
-	*/
 
 	    $(document).ready(function() {
         var alpha = $.ajax({
@@ -637,30 +577,16 @@ function summarize(div,product)
 					type: 'GET',
 					success: function (dataA) {
 						var summaryA=dataA['query']['pages'][Object.keys(dataA['query']['pages'])[0]]['extract']
-						//alert(JSON.stringify(data));
-						// for(var i=0; i<=imageIDs.length-1;++i)
 						var src = document.getElementById(div);
 						src.innerHTML +=summaryA;
+					isLoaded=isLoaded+1
+					localStorage['isLoaded']=(parseInt(localStorage['isLoaded'])+1).toString()
 					},
 					error: function (error) {
 						console.log(error);
-						//alert("no good "+JSON.stringify(error));
-						//jason = JSON.parse(data);
-						//console.log(jason);
 					}
 				});
 			})
-
-
-
-
-
-
-
-
-
-
-
             },
             error: function (error) {
                 console.log(error);
@@ -670,37 +596,6 @@ function summarize(div,product)
             }
         });
     })
-
-
-
-
-
-
-
-	//'https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=Laptop%20Computer'
-/*
-   $(document).ready(function() {
-        var alpha = $.ajax({
-            url: ('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles='+searchPage),
-            type: 'GET',
-            success: function (data) {
-                var summary=data['query']['pages'][Object.keys(data['query']['pages'])[0]]['extract']
-                //alert(JSON.stringify(data));
-                // for(var i=0; i<=imageIDs.length-1;++i)
-                var src = document.getElementById(div);
-                src.innerHTML +=summary;
-            },
-            error: function (error) {
-                console.log(error);
-                //alert("no good "+JSON.stringify(error));
-                //jason = JSON.parse(data);
-                //console.log(jason);
-            }
-        });
-    })
-	*/
-
-
 }
 
 
@@ -856,9 +751,28 @@ function reply_click4C(clicked_id)
         document.location.reload();
 }
 
-function imageSearcher()
+function splitString(givenString)
 {
-    var nameA=localStorage['ID_name']
+    var searchQueryArray = givenString.split(" ")
+    var searchQueryString=''
+    if(searchQueryArray.length<=4)
+    {
+        return givenString
+    }
+    for(var i=0; i<=4; ++i)
+    {
+        searchQueryString+=searchQueryArray[i]
+        searchQueryString+=' '
+    }
+    return searchQueryString
+
+}
+
+
+function imageSearcher(arraySize)
+{
+    var nameA = splitString(localStorage['ID_name'])
+    var imageLinkArray = []
 	$(document).ready(function() {
         var alpha = $.ajax({
             url: 'https://api.cognitive.microsoft.com/bing/v7.0/images/search',
@@ -867,12 +781,14 @@ function imageSearcher()
             type: 'GET',
             data:{
 					q:nameA,
-					imageType:"Shopping"
+					imageType:"Shopping",
+					count:15,
+					offset:0
             },
-            success: function (data) {
+            success: function (data,) {
 
-                    var i=0;
-					while(i<=7) {
+                    var i=1;
+					while(i<=arraySize) {
 
 							var imgValue = document.getElementById("mainImg"+i.toString());
 							if(data.value[i]==null)
@@ -883,18 +799,26 @@ function imageSearcher()
 							else{
 									imgValue.src=data.value[i].contentUrl;
 									addPicsArray[i]=data.value[i].contentUrl;
+									imageLinkArray.push(data.value[i].contentUrl);
 									i++;
 							}
 						}
+			        isLoaded=isLoaded+1
             },
             error: function (error) {
                 console.log(error);
-                //alert("no good "+JSON.stringify(error));
-                //jason = JSON.parse(data);
-                //console.log(jason);
             }
         });
     })
+    return imageLinkArray
 }
 
+
+function loadingPage() {
+  var x = document.getElementById("loading");
+ // if (x.style.display !== "none" && isLoaded>=5)
+   {
+    x.style.display = "none";
+  }
+}
 

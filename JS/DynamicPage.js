@@ -294,6 +294,8 @@ function setRecImages(x){
 //console.log(document.getElementById("rec" + i.toString())) = recArray[i].img_src;
          document.getElementById("rec" + i.toString()).src = recArray[i].img_src;
             }
+            localStorage['isLoaded']=(parseInt(localStorage['isLoaded'])+1).toString()
+
 }
 
 function setSimImages(x){
@@ -303,15 +305,15 @@ function setSimImages(x){
 //console.log(document.getElementById("rec" + i.toString())) = recArray[i].img_src;
          document.getElementById("sim" + i.toString()).src = simArray[i].img_src;
             }
+         localStorage['isLoaded']=(parseInt(localStorage['isLoaded'])+1).toString()
 }
 
 function setMainImage(x){
     addPicsArray[0] = localStorage['ID_pic'];
     addPicsIndexArray = [0,1,2,3,4,5,6,7];
 
-    for(var i = 0; i < x; ++i) {
-            document.getElementById("mainImg" + i.toString()).src = addPicsArray[i];
-    }
+    document.getElementById("mainImg0").src = addPicsArray[0];
+    localStorage['isLoaded']=(parseInt(localStorage['isLoaded'])+1).toString()
 }
 
 function setProductInfo(){

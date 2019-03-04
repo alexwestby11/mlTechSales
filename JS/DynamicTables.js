@@ -39,6 +39,7 @@ function STable() {
                   getSimData(numRowsS*numColS);
                  function numTable(x, y) {
                      var index = 0;
+                     var productLinkArray=imageSearcher(5)
                      var stringValue =
                          "<div  class=\"d-flex flex-column\" style='width:100%; height:100%;'><h4>Similar Items</h4>";
                      for (var j = 0; j < y; ++j) {//rows
@@ -47,7 +48,7 @@ function STable() {
                              stringValue +=
                                  "<div class=\"d-flex marginMainImageNormal btn-primary rounded\" style= 'border: 1px solid gainsboro;height:95%;width:100%;'>" +
 
-                                "<img  id = 'sim"+index+"' class = \"img rounded creamColor shadow img1\" src='images/Apple1.jpg' onclick='reply_ProPage(this.id)'>"+
+                                "<img  id = 'sim"+index+"' class = \"img rounded creamColor shadow img1\" src=productLinkArray[k] onclick='reply_ProPage(this.id)'>"+
 
                                  "</div>";
                              ++index;
