@@ -140,3 +140,18 @@ function stdDevTest()
     }
 }
 
+//Tests for filter of performance
+function testPerformanceFilter(givenJSON)
+{
+    for outerKey in Object.keys(givenJSON['Performance'])
+    {
+        for innerKey in Object.keys(givenJSON['Performance'][outerKey])
+        {
+            givenJSON['Performance'][outerKey][innerKey]
+            filterPerformance(outerKey,innerKey,Math.floor((Math.random() * 100) + 1);)
+        }
+
+
+    }
+
+}
