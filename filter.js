@@ -264,7 +264,9 @@ var jsonObj = {
 
 }
 
-
+function setJsonObject(){
+     localStorage.jsonObj = JSON.stringify(jsonObj);
+}
 function addJSONParameter()
 {
    var givenObj=JSON.parse(localStorage['prices'])
