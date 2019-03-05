@@ -230,6 +230,7 @@ var jsonObj = {
         "Game":{"Xbox":{"isBox":1,"isClicked":0},"PS4":{"isBox":1,"isClicked":0}},
         "Gaming Console":{"HDD":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"},
                           "Xbox":{"isBox":1,"isClicked":0},"PS4":{"isBox":1,"isClicked":0}},
+
         "HDMI Cable":{"Length":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15}},
         "Headset":{"Wired":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0},"Gaming":{"isBox":1,"isClicked":0,"min":1,"max":15,"Unit":"ft"}},
         "Keyboard":{"Backlit":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0,"min":1,"max":15}},
@@ -260,7 +261,9 @@ var jsonObj = {
         "USB Cable":{"Length":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"Ft"}},
         "USB Flash Drive":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"}}
     },
+
 }
+
 
 function addJSONParameter()
 {

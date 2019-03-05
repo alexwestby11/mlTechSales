@@ -163,67 +163,74 @@ function dTable() {
 
      }
 
-     var filterGUI = [["Computer","CPU","RAM","Memory"],["Brand","Sony","TLC","Amazon"],
+     var filterGUI1 = [["Computer","CPU","RAM","Memory"],["Brand","Sony","TLC","Amazon"],
          ["Price","100","200"]];
-
+//var filterGUI = JSON.parse(localStorage.jsonObj)['performance']['Notebook'];
      //Results Page items
+var index1 = 0;
+var index2 = 0;
+var typeData = [];
 function dFilter() {
-            var upperBound;
-            let lowerBound;
-            let index = 0;
+             let temp_jsonObject = JSON.parse(localStorage.jsonObj);
+             let priceArray = temp_jsonObject["Price"]['Notebook'];
+             let brandArray = temp_jsonObject["Brand"]['Notebook'];
+             let propertiesArray = temp_jsonObject["Performance"]['Notebook'];
+            console.log(priceArray);
+             console.log(brandArray);
+
              $("#dynamic_filter").ready(function () {
-                 //creates x images on same row
+
 
                      function createGUI(arr) {
                      var stringValue = "<form>";
 
-                     for (var j = 0; j < arr.length; ++j) {//rows
-                         var size = arr[j].length;
-                          stringValue +=  "<div class= 'dropdown'>";
+                     for(let key in propertiesArray){
+                         //Creates Properties
+                         let temp = propertiesArray[key];
 
-                            if(arr[j][0] !== "Price"){
-                                stringValue += arr[j][0];
-                            }
-
-
-                          stringValue +=  "</div>";
-                         for(var i = 1; i < size; ++i){
-
-                             if(arr[j][0] === "Price"){
-                                 lowerBound = arr[j][1];
-                                 upperBound = arr[j][2];
-
-                                 stringValue += "<p>" +
-                                     "<label for=\"amount\">Price range:</label>" +
-                                     "<input type=\"text\" id=\"amount\" readonly style=\"border:0; color:#f6931f; font-weight:bold;\">" +
-                                     "</p>";
-                                 stringValue += "<div id=\"slider-range\" ></div>";
-
-                                 i = arr[j].length;
-
-                             }else{
-
-                                 stringValue +=  "<div  class= 'checkbox'>"
-                                  + "<label>&emsp;<input id = 'Index"+index+"'  type= 'checkbox' value= '' checked>"
-                                  + arr[j][i]
+                         if(temp.isBox){
+                              stringValue +=  "<div  class= 'checkbox'>"
+                                  + "<label>&emsp;<input id = 'Index"+index2+"'  type= 'checkbox' value= '' checked>"
+                                  + key
                                   + "</label>"
                                   +  "</div>";
-                                  ++index;
+                              ++index2;
+                         }
+                         else{
+                              stringValue += "<p>" +
+                                     "<label for='amount"+index1+"'>" + key +"</label>" +
+                                     "<input type=\"text\" id = 'amount"+index1+"' readonly style=\"border:0; color:#f6931f; font-weight:bold;\">" +
+                                     "</p>";
 
-                             }
-
-
+                             stringValue += "<div id='slider-range"+index1+"' ></div>";
+                             ++index1;
 
                          }
 
                      }
+                     //Creates Price
+                         stringValue += "<p>" +
+                                     "<label for='amount"+index1+"'>" + "Price" +"</label>" +
+                                     "<span><input type=\"text\" id = 'amount"+index1+"' readonly style=\"border:0; color:#f6931f; font-weight:bold;\"></span>" +
+                                     "</p>";
+
+                             stringValue += "<div id='slider-range"+index1+"' ></div>";
                       stringValue += "</form>";
 
                      return stringValue;
                  }
-                 $('#dFilter').html(createGUI(filterGUI));
+                 $('#dFilter').html(createGUI(propertiesArray));
                   $('#tab_logic').append('<div id="dFilter" ></div>');
-                  customSlider(upperBound,lowerBound);
+                  let i = 0;
+                  for(let key in propertiesArray){
+                        var propertiesValues = propertiesArray[key];
+                        typeData.push(key);
+
+                     customSlider(propertiesValues["UpperBound"],propertiesValues["LowerBound"],i++,propertiesValues["max"],propertiesValues["min"],key);
+                  }
+                  typeData.push("Price");
+                  customSliderPrice(priceArray["UpperBound"],priceArray["LowerBound"],i++);
+
 
              });
 }
@@ -231,31 +238,84 @@ function dFilter() {
 
 
 
-    function customSlider(upper,lower) {
+    function customSliderPrice(upper,lower,index) {
           $(function () {
-              $("#slider-range").slider({
+              $("#slider-range" + index.toString()).slider({
                   range: true,
                   min: 0,
-                  max: 10000,
-                  values: [lower, upper],
+                  max: 5000,
+                  values: [0, 1000],
                   slide: function (event, ui) {
-                      $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                      $("#amount" + index).val("$" + ui.values[0] + " - $" + ui.values[1]);
                       //valueUpper = upper;
                      // valueLower = lower;
                   }
 
               });
-              $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-                  " - $" + $("#slider-range").slider("values", 1));
+              $("#amount" + index).val("$" + $("#slider-range" + index.toString()).slider("values", 0) +
+                  " - $" + $("#slider-range" + index.toString()).slider("values", 1));
           });
       }
 
 
-function getFilterChanges(arr){
-        let valueUpper = $("#slider-range").slider("values",1);
-        let valueLower = $("#slider-range").slider("values",0);
-        let filterArray = {};
-        let index = 0;
+      function customSlider(upper,lower,index,max,min,key) {
+
+          $(function () {
+              $("#slider-range" + index).slider({
+                  range: true,
+                  min: min,
+                  max: max,
+                  info:key,
+                  values: [lower, upper],
+                  enabled: '1',
+                  slide: function (event, ui) {
+                      $("#amount" + index).val(ui.values[0] + " - " + ui.values[1]);
+                  }
+
+              });
+              $("#amount" + index).val($("#slider-range" + index).slider("values", 0) +
+                  " - " + $("#slider-range" + index).slider("values", 1));
+
+          });
+      }
+
+
+
+function getFilterChanges(){
+    var filterArray = [];
+
+    //slider
+        var index = 0;
+        for(var i = 0;;++i){
+            if($("#slider-range" + i).length){
+                let valueUpper = $("#slider-range" + i).slider("values",1);
+                let valueLower = $("#slider-range" + i).slider("values",0);
+                filterArray[typeData[index]] = {"lower":valueLower,"upper":valueUpper};
+                ++index;
+            }
+            else{
+                break;
+            }
+
+        }
+
+        //check box
+        for(let j = 0;; ++j){
+                    var checkedBox = document.getElementById("Index" + j.toString());
+                     if(checkedBox !== null) {
+                         filterArray[typeData[index]] = {"state":checkedBox.checked};
+                         ++index;
+                     }
+                   else{
+                       break;
+                   }
+                }
+
+
+
+
+
+        /*
         for(let i = 0; i < arr.length; ++i){
             let temp = arr[i];
             if(temp[0] === "Price") {
@@ -279,8 +339,9 @@ function getFilterChanges(arr){
                    }
                 }
             }
-        }
+        }*/
         console.log(filterArray);
+
 }
 
 
