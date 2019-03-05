@@ -163,21 +163,39 @@ function dTable() {
 
      }
 
-     var filterGUI = [["Computer","CPU","RAM","Memory"],["Brand","Sony","TLC","Amazon"],
+     var filterGUI1 = [["Computer","CPU","RAM","Memory"],["Brand","Sony","TLC","Amazon"],
          ["Price","100","200"]];
-
+//var filterGUI = JSON.parse(localStorage.jsonObj)['performance']['Notebook'];
      //Results Page items
 function dFilter() {
+             let temp_jsonObject = JSON.parse(localStorage.jsonObj);
+             let propertiesArray = temp_jsonObject["Performance"]['Notebook'];
+            console.log(propertiesArray);
+            var index = 0;
             var upperBound;
             let lowerBound;
-            let index = 0;
+
              $("#dynamic_filter").ready(function () {
                  //creates x images on same row
 
                      function createGUI(arr) {
                      var stringValue = "<form>";
 
-                     for (var j = 0; j < arr.length; ++j) {//rows
+                     for(let key in propertiesArray){
+                         let temp = propertiesArray[key];
+
+
+                         stringValue += "<p>" +
+                                     "<label for='amount"+index+"'>" + key +"</label>" +
+                                     "<input type=\"text\" id = 'amount"+index+"' readonly style=\"border:0; color:#f6931f; font-weight:bold;\">" +
+                                     "</p>";
+
+                             stringValue += "<div id='slider-range"+index+"' ></div>";
+                            ++index;
+                         console.log(temp.isBox);
+                     }
+
+                      /*for (var j = 0; j < arr.length; ++j) {//rows
                          var size = arr[j].length;
                           stringValue +=  "<div class= 'dropdown'>";
 
@@ -187,7 +205,7 @@ function dFilter() {
 
 
                           stringValue +=  "</div>";
-                         for(var i = 1; i < size; ++i){
+                        for(var i = 1; i < size; ++i){
 
                              if(arr[j][0] === "Price"){
                                  lowerBound = arr[j][1];
@@ -197,7 +215,7 @@ function dFilter() {
                                      "<label for=\"amount\">Price range:</label>" +
                                      "<input type=\"text\" id=\"amount\" readonly style=\"border:0; color:#f6931f; font-weight:bold;\">" +
                                      "</p>";
-                                 stringValue += "<div id=\"slider-range\" ></div>";
+
 
                                  i = arr[j].length;
 
@@ -216,14 +234,21 @@ function dFilter() {
 
                          }
 
-                     }
+                     }*/
                       stringValue += "</form>";
 
                      return stringValue;
                  }
-                 $('#dFilter').html(createGUI(filterGUI));
+                 $('#dFilter').html(createGUI(propertiesArray));
                   $('#tab_logic').append('<div id="dFilter" ></div>');
-                  customSlider(upperBound,lowerBound);
+                  let i = 0;
+                  for(let key in propertiesArray){
+                        var propertiesValues = propertiesArray[key];
+
+
+                     customSlider(propertiesValues["UpperBound"],propertiesValues["LowerBound"],i++,propertiesValues["max"],propertiesValues["min"],);
+                  }
+
 
              });
 }
@@ -231,31 +256,70 @@ function dFilter() {
 
 
 
-    function customSlider(upper,lower) {
+    function customSliderPrice(upper,lower,index) {
           $(function () {
-              $("#slider-range").slider({
+              $("#slider-range" + index.toString()).slider({
                   range: true,
                   min: 0,
-                  max: 10000,
-                  values: [lower, upper],
+                  max: 5000,
+                  values: [0, 1000],
                   slide: function (event, ui) {
-                      $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                      $("#amount" + index).val("$" + ui.values[0] + " - $" + ui.values[1]);
                       //valueUpper = upper;
                      // valueLower = lower;
                   }
 
               });
-              $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-                  " - $" + $("#slider-range").slider("values", 1));
+              $("#amount" + index).val("$" + $("#slider-range" + index.toString()).slider("values", 0) +
+                  " - $" + $("#slider-range" + index.toString()).slider("values", 1));
+          });
+      }
+
+          function customSlider(upper,lower,index,max,min,arr) {
+
+          $(function () {
+              $("#slider-range" + index).slider({
+                  range: true,
+                  min: min,
+                  max: max,
+                  info:"stuff",
+                  values: [lower, upper],
+                  slide: function (event, ui) {
+                      $("#amount" + index).val(ui.values[0] + " - " + ui.values[1]);
+                      //valueUpper = upper;
+                     // valueLower = lower;
+                  }
+
+              });
+              $("#amount" + index).val($("#slider-range" + index).slider("values", 0) +
+                  " - " + $("#slider-range" + index).slider("values", 1));
+
           });
       }
 
 
-function getFilterChanges(arr){
-        let valueUpper = $("#slider-range").slider("values",1);
-        let valueLower = $("#slider-range").slider("values",0);
+
+function getFilterChanges(){
+       // let temp_jsonObject = JSON.parse(localStorage.jsonObj);
+       // let propertiesArray = temp_jsonObject["Performance"][type];
+
+        for(var i = 0;;++i){
+            if($("#slider-range" + i) !== null){
+                let valueUpper = $("#slider-range" + i).slider("values",1);
+                let valueLower = $("#slider-range" + i).slider("values",0);
+                console.log($("#slider-range" + i).slider("values",1));
+                console.log(valueLower);
+            }
+
+        }
+       // let valueUpper = .slider("values",1);
+       // let valueLower = $("#slider-range").slider("values",0);
         let filterArray = {};
         let index = 0;
+
+
+
+        /*
         for(let i = 0; i < arr.length; ++i){
             let temp = arr[i];
             if(temp[0] === "Price") {
@@ -279,8 +343,9 @@ function getFilterChanges(arr){
                    }
                 }
             }
-        }
-        console.log(filterArray);
+        }*/
+        //console.log(propertiesArray);
+
 }
 
 

@@ -85,7 +85,7 @@ function initBoxes(type){
     colChange();
 
    //alert("Boxes Initilized" + "\n" +
-   "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n";
+  // "box1 = " + priorityBox[0] + "\n" +  "box2 = " + priorityBox[1] + "\n" + "box3 = " + priorityBox[2] + "\n" + "box4 = " + priorityBox[3] + "\n";
    // sessionID()
 
 

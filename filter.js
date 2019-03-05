@@ -239,14 +239,14 @@ var jsonObj = {
         "Monitor":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0},
                    "Resolution":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}},
         "Mouse":{"Wireless":{"isBox":1,"isClicked":0},"DPI":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}},
-        "Notebook":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0},
-                      "CPU":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0},
-                      "HDD":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0},
-                      "Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}},
+        "Notebook":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":64,"LowerBound":2,"Count":0,"AvgArray":[],"isBox":0,"min":2,"max":64},
+                      "CPU":{"StdDev":0,"Mean":0,"UpperBound":7,"LowerBound":5,"Count":0,"AvgArray":[],"isBox":0,"min":3,"max":9},
+                      "HDD":{"StdDev":0,"Mean":0,"UpperBound":500,"LowerBound":250,"Count":0,"AvgArray":[],"isBox":0,"min":100,"max":1000},
+                      "Size":{"StdDev":0,"Mean":0,"UpperBound":17,"LowerBound":13,"Count":0,"AvgArray":[],"isBox":0,"min":12,"max":18}},
         "Notebook Case":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}},
         "Printer":{"Wired":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0},"All in One":{"isBox":1,"isClicked":0},"Inkjet":{"isBox":1,"isClicked":0}
                     ,"Laser":{"isBox":1,"isClicked":0}},
-        "SD Card":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}}},
+        "SD Card":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}},
         "Smartphone":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"isBox":0},
                       "HDD":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"isBox":0}},
         "Speaker":{"Wired":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0},"Waterproof":{"isBox":1,"isClicked":0}},
@@ -258,9 +258,14 @@ var jsonObj = {
               "Resolution":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}},
         "USB Cable":{"Length":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}},
         "USB Flash Drive":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}}
-    },
+    }
 
 }
+
+function setJsonObject(){
+     localStorage.jsonObj = JSON.stringify(jsonObj);
+}
+
 
 function addJSONParameter()
 {
