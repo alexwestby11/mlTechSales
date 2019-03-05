@@ -358,7 +358,7 @@ function updateBrand(brand,givenType)
         addJSONParameter()
         localJSON=JSON.parse(localStorage['prices'])
     }
-    localJSON['Price'][givenType]["Brand"][brand]["Count"]=localJSON['Price'][givenType]["Brand"][brand]["Count"]+1
+    localJSON["Brand"][category][givenType][brand]["Count"]=localJSON["Brand"][category][givenType][brand]["Count"]+1
     localStorage.setItem('prices',JSON.stringify(localJSON))
     mostUsedBrand(givenType)
 }
