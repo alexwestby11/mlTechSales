@@ -169,21 +169,23 @@ function dTable() {
      //Results Page items
 var index1 = 0;
 var index2 = 0;
+var typeData = [];
 function dFilter() {
              let temp_jsonObject = JSON.parse(localStorage.jsonObj);
-             let propertiesArray = temp_jsonObject["Performance"]['Laptop Charger'];
-            console.log(propertiesArray);
-
-            var upperBound;
-            let lowerBound;
+             let priceArray = temp_jsonObject["Price"]['Notebook'];
+             let brandArray = temp_jsonObject["Brand"]['Notebook'];
+             let propertiesArray = temp_jsonObject["Performance"]['Notebook'];
+            console.log(priceArray);
+             console.log(brandArray);
 
              $("#dynamic_filter").ready(function () {
-                 //creates x images on same row
+
 
                      function createGUI(arr) {
                      var stringValue = "<form>";
 
                      for(let key in propertiesArray){
+                         //Creates Properties
                          let temp = propertiesArray[key];
 
                          if(temp.isBox){
@@ -206,43 +208,13 @@ function dFilter() {
                          }
 
                      }
-
-                      /*for (var j = 0; j < arr.length; ++j) {//rows
-                         var size = arr[j].length;
-                          stringValue +=  "<div class= 'dropdown'>";
-
-                            if(arr[j][0] !== "Price"){
-                                stringValue += arr[j][0];
-                            }
-
-
-                          stringValue +=  "</div>";
-                        for(var i = 1; i < size; ++i){
-
-                             if(arr[j][0] === "Price"){
-                                 lowerBound = arr[j][1];
-                                 upperBound = arr[j][2];
-
-                                 stringValue += "<p>" +
-                                     "<label for=\"amount\">Price range:</label>" +
-                                     "<input type=\"text\" id=\"amount\" readonly style=\"border:0; color:#f6931f; font-weight:bold;\">" +
+                     //Creates Price
+                         stringValue += "<p>" +
+                                     "<label for='amount"+index1+"'>" + "Price" +"</label>" +
+                                     "<span><input type=\"text\" id = 'amount"+index1+"' readonly style=\"border:0; color:#f6931f; font-weight:bold;\"></span>" +
                                      "</p>";
 
-
-                                 i = arr[j].length;
-
-                             }else{
-
-
-                                  ++index;
-
-                             }
-
-
-
-                         }
-
-                     }*/
+                             stringValue += "<div id='slider-range"+index1+"' ></div>";
                       stringValue += "</form>";
 
                      return stringValue;
@@ -252,10 +224,12 @@ function dFilter() {
                   let i = 0;
                   for(let key in propertiesArray){
                         var propertiesValues = propertiesArray[key];
+                        typeData.push(key);
 
-
-                     customSlider(propertiesValues["UpperBound"],propertiesValues["LowerBound"],i++,propertiesValues["max"],propertiesValues["min"],);
+                     customSlider(propertiesValues["UpperBound"],propertiesValues["LowerBound"],i++,propertiesValues["max"],propertiesValues["min"],key);
                   }
+                  typeData.push("Price");
+                  customSliderPrice(priceArray["UpperBound"],priceArray["LowerBound"],i++);
 
 
              });
@@ -283,21 +257,19 @@ function dFilter() {
           });
       }
 
-          function customSlider(upper,lower,index,max,min) {
+
+      function customSlider(upper,lower,index,max,min,key) {
 
           $(function () {
               $("#slider-range" + index).slider({
                   range: true,
                   min: min,
                   max: max,
-                  info:"stuff",
+                  info:key,
                   values: [lower, upper],
                   enabled: '1',
                   slide: function (event, ui) {
                       $("#amount" + index).val(ui.values[0] + " - " + ui.values[1]);
-                        ui.info;
-                      //valueUpper = upper;
-                     // valueLower = lower;
                   }
 
               });
@@ -310,15 +282,16 @@ function dFilter() {
 
 
 function getFilterChanges(){
-       // let temp_jsonObject = JSON.parse(localStorage.jsonObj);
-       // let propertiesArray = temp_jsonObject["Performance"][type];
+    var filterArray = [];
 
-        for(var i = index1;i > 0;--i){
+    //slider
+        var index = 0;
+        for(var i = 0;;++i){
             if($("#slider-range" + i).length){
                 let valueUpper = $("#slider-range" + i).slider("values",1);
                 let valueLower = $("#slider-range" + i).slider("values",0);
-
-                console.log(valueLower);
+                filterArray[typeData[index]] = {"lower":valueLower,"upper":valueUpper};
+                ++index;
             }
             else{
                 break;
@@ -326,22 +299,19 @@ function getFilterChanges(){
 
         }
 
-         for(var i = 0;;++i){
-             var checkedBox = document.getElementById("Index" + index.toString());
+        //check box
+        for(let j = 0;; ++j){
+                    var checkedBox = document.getElementById("Index" + j.toString());
                      if(checkedBox !== null) {
-                         let tempDict = new dict();
-                         tempDict.name = temp[j];
-                         tempDict.state = checkedBox.checked;
-                         //filterArray[temp[0].toString()].push(tempDict);
+                         filterArray[typeData[index]] = {"state":checkedBox.checked};
+                         ++index;
                      }
                    else{
                        break;
                    }
-        }
-       // let valueUpper = .slider("values",1);
-       // let valueLower = $("#slider-range").slider("values",0);
-        let filterArray = {};
-        let index = 0;
+                }
+
+
 
 
 
@@ -370,7 +340,7 @@ function getFilterChanges(){
                 }
             }
         }*/
-        //console.log(propertiesArray);
+        console.log(filterArray);
 
 }
 
