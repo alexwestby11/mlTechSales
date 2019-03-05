@@ -232,9 +232,9 @@ var jsonObj = {
         "HDMI Cable":{"Length":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}},
         "Headset":{"Wired":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0},"Gaming":{"isBox":1,"isClicked":0}},
         "Keyboard":{"Backlit":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0}},
-        "Laptop Charger":{"Volts":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}
-                          ,"Amps":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}
-                          ,"Watts":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}
+        "Laptop Charger":{"Volts":{"StdDev":0,"Mean":0,"UpperBound":50,"LowerBound":5,"Count":0,"AvgArray":[],"isBox":0,"min":2,"max":64}
+                          ,"Amps":{"StdDev":0,"Mean":0,"UpperBound":70,"LowerBound":20,"Count":0,"AvgArray":[],"isBox":0,"min":2,"max":100}
+                          ,"Watts":{"StdDev":0,"Mean":0,"UpperBound":30,"LowerBound":10,"Count":0,"AvgArray":[],"isBox":0,"min":2,"max":50}
                           ,"Compatible Brand":{"isBox":1,"isClicked":0}},
         "Monitor":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0},
                    "Resolution":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0}},

@@ -167,11 +167,13 @@ function dTable() {
          ["Price","100","200"]];
 //var filterGUI = JSON.parse(localStorage.jsonObj)['performance']['Notebook'];
      //Results Page items
+var index1 = 0;
+var index2 = 0;
 function dFilter() {
              let temp_jsonObject = JSON.parse(localStorage.jsonObj);
-             let propertiesArray = temp_jsonObject["Performance"]['Notebook'];
+             let propertiesArray = temp_jsonObject["Performance"]['Laptop Charger'];
             console.log(propertiesArray);
-            var index = 0;
+
             var upperBound;
             let lowerBound;
 
@@ -184,15 +186,25 @@ function dFilter() {
                      for(let key in propertiesArray){
                          let temp = propertiesArray[key];
 
-
-                         stringValue += "<p>" +
-                                     "<label for='amount"+index+"'>" + key +"</label>" +
-                                     "<input type=\"text\" id = 'amount"+index+"' readonly style=\"border:0; color:#f6931f; font-weight:bold;\">" +
+                         if(temp.isBox){
+                              stringValue +=  "<div  class= 'checkbox'>"
+                                  + "<label>&emsp;<input id = 'Index"+index2+"'  type= 'checkbox' value= '' checked>"
+                                  + key
+                                  + "</label>"
+                                  +  "</div>";
+                              ++index2;
+                         }
+                         else{
+                              stringValue += "<p>" +
+                                     "<label for='amount"+index1+"'>" + key +"</label>" +
+                                     "<input type=\"text\" id = 'amount"+index1+"' readonly style=\"border:0; color:#f6931f; font-weight:bold;\">" +
                                      "</p>";
 
-                             stringValue += "<div id='slider-range"+index+"' ></div>";
-                            ++index;
-                         console.log(temp.isBox);
+                             stringValue += "<div id='slider-range"+index1+"' ></div>";
+                             ++index1;
+
+                         }
+
                      }
 
                       /*for (var j = 0; j < arr.length; ++j) {//rows
@@ -221,11 +233,7 @@ function dFilter() {
 
                              }else{
 
-                                 stringValue +=  "<div  class= 'checkbox'>"
-                                  + "<label>&emsp;<input id = 'Index"+index+"'  type= 'checkbox' value= '' checked>"
-                                  + arr[j][i]
-                                  + "</label>"
-                                  +  "</div>";
+
                                   ++index;
 
                              }
@@ -275,7 +283,7 @@ function dFilter() {
           });
       }
 
-          function customSlider(upper,lower,index,max,min,arr) {
+          function customSlider(upper,lower,index,max,min) {
 
           $(function () {
               $("#slider-range" + index).slider({
@@ -284,8 +292,10 @@ function dFilter() {
                   max: max,
                   info:"stuff",
                   values: [lower, upper],
+                  enabled: '1',
                   slide: function (event, ui) {
                       $("#amount" + index).val(ui.values[0] + " - " + ui.values[1]);
+                        ui.info;
                       //valueUpper = upper;
                      // valueLower = lower;
                   }
@@ -303,14 +313,30 @@ function getFilterChanges(){
        // let temp_jsonObject = JSON.parse(localStorage.jsonObj);
        // let propertiesArray = temp_jsonObject["Performance"][type];
 
-        for(var i = 0;;++i){
-            if($("#slider-range" + i) !== null){
+        for(var i = index1;i > 0;--i){
+            if($("#slider-range" + i).length){
                 let valueUpper = $("#slider-range" + i).slider("values",1);
                 let valueLower = $("#slider-range" + i).slider("values",0);
-                console.log($("#slider-range" + i).slider("values",1));
+
                 console.log(valueLower);
             }
+            else{
+                break;
+            }
 
+        }
+
+         for(var i = 0;;++i){
+             var checkedBox = document.getElementById("Index" + index.toString());
+                     if(checkedBox !== null) {
+                         let tempDict = new dict();
+                         tempDict.name = temp[j];
+                         tempDict.state = checkedBox.checked;
+                         //filterArray[temp[0].toString()].push(tempDict);
+                     }
+                   else{
+                       break;
+                   }
         }
        // let valueUpper = .slider("values",1);
        // let valueLower = $("#slider-range").slider("values",0);
