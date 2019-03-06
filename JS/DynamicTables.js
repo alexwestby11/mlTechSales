@@ -170,8 +170,11 @@ function dTable() {
 var index1 = 0;
 var index2 = 0;
 var typeData = [];
+var brandData = [];
 function dFilter() {
-             let temp_jsonObject = JSON.parse(localStorage.jsonObj);
+
+             let temp_jsonObject = getJsonObject();
+             console.log(temp_jsonObject);
              let priceArray = temp_jsonObject["Price"]['Notebook'];
              let brandArray = temp_jsonObject["Brand"]['Notebook'];
              let propertiesArray = temp_jsonObject["Performance"]['Notebook'];
@@ -198,16 +201,35 @@ function dFilter() {
                          }
                          else{
                               stringValue += "<p>" +
-                                     "<label for='amount"+index1+"'>" + key +"</label>" +
+                                     "<label for='amount"+index1+"'>" + key  + "   " + propertiesArray[key]["Unit"] +"</label>" +
                                      "<input type=\"text\" id = 'amount"+index1+"' readonly style=\"border:0; color:#f6931f; font-weight:bold;\">" +
                                      "</p>";
-
                              stringValue += "<div id='slider-range"+index1+"' ></div>";
                              ++index1;
 
                          }
 
                      }
+
+
+                     //Creates Brand List
+                     let k = 0;stringValue += "<label>Brand</label>"
+                      for(var key in brandArray){
+
+                          if(k < 3){
+                               stringValue +=  "<div  class= 'checkbox'>"
+                                  + "<label>&emsp;<input id = 'Index"+index2+"'  type= 'checkbox' value= '' checked>"
+                                  + key
+                                  + "</label>"
+                                  +  "</div>";
+                               brandData.push(key);
+                          }else{
+                              break;
+                          }
+                          ++index2;
+                         ++k;
+                      }
+
                      //Creates Price
                          stringValue += "<p>" +
                                      "<label for='amount"+index1+"'>" + "Price" +"</label>" +
@@ -217,18 +239,23 @@ function dFilter() {
                              stringValue += "<div id='slider-range"+index1+"' ></div>";
                       stringValue += "</form>";
 
+
                      return stringValue;
                  }
                  $('#dFilter').html(createGUI(propertiesArray));
                   $('#tab_logic').append('<div id="dFilter" ></div>');
+
                   let i = 0;
                   for(let key in propertiesArray){
                         var propertiesValues = propertiesArray[key];
                         typeData.push(key);
 
                      customSlider(propertiesValues["UpperBound"],propertiesValues["LowerBound"],i++,propertiesValues["max"],propertiesValues["min"],key);
+
                   }
                   typeData.push("Price");
+                  typeData.push("Brand");
+
                   customSliderPrice(priceArray["UpperBound"],priceArray["LowerBound"],i++);
 
 
@@ -265,7 +292,6 @@ function dFilter() {
                   range: true,
                   min: min,
                   max: max,
-                  info:key,
                   values: [lower, upper],
                   enabled: '1',
                   slide: function (event, ui) {
@@ -303,7 +329,16 @@ function getFilterChanges(){
         for(let j = 0;; ++j){
                     var checkedBox = document.getElementById("Index" + j.toString());
                      if(checkedBox !== null) {
-                         filterArray[typeData[index]] = {"state":checkedBox.checked};
+                         if(typeData[index] === "Brand"){
+                             filterArray[typeData[index]] = [];
+                            for(var i = 0; i < 3;++i){
+                                var checkedBoxBrand = document.getElementById("Index" + j.toString());
+                               filterArray[typeData[index]][brandData[i]] = checkedBoxBrand.checked;
+                               ++j;
+                            }
+                         }else{
+                           filterArray[typeData[index]] = {"state":checkedBox.checked};
+                         }
                          ++index;
                      }
                    else{
