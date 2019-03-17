@@ -214,8 +214,10 @@ var jsonObj = {
 
         "Performance":
     {
-        "Camera":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgPriceArray":[],"min":1,"max":15}},
-        "Camera Lens":{"Size":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"mm"}},
+
+        "Camera":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"min":1,"max":15}},
+        "Camera Lens":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"mm"}},
+
         "Charger/Adapter":{},
         "Controller":{"Xbox":{"isBox":1,"isClicked":0},"PS4":{"isBox":1,"isClicked":0}},
         "Desktop PC":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"},
@@ -249,8 +251,8 @@ var jsonObj = {
         "Printer":{"Wired":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0},"All in One":{"isBox":1,"isClicked":0},"Inkjet":{"isBox":1,"isClicked":0}
                     ,"Laser":{"isBox":1,"isClicked":0}},
         "SD Card":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"}},
-        "Smartphone":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"isBox":0,"min":1,"max":15,"Unit":"GB"},
-                      "HDD":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"isBox":0,"min":1,"max":15,"Unit":"GB"}},
+        "Smartphone":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"Box":[],"Brand":{},"isBox":0,"min":1,"max":15,"Unit":"GB"},
+                      "HDD":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"Box":[],"Brand":{},"isBox":0,"min":1,"max":15,"Unit":"GB"}},
         "Speaker":{"Wired":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0},"Waterproof":{"isBox":1,"isClicked":0}},
         "Tablet":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"},
                       "CPU":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GHz"},
@@ -282,6 +284,7 @@ function addJSONParameter()
     }
    }
     localStorage.setItem('prices',JSON.stringify(givenObj))
+    testPerformanceFilter(jsonObj)
 
 }
 
@@ -352,7 +355,7 @@ function updateAveragePrice(x)
     typeJSON['Price'][typeString]["UpperBound"]=upperBoundPrice
     typeJSON['Price'][typeString]["LowerBound"]=lowerBoundPrice
     localStorage.setItem('prices',JSON.stringify(typeJSON))
-    //testPerformanceFilter(jsonObj)
+
 }
 
 function updateBrand(brand,givenType)
@@ -411,17 +414,19 @@ function filterPerformance(givenType,stat,value)
     var typeJSON = (JSON.parse(localStorage['prices']));
 
 
-    typeJSON['Performance'][typeString][stat]['AvgArray'].push(value);
-    typeJSON['Performance'][typeString][stat]['Count']=typeJSON['Price'][typeString]['Count']+1;
-
+    typeJSON['Performance'][givenType][stat]['AvgArray'].push(value);
+    typeJSON['Performance'][givenType][stat]['Count']=typeJSON['Performance'][givenType][stat]['Count']+1;
+    var avgPriceArray=typeJSON['Performance'][givenType][stat]['AvgArray'].map(Number)
+    typeJSON['Performance'][givenType][stat]['Mean']=averageArray(avgPriceArray)
+    typeJSON['Performance'][givenType][stat]['StdDev']=stdDevArray(avgPriceArray)
     var lowerBoundPrice=oneSigmaMinus(avgPriceArray)
     if(lowerBoundPrice<0)
     {
         lowerBoundPrice=0
     }
     var upperBoundPrice=oneSigmaPlus(avgPriceArray)
-    typeJSON['Performance'][typeString][stat]["UpperBound"]=upperBoundPrice
-    typeJSON['Performance'][typeString][stat]["LowerBound"]=lowerBoundPrice
+    typeJSON['Performance'][givenType][stat]["UpperBound"]=upperBoundPrice
+    typeJSON['Performance'][givenType][stat]["LowerBound"]=lowerBoundPrice
     localStorage.setItem('prices',JSON.stringify(typeJSON))
 }
 
@@ -436,4 +441,18 @@ function customQuery()
 */
 }
 
+function testPerformanceFilter(givenJSON)
+{
+    for (var outerKey in givenJSON['Performance'])
+    {
+        for (var innerKey in givenJSON['Performance'][outerKey])
+        {
+            if(givenJSON['Performance'][outerKey][innerKey]["isBox"]==0)
+            {
+                givenJSON['Performance'][outerKey][innerKey]
+                filterPerformance(outerKey,innerKey,Math.floor((Math.random() * 100) + 1))
+            }
+        }
+    }
+}
 

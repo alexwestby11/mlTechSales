@@ -245,10 +245,10 @@ function setInput(){
        alert('Try again');
     }
 
-   // localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue;
-    //localStorage['searchInput']="http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue+ "/getInfo/"+localStorage['Brand0']
-    localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + tempValue;
-console.log(localStorage['searchInput']);
+
+    localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue;
+   // localStorage['searchInput']="http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + "price/" + localStorage['prices']
+
     z_idx = 0;
     localStorage['results_index'] = z_idx;
 }
