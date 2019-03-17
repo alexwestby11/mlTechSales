@@ -366,7 +366,7 @@ function updateBrand(brand,givenType)
         addJSONParameter()
         localJSON=JSON.parse(localStorage['prices'])
     }
-    localJSON["Brand"][category][givenType][brand]["Count"]=localJSON["Brand"][category][givenType][brand]["Count"]+1
+    localJSON["Brand"][givenType][brand]["Count"]=localJSON["Brand"][givenType][brand]["Count"]+1
     localStorage.setItem('prices',JSON.stringify(localJSON))
     mostUsedBrand(givenType)
 }
@@ -379,7 +379,7 @@ function updateBrand(brand,givenType)
         return null
      }
      var obj=JSON.parse(localStorage['prices'])
-     var brandObj=obj["Price"][productType]["Brand"]
+     var brandObj=obj["Brand"][productType]
      var arrayBrandObj = Object.keys(brandObj).map(function(key) {
          return [key, brandObj[key].Count];});
      arrayBrandObj=arrayBrandObj.sort((a, b) => a[1] - b[1])
