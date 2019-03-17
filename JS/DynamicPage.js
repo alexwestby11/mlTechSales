@@ -392,7 +392,18 @@ function reply_ProPage(clicked_id)
         updateType(localStorage['ID_type']);
 
         if(bool === 0){
-             localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + recArray[num].type;
+             var lowerBound = localStorage['prices']['Price'][recArray[num].type]['LowerBound']
+             var upperBound = localStorage['prices']['Price'][recArray[num].type]['UpperBound']
+             if(upperBound>0 && lowerBound>0)
+             {
+                localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + recArray[num].type
+                 + "/"+ "getItemsBy/" + "price/" + lowerBound + "/" + upperBound;
+             }
+             else
+             {
+                localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + recArray[num].type
+             }
+
              localStorage['value'] = "Type: " + recArray[num].type;
              z_idx = 0;
              localStorage['results_index'] = z_idx;
