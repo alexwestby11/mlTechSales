@@ -1,3 +1,4 @@
+
 var types=
 [
 "notebook",
@@ -23,6 +24,7 @@ var types=
 "lens",
 "television"
 ]
+
 
 
 
@@ -62,13 +64,12 @@ function getData1() {
                 });
                 if(dataArray.length === 1 && dataArray[0].id === "0"){
                    isResults = 0;
-                     numRows = 0;
-                    numCol= 0;
-                    dTable();
+                   numRows = 0;
+                   numCol= 0;
+                   dTable();
                 }
                 else{
                     isResults = 1;
-
                 }
                 changeImage(numRows,numCol,0);
 

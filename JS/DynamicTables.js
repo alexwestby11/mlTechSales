@@ -175,9 +175,9 @@ function dFilter() {
 
              let temp_jsonObject = getJsonObject();
              console.log(temp_jsonObject);
-             let priceArray = temp_jsonObject["Price"]['Notebook'];
-             let brandArray = temp_jsonObject["Brand"]['Notebook'];
-             let propertiesArray = temp_jsonObject["Performance"]['Notebook'];
+             let priceArray = temp_jsonObject["Price"]['notebook'];
+             let brandArray = temp_jsonObject["Brand"]['notebook'];
+             let propertiesArray = temp_jsonObject["Performance"]['notebook'];
             console.log(priceArray);
              console.log(brandArray);
 
@@ -187,9 +187,12 @@ function dFilter() {
                      function createGUI(arr) {
                      var stringValue = "<form>";
 
+                     /*
+                     //Creates Properties
                      for(let key in propertiesArray){
-                         //Creates Properties
+
                          let temp = propertiesArray[key];
+
 
                          if(temp.isBox){
                               stringValue +=  "<div  class= 'checkbox'>"
@@ -209,7 +212,7 @@ function dFilter() {
 
                          }
 
-                     }
+                     }*/
 
 
                      //Creates Brand List
@@ -246,19 +249,20 @@ function dFilter() {
                   $('#tab_logic').append('<div id="dFilter" ></div>');
 
                   let i = 0;
+                  /*
                   for(let key in propertiesArray){
                         var propertiesValues = propertiesArray[key];
                         typeData.push(key);
 
                      customSlider(propertiesValues["UpperBound"],propertiesValues["LowerBound"],i++,propertiesValues["max"],propertiesValues["min"],key);
 
-                  }
+                  }*/
                   typeData.push("Price");
                   typeData.push("Brand");
 
                   customSliderPrice(priceArray["UpperBound"],priceArray["LowerBound"],i++);
 
-
+                    console.log("here" + priceArray["UpperBound"]);
              });
 }
 
@@ -271,7 +275,7 @@ function dFilter() {
                   range: true,
                   min: 0,
                   max: 5000,
-                  values: [0, 1000],
+                  values: [lower, upper],
                   slide: function (event, ui) {
                       $("#amount" + index).val("$" + ui.values[0] + " - $" + ui.values[1]);
                       //valueUpper = upper;
