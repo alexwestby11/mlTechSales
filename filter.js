@@ -379,7 +379,7 @@ function getJsonObject(){
 
 function addJSONParameter()
 {
-   var givenObj=JSON.parse(localStorage['prices'])
+   var givenObj=JSON.parse(localStorage['prices']);
    for(category in givenObj["Brand"])
    {
     for(var i=0; i<=brands.length-1;++i)
