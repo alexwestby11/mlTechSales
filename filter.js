@@ -148,7 +148,38 @@ var brands=
 var jsonObj = {
     "Macro":
     {
-        "Price":0,
+        "Price":
+        {
+
+            "Camera":0,
+            "Camera Lens":0,
+            "Charger/Adapter":0,
+            "Controller":0,
+            "Desktop PC":0,
+            "Docking Station":0,
+            "DVD/BluRay Players":0,
+            "External Hard Drive":0,
+            "External Solid State Drive":0,
+            "Game":0,
+            "Gaming Console":0,
+            "HDMI Cable":0,
+            "Headset":0,
+            "Keyboard":0,
+            "Laptop Charger":0,
+            "Monitor":0,
+            "Mouse":0,
+            "Notebook":0,
+            "Notebook Case":0,
+            "Printer":0,
+            "SD Card":0,
+            "Smartphone":0,
+            "Speaker":0,
+            "Tablet":0,
+            "TV":0,
+            "USB Cable":0,
+            "USB Flash Drive":0,
+
+        },
         "Performance":0
     },
     "Price":
@@ -332,6 +363,7 @@ function oneSigmaMinus(arrayGiven)
 
 function updateAveragePrice(x)
 {
+    getTypePriceData()
     if(localStorage['prices']==null)
     {
         localStorage.setItem('prices',JSON.stringify(jsonObj))
@@ -455,4 +487,38 @@ function testPerformanceFilter(givenJSON)
         }
     }
 }
+
+function getTypePriceData()
+{
+
+        var alpha = $.ajax({
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/getInfo/item_type',
+            dataType: 'json',
+            type: 'GET',
+            success: function (data) {
+
+
+                    $.ajax({
+                    url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.comg/getItemsBy/item_type/'+value,
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function (secondData) {
+                        averagePriceArray=[]
+
+                        console.log(averageArray(averagePriceArray))
+                    },
+                    error: function (error) {
+                    }
+                    });
+
+                console.log(isLoaded+ "asdfasdfasdf")
+            },
+            error: function (error) {
+            }
+        });
+}
+
+
+
+
 
