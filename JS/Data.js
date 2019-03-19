@@ -1,5 +1,3 @@
-
-
 function getData1() {
     $(document).ready(function () {
             $.getJSON(localStorage['searchInput'], function (result) {
@@ -42,7 +40,6 @@ function getData1() {
                 }
                 else{
                     isResults = 1;
-
                 }
                 changeImage(numRows,numCol,0);
 
