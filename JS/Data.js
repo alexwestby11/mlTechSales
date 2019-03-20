@@ -72,10 +72,11 @@ function getData1() {
                     isResults = 1;
                 }
                 changeImage(numRows,numCol,0);
+                localStorage.boolArray = JSON.stringify(mainSearchPage(dataArray));
 
             });
     });
-    var boolArrayResults= mainSearchPage(dataArray)
+
 }
 
 

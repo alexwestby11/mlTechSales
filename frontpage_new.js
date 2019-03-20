@@ -246,8 +246,8 @@ function setInput(){
     }
 
 
-    localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "item_type" + "/" + tempValue;
-   // localStorage['searchInput']="http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + "price/" + localStorage['prices']
+    //localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "item_type" + "/" + tempValue;
+    localStorage['searchInput']="http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue;
 
     z_idx = 0;
     localStorage['results_index'] = z_idx;
@@ -293,6 +293,7 @@ function pressedType4(){
 }
 
  function changeImage(x,y){
+    var tempBoolArray = localStorage.boolArray;
     var dx =  Number(localStorage['results_index']);
 
       for (var j = 0; j < y; ++j) {//rows
@@ -300,6 +301,7 @@ function pressedType4(){
               var string = (j*numRows + k).toString();
                var prd = document.getElementById(string);
                if(typeof dataArray[dx] !== 'undefined'){
+                   if
                    $('#' + string).css('visibility', 'visible');
                     prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
                var name = (prd.getElementsByTagName("b")[0]);
