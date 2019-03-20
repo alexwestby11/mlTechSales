@@ -49,7 +49,7 @@ var totalCollect = 3;
 var currentCollect = 0;
 var addPicsIndex = 0;
 var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.jpg','images/Logo/logo1.png','images/Logo/logo2.png','images/Logo/logo3.png','images/Logo/logo4.png','images/Logo/logo5.png','images/Logo/logo5.png'];
-var typeArrayFixed = ["notebook","monitor","notebook_case","mouse","charger","keyboard","cable","docking station","speaker","tablet","mobile","drive","printer","dvd_br","desktop","controller","camera","headset","game","console","lens","television"];
+var typeArrayFixed = ["notebook","monitor","noteboook_case","mouse","charger","keyboard","cable","docking station","speaker","tablet","mobile","drive","printer","dvd_br","desktop","controller","camera","headset","game","console","lens","television"];
 var isResults = 1;
 var c1 = 0;
 var c2 = 0;
@@ -293,36 +293,39 @@ function pressedType4(){
 }
 
  function changeImage(x,y){
-    var tempBoolArray = localStorage.boolArray;
+    var tempBoolArray = JSON.parse(localStorage.boolArray);
+    console.log(tempBoolArray);
     var dx =  Number(localStorage['results_index']);
-
+   console.log(tempBoolArray);
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
-              var string = (j*numRows + k).toString();
-               var prd = document.getElementById(string);
-               if(typeof dataArray[dx] !== 'undefined'){
-                   if
-                   $('#' + string).css('visibility', 'visible');
-                    prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
-               var name = (prd.getElementsByTagName("b")[0]);
-               var txt = name.innerHTML = dataArray[dx].name;
-               if(txt.length > 25){
-                   txt = txt.split(' ').slice(0,2).join(' ');
-                    if(txt.length > 25){
-                    txt = txt.split(' ').slice(0,1).join(' ');
-                 }
-               }
-               name.innerHTML = txt;
-               var info = (prd.getElementsByTagName("div")[1]);
-               info.innerHTML = dataArray[dx].brand +"<br>" + '$' + dataArray[dx].price;
-               itemArray[j*numRows + k] = dx;
+              var string = (j * numRows + k).toString();
+              var prd = document.getElementById(string);
+              if (typeof dataArray[dx] !== 'undefined' && tempBoolArray[dx] === true) {
 
-               dataArray[dx].index = dx;
-               }
+
+                      $('#' + string).css('visibility', 'visible');
+                  prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
+                  var name = (prd.getElementsByTagName("b")[0]);
+                  var txt = name.innerHTML = dataArray[dx].name;
+                  if (txt.length > 25) {
+                      txt = txt.split(' ').slice(0, 2).join(' ');
+                      if (txt.length > 25) {
+                          txt = txt.split(' ').slice(0, 1).join(' ');
+                      }
+                  }
+                  name.innerHTML = txt;
+                  var info = (prd.getElementsByTagName("div")[1]);
+                  info.innerHTML = dataArray[dx].brand + "<br>" + '$' + dataArray[dx].price;
+                  itemArray[j * numRows + k] = dx;
+
+                  dataArray[dx].index = dx;
+
+                 }
                 else{
                      $('#' + string).css('visibility', 'hidden');
                }
-               ++ dx;
+               ++dx;
           }
            z_idx = dx;
           localStorage['results_index'] = z_idx;

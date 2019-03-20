@@ -322,7 +322,7 @@ var jsonObj = {
         "monitor":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[150,100,80,180,90,150,160,170,180,190],"Box":[],"Brand":{},"min":1,"max":15},
         "mouse":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[11.99, 9.95, 7.99, 6.99, 9.99, 8.99, 9.99, 14.99, 2.64, 7.99],"Box":[],"Brand":{},"min":1,"max":15},
         "notebook":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[349.9, 208.9, 272, 265.99, 269, 217.95, 294.85, 274.5, 217.95, 228],"Box":[],"Brand":{},"min":1,"max":15},
-        "notebook_case":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[16,12,10,14,16,10,12,15,16,15],"Box":[],"Brand":{},"min":1,"max":15},
+        "noteboook_case":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[16,12,10,14,16,10,12,15,16,15],"Box":[],"Brand":{},"min":1,"max":15},
         "printer":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[100,50,60,90,65,100,64,75,100,100],"Box":[],"Brand":{},"min":1,"max":15},
         "mobile":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[109,50,60,75,65,55,90,95,50,65],"Box":[],"Brand":{},"min":1,"max":15},
         "speaker":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[15,20,19,20,15,14,10,15,16,18],"Box":[],"Brand":{},"min":1,"max":15},
@@ -347,7 +347,7 @@ var jsonObj = {
         "monitor":{},
         "mouse":{},
         "notebook":{},
-        "notebook_case":{},
+        "noteboook_case":{},
         "printer":{},
         "mobile":{},
         "speaker":{},
@@ -385,7 +385,7 @@ var jsonObj = {
                       "CPU":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GHz"},
                       "HDD":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"},
                       "Size":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"In"}},
-        "notebook_case":{"Size":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"In"}},
+        "noteboook_case":{"Size":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"In"}},
         "printer":{"Wired":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0},"All in One":{"isBox":1,"isClicked":0},"Inkjet":{"isBox":1,"isClicked":0}
                     ,"Laser":{"isBox":1,"isClicked":0}},
         "mobile":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"Box":[],"Brand":{},"isBox":0,"min":1,"max":15,"Unit":"GB"},
@@ -406,6 +406,27 @@ var jsonObj = {
 
 function getJsonObject(){
      return JSON.parse(localStorage['prices']);
+}
+
+var typeArrayFixed = ["notebook","monitor","noteboook_case","mouse","charger","keyboard","cable","docking station","speaker","tablet","mobile","drive","printer","dvd_br","desktop","controller","camera","headset","game","console","lens","television"];
+
+function initJsonObject(){
+
+    for(let i = 0; i < typeArrayFixed.length; ++i) {
+        var typeString = typeArrayFixed[i];
+        var avgPriceArray = jsonObj['Price'][typeString]['AvgPriceArray'].map(Number);
+
+
+        var lowerBoundPrice = oneSigmaMinus(avgPriceArray);
+        if (lowerBoundPrice < 0) {
+            lowerBoundPrice = 0;
+        }
+        var upperBoundPrice = oneSigmaPlus(avgPriceArray);
+        jsonObj['Price'][typeString]["UpperBound"] = upperBoundPrice;
+        jsonObj['Price'][typeString]["LowerBound"] = lowerBoundPrice;
+
+    }
+ localStorage['prices'] = JSON.stringify(jsonObj['Price']);
 }
 
 function addJSONParameter()
