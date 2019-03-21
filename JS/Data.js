@@ -1,3 +1,4 @@
+
 var itemTypes =
 [
     "notebook",
@@ -24,6 +25,9 @@ var itemTypes =
     "television"
 ]
 var typePriceArray=[];
+
+
+
 
 function getData1() {
     $(document).ready(function () {
@@ -61,19 +65,22 @@ function getData1() {
                 });
                 if(dataArray.length === 1 && dataArray[0].id === "0"){
                    isResults = 0;
-                     numRows = 0;
-                    numCol= 0;
-                    dTable();
+                   numRows = 0;
+                   numCol= 0;
+                   dTable();
                 }
                 else{
                     isResults = 1;
-
                 }
+                localStorage.boolArray = JSON.stringify(mainSearchPage(dataArray));
                 changeImage(numRows,numCol,0);
+
 
             });
     });
+
     getTypePriceData()
+
 }
 
 
@@ -219,4 +226,82 @@ function getTypePriceData() {
     }
 }
 
+
+    });
+getPriceAverageData()
+}
+
+
+
+function getPriceAverageData() {
+    localStorage['searchType'] = 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/item_type/'+'Notebook' ;
+    console.log(localStorage['searchSim']);
+    var priceData=[];
+
+    $(document).ready(function () {
+
+            $.getJSON(localStorage['searchType'], function (result) {
+                //console.log(result);
+
+                $.each(result, function (i, field) {
+                    let product = new Product();
+                    console.log("sim = " + i);
+                    $.each(field, function (key, value) {
+                        if (key === "imgSrc") {
+                            product.img_src = value;
+                        }
+                        else if (key === "name") {
+                            product.name = value;
+                        }
+                        else if (key === "price") {
+                            product.price = value;
+                        }
+                        else if (key === "manufacturer") {
+                            product.brand = value;
+                        }
+                         else if (key === "id") {
+                            product.id = value;
+                        }
+                         else if (key === "category") {
+                            product.category = value;
+                        }
+                         else if (key === "type") {
+                            product.type = value;
+                        }
+                    });
+
+
+                    priceData.push(product)
+                    console.log("Hello")
+
+                });
+            });
+    });
+
+}
+
+
+function mainSearchPage(inputArray)
+{
+    var index = 0;
+    var jsonObjtemp = JSON.parse(localStorage['prices']);
+    console.log(jsonObjtemp)
+    var boolArray=[];
+    for(var i=0; i<=inputArray.length-1;++i)
+    {
+        //console.log(jsonObjtemp["Price =" + inputArray.p+" " +inputArray[i].type]['UpperBound'] + " " + jsonObjtemp[inputArray[i].type]['LowerBound'])
+        if( (inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound']) &&
+            (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound']) )
+        {
+            boolArray.push(true)
+            ++index;
+        }
+        else
+        {
+            boolArray.push(false)
+        }
+    }
+    boolArray.push(index);
+    return boolArray;
+}
 

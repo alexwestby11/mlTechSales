@@ -14,7 +14,7 @@ var addPicsIndexArray = [0,1,2,3,4,5,6,7];
 
 //Size of results Page
 var numRows = 5;
-var numCol= 2;
+var numCol= 10;
 
 //Alex's Stuff
 var avgPriceArray=[];
@@ -49,7 +49,7 @@ var totalCollect = 3;
 var currentCollect = 0;
 var addPicsIndex = 0;
 var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.jpg','images/Logo/logo1.png','images/Logo/logo2.png','images/Logo/logo3.png','images/Logo/logo4.png','images/Logo/logo5.png','images/Logo/logo5.png'];
-var typeArrayFixed = ["Notebook","Monitor","Notebook Case","Mouse","Laptop Charger","Keyboard","HDMI Cable","Docking Station","Speaker","Tablet","Smartphone","SD Card","Printer","DVD_BR Player","Desktop PC","Controller","Charger_Adapter","Camera","Headset","External Hard Dr","External Solid S","Game","Gaming Console","USB Flash Drive","USB Cable","Camera Lens","TV"];
+var typeArrayFixed = ["notebook","monitor","noteboook_case","mouse","charger","keyboard","cable","docking station","speaker","tablet","mobile","drive","printer","dvd_br","desktop","controller","camera","headset","game","console","lens","television"];
 var isResults = 1;
 var c1 = 0;
 var c2 = 0;
@@ -62,8 +62,9 @@ var Timer4 = 0;
 var typeArray = [];
 var flag = localStorage['flag'] || '0';
 var topValuesTypesNames = [typeArray[0],typeArray[7],typeArray[14],typeArray[21]];
-
+var prevValue = 0;
 const numToChangeBox = 3;
+
 
 function initBoxes(type){
     var index = 0;
@@ -246,8 +247,8 @@ function setInput(){
     }
 
 
-    localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue;
-   // localStorage['searchInput']="http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + "price/" + localStorage['prices']
+    //localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "item_type" + "/" + tempValue;
+    localStorage['searchInput']="http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "name" + "/" + tempValue;
 
     z_idx = 0;
     localStorage['results_index'] = z_idx;
@@ -293,34 +294,45 @@ function pressedType4(){
 }
 
  function changeImage(x,y){
-    var dx =  Number(localStorage['results_index']);
+    var tempBoolArray = JSON.parse(localStorage.boolArray);
+    var dx =  0;
 
+    var newRows = Math.ceil(tempBoolArray[tempBoolArray.length-1]/5);
+    console.log(newRows);
+    x = newRows;
+    numCol= newRows;
+   console.log(tempBoolArray);
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
-              var string = (j*numRows + k).toString();
-               var prd = document.getElementById(string);
-               if(typeof dataArray[dx] !== 'undefined'){
-                   $('#' + string).css('visibility', 'visible');
-                    prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
-               var name = (prd.getElementsByTagName("b")[0]);
-               var txt = name.innerHTML = dataArray[dx].name;
-               if(txt.length > 25){
-                   txt = txt.split(' ').slice(0,2).join(' ');
-                    if(txt.length > 25){
-                    txt = txt.split(' ').slice(0,1).join(' ');
-                 }
-               }
-               name.innerHTML = txt;
-               var info = (prd.getElementsByTagName("div")[1]);
-               info.innerHTML = dataArray[dx].brand +"<br>" + '$' + dataArray[dx].price;
-               itemArray[j*numRows + k] = dx;
+              var string = (j * numRows + k).toString();
+              var prd = document.getElementById(string);
+              if (typeof dataArray[dx] !== 'undefined') {
+                        if(tempBoolArray[dx] === true){
+                            $('#' + string).css('visibility', 'visible');
+                          prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
+                          var name = (prd.getElementsByTagName("b")[0]);
+                          var txt = name.innerHTML = dataArray[dx].name;
+                          if (txt.length > 25) {
+                              txt = txt.split(' ').slice(0, 2).join(' ');
+                              if (txt.length > 25) {
+                                  txt = txt.split(' ').slice(0, 1).join(' ');
+                              }
+                          }
+                          name.innerHTML = txt;
+                          var info = (prd.getElementsByTagName("div")[1]);
+                          info.innerHTML = dataArray[dx].brand + "<br>" + '$' + dataArray[dx].price;
+                          itemArray[j * numRows + k] = dx;
 
-               dataArray[dx].index = dx;
-               }
+                          dataArray[dx].index = dx;
+                    }
+                    else{
+                        --k;
+                        }
+                 }
                 else{
                      $('#' + string).css('visibility', 'hidden');
                }
-               ++ dx;
+               ++dx;
           }
            z_idx = dx;
           localStorage['results_index'] = z_idx;
@@ -330,29 +342,35 @@ function pressedType4(){
 
 
  function nextImage(x,y){
+     var tempBoolArray = JSON.parse(localStorage.boolArray);
     var dx = Number(localStorage['results_index']) ;
+      prevValue = dx;
      if(dx < dataArray.length) {
          for (var j = 0; j < y; ++j) {//rows
              for (var k = 0; k < x; ++k) {//col
                  var string = (j * numRows + k).toString();
                  var prd = document.getElementById(string);
                  if (typeof dataArray[dx] !== 'undefined' || dx < dataArray.length) {
-                     $('#' + string).css('visibility', 'visible');
-                     prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
-                     var name = (prd.getElementsByTagName("b")[0]);
-                     var txt = name.innerHTML = dataArray[dx].name;
-                     if (txt.length > 25) {
-                         txt = txt.split(' ').slice(0, 2).join(' ');
+                     if(tempBoolArray[dx] === true) {
+                         $('#' + string).css('visibility', 'visible');
+                         prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
+                         var name = (prd.getElementsByTagName("b")[0]);
+                         var txt = name.innerHTML = dataArray[dx].name;
                          if (txt.length > 25) {
-                             txt = txt.split(' ').slice(0, 1).join(' ');
+                             txt = txt.split(' ').slice(0, 2).join(' ');
+                             if (txt.length > 25) {
+                                 txt = txt.split(' ').slice(0, 1).join(' ');
+                             }
                          }
-                     }
-                     name.innerHTML = txt;
-                     var info = (prd.getElementsByTagName("div")[1]);
-                     info.innerHTML = dataArray[dx].brand + "<br>" + '$' + dataArray[dx].price;
-                     itemArray[j * numRows + k] = dx;
+                         name.innerHTML = txt;
+                         var info = (prd.getElementsByTagName("div")[1]);
+                         info.innerHTML = dataArray[dx].brand + "<br>" + '$' + dataArray[dx].price;
+                         itemArray[j * numRows + k] = dx;
 
-                     dataArray[dx].index = dx;
+                         dataArray[dx].index = dx;
+                     } else{
+                        --k;
+                        }
                  }
                  else {
 
@@ -369,29 +387,35 @@ function pressedType4(){
 
 
  function prevImage(x,y,z){
-    var dx = Number(localStorage['results_index']) - (numRows*numCol)*2;
+     var tempBoolArray = JSON.parse(localStorage.boolArray);
+    //var dx = prevValue Number(localStorage['results_index']) - );
     if(dx >= 0) {
         for (var j = 0; j < y; ++j) {//rows
             for (var k = 0; k < x; ++k) {//col
+                let value = j * numRows + k;
                 var string = (j * numRows + k).toString();
                 var prd = document.getElementById(string);
                 if (typeof dataArray[dx] !== 'undefined') {
-                    $('#' + string).css('visibility', 'visible');
-                    prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
-                    var name = (prd.getElementsByTagName("b")[0]);
-                    var txt = name.innerHTML = dataArray[dx].name;
-                    if (txt.length > 25) {
-                        txt = txt.split(' ').slice(0, 2).join(' ');
+                    if(tempBoolArray[dx] === true) {
+                        $('#' + string).css('visibility', 'visible');
+                        prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
+                        var name = (prd.getElementsByTagName("b")[0]);
+                        var txt = name.innerHTML = dataArray[dx].name;
                         if (txt.length > 25) {
-                            txt = txt.split(' ').slice(0, 1).join(' ');
+                            txt = txt.split(' ').slice(0, 2).join(' ');
+                            if (txt.length > 25) {
+                                txt = txt.split(' ').slice(0, 1).join(' ');
+                            }
                         }
-                    }
-                    name.innerHTML = txt;
-                    var info = (prd.getElementsByTagName("div")[1]);
-                    info.innerHTML = dataArray[dx].brand + "<br>" + '$' + dataArray[dx].price;
-                    itemArray[j * numRows + k] = dx;
+                        name.innerHTML = txt;
+                        var info = (prd.getElementsByTagName("div")[1]);
+                        info.innerHTML = dataArray[dx].brand + "<br>" + '$' + dataArray[dx].price;
+                        itemArray[j * numRows + k] = dx;
 
-                    dataArray[dx].index = dx;
+                        //dataArray[dx].index = dx;
+                    }else{
+                        --k;
+                    }
                 }
                 else {
                     $('#' + string).css('visibility', 'hidden');

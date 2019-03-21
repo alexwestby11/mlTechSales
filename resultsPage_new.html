@@ -51,14 +51,14 @@
 
     <div class="d-flex" style="width: 50%">
 
-          <div class="dropdown" onclick="getFilterChanges('Notebook')">
+          <div class="dropdown" onclick="getFilterChanges('notebook')">
             <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Filter
             <span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 
                     <div id="dFilter" style = "margin: 5%" ></div>
 
-                </ul>
+                </ul> dd
         </div>
 
         <input type="search" class="form-control" id="searchbar" placeholder="Search for ..." value = >
@@ -87,7 +87,7 @@
 <!--results-->
 <div class="container-fluid palFont">
     <div class="col shadow-sm mT rounded" style="border:1px solid gainsboro;:background: white;">
-            <div class="d-flex rounded" id="d_table" style = "width: 100%;height:75%">
+            <div class="d-flex rounded" id="d_table" style = "width: 100%;height:75%;overflow:auto;">
                 <!- Custom Table-->
             </div>
 	</div>
