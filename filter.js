@@ -573,7 +573,7 @@ function testPerformanceFilter(givenJSON)
 
 function macroPriceFilter()
 {
-    
+
 
 
 
