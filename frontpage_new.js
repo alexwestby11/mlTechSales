@@ -16,7 +16,7 @@ var addPicsIndexArray = [0,1,2,3,4,5,6,7];
 var numRows = 5;
 var numCol= 10;
 
-//aLEXES sTUFF
+//Alex's Stuff
 var avgPriceArray=[];
 
 
