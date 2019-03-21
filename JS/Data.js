@@ -71,11 +71,13 @@ function getData1() {
                 else{
                     isResults = 1;
                 }
+                localStorage.boolArray = JSON.stringify(mainSearchPage(dataArray));
                 changeImage(numRows,numCol,0);
+
 
             });
     });
-    var boolArrayResults= mainSearchPage(dataArray)
+
 }
 
 
@@ -224,19 +226,24 @@ function getPriceAverageData() {
 
 function mainSearchPage(inputArray)
 {
-    var jsonOBJ = JSON.parse(localStorage['prices'])
-    var boolArray=[]
+    var index = 0;
+    var jsonObjtemp = JSON.parse(localStorage['prices']);
+    console.log(jsonObjtemp)
+    var boolArray=[];
     for(var i=0; i<=inputArray.length-1;++i)
     {
-        if( (inputArray.price<=jsonObj['Price'][inputArray[i].type]['UpperBound']) &&
-            (inputArray.price>=jsonObj['Price'][inputArray[i].type]['LowerBound']) )
+        //console.log(jsonObjtemp["Price =" + inputArray.p+" " +inputArray[i].type]['UpperBound'] + " " + jsonObjtemp[inputArray[i].type]['LowerBound'])
+        if( (inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound']) &&
+            (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound']) )
         {
             boolArray.push(true)
+            ++index;
         }
         else
         {
             boolArray.push(false)
         }
     }
+    boolArray.push(index);
     return boolArray;
 }
