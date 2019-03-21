@@ -393,8 +393,8 @@ function reply_ProPage(clicked_id)
 
         if(bool === 0){
              var priceDict= JSON.parse(localStorage['prices'])
-             var lowerBound = priceDict['Price'][recArray[num].type]['LowerBound']
-             var upperBound = priceDict['Price'][recArray[num].type]['UpperBound']
+             var lowerBound = priceDict[recArray[num].type]['LowerBound']
+             var upperBound = priceDict[recArray[num].type]['UpperBound']
              if(upperBound>0 && lowerBound>0)
              {
                 localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + recArray[num].type

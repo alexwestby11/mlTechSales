@@ -500,9 +500,9 @@ function updateAveragePrice(x)
     var typeJSON = (JSON.parse(localStorage['prices']));
 
 
-    typeJSON['Price'][typeString]['AvgPriceArray'].push(x);
-    var avgPriceArray=typeJSON['Price'][typeString]['AvgPriceArray'].map(Number)
-    typeJSON['Price'][typeString]['Count']=typeJSON['Price'][typeString]['Count']+1;
+    typeJSON[typeString]['AvgPriceArray'].push(x);
+    var avgPriceArray=typeJSON[typeString]['AvgPriceArray'].map(Number)
+    typeJSON[typeString]['Count']=typeJSON[typeString]['Count']+1;
 
     var lowerBoundPrice=oneSigmaMinus(avgPriceArray)
     if(lowerBoundPrice<0)
@@ -510,8 +510,8 @@ function updateAveragePrice(x)
         lowerBoundPrice=0
     }
     var upperBoundPrice=oneSigmaPlus(avgPriceArray)
-    typeJSON['Price'][typeString]["UpperBound"]=upperBoundPrice
-    typeJSON['Price'][typeString]["LowerBound"]=lowerBoundPrice
+    typeJSON[typeString]["UpperBound"]=upperBoundPrice
+    typeJSON[typeString]["LowerBound"]=lowerBoundPrice
     localStorage.setItem('prices',JSON.stringify(typeJSON))
 
 }

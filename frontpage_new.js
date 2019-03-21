@@ -295,7 +295,7 @@ function pressedType4(){
 
  function changeImage(x,y){
     var tempBoolArray = JSON.parse(localStorage.boolArray);
-    var dx =  Number(localStorage['results_index']);
+    var dx =  0;
 
     var newRows = Math.ceil(tempBoolArray[tempBoolArray.length-1]/5);
     console.log(newRows);
