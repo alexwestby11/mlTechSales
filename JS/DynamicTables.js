@@ -134,7 +134,7 @@ function dTable() {
                      function numTable(x,y) {
                      var index = 0;
                      var stringValue =
-                         "<div  class=\"d-flex flex-column vertical-align\" style='width:100%; height:100%;'>";
+                         "<div  class=\"d-flex flex-column vertical-align\" style='width:100%;height: 150vmax'>";
                         if(x === 0 && y === 0){
                              stringValue +=  "<div class=\"col-fluid\" style='width:100%; height:100%;font-size: large;text-align: center'><p>No Results</p></div>";
                         }

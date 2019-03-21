@@ -226,6 +226,7 @@ function getPriceAverageData() {
 
 function mainSearchPage(inputArray)
 {
+    var index = 0;
     var jsonObjtemp = JSON.parse(localStorage['prices']);
     console.log(jsonObjtemp)
     var boolArray=[];
@@ -236,11 +237,13 @@ function mainSearchPage(inputArray)
             (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound']) )
         {
             boolArray.push(true)
+            ++index;
         }
         else
         {
             boolArray.push(false)
         }
     }
+    boolArray.push(index);
     return boolArray;
 }
