@@ -408,12 +408,12 @@ function reply_ProPage(clicked_id)
              localStorage['value'] = "Type: " + recArray[num].type;
              z_idx = 0;
              localStorage['results_index'] = z_idx;
-             getData1();
+
              linkResultsPage();
         }else{
+
             location.reload();
         }
-
 
        $.post("http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/"+  localStorage['prevID'] + "/" +localStorage['ID'] + "/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm");
 }

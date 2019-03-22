@@ -153,146 +153,114 @@ var jsonObj1 = {
         {
              "monitor":
              {
-             "mean": 287.7161249999998
+             "mean": 287.7161249999998,
              "std": 229.69772072913653
-             }
-             "noteboook_case"
+             },
+             "noteboook_case":
              {
-             "mean": 26.680365853658543
+             "mean": 26.680365853658543,
              "std": 35.256799972614395
-             }
-             "mouse"
+             },
+             "mouse":
              {
-             "mean": 17.095769230769235
+             "mean": 17.095769230769235,
              "std": 14.265397652355162
-             }
-             "notebook"
+             },
+             "notebook":
              {
-             "mean": 729.0934705882355
+             "mean": 729.0934705882355,
              "std": 594.4080325242113
-             }
-             "keyboard"
+             },
+             "keyboard":
              {
-             "mean": 48.8332291666666
+             "mean": 48.8332291666666,
              "std": 42.285523577219195
-             }
-             "cable"
+             },
+             "cable":
              {
-             "mean": 14.13912751677852
+             "mean": 14.13912751677852,
              "std": 17.429407540321115
-             }
-             "charger"
+             },
+             "charger":
              {
-             "mean": 28.03568862275443
+             "mean": 28.03568862275443,
              "std": 61.16828876120985
-             }
-             "docking station"
+             },
+             "docking station":
              {
-             "mean": 91.76902912621348
+             "mean": 91.76902912621348,
              "std": 52.429681021243496
-             }
-             "speaker"
+             },
+             "speaker":
              {
-             "mean": 80.8170866141731
+             "mean": 80.8170866141731,
              "std": 223.55085042107197
-             }
-             "tablet"
+             },
+             "tablet":
              {
-             "mean": 121.93373015873001
+             "mean": 121.93373015873001,
              "std": 101.37227294075339
-             }
-             "mobile"
+             },
+             "mobile":
              {
-             "mean": 232.86562500000042
+             "mean": 232.86562500000042,
              "std": 162.36250895139597
-             }
-             "dvd_br"
+             },
+             "dvd_br":
              {
-             "mean": 111.36943396226408
+             "mean": 111.36943396226408,
              "std": 217.0607974864247
-             }
-             "printer"
+             },
+             "printer":
              {
-             "mean": 203.0585714285714
+             "mean": 203.0585714285714,
              "std": 148.50640954795657
-             }
-             "desktop"
+             },
+             "desktop":
              {
-             "mean": 576.3286956521741
+             "mean": 576.3286956521741,
              "std": 493.2261829970727
-             }
-             "controller"
+             },
+             "controller":
              {
-             "mean": 66.36405797101445
+             "mean": 66.36405797101445,
              "std": 57.70837510119409
-             }
-             "camera"
+             },
+             "camera":
              {
-             "mean": 950.0461538461539
+             "mean": 950.0461538461539,
              "std": 904.6660652789349
-             }
-             "headset"
+             },
+             "headset":
              {
-             "mean": 53.10025641025641
+             "mean": 53.10025641025641,
              "std": 40.950373848764514
-             }
-             "game"
+             },
+             "game":
              {
-             "mean": 37.242027027027014
+             "mean": 37.242027027027014,
              "std": 17.877701039703428
-             }
-             "lens"
+             },
+             "lens":
              {
-             "mean": 862.5420833333334
+             "mean": 862.5420833333334,
              "std": 740.2445234154936
-             }
-             "console"
+             },
+             "console":
              {
-             "mean": 403.1593430656931
+             "mean": 403.1593430656931,
              "std": 189.39056201717892
-             }
-             "television"
+             },
+             "television":
              {
-             "mean": 204.8599999999999
+             "mean": 204.8599999999999,
              "std": 100.5614953421763
-             }
-             "drive"
+             },
+             "drive":
              {
-             "mean": 87.48210884353756
+             "mean": 87.48210884353756,
              "std": 156.96517051864456
              }
-
-        {
-
-            "Camera":0,
-            "Camera Lens":0,
-            "Charger/Adapter":0,
-            "Controller":0,
-            "Desktop PC":0,
-            "Docking Station":0,
-            "DVD/BluRay Players":0,
-            "External Hard Drive":0,
-            "External Solid State Drive":0,
-            "Game":0,
-            "Gaming Console":0,
-            "HDMI Cable":0,
-            "Headset":0,
-            "Keyboard":0,
-            "Laptop Charger":0,
-            "Monitor":0,
-            "Mouse":0,
-            "Notebook":0,
-            "Notebook Case":0,
-            "Printer":0,
-            "SD Card":0,
-            "Smartphone":0,
-            "Speaker":0,
-            "Tablet":0,
-            "TV":0,
-            "USB Cable":0,
-            "USB Flash Drive":0,
-
-
         },
         "Performance":0
     },
