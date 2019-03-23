@@ -28,16 +28,20 @@
 
 <body>
 <div class="container-fluid h-100" style="background: white" >
-    <script>initialSet();initJsonObject();</script>
+    <script>initialSet();initJsonObject();resetTimer()</script>
 <!-- Title -->
 <div class="d-flex flex-row darkBlue rounded justify-content-center" style="height: 15%">
     <div class="d-flex flex-column rounded">
     <div class="d-flex titleText ">--
         <p>Tech Sails</p>
     </div>
+
     <div class="d-flex justify-content-center vertical-align" style="padding-bottom: 0%">
         <p><b><i>Sailing Through the Competiton</i></b></p>
+        <p id="Timer" style="text-align: right"></p><button onclick="clearInterval(resetTimer())">Stop time</button>
     </div>
+
+
     </div>
 
     </div>
@@ -57,7 +61,7 @@
     <div class="d-flex" style="width: 50%">
         <input type="search" class="form-control" id="searchbar" placeholder="Search for ..." value="">
          <span class="input-group-btn">
-             <button class="btn btn-light" type="button" onclick="setInput();">Search</button>
+             <button class="btn btn-light" type="button" onclick="setInput();startTimer()">Search</button>
          </span>
     </div>
 

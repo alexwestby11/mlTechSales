@@ -459,7 +459,8 @@ function createSessionID()
 function displayNumClicks(){
     var numClick = Number(localStorage.click);
     localStorage.click = 0;
-    alert("Number of Clicks = " + numClick);
+    alert("Number of Clicks = " + numClick +"\n" +
+            "Time = " + localStorage.min + ":" +localStorage.second +"\n" + "Timer Reset\n Start from index page to try again\nThank you");
 }
 
 function incrementClick() {
@@ -471,4 +472,41 @@ function incrementClick() {
         ++num;
         localStorage.click = num;
     }
+}
+
+
+
+
+var secondTimer = localStorage.second || 0
+var output = localStorage.output ||0;
+function startTimer(){
+    output = setInterval(myTimer ,1000);
+    localStorage.output = output
+}
+
+var minute = localStorage.min || 0;
+function myTimer() {
+  var stringVar = "0";
+  ++secondTimer;
+  if(secondTimer === 60){
+      ++minute;
+      secondTimer = 0;
+      stringVar = secondTimer;
+  }else if(secondTimer < 10){
+    stringVar += secondTimer;
+  }
+  else{
+      stringVar = secondTimer;
+  }
+  console.log(minute + ":" +stringVar);
+  localStorage.second = secondTimer;
+  localStorage.min = minute;
+ document.getElementById("Timer").innerHTML = " " + minute + ":" +stringVar;
+}
+
+function resetTimer(){
+    clearInterval(output);
+    localStorage.second = 0;
+    localStorage.min = 0;
+    localStorage.output = 0;
 }

@@ -34,7 +34,7 @@
 </head>
 
 <body onload = "getData1();dFilter();">
-  <script>createSessionID(); </script>
+  <script>createSessionID();startTimer() </script>
 
 <div class="container-fluid h-100 palFont">
 
@@ -64,9 +64,10 @@
         <input type="search" class="form-control" id="searchbar" placeholder="Search for ..." value = >
          <span class="input-group-btn">
              <button class="btn btn-light" type="button" onclick="setInput();">Search</button>
+
          </span>
     </div>
-
+<p id="Timer" style="text-align: right"></p><button onclick="clearInterval(resetTimer())">Stop time</button>
     </div>
 
      <div class="d-flex flex-row rounded shadow-sm justify-content-around" style="border:1px solid gainsboro;align-items:center;height: 5%;margin-top: 1%;">
