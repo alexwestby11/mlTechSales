@@ -145,277 +145,129 @@ var brands=
         'Hitachi','TCL','Hitachi(r)'
     ]
 
-var jsonObj1 = {
-    "Macro":
-    {
-        "Price":
-
-        {
-             "monitor":
-             {
-             "mean": 287.7161249999998
-             "std": 229.69772072913653
-             }
-             "noteboook_case"
-             {
-             "mean": 26.680365853658543
-             "std": 35.256799972614395
-             }
-             "mouse"
-             {
-             "mean": 17.095769230769235
-             "std": 14.265397652355162
-             }
-             "notebook"
-             {
-             "mean": 729.0934705882355
-             "std": 594.4080325242113
-             }
-             "keyboard"
-             {
-             "mean": 48.8332291666666
-             "std": 42.285523577219195
-             }
-             "cable"
-             {
-             "mean": 14.13912751677852
-             "std": 17.429407540321115
-             }
-             "charger"
-             {
-             "mean": 28.03568862275443
-             "std": 61.16828876120985
-             }
-             "docking station"
-             {
-             "mean": 91.76902912621348
-             "std": 52.429681021243496
-             }
-             "speaker"
-             {
-             "mean": 80.8170866141731
-             "std": 223.55085042107197
-             }
-             "tablet"
-             {
-             "mean": 121.93373015873001
-             "std": 101.37227294075339
-             }
-             "mobile"
-             {
-             "mean": 232.86562500000042
-             "std": 162.36250895139597
-             }
-             "dvd_br"
-             {
-             "mean": 111.36943396226408
-             "std": 217.0607974864247
-             }
-             "printer"
-             {
-             "mean": 203.0585714285714
-             "std": 148.50640954795657
-             }
-             "desktop"
-             {
-             "mean": 576.3286956521741
-             "std": 493.2261829970727
-             }
-             "controller"
-             {
-             "mean": 66.36405797101445
-             "std": 57.70837510119409
-             }
-             "camera"
-             {
-             "mean": 950.0461538461539
-             "std": 904.6660652789349
-             }
-             "headset"
-             {
-             "mean": 53.10025641025641
-             "std": 40.950373848764514
-             }
-             "game"
-             {
-             "mean": 37.242027027027014
-             "std": 17.877701039703428
-             }
-             "lens"
-             {
-             "mean": 862.5420833333334
-             "std": 740.2445234154936
-             }
-             "console"
-             {
-             "mean": 403.1593430656931
-             "std": 189.39056201717892
-             }
-             "television"
-             {
-             "mean": 204.8599999999999
-             "std": 100.5614953421763
-             }
-             "drive"
-             {
-             "mean": 87.48210884353756
-             "std": 156.96517051864456
-             }
-
-        {
-
-            "Camera":0,
-            "Camera Lens":0,
-            "Charger/Adapter":0,
-            "Controller":0,
-            "Desktop PC":0,
-            "Docking Station":0,
-            "DVD/BluRay Players":0,
-            "External Hard Drive":0,
-            "External Solid State Drive":0,
-            "Game":0,
-            "Gaming Console":0,
-            "HDMI Cable":0,
-            "Headset":0,
-            "Keyboard":0,
-            "Laptop Charger":0,
-            "Monitor":0,
-            "Mouse":0,
-            "Notebook":0,
-            "Notebook Case":0,
-            "Printer":0,
-            "SD Card":0,
-            "Smartphone":0,
-            "Speaker":0,
-            "Tablet":0,
-            "TV":0,
-            "USB Cable":0,
-            "USB Flash Drive":0,
-
-
-        },
-        "Performance":0
-    },
-    "Price":
-    {
-        "Camera":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Camera Lens":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Charger/Adapter":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Controller":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Desktop PC":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Docking Station":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "DVD/BluRay Players":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "External Hard Drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "External Solid State Drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Game":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Gaming Console":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "HDMI Cable":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Headset":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Keyboard":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Laptop Charger":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Monitor":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Mouse":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Notebook":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Notebook Case":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Printer":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "SD Card":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Smartphone":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Speaker":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "Tablet":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "TV":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "USB Cable":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15},
-        "USB Flash Drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgPriceArray":[],"Box":[],"Brand":{},"min":1,"max":15}
-    },
-        "Brand":
-    {
-        "Camera":{},
-        "Camera Lens":{},
-        "Charger/Adapter":{},
-        "Controller":{},
-        "Desktop PC":{},
-        "Docking Station":{},
-        "DVD/BluRay Players":{},
-        "External Hard Drive":{},
-        "External Solid State Drive":{},
-        "Game":{},
-        "Gaming Console":{},
-        "HDMI Cable":{},
-        "Headset":{},
-        "Keyboard":{},
-        "Laptop Charger":{},
-        "Monitor":{},
-        "Mouse":{},
-        "Notebook":{},
-        "Notebook Case":{},
-        "Printer":{},
-        "SD Card":{},
-        "Smartphone":{},
-        "Speaker":{},
-        "Tablet":{},
-        "TV":{},
-        "USB Cable":{},
-        "USB Flash Drive":{}
-    },
-
-        "Performance":
-    {
-
-        "Camera":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"min":1,"max":15}},
-        "Camera Lens":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"mm"}},
-
-        "Charger/Adapter":{},
-        "Controller":{"Xbox":{"isBox":1,"isClicked":0},"PS4":{"isBox":1,"isClicked":0}},
-        "Desktop PC":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"},
-                      "CPU":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GHz"},
-                      "HDD":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"}},
-        "Docking Station":{"Port":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"No."},
-                            "USB":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"No."}},
-        "DVD/BluRay Players":{"Resolution":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"Pixels"}
-                               ,"DVD":{"isBox":1,"isClicked":0},"BR":{"isBox":1,"isClicked":0,"min":1,"max":15}},
-        "External Hard Drive":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15},"Unit":"GB"},
-        "External Solid State Drive":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"}},
-        "Game":{"Xbox":{"isBox":1,"isClicked":0},"PS4":{"isBox":1,"isClicked":0}},
-        "Gaming Console":{"HDD":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"},
-                          "Xbox":{"isBox":1,"isClicked":0},"PS4":{"isBox":1,"isClicked":0}},
-
-        "HDMI Cable":{"Length":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15}},
-        "Headset":{"Wired":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0},"Gaming":{"isBox":1,"isClicked":0,"min":1,"max":15,"Unit":"ft"}},
-        "Keyboard":{"Backlit":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0,"min":1,"max":15}},
-        "Laptop Charger":{"Volts":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"V"}
-                          ,"Amps":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"A"}
-                          ,"Watts":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"W"}
-                          ,"Compatible Brand":{"isBox":1,"isClicked":0}},
-        "Monitor":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"In"},
-                   "Resolution":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"Pixels"}},
-        "Mouse":{"Wireless":{"isBox":1,"isClicked":0},"DPI":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"DPI"}},
-        "Notebook":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"},
-                      "CPU":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GHz"},
-                      "HDD":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"},
-                      "Size":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"In"}},
-        "Notebook Case":{"Size":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"In"}},
-        "Printer":{"Wired":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0},"All in One":{"isBox":1,"isClicked":0},"Inkjet":{"isBox":1,"isClicked":0}
-                    ,"Laser":{"isBox":1,"isClicked":0}},
-        "SD Card":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"}},
-        "Smartphone":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"Box":[],"Brand":{},"isBox":0,"min":1,"max":15,"Unit":"GB"},
-                      "HDD":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"Box":[],"Brand":{},"isBox":0,"min":1,"max":15,"Unit":"GB"}},
-        "Speaker":{"Wired":{"isBox":1,"isClicked":0},"Wireless":{"isBox":1,"isClicked":0},"Waterproof":{"isBox":1,"isClicked":0}},
-        "Tablet":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"},
-                      "CPU":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GHz"},
-                      "HDD":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"},
-                      "Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"In"}},
-        "TV":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"In"},
-              "Resolution":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"Pixels"}},
-        "USB Cable":{"Length":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"Ft"}},
-        "USB Flash Drive":{"Size":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"}}
-    },
-
-}
 
 
 var jsonObj = {
     "Macro":
     {
-        "Price":0,
+        "Price":
+
+        {
+             "UpperBound":0,
+             "LowerBound":0,
+             "Type":{
+                     "monitor":
+                     {
+                     "mean": 287.7161249999998,
+                     "std": 229.69772072913653
+                     },
+                     "noteboook_case":
+                     {
+                     "mean": 26.680365853658543,
+                     "std": 35.256799972614395
+                     },
+                     "mouse":
+                     {
+                     "mean": 17.095769230769235,
+                     "std": 14.265397652355162
+                     },
+                     "notebook":
+                     {
+                     "mean": 729.0934705882355,
+                     "std": 594.4080325242113
+                     },
+                     "keyboard":
+                     {
+                     "mean": 48.8332291666666,
+                     "std": 42.285523577219195
+                     },
+                     "cable":
+                     {
+                     "mean": 14.13912751677852,
+                     "std": 17.429407540321115
+                     },
+                     "charger":
+                     {
+                     "mean": 28.03568862275443,
+                     "std": 61.16828876120985
+                     },
+                     "docking station":
+                     {
+                     "mean": 91.76902912621348,
+                     "std": 52.429681021243496
+                     },
+                     "speaker":
+                     {
+                     "mean": 80.8170866141731,
+                     "std": 223.55085042107197
+                     },
+                     "tablet":
+                     {
+                     "mean": 121.93373015873001,
+                     "std": 101.37227294075339
+                     },
+                     "mobile":
+                     {
+                     "mean": 232.86562500000042,
+                     "std": 162.36250895139597
+                     },
+                     "dvd_br":
+                     {
+                     "mean": 111.36943396226408,
+                     "std": 217.0607974864247
+                     },
+                     "printer":
+                     {
+                     "mean": 203.0585714285714,
+                     "std": 148.50640954795657
+                     },
+                     "desktop":
+                     {
+                     "mean": 576.3286956521741,
+                     "std": 493.2261829970727
+                     },
+                     "controller":
+                     {
+                     "mean": 66.36405797101445,
+                     "std": 57.70837510119409
+                     },
+                     "camera":
+                     {
+                     "mean": 950.0461538461539,
+                     "std": 904.6660652789349
+                     },
+                     "headset":
+                     {
+                     "mean": 53.10025641025641,
+                     "std": 40.950373848764514
+                     },
+                     "game":
+                     {
+                     "mean": 37.242027027027014,
+                     "std": 17.877701039703428
+                     },
+                     "lens":
+                     {
+                     "mean": 862.5420833333334,
+                     "std": 740.2445234154936
+                     },
+                     "console":
+                     {
+                     "mean": 403.1593430656931,
+                     "std": 189.39056201717892
+                     },
+                     "television":
+                     {
+                     "mean": 204.8599999999999,
+                     "std": 100.5614953421763
+                     },
+                     "drive":
+                     {
+                     "mean": 87.48210884353756,
+                     "std": 156.96517051864456
+                     }
+             }
+        },
         "Performance":0
     },
     "Price":
@@ -541,6 +393,7 @@ function initJsonObject(){
 
     }
  localStorage['prices'] = JSON.stringify(jsonObj['Price']);
+ localStorage['Macro']  = JSON.stringify(jsonObj['Macro'])
 }
 
 function addJSONParameter()
@@ -617,7 +470,8 @@ function updateAveragePrice(x)
     typeJSON[typeString]['AvgPriceArray'].push(x);
     var avgPriceArray=typeJSON[typeString]['AvgPriceArray'].map(Number)
     typeJSON[typeString]['Count']=typeJSON[typeString]['Count']+1;
-
+    var averagePrice = averageArray(avgPriceArray)
+    var stdDevPrice = stdDevArray(avgPriceArray)
     var lowerBoundPrice=oneSigmaMinus(avgPriceArray)
     if(lowerBoundPrice<0)
     {
@@ -626,7 +480,10 @@ function updateAveragePrice(x)
     var upperBoundPrice=oneSigmaPlus(avgPriceArray)
     typeJSON[typeString]["UpperBound"]=upperBoundPrice
     typeJSON[typeString]["LowerBound"]=lowerBoundPrice
+    typeJSON[typeString]["Mean"]= averagePrice
+    typeJSON[typeString]["StdDev"]= stdDevPrice
     localStorage.setItem('prices',JSON.stringify(typeJSON))
+    updateMacroPriceFilter()
 
 }
 
@@ -730,7 +587,84 @@ function testPerformanceFilter(givenJSON)
 
 
 
-function macroPriceFilter()
+
+function getZPercent(z)
+  {
+    //z == number of standard deviations from the mean
+
+    //if z is greater than 6.5 standard deviations from the mean
+    //the number of significant digits will be outside of a reasonable
+    //range
+    if ( z < -6.5)
+      return 0.0;
+    if( z > 6.5)
+      return 1.0;
+
+    var factK = 1;
+    var sum = 0;
+    var term = 1;
+    var k = 0;
+    var loopStop = Math.exp(-23);
+    while(Math.abs(term) > loopStop)
+    {
+      term = .3989422804 * Math.pow(-1,k) * Math.pow(z,k) / (2 * k + 1) / Math.pow(2,k) * Math.pow(z,k+1) / factK;
+      sum += term;
+      k++;
+      factK *= k;
+
+    }
+    sum += 0.5;
+
+    return sum;
+  }
+
+function getZScore(stdDev,mean,givenScore)
+{
+    return (givenScore-mean)/stdDev
+
+}
+
+
+
+
+function updateMacroPriceFilter()
+{
+    var zScoreSumUpper=0
+    var zScoreSumLower=0
+    var count=0
+    var jsonPrice = JSON.parse(localStorage['prices'])
+    var jsonMacro = JSON.parse(localStorage['Macro'])
+    for(var i=0; i<=Object.keys(jsonPrice['Price']).length-1;++i)
+    {
+        const keys = Object.keys(jsonPrice['Price'])
+
+        if( (jsonPrice[keys[i]]['UpperBound']!=0)
+        &&  (jsonPrice[keys[i]]['UpperBound']!=0))
+        {
+            let stdDev= jsonMacro["Price"]["Type"][keys[i]]['StdDev']
+            let mean =  jsonMacro["Price"]["Type"][keys[i]]['Mean']
+
+            let givenScoreUpper = jsonPrice[keys[i]]['UpperBound']
+            let zScoreUpper = getZScore(stdDev,mean,givenScoreUpper)
+            let percentUpper = getZPercent(zScore)
+            zScoreSumUpper = zScoreSumUpper + percentUpper
+
+            let givenScoreLower = jsonPrice[keys[i]]['LowerBound']
+            let zScoreLower = getZScore(stdDev,mean,givenScore)
+            let percentLower = getZPercent(zScore)
+            zScoreSumLower = zScoreSumLower + percentLower
+
+            count=count + 1
+        }
+    }
+    jsonMacro['Price']['UpperBound'] = zScoreSumUpper/count
+    jsonMacro['Price']['LowerBound'] = zScoreSumLower/count
+
+}
+
+
+
+function macroPriceFilter(givenType)
 {
 
 
