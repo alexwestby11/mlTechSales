@@ -79,7 +79,7 @@ function getData1() {
             });
     });
 
-    getTypePriceData()
+    //getTypePriceData()
 
 }
 
@@ -227,9 +227,6 @@ function getTypePriceData() {
 }
 
 
-    });
-getPriceAverageData()
-}
 
 
 
@@ -289,7 +286,6 @@ function mainSearchPage(inputArray)
     var boolArray=[];
     for(var i=0; i<=inputArray.length-1;++i)
     {
-        //console.log(jsonObjtemp["Price =" + inputArray.p+" " +inputArray[i].type]['UpperBound'] + " " + jsonObjtemp[inputArray[i].type]['LowerBound'])
         if( (inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound']) &&
             (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound']) )
         {
