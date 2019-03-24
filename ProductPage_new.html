@@ -84,7 +84,7 @@
                     <h4 id = "mainName" onclick="localStorage.clear()">Name</h4>
                    </div>
                    <div class="d-flex vertical-align"  style='height: 10%;max-width: 100%'>
-                <p id="Timer" style="text-align: right"></p><button onclick="clearInterval(resetTimer())">Stop time</button>
+                <p id="Timer" style="text-align: right"></p><button onclick="resetTimer()">Stop time</button>
               </div>
                </div>
 
@@ -117,9 +117,9 @@
                  <div class = "d-flex flex-column">
 
                          <ul class="nav nav-pills">
-                            <li class="active"><a data-toggle="pill" href="#Info">Info</a></li>
-                            <li><a data-toggle="pill" href="#Summary">Summary</a></li>
-                            <li><a data-toggle="pill" href="#Links" onclick="displayNumClicks();resetTimer()">Links</a></li>
+                            <li class="active"><a data-toggle="pill" href="#Info" onclick="incrementClick()">Info</a></li>
+                            <li><a data-toggle="pill" href="#Summary" onclick="incrementClick()">Summary</a></li>
+                            <li><a data-toggle="pill" href="#Links" onclick="incrementClick();displayNumClicks();resetTimer()">Links</a></li>
                            <!-- <li><a data-toggle="pill" href="#Map">Map</a></li>-->
                           </ul>
 

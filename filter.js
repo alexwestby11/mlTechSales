@@ -484,7 +484,7 @@ function updateAveragePrice(x)
     typeJSON[typeString]["Mean"]= averagePrice
     typeJSON[typeString]["StdDev"]= stdDevPrice
     localStorage.setItem('prices',JSON.stringify(typeJSON))
-    updateMacroPriceFilter()
+    //updateMacroPriceFilter()
 
 }
 
@@ -493,7 +493,7 @@ function updateBrand(brand,givenType)
     var localJSON=JSON.parse(localStorage['prices'])
     if(localJSON['Price'][givenType]["Brand"][brand]==null)
     {
-        addJSONParameter()
+        addJSONParameter();
         localJSON=JSON.parse(localStorage['prices'])
     }
     localJSON["Brand"][givenType][brand]["Count"]=localJSON["Brand"][givenType][brand]["Count"]+1
@@ -503,7 +503,7 @@ function updateBrand(brand,givenType)
 
  function mostUsedBrand(productType)
 {
-     mostUsed=[]
+     mostUsed=[];
      if(localStorage['prices']==null)
      {
         return null
@@ -627,7 +627,7 @@ function getZScore(stdDev,mean,givenScore)
 
 
 
-
+/*
 function updateMacroPriceFilter()
 {
     var zScoreSumUpper=0
@@ -661,7 +661,7 @@ function updateMacroPriceFilter()
     jsonMacro['Price']['UpperBound'] = zScoreSumUpper/count
     jsonMacro['Price']['LowerBound'] = zScoreSumLower/count
 
-}
+}*/
 
 
 

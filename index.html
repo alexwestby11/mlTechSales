@@ -38,7 +38,7 @@
 
     <div class="d-flex justify-content-center vertical-align" style="padding-bottom: 0%">
         <p><b><i>Sailing Through the Competiton</i></b></p>
-        <p id="Timer" style="text-align: right"></p><button onclick="clearInterval(resetTimer())">Stop time</button>
+        <p id="Timer" style="text-align: right"></p><button onclick="resetTimer()">Stop time</button>
     </div>
 
 
@@ -61,7 +61,7 @@
     <div class="d-flex" style="width: 50%">
         <input type="search" class="form-control" id="searchbar" placeholder="Search for ..." value="">
          <span class="input-group-btn">
-             <button class="btn btn-light" type="button" onclick="setInput();startTimer()">Search</button>
+             <button class="btn btn-light" type="button" onclick="setInput();startTimer();incrementClick()">Search</button>
          </span>
     </div>
 
