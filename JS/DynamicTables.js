@@ -1,5 +1,3 @@
-
-
 ////Compatible items
 function RTable() {
              $("#dynamic_table1").ready(function () {
@@ -17,7 +15,7 @@ function RTable() {
                              stringValue +=
                                  "<div  class=\"d-flex marginMainImageNormal  btn-primary rounded\"style= 'border: 1px solid gainsboro;height:95%;width:100%;'>" +
 
-                                 "<img tag = '"+index+"' id = 'rec"+index+"' class = \"img rounded shadow img1\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id)'>"+
+                                 "<img tag = '"+index+"' id = 'rec"+index+"' class = \"img rounded shadow img1\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id);incrementClick()'>"+
                                  "</div>";
                              ++index;
                          }
@@ -48,7 +46,7 @@ function STable() {
                              stringValue +=
                                  "<div class=\"d-flex marginMainImageNormal btn-primary rounded\" style= 'border: 1px solid gainsboro;height:95%;width:100%;'>" +
 
-                                "<img  id = 'sim"+index+"' class = \"img rounded creamColor shadow img1\" src=productLinkArray[k] onclick='reply_ProPage(this.id)'>"+
+                                "<img  id = 'sim"+index+"' class = \"img rounded creamColor shadow img1\" src=productLinkArray[k] onclick='reply_ProPage(this.id);incrementClick()'>"+
 
                                  "</div>";
                              ++index;
@@ -128,13 +126,12 @@ function dImage() {
 
 //Results Page items
 function dTable() {
-    getData1();
              $("#dynamic_table").ready(function () {
                  //creates x images on same row
                      function numTable(x,y) {
                      var index = 0;
                      var stringValue =
-                         "<div  class=\"d-flex flex-column vertical-align\" style='width:100%;height: 150vmax'>";
+                         "<div  class=\"col-fluid vertical-align\" style='width:100%;height: 50%'>";
                         if(x === 0 && y === 0){
                              stringValue +=  "<div class=\"col-fluid\" style='width:100%; height:100%;font-size: large;text-align: center'><p>No Results</p></div>";
                         }
@@ -143,7 +140,7 @@ function dTable() {
                          for (var k = 0; k < x; ++k) {//col
                              var idString = (j*numRows + k).toString();
                              stringValue +=
-                                 "<div  id = '"+idString+"' class=\"d-flex flex-column marginMainImageNormal btn btnImg1-primary rounded shadow-sm\" onclick=\"linkProductPage();reply_click(this.id);\" style= 'border: 1px solid gainsboro;height:95%;width:100%;background: white;margin: 0.5%'>" +
+                                 "<div  id = '"+idString+"' class=\"d-flex flex-column marginMainImageNormal btn btnImg1-primary rounded shadow-sm\" onclick=\"incrementClick();linkProductPage();reply_click(this.id);\" style= 'border: 1px solid gainsboro;height:95%;width:100%;background: white;margin: 0.5%'>" +
                                  "<div class=\"col-fluid \" style='text-align: center;font-size: large;width: 100%'><b></b></div>"+
                                  "<input type=\"image\" src= \"images/Apple1.jpg\" class = \"d-block btn img rounded  img3\" style='align-self:center'>" +
                                   "<div class=\"col-fluid justify-content-center\" style='text-align: center; font-weight: bold;'><b></b></div>" +

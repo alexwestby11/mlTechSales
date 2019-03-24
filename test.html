@@ -1,46 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
 
-<!-- custom JS functions -->
-<script src="filter.js"></script>
-<script src="filterTest.js"></script>
-<script src="frontpage_new.js"></script>
-<script src="productPage.js"></script>
-<script src="JS/Data.js"></script>
-<script src="JS/DynamicTables.js"></script>
-<script src="JS/DynamicPage.js"></script>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Slider - Range slider</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<p>A script on this page starts this clock:</p>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<p id="demo"></p>
 
-</head>
-<body onload="dFilter();">
+<button onclick="clearInterval(myVar)">Stop time</button>
 
+<script>
+var myVar = setInterval(myTimer ,1000)
+var minute = 0;
+var secondTimer = 0;
+function myTimer() {
+  var stringVar = "0";
+  ++secondTimer;
+  if(secondTimer === 60){
+      ++minute;
+      secondTimer = 0;
+      stringVar = secondTimer;
+  }else if(secondTimer < 10){
+    stringVar += secondTimer;
+  }
+  else{
+      stringVar = secondTimer;
+  }
+  //document.getElementById("demo").innerHTML = minute + ":" +stringVar;
+}
+</script>
 
-<div class ="d-flex" style = "width: 15%">
-    <div id="dFilter"></div>
-
-</div>
-<button type="button" class="btn btn-primary" onclick = "getFilterChanges()">Primary</button>
-
-<div class="container">
-  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Filter
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-      <div class ="d-flex" style = "padding: 5%">
-
-        </div>
-    </ul>
-  </div>
-</div>
 </body>
 </html>

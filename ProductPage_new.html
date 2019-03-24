@@ -56,7 +56,7 @@
 
 
     </head>
-<body onload = "setProductInfo();">
+<body onload = "setProductInfo();startTimer()">
 
   <!--Background -->
 <div class = "container-fluid h-100">
@@ -83,7 +83,12 @@
                    <div class="d-block marginProductLogo snowColor vertical-align" style = 'float: left;border-radius: 10px;'>
                     <h4 id = "mainName" onclick="localStorage.clear()">Name</h4>
                    </div>
+                   <div class="d-flex vertical-align"  style='height: 10%;max-width: 100%'>
+                <p id="Timer" style="text-align: right"></p><button onclick="clearInterval(resetTimer())">Stop time</button>
+              </div>
                </div>
+
+
           </div><!--
             <div class="col-fluid">
                 <button type = "submit" onclick="colChange()">Values</button>
@@ -114,7 +119,7 @@
                          <ul class="nav nav-pills">
                             <li class="active"><a data-toggle="pill" href="#Info">Info</a></li>
                             <li><a data-toggle="pill" href="#Summary">Summary</a></li>
-                            <li><a data-toggle="pill" href="#Links">Links</a></li>
+                            <li><a data-toggle="pill" href="#Links" onclick="displayNumClicks();resetTimer()">Links</a></li>
                            <!-- <li><a data-toggle="pill" href="#Map">Map</a></li>-->
                           </ul>
 

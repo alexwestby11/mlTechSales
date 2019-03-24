@@ -297,11 +297,11 @@ function pressedType4(){
     var tempBoolArray = JSON.parse(localStorage.boolArray);
     var dx =  0;
 
-    var newRows = Math.ceil(tempBoolArray[tempBoolArray.length-1]/5);
-    console.log(newRows);
-    x = newRows;
-    numCol= newRows;
-   console.log(tempBoolArray);
+    //var newRows = Math.ceil(tempBoolArray[tempBoolArray.length-1]/5);
+    //console.log(tempBoolArray[tempBoolArray.length-1]);
+    //x = newRows;
+    //numCol= newRows;
+    console.log(tempBoolArray);
       for (var j = 0; j < y; ++j) {//rows
           for (var k = 0; k < x; ++k) {//col
               var string = (j * numRows + k).toString();
@@ -338,96 +338,6 @@ function pressedType4(){
           localStorage['results_index'] = z_idx;
       }
      // console.log(z_idx)
-}
-
-
- function nextImage(x,y){
-     var tempBoolArray = JSON.parse(localStorage.boolArray);
-    var dx = Number(localStorage['results_index']) ;
-      prevValue = dx;
-     if(dx < dataArray.length) {
-         for (var j = 0; j < y; ++j) {//rows
-             for (var k = 0; k < x; ++k) {//col
-                 var string = (j * numRows + k).toString();
-                 var prd = document.getElementById(string);
-                 if (typeof dataArray[dx] !== 'undefined' || dx < dataArray.length) {
-                     if(tempBoolArray[dx] === true) {
-                         $('#' + string).css('visibility', 'visible');
-                         prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
-                         var name = (prd.getElementsByTagName("b")[0]);
-                         var txt = name.innerHTML = dataArray[dx].name;
-                         if (txt.length > 25) {
-                             txt = txt.split(' ').slice(0, 2).join(' ');
-                             if (txt.length > 25) {
-                                 txt = txt.split(' ').slice(0, 1).join(' ');
-                             }
-                         }
-                         name.innerHTML = txt;
-                         var info = (prd.getElementsByTagName("div")[1]);
-                         info.innerHTML = dataArray[dx].brand + "<br>" + '$' + dataArray[dx].price;
-                         itemArray[j * numRows + k] = dx;
-
-                         dataArray[dx].index = dx;
-                     } else{
-                        --k;
-                        }
-                 }
-                 else {
-
-                     $('#' + string).css('visibility', 'hidden');
-                 }
-                 ++dx;
-             }
-         }
-          z_idx = dx;
-         localStorage['results_index'] = z_idx;
-     }
-     console.log(z_idx);
-}
-
-
- function prevImage(x,y,z){
-     var tempBoolArray = JSON.parse(localStorage.boolArray);
-    //var dx = prevValue Number(localStorage['results_index']) - );
-    if(dx >= 0) {
-        for (var j = 0; j < y; ++j) {//rows
-            for (var k = 0; k < x; ++k) {//col
-                let value = j * numRows + k;
-                var string = (j * numRows + k).toString();
-                var prd = document.getElementById(string);
-                if (typeof dataArray[dx] !== 'undefined') {
-                    if(tempBoolArray[dx] === true) {
-                        $('#' + string).css('visibility', 'visible');
-                        prd.getElementsByTagName("input")[0].src = dataArray[dx].img_src;
-                        var name = (prd.getElementsByTagName("b")[0]);
-                        var txt = name.innerHTML = dataArray[dx].name;
-                        if (txt.length > 25) {
-                            txt = txt.split(' ').slice(0, 2).join(' ');
-                            if (txt.length > 25) {
-                                txt = txt.split(' ').slice(0, 1).join(' ');
-                            }
-                        }
-                        name.innerHTML = txt;
-                        var info = (prd.getElementsByTagName("div")[1]);
-                        info.innerHTML = dataArray[dx].brand + "<br>" + '$' + dataArray[dx].price;
-                        itemArray[j * numRows + k] = dx;
-
-                        //dataArray[dx].index = dx;
-                    }else{
-                        --k;
-                    }
-                }
-                else {
-                    $('#' + string).css('visibility', 'hidden');
-                }
-                ++dx;
-            }
-        }
-         z_idx = dx;
-        localStorage['results_index'] = z_idx;
-    }
-
-    console.log(z_idx);
 }
 
 function nextButton(){
@@ -546,3 +456,57 @@ function createSessionID()
 }
 
 
+function displayNumClicks(){
+    var numClick = Number(localStorage.click);
+    localStorage.click = 0;
+    alert("Number of Clicks = " + numClick +"\n" +
+            "Time = " + localStorage.min + ":" +localStorage.second +"\n" + "Timer Reset\n Start from index page to try again\nThank you");
+}
+
+function incrementClick() {
+    if (localStorage.click === undefined) {
+        localStorage.click = 1;
+    }
+    else {
+        var num = Number(localStorage.click);
+        ++num;
+        localStorage.click = num;
+    }
+}
+
+
+
+
+var secondTimer = localStorage.second || 0
+var output = localStorage.output ||0;
+function startTimer(){
+    output = setInterval(myTimer ,1000);
+    localStorage.output = output
+}
+
+var minute = localStorage.min || 0;
+function myTimer() {
+  var stringVar = "0";
+  ++secondTimer;
+  if(secondTimer === 60){
+      ++minute;
+      secondTimer = 0;
+      stringVar = secondTimer;
+  }else if(secondTimer < 10){
+    stringVar += secondTimer;
+  }
+  else{
+      stringVar = secondTimer;
+  }
+  console.log(minute + ":" +stringVar);
+  localStorage.second = secondTimer;
+  localStorage.min = minute;
+ document.getElementById("Timer").innerHTML = " " + minute + ":" +stringVar;
+}
+
+function resetTimer(){
+    clearInterval(output);
+    localStorage.second = 0;
+    localStorage.min = 0;
+    localStorage.output = 0;
+}

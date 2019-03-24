@@ -67,19 +67,23 @@ function getData1() {
                    isResults = 0;
                    numRows = 0;
                    numCol= 0;
-                   dTable();
                 }
                 else{
                     isResults = 1;
+                    var boolArray = mainSearchPage(dataArray);
+                    localStorage.boolArray = JSON.stringify(boolArray);
+                    numCol = Math.ceil(boolArray[boolArray.length-1]/numRows);
+                    dTable();
+                    changeImage(numRows,numCol);
                 }
-                localStorage.boolArray = JSON.stringify(mainSearchPage(dataArray));
-                changeImage(numRows,numCol,0);
 
 
             });
     });
 
+
     //getTypePriceData()
+
 
 }
 
