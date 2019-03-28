@@ -822,3 +822,22 @@ function loadingPage() {
   }
 }
 
+function postItemRating(item,rating,sessionID,key)
+{
+
+    $(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/user/'+ sessionID +'/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm/'+item +"/" + key,
+            dataType: 'json',
+            type: 'POST',
+            success: function (data) {
+                {
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    })
+}
+
