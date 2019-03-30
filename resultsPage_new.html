@@ -24,6 +24,7 @@
 
 <!-- local css scripts -->
 <link rel ="stylesheet" href="styles/resultsPage.css">
+<link rel ="stylesheet" href="styles/frontpage.css">
 <!------ Include the above in youritemArray[num] HEAD tag ---------->
 <!DOCTYPE html>
 <html lang="en">
@@ -36,12 +37,11 @@
 <body onload = "getData1();dFilter();">
   <script>createSessionID();startTimer() </script>
 
-<div class="container-fluid h-100 palFont">
 
 <div class="container-fluid">
-    <div class="d-flex flex-row darkBlue rounded" style="align-items:center;height: 10%">
+    <div class="row vertical-align justify-content-center" style="align-items:center;width:auto;height: 15%;background-image: linear-gradient(155deg, CORNFLOWERBLUE,ROYALBLUE);">
 
-           <div class="d-flex vertical-align" style="margin-right: 5px" >
+           <div class="d-flex vertical-align" style="" >
                    <div class="d-block marginProductLogo">
                     <img src="images/Logo/logo2.png" class="rounded-circle"  alt="TechSails Logo" width="40" height="40">
 
@@ -58,16 +58,16 @@
 
                     <div id="dFilter" style = "margin: 5%" ></div>
 
-                </ul> dd
+                </ul>
         </div>
 
-        <input type="search" class="form-control" id="searchbar" placeholder="Search for ..." value = >
+        <input type="search" class="form-control" id="searchbar" placeholder="Search for ..." value = "" >
          <span class="input-group-btn">
-             <button class="btn btn-light" type="button" onclick="setInput();incrementClick()">Search</button>
+             <button class="btn btn-light searchText" type="button" onclick="setInput();incrementClick()" style="background: lightgray">Search</button>
 
          </span>
     </div>
-<p id="Timer" style="text-align: right"></p><button onclick="resetTimer()">Stop time</button>
+                    <!--  <p id="Timer" style="text-align: right"></p> <button onclick="resetTimer()">Stop time</button>-->
     </div>
 
      <div class="d-flex flex-row rounded shadow-sm justify-content-around" style="border:1px solid gainsboro;align-items:center;height: 5%;margin-top: 1%;">
