@@ -165,7 +165,7 @@ function sortType(){
                 idValue = "typeImg" + String(i+1);
                 idValue1 = "type" + String(i+1);
                 document.getElementById(idValue).src = "images/clipart/" + topValuesTypesNames[i] + ".png";
-                document.getElementById(idValue1).innerHTML = topValuesTypesNames[i];
+                document.getElementById(idValue1).getElementsByTagName("b")[0].innerHTML = topValuesTypesNames[i];
            }
 
 }
