@@ -26,32 +26,34 @@
 </head>
 
 
-<body>
-<div class="container-fluid h-100" style="background: white" >
+<body style="margin: 0;padding: 0">
+<div class="container-fluid" style="background-image: linear-gradient(155deg, CORNFLOWERBLUE,ROYALBLUE);" >
     <script>initialSet();initJsonObject();resetTimer()</script>
-<!-- Title -->
-<div class="d-flex flex-row darkBlue rounded justify-content-center" style="height: 15%">
-    <div class="d-flex flex-column rounded">
-    <div class="d-flex titleText ">--
-        <p>Tech Sails</p>
-    </div>
+    <!-- Title -->
+    <div class="d-flex flex-col justify-content-center" style="height: 15%; width: 100%;)">
+        <div class="d-flex flex-column">
 
-    <div class="d-flex justify-content-center vertical-align" style="padding-bottom: 0%">
-        <p><b><i>Sailing Through the Competiton</i></b></p>
-        <p id="Timer" style="text-align: right"></p><button onclick="resetTimer()">Stop time</button>
-    </div>
+            <div class="d-flex  justify-content-center titleText">
+                Tech Sails
+            </div>
 
 
-    </div>
+
+
+        </div>
 
     </div>
-
+</div>
 <!-- Search Bar -->
-    <div class="d-flex vertical-align rounded" style="height: 2%;margin-right: 2%;margin-left: 2%;margin-top: 2%" ></div>
-<div class="container-fluid">
-<div class="row marginBasic justify-content-center vertical-align darkBlue shadow-sm" style="height: auto; padding: 1%;">
+
+<div class="container-fluid" style="height: auto">
+    <div class="d-flex vertical-align justify-content-center" style="height: 5%;margin-right: 2%;margin-left: 2%;" >
+        <p><b><i>Sailing Through the Competiton</i></b></p>
+    </div>
+
+<div class="row marginBasic justify-content-center vertical-align blurr1 " style="background-image: linear-gradient(155deg, CORNFLOWERBLUE,ROYALBLUE);height: auto; padding: 1%;">
    <!--  <div class="col darkBlue2 shadow-lg  marginSearchTopL imageBorder" ></div> -->
-         <div class="d-flex vertical-align" style="margin-right: 5px" >
+         <div class="d-flex vertical-align " style="margin-right: 5px" >
                    <div class="d-block marginProductLogo">
                     <img src="images/Logo/logo2.png" class="rounded-circle"  alt="TechSails Logo" width="40" height="40">
                    </div>
@@ -68,42 +70,47 @@
 
 
 
-   <!--  <div class="col darkBlue2 shadow-lg imageBorder marginSearchTopR"></div> -->
+
 
 </div>
-    <div class="d-flex vertical-align rounded" style="height: 2%;margin-right: 1%;margin-left: 1%;margin-bottom: 2%" ></div>
 
+
+    <div class="d-flex vertical-align rounded" style="height: 5.7%;"></div>
+</div>
+
+    <div class="container-fluid" style="height: 62%;" >
 <!-- Catergory Boxes -->
-<div class="container-fluid">
-     <div class="d-flex flex-row marginBasic justify-content-center"style="height: 55%">
 
-        <div class="btn d-flex flex-column justify-content-center marginLeftEnd shadow-sm" style="border: 2px solid gainsboro;width: 25%" onclick="pressedType1();incrementClick()" >
+     <div class="d-flex flex-row vertical-align justify-content-around"style="width:100%;height: 90%;">
+
+        <div class="btn d-flex flex-column  justify-content-center  blurr1" style="background:white;border: 2px solid gainsboro;width: 24%" onclick="pressedType1();incrementClick()" >
             <img id = "typeImg1" src="images/clipart/TV.png"  class = "imgFront" style="overflow:hidden;object-fit: cover">
              <div id = "type1"  style = "width: 100%;text-align: center"><b></b></div>
         </div>
 
-      <div class="btn d-flex flex-column marginBox shadow-sm" style="border: 2px solid gainsboro;width: 25%" onclick="pressedType2();incrementClick()">
+      <div class="btn d-flex flex-column  blurr1" style="background:white;border: 2px solid gainsboro;width: 24%" onclick="pressedType2();incrementClick()">
            <img  id = "typeImg2" src="images/clipart/Smartphone.png" class = "imgFront" style="overflow:hidden;object-fit: cover" >
                   <div id = "type2"  style = "width: 100%;text-align: center"><b></b></div></div>
 
 
-        <div class="btn d-flex flex-column marginBox shadow-sm" style="border: 2px solid gainsboro;width: 25%" onclick="pressedType3();incrementClick()">
+        <div class="btn d-flex flex-column blurr1" style="background:white;border: 2px solid gainsboro;width: 24%" onclick="pressedType3();incrementClick()">
                <img id = "typeImg3" src="images/clipart/HDMI Cable.png" class = "imgFront" style="overflow:hidden;object-fit: cover" >
                     <div id = "type3"  style = "width: 100%;text-align: center"><b></b></div></div>
 
-        <div class="btn d-flex  flex-column marginRightEnd shadow-sm" style="border: 2px solid gainsboro;width: 25%" onclick="pressedType4();incrementClick()">
+        <div class="btn d-flex  flex-column  blurr1" style="background:white;border: 2px solid gainsboro;width: 24%" onclick="pressedType4();incrementClick()">
                <img id = "typeImg4" src="images/clipart/Monitor.png" class = "imgFront" style="overflow:hidden;object-fit: cover" >
                     <div id = "type4"  style = "width: 100%;text-align: center"><b></b></div></div>
 
     </div>
+
 <script>sortType()</script>
 
-</div>
 
 
     </div>
-</div>
+
+
 </body>
-</div>
+
 
 </html>
