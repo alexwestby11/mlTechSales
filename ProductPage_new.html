@@ -50,6 +50,7 @@
 <head>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/frontpage.css">
+    <link rel="stylesheet" href="styles/test.css">
     <meta charset="UTF-8">
      <link rel="icon" href="images/Logo/logo3.png">
     <title>Product Page</title>
@@ -70,21 +71,21 @@
 
 </script>
      <!--Top Search Bar -->
-    <div class="d-flex flex-row-reverse vertical-align roundedB" style = "height: 15%;width: auto;background-image: linear-gradient(155deg, CORNFLOWERBLUE,ROYALBLUE);">
+    <div class="d-flex flex-row-reverse vertical-align roundedB justify-content-around" style = "height: 15%;width: auto;background-image: linear-gradient(155deg, CORNFLOWERBLUE,ROYALBLUE);">
 
-      <div class="d-flex vertical-align" style="margin-right: 2%" >
+      <div class="d-flex vertical-align"  >
                    <div class="d-block marginProductLogo">
-                    <img src="images/Logo/logo2.png" class="rounded-circle blurr2"  alt="TechSails Logo" width="80" height="80" style="background-image: linear-gradient(155deg, white,CORNFLOWERBLUE,royalblue);">
+                    <img src="images/Logo/logo2.png" class="rounded-circle blurr2"  onclick="localStorage.clear();" alt="TechSails Logo" width="80" height="80" style="background-image: linear-gradient(155deg, white,CORNFLOWERBLUE,royalblue);">
 
                    </div>
         </div>
 
 
-        <div class="d-flex  titleText " style="margin-right: 2%;margin-top: 1%">Tech Sails</div>
+        <div class="d-flex  titleText " style="margin-right: 2%;">Tech Sails</div>
 
 
           <!--search bar-->
-  <div class="d-flex" style="width: 30%;margin: auto">
+  <div class="col vertical-align " style="margin: auto;margin-right: 5%">
 <!--
           <div class="dropdown" onclick="getFilterChanges('notebook')">
             <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Filter
@@ -96,19 +97,35 @@
                 </ul>
         </div>-->
 
-        <input type="search" class="form-control" id="searchbar" placeholder="Search for ..." value = "" style="width: 100%;height: auto">
+        <input type="search" class="form-control" id="searchbar" placeholder="Search for ..." value = "" style="height: auto">
          <span class="input-group-btn">
              <button class="btn btn-light searchText" type="button" onclick="setInput();incrementClick()" style="background: gainsboro; border: 1px solid lightgray">Search</button>
 
          </span>
     </div>
 
+
               <!--Name bar-->
-               <div class="d-flex  vertical-align rounded"  style='height: 10%;margin-left: 2%;background-image: linear-gradient(155deg, cornflowerblue,cornflowerblue,gainsboro,white);'>
-                   <div class="d-block marginProductLogo subText" style = 'float: left;border-radius: 10px;align-items: center'>
-                       <h1>Product:</h1>
-                     <h2 id = "mainName" onclick="localStorage.clear()">Name</h2>
-                   </div>
+               <div class="d-flex  vertical-align rounded"  style='height: 10%;margin: auto;background-image: linear-gradient(155deg, cornflowerblue,cornflowerblue,cornflowerblue,gainsboro,white);'>
+                   <div class="d-block marginProductLogo" style = 'float: left;border-radius: 10px;align-items: center'>
+                     <h2 class = "subText" id = "mainName" onclick="localStorage.clear()">Name</h2>
+
+                <fieldset class="rating1" >
+                    <input type="radio" id="star5" name="rating" value="5" onclick="returnStar(this.id)"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4 and a half" onclick="returnStar(this.id)"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" onclick="returnStar(this.id)"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" onclick="returnStar(this.id)"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2 and a half" onclick="returnStar(this.id)"/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" onclick="returnStar(this.id)"/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1 and a half" onclick="returnStar(this.id)"/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" onclick="returnStar(this.id)"/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                </fieldset>
+                       <script></script>
+    </div>
+
+
 
                    <!-- Timer
                    <div class="d-flex vertical-align"  style='height: 10%;max-width: 100%'>
@@ -151,6 +168,7 @@
                             <li class="active"><a data-toggle="pill" href="#Info" onclick="incrementClick()">Info</a></li>
                             <li><a data-toggle="pill" href="#Summary" onclick="incrementClick()">Summary</a></li>
                             <li><a data-toggle="pill" href="#Links" onclick="incrementClick();displayNumClicks();resetTimer()">Links</a></li>
+                             <li><a data-toggle="pill" href="#Rating">Rating</a></li>
                            <!-- <li><a data-toggle="pill" href="#Map">Map</a></li>-->
                           </ul>
 
@@ -172,7 +190,24 @@
 						<a id='Link2' href="">Store 3.</a><br>
 						<a id='Link3' href="">Store 4.</a><br>
 
+
                       <p style="height:70%;width:100%;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" id = "p3"></p>
+                    </div>
+                       <div id="Rating" class="tab-pane fade">
+                      <h3>Rate this Product</h3>
+                              <fieldset class="rating1">
+                    <input type="radio" id="star51" name="rating1" value="5" onclick="returnStar(this.id)"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half1" name="rating1" value="4 and a half" onclick="returnStar(this.id)"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star41" name="rating1" value="4" onclick="returnStar(this.id)"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half1" name="rating1" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star31" name="rating1" value="3" onclick="returnStar(this.id)"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half1" name="rating1" value="2 and a half" onclick="returnStar(this.id)"/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star21" name="rating1" value="2" onclick="returnStar(this.id)"/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half1" name="rating1" value="1 and a half" onclick="returnStar(this.id)"/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star11" name="rating1" value="1" onclick="returnStar(this.id)"/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf1" name="rating1" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                </fieldset>
+                      <p style="height:70%;width:100%;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" id = "p4"></p>
                     </div>
                   </div>
                  </div>
