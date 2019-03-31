@@ -785,21 +785,21 @@ function imageSearcher(arraySize)
 					count:15,
 					offset:0
             },
-            success: function (data,) {
+            success: function (returnData,) {
 
                     var i=1;
-					while(i<=arraySize) {
+					while(i<=8) {
 
-							var imgValue = document.getElementById("mainImg"+i.toString());
-							if(data.value[i]==null)
+							//var imgValue = document.getElementById("mainImg"+i.toString());
+							if(returnData.value[i].contentUrl==null)
 							{
 								console.log("bad");
 								break;
 							}
 							else{
-									imgValue.src=data.value[i].contentUrl;
-									addPicsArray[i]=data.value[i].contentUrl;
-									imageLinkArray.push(data.value[i].contentUrl);
+									//imgValue.src=returnData.value[i].contentUrl;
+									addPicsArray[i]=returnData.value[i].contentUrl;
+									imageLinkArray.push(returnData.value[i].contentUrl);
 									i++;
 							}
 						}
@@ -841,3 +841,21 @@ function postItemRating(item,rating,sessionID,key)
     })
 }
 
+function getItemRating(itemNum)
+{
+
+	$(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/items/'+itemNum,
+            dataType: 'json',
+            type: 'GET',
+            success: function (data) {
+                data['Rating']
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    })
+
+}

@@ -65,6 +65,7 @@ function STable() {
 
 ////Images of Product
 function dImage() {
+            imageSearcher();
              $("#dynamic_table4").ready(function () {
                  function numTable(x, y) {
                      var index = 1;
