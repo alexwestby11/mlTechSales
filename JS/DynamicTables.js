@@ -13,9 +13,9 @@ function RTable() {
                          for (var k = 0; k < x; ++k) {//col
                              var idString = (j*numRowsR + k).toString();
                              stringValue +=
-                                 "<div  class=\"d-flex marginMainImageNormal  btn-primary rounded\"style= 'border: 1px solid gainsboro;height:95%;width:100%;'>" +
+                                 "<div  class=\"d-flex marginMainImageNormal btn-primary rounded\"style= 'background: white; border: 1px solid gainsboro;height:95%;width:100%;'>" +
 
-                                 "<img tag = '"+index+"' id = 'rec"+index+"' class = \"img rounded shadow img1\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id);incrementClick()'>"+
+                                 "<img tag = '"+index+"' id = 'rec"+index+"' class = \"img rounded img1\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id);incrementClick()' style='margin: auto'>"+
                                  "</div>";
                              ++index;
                          }
@@ -44,9 +44,9 @@ function STable() {
                          stringValue += "<div class=\"d-flex\" style='width:100%; height:100%;'>"
                          for (var k = 0; k < x; ++k) {//col
                              stringValue +=
-                                 "<div class=\"d-flex marginMainImageNormal btn-primary rounded\" style= 'border: 1px solid gainsboro;height:95%;width:100%;'>" +
+                                 "<div class=\"d-flex marginMainImageNormal btn-primary rounded\" style= 'background: white;border: 1px solid gainsboro;height:95%;width:100%;'>" +
 
-                                "<img  id = 'sim"+index+"' class = \"img rounded creamColor shadow img1\" src=productLinkArray[k] onclick='reply_ProPage(this.id);incrementClick()'>"+
+                                "<img  id = 'sim"+index+"' class = \"img rounded creamColor img1\" src=\"images/Apple1.jpg\" onclick='reply_ProPage(this.id);incrementClick()' style='margin: auto;'>"+
 
                                  "</div>";
                              ++index;

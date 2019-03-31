@@ -320,6 +320,7 @@ function setProductInfo(){
      var space = "  ";
      var mainName = document.getElementById("mainName");
      var x = localStorage['ID_name'];
+     console.log(x);
      var y = x.split(' ').slice(0,3).join(' ');
      y = space.concat(y);
      y = y.concat(space);

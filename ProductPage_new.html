@@ -49,6 +49,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/frontpage.css">
     <meta charset="UTF-8">
      <link rel="icon" href="images/Logo/logo3.png">
     <title>Product Page</title>
@@ -59,7 +60,7 @@
 <body onload = "setProductInfo();startTimer()">
 
   <!--Background -->
-<div class = "container-fluid h-100">
+<div class = "container-fluid">
      <script>
          //sets the typeArray from local storage
          setTypeArray();
@@ -69,40 +70,70 @@
 
 </script>
      <!--Top Search Bar -->
-    <div class="row-fluid darkBlue">
-      <div class="d-flex flex-row">
-          <!--Logo-->
-          <div class = "col roundedB">
-               <div class="d-flex vertical-align"  style='height: 10%;width:5%;float: left'>
-                   <div class="d-block marginProductLogo"  style = 'float: left'>
-                    <img src="images/Logo/logo2.png" class="rounded-circle shadow-lg snowColor" onclick="colChange()" alt="TechSails Logo" width="180" height="180">
+    <div class="d-flex flex-row-reverse vertical-align roundedB" style = "height: 15%;width: auto;background-image: linear-gradient(155deg, CORNFLOWERBLUE,ROYALBLUE);">
+
+      <div class="d-flex vertical-align" style="margin-right: 2%" >
+                   <div class="d-block marginProductLogo">
+                    <img src="images/Logo/logo2.png" class="rounded-circle blurr2"  alt="TechSails Logo" width="80" height="80" style="background-image: linear-gradient(155deg, white,CORNFLOWERBLUE,royalblue);">
+
                    </div>
-               </div>
+        </div>
+
+
+        <div class="d-flex  titleText " style="margin-right: 2%">Tech Sails</div>
+
+
+          <!--search bar-->
+  <div class="d-flex" style="width: 30%;margin: auto">
+<!--
+          <div class="dropdown" onclick="getFilterChanges('notebook')">
+            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Filter
+            <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+
+                    <div id="dFilter" style = "margin: 5%" ></div>
+
+                </ul>
+        </div>-->
+
+        <input type="search" class="form-control" id="searchbar" placeholder="Search for ..." value = "" style="width: 100%;height: auto">
+         <span class="input-group-btn">
+             <button class="btn btn-light searchText" type="button" onclick="setInput();incrementClick()" style="background: gainsboro; border: 1px solid lightgray">Search</button>
+
+         </span>
+    </div>
+
               <!--Name bar-->
-               <div class="d-flex vertical-align"  style='height: 10%;max-width: 100%'>
-                   <div class="d-block marginProductLogo snowColor vertical-align" style = 'float: left;border-radius: 10px;'>
-                    <h4 id = "mainName" onclick="localStorage.clear()">Name</h4>
+               <div class="d-flex  vertical-align rounded"  style='height: 10%;margin-left: 2%;background-image: linear-gradient(155deg, cornflowerblue,cornflowerblue,gainsboro,white);'>
+                   <div class="d-block marginProductLogo subText" style = 'float: left;border-radius: 10px;align-items: center'>
+                       <h1>Product:</h1>
+                     <h2 id = "mainName" onclick="localStorage.clear()">Name</h2>
                    </div>
+
+                   <!-- Timer
                    <div class="d-flex vertical-align"  style='height: 10%;max-width: 100%'>
-                <p id="Timer" style="text-align: right"></p><button onclick="resetTimer()">Stop time</button>
-              </div>
+                     <p id="Timer" style="text-align: right"></p><button onclick="resetTimer()">Stop time</button>
+                    </div>-->
+
                </div>
 
 
-          </div><!--
+
+<!--
             <div class="col-fluid">
                 <button type = "submit" onclick="colChange()">Values</button>
             </div>-->
-        </div>
+
+
     </div><!--Top Search Bar End-->
 
 
 
 
 
-    <div class="d-flex flex-row " style='width:100%; height:89%;' >
+    <div class="d-flex flex-row" style='width:100%; height:84%;margin: auto' >
         <!--Coloumn 1-->
-       <div id = "flexCol1" class="d-flex flex-column" style='width:50%; height:100%;'>
+       <div id = "flexCol1" class="d-flex flex-column" style='width:50%; height:100%;margin: auto'>
              <div id = "flex1" class="d-flex"  style='width:100%; height:50%;'>
                 <div id = "box1" onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseOver(this.id)" class="col shadow-sm rounded margin1 " style= 'border: 1px solid gainsboro;height:98%;' >
 
@@ -149,7 +180,7 @@
           </div>
        </div>
         <!--Coloumn 2-->
-        <div id = "flexCol2" class="d-flex flex-column" style='width:50%; height:100%;'>
+        <div id = "flexCol2" class="d-flex flex-column" style='width:50%; height:100%;margin: auto'>
              <div id = "flex3" class="d-flex" style='width:100%; height:50%;'>
                 <div id = "box3"  onmouseleave="reply_mouseOut(this.id)" onmousemove="reply_mouseOver(this.id)"  class="col shadow-sm  margin1 marginRL" style= "border: 1px solid gainsboro;height:97%"; >
               </div>
