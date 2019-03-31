@@ -49,6 +49,7 @@
     margin-right: 10px !important;
     margin-left: 10px !important;
      border-radius: 5px;
+     border-radius: 5px;
 }
 
 .marginLeftEnd {
@@ -101,13 +102,13 @@
 .titleText {
     color: whitesmoke;
     font-family: custom1;
-    font-size: 5vmax;
+    font-size: 10vmin;
     text-align: center;
     text-shadow:
-    -1px -1px 0 TEAL,
-    1px -1px 0 TEAL,
-    -1px 1px 0 TEAL,
-    1px 1px 0 TEAL;
+    -1px -1px 0 darkgrey,
+    1px -1px 0 darkgrey,
+    -1px 1px 0 darkgrey,
+    1px 1px 0 darkgrey;
 
 }
 
@@ -157,3 +158,44 @@ src: url("../fonts/BenguiatGothicStd-HeavyObl.otf");
     background: #000;
     z-index:9999;
 }
+
+.blurr1 {
+  padding: 5px;
+  box-shadow: 2px 2px 10px cornflowerblue;
+}
+
+.blurr2 {
+  padding: 0px;
+  box-shadow: 1px 1px 10px white;
+}
+
+.bottomRounded{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.subText {
+    color: whitesmoke;
+    font-family: custom1;
+    font-size: 3vmin;
+    text-shadow:
+    -1px -1px 0 darkgrey,
+    1px -1px 0 darkgrey,
+    -1px 1px 0 darkgrey,
+    1px 1px 0 darkgrey;
+
+}
+
+.searchText {
+    color: white;
+    font-family: custom1;
+    font-size: medium;
+    letter-spacing: 1px;
+    text-shadow:
+    -1px -1px 0 steelblue,
+    1px -1px 0 steelblue,
+    -1px 1px 0 steelblue,
+    1px 1px 0 steelblue;
+
+}
+

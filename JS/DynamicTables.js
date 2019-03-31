@@ -13,9 +13,9 @@ function RTable() {
                          for (var k = 0; k < x; ++k) {//col
                              var idString = (j*numRowsR + k).toString();
                              stringValue +=
-                                 "<div  class=\"d-flex marginMainImageNormal  btn-primary rounded\"style= 'border: 1px solid gainsboro;height:95%;width:100%;'>" +
+                                 "<div  class=\"d-flex marginMainImageNormal btn-primary rounded\"style= 'background: white; border: 1px solid gainsboro;height:95%;width:100%;'>" +
 
-                                 "<img tag = '"+index+"' id = 'rec"+index+"' class = \"img rounded shadow img1\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id);incrementClick()'>"+
+                                 "<img tag = '"+index+"' id = 'rec"+index+"' class = \"img rounded img1\" src = \"images/Apple1.jpg\" onclick='reply_ProPage(this.id);incrementClick()' style='margin: auto'>"+
                                  "</div>";
                              ++index;
                          }
@@ -44,9 +44,9 @@ function STable() {
                          stringValue += "<div class=\"d-flex\" style='width:100%; height:100%;'>"
                          for (var k = 0; k < x; ++k) {//col
                              stringValue +=
-                                 "<div class=\"d-flex marginMainImageNormal btn-primary rounded\" style= 'border: 1px solid gainsboro;height:95%;width:100%;'>" +
+                                 "<div class=\"d-flex marginMainImageNormal btn-primary rounded\" style= 'background: white;border: 1px solid gainsboro;height:95%;width:100%;'>" +
 
-                                "<img  id = 'sim"+index+"' class = \"img rounded creamColor shadow img1\" src=productLinkArray[k] onclick='reply_ProPage(this.id);incrementClick()'>"+
+                                "<img  id = 'sim"+index+"' class = \"img rounded creamColor img1\" src=\"images/Apple1.jpg\" onclick='reply_ProPage(this.id);incrementClick()' style='margin: auto;'>"+
 
                                  "</div>";
                              ++index;
@@ -131,19 +131,19 @@ function dTable() {
                      function numTable(x,y) {
                      var index = 0;
                      var stringValue =
-                         "<div  class=\"col-fluid vertical-align\" style='width:100%;height: 50%'>";
+                         "<div  class=\"col-fluid vertical-align\" style='width:100%;height: 50%;'>";
                         if(x === 0 && y === 0){
                              stringValue +=  "<div class=\"col-fluid\" style='width:100%; height:100%;font-size: large;text-align: center'><p>No Results</p></div>";
                         }
                      for (var j = 0; j < y; ++j) {//rows
-                         stringValue += "<div class=\"d-flex flex-row vertical-align\" style='width:inherit; height:100%;'>";
+                         stringValue += "<div class=\"d-flex flex-row vertical-align \" style='width:inherit; height:100%;'>";
                          for (var k = 0; k < x; ++k) {//col
                              var idString = (j*numRows + k).toString();
                              stringValue +=
-                                 "<div  id = '"+idString+"' class=\"d-flex flex-column marginMainImageNormal btn btnImg1-primary rounded shadow-sm\" onclick=\"incrementClick();linkProductPage();reply_click(this.id);\" style= 'border: 1px solid gainsboro;height:95%;width:100%;background: white;margin: 0.5%'>" +
-                                 "<div class=\"col-fluid \" style='text-align: center;font-size: large;width: 100%'><b></b></div>"+
+                                 "<div  id = '"+idString+"' class=\"d-flex flex-column btn btnImg1-primary rounded shadow-sm\" onclick=\"incrementClick();linkProductPage();reply_click(this.id);\" style= 'border: 1px solid gainsboro;height:95%;width:100%;margin: 0.5%;overflow:hidden;background-image: linear-gradient(155deg,white,white);'>" +
+                                 "<div class=\"row roundedT\" style='text-align: center;font-size: large;width: auto;margin-left: fill;'><b style='margin: auto'></b></div>"+
                                  "<input type=\"image\" src= \"images/Apple1.jpg\" class = \"d-block btn img rounded  img3\" style='align-self:center'>" +
-                                  "<div class=\"col-fluid justify-content-center\" style='text-align: center; font-weight: bold;'><b></b></div>" +
+                                  "<div class=\"row justify-content-center \" style='text-align: center; font-weight: bold;'><b></b></div>" +
                                  "</div>";
                              ++index;
                          }
