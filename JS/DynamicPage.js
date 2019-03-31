@@ -321,7 +321,7 @@ function setProductInfo(){
      var mainName = document.getElementById("mainName");
      var x = localStorage['ID_name'];
      console.log(x);
-     var y = x.split(' ').slice(0,3).join(' ');
+     var y = x.split(' ').slice(0,2).join(' ');
      y = space.concat(y);
      y = y.concat(space);
     mainName.innerHTML = y;
