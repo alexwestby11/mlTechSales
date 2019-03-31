@@ -500,7 +500,7 @@ function myTimer() {
   console.log(minute + ":" +stringVar);
   localStorage.second = secondTimer;
   localStorage.min = minute;
-  document.getElementById("Timer").innerHTML = " " + minute + ":" +stringVar;
+  //document.getElementById("Timer").innerHTML = " " + minute + ":" +stringVar;
 }
 
 function resetTimer(){
