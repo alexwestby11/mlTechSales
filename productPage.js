@@ -841,3 +841,25 @@ function postItemRating(item,rating,sessionID,key)
     })
 }
 
+function getItemRating(itemNum)
+{
+
+	$(document).ready(function() {
+        var alpha = $.ajax({
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/items/'+itemNum,
+            dataType: 'json',
+            type: 'GET',
+            success: function (data) {
+                data['Rating']
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    })
+
+
+
+
+
+}
