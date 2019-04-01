@@ -340,16 +340,13 @@ function pressedType4(){
      // console.log(z_idx)
 }
 
-function nextButton(){
-    nextImage(numRows,numCol,z_idx);
-}
-
- function prevButton(){
-    prevImage(numRows,numCol,z_idx);
-}
 
 function linkResultsPage() {
   window.location.href = 'resultsPage_new.html';
+}
+
+function linkHomePage() {
+  window.location.href = 'index.html';
 }
 ///Only works on results page
  function reply_click(clicked_id)
@@ -508,4 +505,73 @@ function resetTimer(){
     localStorage.second = 0;
     localStorage.min = 0;
     localStorage.output = 0;
+}
+
+function setRating(num) {
+    var stringVal = "star";
+    num = num.toString();
+    if(num === "1"){
+        stringVal += num.toString();
+        stringVal += "1";
+        document.getElementById(stringVal).checked = true;
+
+    }
+    else if(num === "2"){
+         stringVal += num.toString();
+        stringVal += "1";
+          document.getElementById(stringVal).checked = true;
+    }
+    else if(num === "3"){
+         stringVal += num.toString();
+        stringVal += "1";
+         document.getElementById(stringVal).checked = true;
+    }
+    else if(num === "4"){
+         stringVal += num.toString();
+        stringVal += "1";
+          document.getElementById(stringVal).checked = true;
+    }
+    else if(num === "5"){
+         stringVal += num.toString();
+        stringVal += "1";
+          document.getElementById(stringVal).checked = true;
+    }
+    console.log("stringValue" + stringVal);
+}
+
+function returnStar(id) {
+    if(id === "starhalf"){
+        localStorage.userRating = 0.5.toString();
+    }
+    else if(id === "star1"){
+        localStorage.userRating = 1;
+    }
+    else if(id === "star1half"){
+        localStorage.userRating = 1.5;
+    }
+    else if(id === "star2"){
+        localStorage.userRating = 2;
+    }
+    else if(id === "star2half"){
+        localStorage.userRating = 2.5;
+    }
+    else if(id === "star3"){
+        localStorage.userRating = 3;
+    }
+    else if(id === "star3half"){
+        localStorage.userRating = 3.5;
+    }
+    else if(id === "star4"){
+        localStorage.userRating = 4;
+    }
+    else if(id === "star4half"){
+        localStorage.userRating = 4.5;
+    }
+    else if(id === "star5"){
+        localStorage.userRating = 5;
+    }
+
+
+    console.log(localStorage.userRating);
+
 }

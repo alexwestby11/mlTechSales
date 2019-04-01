@@ -1,28 +1,71 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="styles/test.css">
 <html>
+<head>
+<style>
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+</style>
+</head>
 <body>
 
-<script>function returnStar(value){
-    console.log(value);
-}
-</script>
+<h2>Aligned Dropdown Content</h2>
+<p>Determine whether the dropdown content should go from left to right or right to left with the left and right properties.</p>
 
-<fieldset class="rating">
-    <input type="radio" id="star5" name="rating" value="5" onclick="returnStar(this.id)"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-    <input type="radio" id="star4half" name="rating" value="4 and a half" onclick="returnStar(this.id)"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-    <input type="radio" id="star4" name="rating" value="4" onclick="returnStar(this.id)"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-    <input type="radio" id="star3" name="rating" value="3" onclick="returnStar(this.id)"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
-    <input type="radio" id="star2half" name="rating" value="2 and a half" onclick="returnStar(this.id)"/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-    <input type="radio" id="star2" name="rating" value="2" onclick="returnStar(this.id)"/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-    <input type="radio" id="star1half" name="rating" value="1 and a half" onclick="returnStar(this.id)"/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-    <input type="radio" id="star1" name="rating" value="1" onclick="returnStar(this.id)"/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-</fieldset>
+<div class="dropdown" style="float:left;">
+  <button class="dropbtn">Left</button>
+  <div class="dropdown-content" style="left:0;">
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a>
+  <a href="#">Link 3</a>
+  </div>
+</div>
 
-
+<div class="dropdown" style="float:right;">
+  <button class="dropbtn">Right</button>
+  <div class="dropdown-content">
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a>
+  <a href="#">Link 3</a>
+  </div>
+</div>
 
 </body>
 </html>
-
