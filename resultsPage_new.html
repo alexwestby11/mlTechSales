@@ -25,6 +25,8 @@
 <!-- local css scripts -->
 <link rel ="stylesheet" href="styles/resultsPage.css">
 <link rel ="stylesheet" href="styles/frontpage.css">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!------ Include the above in youritemArray[num] HEAD tag ---------->
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +37,7 @@
 </head>
 
 <body onload = "getData1();dFilter();">
-  <script>createSessionID();startTimer() </script>
+  <script>startTimer() </script>
 
 
 <div class="container-fluid">
@@ -54,16 +56,18 @@
 
 
     <div class="d-flex" style="width: 50%;margin: auto">
-<!--
+
+        <button class="btn" style="border: 1px solid gainsboro" onclick="linkHomePage();"><i class="fa fa-home" ></i></button>
+
           <div class="dropdown" onclick="getFilterChanges('notebook')">
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Filter
+            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="background: white; border: 1px solid gainsboro">Filter
             <span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 
                     <div id="dFilter" style = "margin: 5%" ></div>
 
                 </ul>
-        </div>-->
+        </div>
 
         <input type="search" class="form-control" id="searchbar" placeholder="Search for ..." value = "" >
          <span class="input-group-btn">

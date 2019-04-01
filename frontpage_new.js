@@ -340,16 +340,13 @@ function pressedType4(){
      // console.log(z_idx)
 }
 
-function nextButton(){
-    nextImage(numRows,numCol,z_idx);
-}
-
- function prevButton(){
-    prevImage(numRows,numCol,z_idx);
-}
 
 function linkResultsPage() {
   window.location.href = 'resultsPage_new.html';
+}
+
+function linkHomePage() {
+  window.location.href = 'index.html';
 }
 ///Only works on results page
  function reply_click(clicked_id)
