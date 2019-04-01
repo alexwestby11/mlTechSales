@@ -850,7 +850,7 @@ function getItemRating(itemNum)
             dataType: 'json',
             type: 'GET',
             success: function (data) {
-                data['Rating']
+                setRating(data.rating);
             },
             error: function (error) {
                 console.log(error);

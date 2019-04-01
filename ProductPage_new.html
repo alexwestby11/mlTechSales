@@ -81,7 +81,10 @@
         </div>
 
 
-        <div class="d-flex  titleText " style="margin-right: 2%;">Tech Sails</div>
+         <div class="d-flex vertical-align titleText" style="margin-top: 1%;">
+                   Tech Sails
+        </div>
+
 
 
           <!--search bar-->
@@ -109,20 +112,20 @@
                <div class="d-flex  vertical-align rounded"  style='height: 10%;margin: auto;background-image: linear-gradient(155deg, cornflowerblue,cornflowerblue,cornflowerblue,gainsboro,white);'>
                    <div class="d-block marginProductLogo" style = 'float: left;border-radius: 10px;align-items: center'>
                      <h2 class = "subText" id = "mainName" onclick="localStorage.clear()">Name</h2>
-
-                <fieldset class="rating1" >
-                    <input type="radio" id="star5" name="rating" value="5" onclick="returnStar(this.id)"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                    <input type="radio" id="star4half" name="rating" value="4 and a half" onclick="returnStar(this.id)"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                    <input type="radio" id="star4" name="rating" value="4" onclick="returnStar(this.id)"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                    <input type="radio" id="star3" name="rating" value="3" onclick="returnStar(this.id)"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                    <input type="radio" id="star2half" name="rating" value="2 and a half" onclick="returnStar(this.id)"/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                    <input type="radio" id="star2" name="rating" value="2" onclick="returnStar(this.id)"/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                    <input type="radio" id="star1half" name="rating" value="1 and a half" onclick="returnStar(this.id)"/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                    <input type="radio" id="star1" name="rating" value="1" onclick="returnStar(this.id)"/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                     <fieldset class="rating1" disabled>
+                    <input type="radio" id="star51" name="rating1" value="5" /><label class = "full" for="star51" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half1" name="rating1" value="4 and a half" /><label class="half" for="star4half1" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star41" name="rating1" value="4" /><label class = "full" for="star41" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half1" name="rating1" value="3 and a half" /><label class="half" for="star3half1" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star31" name="rating1" value="3" /><label class = "full" for="star31" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half1" name="rating1" value="2 and a half" /><label class="half" for="star2half1" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star21" name="rating1" value="2" /><label class = "full" for="star21" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half1" name="rating1" value="1 and a half" /><label class="half" for="star1half1" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star11" name="rating1" value="1" /><label class = "full" for="star11" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf1" name="rating1" value="half" /><label class="half" for="starhalf1" title="Sucks big time - 0.5 stars"></label>
                 </fieldset>
-                       <script></script>
+
+                       <script>getItemRating(localStorage['ID'])</script>
     </div>
 
 
@@ -195,17 +198,17 @@
                     </div>
                        <div id="Rating" class="tab-pane fade">
                       <h3>Rate this Product</h3>
-                              <fieldset class="rating1">
-                    <input type="radio" id="star51" name="rating1" value="5" onclick="returnStar(this.id)"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                    <input type="radio" id="star4half1" name="rating1" value="4 and a half" onclick="returnStar(this.id)"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                    <input type="radio" id="star41" name="rating1" value="4" onclick="returnStar(this.id)"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                    <input type="radio" id="star3half1" name="rating1" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                    <input type="radio" id="star31" name="rating1" value="3" onclick="returnStar(this.id)"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                    <input type="radio" id="star2half1" name="rating1" value="2 and a half" onclick="returnStar(this.id)"/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                    <input type="radio" id="star21" name="rating1" value="2" onclick="returnStar(this.id)"/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                    <input type="radio" id="star1half1" name="rating1" value="1 and a half" onclick="returnStar(this.id)"/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                    <input type="radio" id="star11" name="rating1" value="1" onclick="returnStar(this.id)"/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                    <input type="radio" id="starhalf1" name="rating1" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                              <fieldset class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" onclick="returnStar(this.id)"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4 and a half" onclick="returnStar(this.id)"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" onclick="returnStar(this.id)"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3 and a half" onclick="returnStar(this.id)"/><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" onclick="returnStar(this.id)"/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2 and a half" onclick="returnStar(this.id)"/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" onclick="returnStar(this.id)"/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1 and a half" onclick="returnStar(this.id)"/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" onclick="returnStar(this.id)"/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="half" onclick="returnStar(this.id)"/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
                 </fieldset>
                       <p style="height:70%;width:100%;font:16px/26px Georgia, Garamond, Serif;overflow:auto;" id = "p4"></p>
                     </div>
