@@ -788,19 +788,22 @@ function imageSearcher(arraySize)
             success: function (returnData,) {
 
                     var i=1;
+                    var index=1;
 					while(i<=8) {
 
-							//var imgValue = document.getElementById("mainImg"+i.toString());
-							if(returnData.value[i].contentUrl==null)
+							var imgValue = document.getElementById("mainImg"+i.toString());
+							if(returnData.value[index].contentUrl==null)
 							{
 								console.log("bad");
-								break;
+								index++;
+								continue;
 							}
 							else{
-									//imgValue.src=returnData.value[i].contentUrl;
-									addPicsArray[i]=returnData.value[i].contentUrl;
-									imageLinkArray.push(returnData.value[i].contentUrl);
+									imgValue.src=returnData.value[i].contentUrl;
+									addPicsArray[i]=returnData.value[index].contentUrl;
+									imageLinkArray.push(returnData.value[index].contentUrl);
 									i++;
+									index++;
 							}
 						}
 			        isLoaded=isLoaded+1
