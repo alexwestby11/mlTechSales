@@ -49,7 +49,7 @@ var totalCollect = 3;
 var currentCollect = 0;
 var addPicsIndex = 0;
 var addPicsArray = ['images/Apple1.jpg','images/Apple2.jpg','images/searchLogo.jpg','images/Logo/logo1.png','images/Logo/logo2.png','images/Logo/logo3.png','images/Logo/logo4.png','images/Logo/logo5.png','images/Logo/logo5.png'];
-var typeArrayFixed = ["notebook","monitor","noteboook_case","mouse","charger","keyboard","cable","docking station","speaker","tablet","mobile","drive","printer","dvd_br","desktop","controller","camera","headset","game","console","lens","television"];
+var typeArrayFixed = ["notebook","monitor","noteboook_3case","mouse","charger","keyboard","cable","docking station","speaker","tablet","mobile","drive","printer","dvd_br","desktop","controller","camera","headset","game","console","lens","television"];
 var isResults = 1;
 var c1 = 0;
 var c2 = 0;
@@ -540,32 +540,18 @@ function setRating(num) {
 }
 
 function returnStar(id) {
-    if(id === "starhalf"){
-        localStorage.userRating = 0.5.toString();
-    }
-    else if(id === "star1"){
+
+    if(id === "star1"){
         localStorage.userRating = 1;
-    }
-    else if(id === "star1half"){
-        localStorage.userRating = 1.5;
     }
     else if(id === "star2"){
         localStorage.userRating = 2;
     }
-    else if(id === "star2half"){
-        localStorage.userRating = 2.5;
-    }
     else if(id === "star3"){
         localStorage.userRating = 3;
     }
-    else if(id === "star3half"){
-        localStorage.userRating = 3.5;
-    }
     else if(id === "star4"){
         localStorage.userRating = 4;
-    }
-    else if(id === "star4half"){
-        localStorage.userRating = 4.5;
     }
     else if(id === "star5"){
         localStorage.userRating = 5;

@@ -47,7 +47,7 @@ var person1 = {
         "monitor":{},
         "mouse":{},
         "notebook":{},
-        "notebook_case":{},
+        "noteboook_case":{},
         "printer":{},
         "mobile":{},
         "speaker":{},
