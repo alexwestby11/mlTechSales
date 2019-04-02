@@ -825,16 +825,30 @@ function loadingPage() {
   }
 }
 
-function postItemRating(item,rating,sessionID,key)
+function postItemRating()
 {
-
+    var rating = localStorage.userRating;
+    var itemID =   localStorage['ID']
+    var sessionIDPost = localStorage['sessionID']
+    var key = 'oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm'
+    var urlTemp= 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/rating/'
+            + sessionIDPost +'/'
+            + itemID +   '/'
+            + rating +   '/'
+            + key    +   '/'
+    var a =1;
     $(document).ready(function() {
         var alpha = $.ajax({
-            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/user/'+ sessionID +'/oJ9Cl2ks7SWGOMmXSJ6bt3tIH4DsdLkt5LObtrPm/'+item +"/" + key,
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/update/rating/'
+            + sessionIDPost +'/'
+            + itemID +   '/'
+            + rating +   '/'
+            + key    +   '/',
             dataType: 'json',
             type: 'POST',
             success: function (data) {
                 {
+                    console.log("Posted Review")
                 }
             },
             error: function (error) {
@@ -862,3 +876,4 @@ function getItemRating(itemNum)
     })
 
 }
+
