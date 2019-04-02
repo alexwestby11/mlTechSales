@@ -314,7 +314,7 @@ var jsonObj = {
         "monitor":{},
         "mouse":{},
         "notebook":{},
-        "noteboook_case":{},
+        "noteboook case":{},
         "printer":{},
         "mobile":{},
         "speaker":{},
@@ -394,21 +394,22 @@ function initJsonObject(){
 
     }
  localStorage['prices'] = JSON.stringify(jsonObj['Price']);
+    localStorage['brand'] = JSON.stringify(jsonObj['Brand']);
  localStorage['Macro']  = JSON.stringify(jsonObj['Macro'])
 }
 
 function addJSONParameter()
 {
-   var givenObj=JSON.parse(localStorage['prices']);
-   for(category in givenObj["Brand"])
+   var givenObj=JSON.parse(localStorage['brand']);
+   for(category in givenObj)
    {
     for(var i=0; i<=brands.length-1;++i)
     {
         var givenCompany=brands[i]
-        givenObj["Brand"][category][givenCompany]={"Count":0}
+        givenObj[category][givenCompany]={"Count":0}
     }
    }
-    localStorage.setItem('prices',JSON.stringify(givenObj))
+    localStorage.setItem('brand',JSON.stringify(givenObj))
     testPerformanceFilter(jsonObj)
 
 }
@@ -490,32 +491,35 @@ function updateAveragePrice(x)
 
 function updateBrand(brand,givenType)
 {
-    var localJSON=JSON.parse(localStorage['prices'])
-    if(localJSON['Price'][givenType]["Brand"][brand]==null)
+    var localJSON=JSON.parse(localStorage['brand']);
+    if(localJSON[givenType][brand]==null)
     {
         addJSONParameter();
-        localJSON=JSON.parse(localStorage['prices'])
+        localJSON=JSON.parse(localStorage['brand']);
     }
-    localJSON["Brand"][givenType][brand]["Count"]=localJSON["Brand"][givenType][brand]["Count"]+1
-    localStorage.setItem('prices',JSON.stringify(localJSON))
+    localJSON[givenType][brand]["Count"]=localJSON[givenType][brand]["Count"]+1;
+    localStorage.setItem('brand',JSON.stringify(localJSON))
     mostUsedBrand(givenType)
 }
 
  function mostUsedBrand(productType)
 {
      mostUsed=[];
-     if(localStorage['prices']==null)
+     if(localStorage.brand==null)
      {
         return null
      }
-     var obj=JSON.parse(localStorage['prices'])
-     var brandObj=obj["Brand"][productType]
+     var obj=JSON.parse(localStorage['brand']);
+     var brandObj=obj[productType]
      var arrayBrandObj = Object.keys(brandObj).map(function(key) {
          return [key, brandObj[key].Count];});
-     arrayBrandObj=arrayBrandObj.sort((a, b) => a[1] - b[1])
-     localStorage['Brand0']=arrayBrandObj[arrayBrandObj.length-1][0]
-     localStorage['Brand1']=arrayBrandObj[arrayBrandObj.length-2][0]
-     localStorage['Brand2']=arrayBrandObj[arrayBrandObj.length-3][0]
+     arrayBrandObj=arrayBrandObj.sort((a, b) => a[1] - b[1]);
+
+     localStorage['Brand0']=arrayBrandObj[arrayBrandObj.length-1][0];
+     localStorage['Brand1']=arrayBrandObj[arrayBrandObj.length-2][0];
+     localStorage['Brand2']=arrayBrandObj[arrayBrandObj.length-3][0];
+
+
 }
 
 function updateCapability(brand,givenType)
