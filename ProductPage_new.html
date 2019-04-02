@@ -1,5 +1,6 @@
 <!-- custom JS functions -->
-
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -90,6 +91,11 @@
           <!--search bar-->
   <div class="col vertical-align " style="margin: auto;margin-right: 5%">
 
+      <button class="btn" style="border: 1px solid gainsboro;height: 30%" onclick="linkResultsPage();"><i> <b><</b></i></button>
+
+          <button class="btn" style="border: 1px solid gainsboro;height: 30%" onclick="linkHomePage();"><i class="fa fa-home" ></i></button>
+
+
         <input type="search" class="form-control" id="searchbar" placeholder="Search for ..." value = "" style="height: auto">
          <span class="input-group-btn">
              <button class="btn btn-light searchText" type="button" onclick="setInput();incrementClick()" style="background: gainsboro; border: 1px solid lightgray">Search</button>
@@ -120,10 +126,10 @@
 
 
 
-                   <!-- Timer
+
                    <div class="d-flex vertical-align"  style='height: 10%;max-width: 100%'>
                      <p id="Timer" style="text-align: right"></p><button onclick="resetTimer()">Stop time</button>
-                    </div>-->
+                    </div>
 
                </div>
 
@@ -188,7 +194,7 @@
                     </div>
                        <div id="Rating" class="tab-pane fade">
                       <h3>Rate this Product</h3>
-                              <fieldset class="rating">
+                              <fieldset class="rating" >
                     <input type="radio" id="star5" name="rating" value="5" onclick="returnStar(this.id)"/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
                     <input type="radio" id="star4half" name="rating" value="4 and a half" onclick="returnStar(this.id)"/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
                     <input type="radio" id="star4" name="rating" value="4" onclick="returnStar(this.id)"/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
