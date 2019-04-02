@@ -584,7 +584,7 @@ function testPerformanceFilter(givenJSON)
             if(givenJSON['Performance'][outerKey][innerKey]["isBox"]==0)
             {
                 givenJSON['Performance'][outerKey][innerKey]
-                filterPerformance(outerKey,innerKey,Math.floor((Math.random() * 100) + 1))
+                //filterPerformance(outerKey,innerKey,Math.floor((Math.random() * 100) + 1))
             }
         }
     }
