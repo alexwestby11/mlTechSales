@@ -3,7 +3,7 @@ var itemTypes =
 [
     "notebook",
     "monitor",
-    "noteboook_case",
+    "notebook_case",
     "mouse",
     "charger",
     "keyboard",
@@ -286,10 +286,10 @@ function mainSearchPage(inputArray)
 {
     var index = 0;
     var jsonObjtemp = JSON.parse(localStorage['prices']);
-    console.log(jsonObjtemp)
     var boolArray=[];
     for(var i=0; i<=inputArray.length-1;++i)
     {
+        //var tempArray = mostUsedBrand(inputArray[i].type);
         if( (inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound']) &&
             (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound']) )
         {
