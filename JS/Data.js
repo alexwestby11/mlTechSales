@@ -336,7 +336,7 @@ function mainSearchPage(inputArray)
 
 function getResultTypes(array){
     var tempArray = [];
-    for(key in array){
+    for(var key in array){
         if(array[key] !== 0){
            tempArray.push(key)
         }

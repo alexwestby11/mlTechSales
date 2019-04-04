@@ -522,9 +522,9 @@ function updateBrand(brand,givenType)
      localStorage['Brand0']=arrayBrandObj[arrayBrandObj.length-1];
      localStorage['Brand1']=arrayBrandObj[arrayBrandObj.length-2];
      localStorage['Brand2']=arrayBrandObj[arrayBrandObj.length-3];
-     mostUsed.push(arrayBrandObj[arrayBrandObj.length-1][0]);
-     mostUsed.push(arrayBrandObj[arrayBrandObj.length-2][0]);
-     mostUsed.push(arrayBrandObj[arrayBrandObj.length-3][0]);
+     mostUsed.push(arrayBrandObj[arrayBrandObj.length-1]);
+     mostUsed.push(arrayBrandObj[arrayBrandObj.length-2]);
+     mostUsed.push(arrayBrandObj[arrayBrandObj.length-3]);
 
     return mostUsed;
 
