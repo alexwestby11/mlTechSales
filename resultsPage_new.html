@@ -32,12 +32,12 @@
 <html lang="en">
 <head><title>TechSails</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">F
     <link rel="icon" href="images/Logo/logo3.png">
 </head>
 
-<body onload = "getData1();dFilter();">
-  <script>startTimer(); console.log(localStorage['brand']) </script>
+<body onload = "getData1();">
+  <script>startTimer();dFilter();</script>
 
 
 <div class="container-fluid">
@@ -59,12 +59,12 @@
 
         <button class="btn" style="border: 1px solid gainsboro" onclick="linkHomePage();"><i class="fa fa-home" ></i></button>
 
-          <div class="dropdown" onclick="getFilterChanges('notebook')">
+          <div class="dropdown" onclick="getFilterChanges()">
             <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="background: white; border: 1px solid gainsboro">Filter
             <span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 
-                    <div id="dFilter" style = "margin: 5%" ></div>
+                    <div id="dFilter" style = "margin: 5%;overflow: hidden;"></div>
 
                 </ul>
         </div>
@@ -79,7 +79,7 @@
     </div>
 
     <!--secondary bar -->
-     <div class="d-flex flex-row rounded shadow-sm justify-content-around" style="background-image: linear-gradient(to right, white,whitesmoke,whitesmoke,whitesmoke,white);align-items:center;height: 5%;margin-top: 1%;">
+     <div class="d-flex flex-row rounded justify-content-around" style="background-image: linear-gradient(to right, white,whitesmoke,whitesmoke,whitesmoke,white);align-items:center;height: 5%;margin-top: 1%;">
 
          <div id = "searched" class="d-flex ">
             <script> document.getElementById("searched").innerHTML = localStorage['value'];</script>

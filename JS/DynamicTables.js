@@ -171,96 +171,70 @@ var typeData = [];
 var brandData = [];
 function dFilter() {
 
-             let temp_jsonObject = getJsonObject();
-             console.log(temp_jsonObject);
-             let priceArray = temp_jsonObject["Price"]['notebook'];
-             let brandArray = temp_jsonObject["Brand"]['notebook'];
-             let propertiesArray = temp_jsonObject["Performance"]['notebook'];
-            console.log(priceArray);
-             console.log(brandArray);
 
+
+let priceArray = getJsonPrice();
+            var arrayOfBrands = [];
+             let numTypesArray = JSON.parse(localStorage.numPerType);
              $("#dynamic_filter").ready(function () {
 
 
                      function createGUI(arr) {
+
                      var stringValue = "<form>";
 
-                     /*
-                     //Creates Properties
-                     for(let key in propertiesArray){
+                    for(let l = 0; l < arr.length; ++l) {
+                          //let priceArray = getJsonPrice();
+                          let brandArray = mostUsedBrand(arr[l]);
+                          arrayOfBrands.push({"name": arr[l],"array":brandArray});
 
-                         let temp = propertiesArray[key];
+                          var stringNameBrand = arr[l][0] + "Brand";
+console.log(brandArray);
+                        //Creates Brand List
 
-
-                         if(temp.isBox){
-                              stringValue +=  "<div  class= 'checkbox'>"
-                                  + "<label>&emsp;<input id = 'Index"+index2+"'  type= 'checkbox' value= '' checked>"
-                                  + key
-                                  + "</label>"
-                                  +  "</div>";
-                              ++index2;
-                         }
-                         else{
-                              stringValue += "<p>" +
-                                     "<label for='amount"+index1+"'>" + key  + "   " + propertiesArray[key]["Unit"] +"</label>" +
-                                     "<input type=\"text\" id = 'amount"+index1+"' readonly style=\"border:0; color:#f6931f; font-weight:bold;\">" +
-                                     "</p>";
-                             stringValue += "<div id='slider-range"+index1+"' ></div>";
-                             ++index1;
-
-                         }
-
-                     }*/
+                        stringValue += "<label>" + arr[l] + ":<br>Brand</label>"
+                        for (var j = 0; j < brandArray.length; ++j) {
 
 
-                     //Creates Brand List
-                     let k = 0;stringValue += "<label>Brand</label>"
-                      for(var key in brandArray){
+                                stringValue += "<div  class= 'checkbox'>"
+                                    + "<label>&emsp;<input id = '" + stringNameBrand + j +"'  type= 'checkbox' value= ''>"
+                                    + brandArray[j];
+                                +"</label>"
+                                + "</div>";
+                                brandData.push(brandArray[length]);
 
-                          if(k < 3){
-                               stringValue +=  "<div  class= 'checkbox'>"
-                                  + "<label>&emsp;<input id = 'Index"+index2+"'  type= 'checkbox' value= '' checked>"
-                                  + key
-                                  + "</label>"
-                                  +  "</div>";
-                               brandData.push(key);
-                          }else{
-                              break;
-                          }
-                          ++index2;
-                         ++k;
-                      }
 
-                     //Creates Price
-                         stringValue += "<p>" +
-                                     "<label for='amount"+index1+"'>" + "Price" +"</label>" +
-                                     "<span><input type=\"text\" id = 'amount"+index1+"' readonly style=\"border:0; color:#f6931f; font-weight:bold;\"></span>" +
-                                     "</p>";
+                        }
 
-                             stringValue += "<div id='slider-range"+index1+"' ></div>";
+                        //Creates Price
+                        stringValue += "<p>" +
+                            "<label for='amount" + arr[l] + "'>" + "Price" + "</label>" +
+                            "<span><input type=\"text\" id = 'amount" + arr[l] + "' readonly style=\"border:0; color:#f6931f; font-weight:bold;\"></span>" +
+                            "</p>";
+
+                        stringValue += "<div id='slider-range" + arr[l] + "' ></div>";
+
+                    }
                       stringValue += "</form>";
 
 
                      return stringValue;
                  }
-                 $('#dFilter').html(createGUI(propertiesArray));
+                 $('#dFilter').html(createGUI(numTypesArray));
                   $('#tab_logic').append('<div id="dFilter" ></div>');
+                  localStorage.allBrands = JSON.stringify(arrayOfBrands);
 
-                  let i = 0;
-                  /*
-                  for(let key in propertiesArray){
-                        var propertiesValues = propertiesArray[key];
-                        typeData.push(key);
+                  for(var l = 0; l < numTypesArray.length; ++l){
 
-                     customSlider(propertiesValues["UpperBound"],propertiesValues["LowerBound"],i++,propertiesValues["max"],propertiesValues["min"],key);
 
-                  }*/
-                  typeData.push("Price");
-                  typeData.push("Brand");
+                        customSliderPrice(priceArray[numTypesArray[l]]["UpperBound"],priceArray[numTypesArray[l]]["LowerBound"],numTypesArray[l]);
 
-                  customSliderPrice(priceArray["UpperBound"],priceArray["LowerBound"],i++);
 
-                    console.log("here" + priceArray["UpperBound"]);
+
+                  }
+                    console.log(numTypesArray);
+
+
              });
 }
 
@@ -276,8 +250,6 @@ function dFilter() {
                   values: [lower, upper],
                   slide: function (event, ui) {
                       $("#amount" + index).val("$" + ui.values[0] + " - $" + ui.values[1]);
-                      //valueUpper = upper;
-                     // valueLower = lower;
                   }
 
               });
@@ -287,39 +259,26 @@ function dFilter() {
       }
 
 
-      function customSlider(upper,lower,index,max,min,key) {
-
-          $(function () {
-              $("#slider-range" + index).slider({
-                  range: true,
-                  min: min,
-                  max: max,
-                  values: [lower, upper],
-                  enabled: '1',
-                  slide: function (event, ui) {
-                      $("#amount" + index).val(ui.values[0] + " - " + ui.values[1]);
-                  }
-
-              });
-              $("#amount" + index).val($("#slider-range" + index).slider("values", 0) +
-                  " - " + $("#slider-range" + index).slider("values", 1));
-
-          });
-      }
 
 
 
 function getFilterChanges(){
     var filterArray = [];
+    let tempArray = JSON.parse(localStorage.allBrands);
 
     //slider
-        var index = 0;
-        for(var i = 0;;++i){
-            if($("#slider-range" + i).length){
-                let valueUpper = $("#slider-range" + i).slider("values",1);
-                let valueLower = $("#slider-range" + i).slider("values",0);
-                filterArray[typeData[index]] = {"lower":valueLower,"upper":valueUpper};
-                ++index;
+        for(var i = 0;i < tempArray.length;++i){
+            if($("#slider-range" + tempArray[i]["name"]).length){
+                let valueUpper = $("#slider-range" + tempArray[i]["name"]).slider("values",1);
+                let valueLower = $("#slider-range" + tempArray[i]["name"]).slider("values",0);
+                filterArray[tempArray[i]["name"]] = {Price:{"lower":valueLower,"upper":valueUpper},
+                                                Brand:{
+                                                    "1":{"name":name,"checked":0},
+                                                    "2":{"name":name,"checked":0},
+                                                    "3":{"name":name,"checked":0}
+                                                }
+                                            };
+
             }
             else{
                 break;
@@ -328,8 +287,9 @@ function getFilterChanges(){
         }
 
         //check box
-        for(let j = 0;; ++j){
-                    var checkedBox = document.getElementById("Index" + j.toString());
+/*
+        for(let j = 0; tempArray.length; ++j){
+                    var checkedBox = document.getElementById(tempArray[j] + "Brand" + j.toString());
                      if(checkedBox !== null) {
                          if(typeData[index] === "Brand"){
                              filterArray[typeData[index]] = [];
@@ -348,9 +308,27 @@ function getFilterChanges(){
                    }
                 }
 
+*//*
+        for(let j = 0; tempArray.length; ++j){
+            let i = 0;
+            for(var key in filterArray[tempArray[j]]["Brand"]){
+                var checkedBox = document.getElementById(tempArray[j] + "Brand" + i.toString());
+                if(checkedBox != null){
+                    filterArray[tempArray[j]]["Brand"][key]["name"];
+                    console.log(allBrands);
+                    if(checkedBox.checked = true){
+                        //filterArray[tempArray[j]]["Brand"][i].checked = true;
+                    }else{
+                        //filterArray[tempArray[j]]["Brand"][i].checked = false;
+                    }
+
+                }
+                ++i;
+            }
+        }
 
 
-
+*/
 
         /*
         for(let i = 0; i < arr.length; ++i){
@@ -377,14 +355,14 @@ function getFilterChanges(){
                 }
             }
         }*/
-        console.log(filterArray);
 
-}
+        var tempPrice = JSON.parse(localStorage['prices']);
 
+        for(var key in  filterArray){
+                tempPrice[key]["UpperBound"] = filterArray[key]["Price"]["upper"];
+                tempPrice[key]["LowerBound"] = filterArray[key]["Price"]["lower"];
+        }
 
-class dict {
-    constructor(name, state) {
-        this.name = name;
-        this.state = state;
-    }
+        localStorage['prices'] = JSON.stringify(tempPrice);
+
 }
