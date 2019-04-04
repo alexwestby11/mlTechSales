@@ -285,9 +285,9 @@ function getFilterChanges(){
         }
 
         //check box
-    /*
-        for(let j = 0;; ++j){
-                    var checkedBox = document.getElementById("Index" + j.toString());
+
+        for(let j = 0; tempArray.length; ++j){
+                    var checkedBox = document.getElementById(tempArray[j] + "Brand" + j.toString());
                      if(checkedBox !== null) {
                          if(typeData[index] === "Brand"){
                              filterArray[typeData[index]] = [];
@@ -306,7 +306,7 @@ function getFilterChanges(){
                    }
                 }
 
-*/
+
 
 
 
@@ -335,11 +335,14 @@ function getFilterChanges(){
                 }
             }
         }*/
-        var tempPrice = JSON.parse(localStorage)
+        var tempPrice = JSON.parse(localStorage['prices']);
 
-        for(key in filterArray){
-
+        for(var key in filterArray){
+                tempPrice[key]["UpperBound"] = filterArray[key].upper;
+                tempPrice[key]["LowerBound"] = filterArray[key].lower;
         }
+        localStorage['prices'] = JSON.stringify(tempPrice);
+
         console.log(filterArray);
 
 }
