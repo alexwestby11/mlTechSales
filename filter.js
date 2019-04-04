@@ -371,8 +371,12 @@ var jsonObj = {
 
 
 
-function getJsonObject(){
+function getJsonPrice(){
      return JSON.parse(localStorage['prices']);
+}
+
+function getJsonBrand(){
+     return JSON.parse(localStorage['brand']);
 }
 
 var typeArrayFixed = ["notebook","monitor","notebook_case","mouse","charger","keyboard","cable","docking station","speaker","tablet","mobile","drive","printer","dvd_br","desktop","controller","camera","headset","game","console","lens","television"];
@@ -518,9 +522,9 @@ function updateBrand(brand,givenType)
      localStorage['Brand0']=arrayBrandObj[arrayBrandObj.length-1];
      localStorage['Brand1']=arrayBrandObj[arrayBrandObj.length-2];
      localStorage['Brand2']=arrayBrandObj[arrayBrandObj.length-3];
-     mostUsed.push(arrayBrandObj[arrayBrandObj.length-1]);
-     mostUsed.push(arrayBrandObj[arrayBrandObj.length-2]);
-     mostUsed.push(arrayBrandObj[arrayBrandObj.length-3]);
+     mostUsed.push(arrayBrandObj[arrayBrandObj.length-1][0]);
+     mostUsed.push(arrayBrandObj[arrayBrandObj.length-2][0]);
+     mostUsed.push(arrayBrandObj[arrayBrandObj.length-3][0]);
 
     return mostUsed;
 

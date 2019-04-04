@@ -24,12 +24,38 @@ var itemTypes =
     "lens",
     "television"
 ]
-var typePriceArray=[];
+var numPerType={
+    "notebook": 0,
+        "monitor": 0,
+        "notebook_case": 0,
+        "mouse": 0,
+        "charger": 0,
+        "keyboard": 0,
+        "cable": 0,
+        "docking station": 0,
+        "speaker": 0,
+        "tablet": 0,
+        "mobile": 0,
+        "drive": 0,
+        "printer": 0,
+        "dvd_br": 0,
+        "desktop": 0,
+        "controller": 0,
+        "camera": 0,
+        "headset" : 0,
+        "game" : 0,
+        "console" : 0,
+        "lens" : 0,
+        "television": 0
+};
+
+
 
 
 
 
 function getData1() {
+
     $(document).ready(function () {
             $.getJSON(localStorage['searchInput'], function (result) {
                 //console.log(result);
@@ -58,11 +84,14 @@ function getData1() {
                         }
                         else if (key === "type") {
                             product.type = value;
+                            ++numPerType[value];
                         }
 
                     });
                     dataArray.push(product);
                 });
+
+                getResultTypes(numPerType);
                 if(dataArray.length === 1 && dataArray[0].id === "0"){
                    isResults = 0;
                    numRows = 0;
@@ -304,4 +333,16 @@ function mainSearchPage(inputArray)
     boolArray.push(index);
     return boolArray;
 }
+
+function getResultTypes(array){
+    var tempArray = [];
+    for(key in array){
+        if(array[key] !== 0){
+           tempArray.push(key)
+        }
+
+    }
+      localStorage.numPerType = JSON.stringify(tempArray);
+}
+
 

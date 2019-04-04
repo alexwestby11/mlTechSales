@@ -36,8 +36,8 @@
     <link rel="icon" href="images/Logo/logo3.png">
 </head>
 
-<body onload = "getData1();dFilter();">
-  <script>startTimer(); console.log(localStorage['brand']) </script>
+<body onload = "getData1();">
+  <script>startTimer();dFilter(JSON.parse(localStorage.numPerType));</script>
 
 
 <div class="container-fluid">
@@ -64,7 +64,7 @@
             <span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 
-                    <div id="dFilter" style = "margin: 5%" ></div>
+                    <div id="dFilter" style = "margin: 5%;overflow: hidden;"></div>
 
                 </ul>
         </div>
