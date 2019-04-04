@@ -330,7 +330,7 @@ function getRecommended(givenItem,func)
 {
     $(document).ready(function() {
         var alpha = $.ajax({
-            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/1/3',
+            url: 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemCBRec/'+ givenItem.id + '/8',
             dataType: 'json',
             type: 'GET',
             success: function (data) {
