@@ -188,8 +188,7 @@ let priceArray = getJsonPrice();
                           let brandArray = mostUsedBrand(arr[l]);
                           arrayOfBrands.push({"name": arr[l],"array":brandArray});
 
-                          var stringNameBrand = arr[l][0] + "Brand";
-console.log(brandArray);
+                          var stringNameBrand = arr[l] + "Brand";
                         //Creates Brand List
 
                         stringValue += "<label>" + arr[l] + ":<br>Brand</label>"
@@ -202,7 +201,7 @@ console.log(brandArray);
                                 +"</label>"
                                 + "</div>";
                                 brandData.push(brandArray[length]);
-
+console.log(stringNameBrand + j );
 
                         }
 
@@ -232,16 +231,13 @@ console.log(brandArray);
 
 
                   }
-                    console.log(numTypesArray);
-
-
              });
 }
 
 
 
 
-    function customSliderPrice(upper,lower,index) {
+function customSliderPrice(upper,lower,index) {
           $(function () {
               $("#slider-range" + index.toString()).slider({
                   range: true,
@@ -264,25 +260,25 @@ console.log(brandArray);
 
 function getFilterChanges(){
     var filterArray = [];
-    let tempArray = JSON.parse(localStorage.allBrands);
-
+    var tempArray = JSON.parse(localStorage.allBrands);
     //slider
         for(var i = 0;i < tempArray.length;++i){
-            if($("#slider-range" + tempArray[i]["name"]).length){
+
+            if($("#slider-range" + tempArray[i]["name"].toString()).length){
                 let valueUpper = $("#slider-range" + tempArray[i]["name"]).slider("values",1);
                 let valueLower = $("#slider-range" + tempArray[i]["name"]).slider("values",0);
                 filterArray[tempArray[i]["name"]] = {Price:{"lower":valueLower,"upper":valueUpper},
                                                 Brand:{
-                                                    "1":{"name":name,"checked":0},
-                                                    "2":{"name":name,"checked":0},
-                                                    "3":{"name":name,"checked":0}
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}
                                                 }
                                             };
-
             }
             else{
                 break;
             }
+
 
         }
 
@@ -308,27 +304,30 @@ function getFilterChanges(){
                    }
                 }
 
-*//*
-        for(let j = 0; tempArray.length; ++j){
-            let i = 0;
-            for(var key in filterArray[tempArray[j]]["Brand"]){
-                var checkedBox = document.getElementById(tempArray[j] + "Brand" + i.toString());
-                if(checkedBox != null){
-                    filterArray[tempArray[j]]["Brand"][key]["name"];
-                    console.log(allBrands);
-                    if(checkedBox.checked = true){
-                        //filterArray[tempArray[j]]["Brand"][i].checked = true;
-                    }else{
-                        //filterArray[tempArray[j]]["Brand"][i].checked = false;
-                    }
+*/
 
+
+
+        for(let j = 0; j < tempArray.length; ++j){
+
+            let i = 0;
+                for (var key in filterArray[tempArray[j]["name"]]["Brand"]) {
+                    var checkedBox = document.getElementById(tempArray[j]["name"] + "Brand" + i.toString());
+                        filterArray[tempArray[j]["name"]]["Brand"][key]["name"] = tempArray[j]["array"][i][0];
+                        if (checkedBox.checked === true) {
+                            filterArray[tempArray[j]["name"]]["Brand"][key]["checked"]= true;
+                        } else {
+                            filterArray[tempArray[j]["name"]]["Brand"][key]["checked"]= false;
+                        }
+
+
+                    ++i;
                 }
-                ++i;
-            }
+
         }
 
 
-*/
+console.log(filterArray);
 
         /*
         for(let i = 0; i < arr.length; ++i){
