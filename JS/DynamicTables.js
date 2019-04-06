@@ -306,14 +306,37 @@ function getFilterChanges(){
 console.log(filterArray);
 
 
-        var brandData = [];
+        var brandData = {
+            "camera":{},
+            "lens":{},
+            "charger":{},
+            "controller":{},
+            "desktop":{},
+            "docking_station":{},
+            "dvd_br":{},
+            "drive":{},
+            "game":{},
+            "console":{},
+            "cable":{},
+            "headset":{},
+            "keyboard":{},
+            "monitor":{},
+            "mouse":{},
+            "notebook":{},
+            "notebook_case":{},
+            "printer":{},
+            "mobile":{},
+            "speaker":{},
+            "tablet":{},
+            "television":{}
+        };
 
         var tempPrice = JSON.parse(localStorage['prices']);
 
         var k = 0;
         for(var key in filterArray){
-                brandData.push();
-                brandData[k] = ({"name":key,"Brand":filterArray[key]["Brand"]});
+
+                brandData[key] = {"Brand":filterArray[key]["Brand"]};
 
 
 
