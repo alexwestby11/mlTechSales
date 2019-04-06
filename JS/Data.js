@@ -319,6 +319,7 @@ function mainSearchPage(inputArray)
 {
     var index = 0;
     var jsonObjtemp = JSON.parse(localStorage['prices']);
+    var brandData = JSON.parse(localStorage["brandData"]);
     var boolArray=[];
     for(var i=0; i<=inputArray.length-1;++i)
 
@@ -326,7 +327,7 @@ function mainSearchPage(inputArray)
 
         //var tempArray = mostUsedBrand(inputArray[i].type);
         if( (inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound']) &&
-            (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound']) )
+            (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound']) && brandData[inputArray[i].type]["Brand"]["1"])
         {
             boolArray.push(true)
             ++index;
