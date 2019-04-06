@@ -702,8 +702,6 @@ function getTypePriceData()
                     type: 'GET',
                     success: function (secondData) {
                         averagePriceArray=[]
-
-                        console.log(averageArray(averagePriceArray))
                     },
                     error: function (error) {
                     }

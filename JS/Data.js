@@ -320,20 +320,49 @@ function mainSearchPage(inputArray)
     var index = 0;
     var jsonObjtemp = JSON.parse(localStorage['prices']);
     var boolArray=[];
-    for(var i=0; i<=inputArray.length-1;++i)
+    var brandData = JSON.parse(localStorage['brandData'])
+    var filterBrandBool = false;
 
+    for(var i=0; i<=inputArray.length-2;++i)
     {
-
-        //var tempArray = mostUsedBrand(inputArray[i].type);
-        if( (inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound']) &&
-            (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound']) )
+        for (var key in brandData[inputArray[i].type]["Brand"])
         {
-            boolArray.push(true)
-            ++index;
+            if(brandData[inputArray[i].type]["Brand"][key]["checked"]==true)
+            {
+                filterBrandBool=true;
+                break
+            }
         }
+
+        if(filterBrandBool)
+        {
+        var lock = false;
+        for (var key in brandData[inputArray[i].type]["Brand"])
+        {
+            if( (inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound'])
+            &&  (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound'])
+            &&  (brandData[inputArray[i].type]["Brand"][key]["name"]==inputArray[i].brand)
+            &&  (brandData[inputArray[i].type]["Brand"][key]["checked"])
+            )
+            {
+                boolArray.push(true)
+                lock = true;
+                ++index;
+            }
+        }
+
+
+        }
+        else if((inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound'])
+            &&  (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound']))
+        {
+              boolArray.push(true)
+        }
+
         else
         {
             boolArray.push(false)
+
         }
     }
     boolArray.push(index);
