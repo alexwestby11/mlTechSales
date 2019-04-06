@@ -319,6 +319,7 @@ function mainSearchPage(inputArray)
 {
     var index = 0;
     var jsonObjtemp = JSON.parse(localStorage['prices']);
+    var brandData = JSON.parse(localStorage["brandData"]);
     var boolArray=[];
     var brandData = JSON.parse(localStorage['brandData'])
     var filterBrandBool = false;
@@ -352,9 +353,11 @@ function mainSearchPage(inputArray)
         }
 
 
+
         }
         else if((inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound'])
             &&  (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound']))
+
         {
               boolArray.push(true)
         }
