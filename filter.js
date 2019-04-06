@@ -462,7 +462,7 @@ function oneSigmaMinus(arrayGiven)
 
 function updateAveragePrice(x)
 {
-    getTypePriceData()
+    //getTypePriceData()
     if(localStorage['prices']==null)
     {
         localStorage.setItem('prices',JSON.stringify(jsonObj))

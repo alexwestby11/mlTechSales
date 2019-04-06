@@ -118,7 +118,8 @@ function getData1() {
 
 
 function getSimData(x) {
-    localStorage['searchSim'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/" + localStorage['ID'] + "/" + x + "/sim";
+    var ab = 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemCBRec/' + x + '/8'
+    localStorage['searchSim'] = 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemCBRec/' + x + '/8';
     console.log(localStorage['searchSim']);
 
     $(document).ready(function () {
@@ -165,7 +166,10 @@ function getSimData(x) {
 }
 
 function getRecommendData(x) {
-    localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/" + localStorage['ID'] + "/" + x + "/comp";
+   var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+localStorage['sessionID']+
+    "/" + x + "/6"
+    localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+localStorage['sessionID']+
+    "/" + x + "/6"
     console.log(localStorage['searchRec']);
 
     $(document).ready(function () {
@@ -206,7 +210,7 @@ function getRecommendData(x) {
         });
     });
 }
-
+/*
 function getTypePriceData() {
    var product = new Product()
     for (var i=0; i<=itemTypes.length-1;++i)
@@ -259,7 +263,7 @@ function getTypePriceData() {
     }
 }
 
-
+*/
 
 
 
