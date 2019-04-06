@@ -282,30 +282,6 @@ function getFilterChanges(){
 
         }
 
-        //check box
-/*
-        for(let j = 0; tempArray.length; ++j){
-                    var checkedBox = document.getElementById(tempArray[j] + "Brand" + j.toString());
-                     if(checkedBox !== null) {
-                         if(typeData[index] === "Brand"){
-                             filterArray[typeData[index]] = [];
-                            for(var i = 0; i < 3;++i){
-                                var checkedBoxBrand = document.getElementById("Index" + j.toString());
-                               filterArray[typeData[index]][brandData[i]] = checkedBoxBrand.checked;
-                               ++j;
-                            }
-                         }else{
-                           filterArray[typeData[index]] = {"state":checkedBox.checked};
-                         }
-                         ++index;
-                     }
-                   else{
-                       break;
-                   }
-                }
-
-*/
-
 
 
         for(let j = 0; j < tempArray.length; ++j){
@@ -329,31 +305,6 @@ function getFilterChanges(){
 
 console.log(filterArray);
 
-        /*
-        for(let i = 0; i < arr.length; ++i){
-            let temp = arr[i];
-            if(temp[0] === "Price") {
-                //filterArray.push(temp[0]);
-                filterArray["Price"]={"lower":valueLower,"upper":valueUpper};
-
-            }
-            else{
-                filterArray[temp[0].toString()] = [];
-                for(let j = 1; j < temp.length; ++j){
-                    var checkedBox = document.getElementById("Index" + index.toString());
-                     if(checkedBox !== null) {
-                         let tempDict = new dict();
-                         tempDict.name = temp[j];
-                         tempDict.state = checkedBox.checked;
-                         filterArray[temp[0].toString()].push(tempDict);
-                         ++index;
-                     }
-                   else{
-                       break;
-                   }
-                }
-            }
-        }*/
 
         var brandData = [];
 
@@ -361,7 +312,8 @@ console.log(filterArray);
 
         var k = 0;
         for(var key in filterArray){
-                brandData.push()
+                brandData.push();
+                brandData[k] = ({"name":key,"Brand":filterArray[key]["Brand"]});
 
 
 
@@ -370,9 +322,9 @@ console.log(filterArray);
                 ++k;
         }
 
-        //console.log(brandData);
+        console.log(brandData);
         localStorage['prices'] = JSON.stringify(tempPrice);
-        localStorage.setItem('brandData',JSON.stringify(filterArray));
+        localStorage.setItem('brandData',JSON.stringify(brandData));
 
 
 }
