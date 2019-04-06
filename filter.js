@@ -278,7 +278,7 @@ var jsonObj = {
         "charger":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[7,11,13,10,11,15,9,10,8,7],"Box":[],"Brand":{},"min":1,"max":15},
         "controller":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[15,20,25,10,8,30,20,20,21,18],"Box":[],"Brand":{},"min":1,"max":15},
         "desktop":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[279,130,200,198,260,150,200,210,180,299],"Box":[],"Brand":{},"min":1,"max":15},
-        "docking station":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[20,30,25,30,20,35,40,30,39,50],"Box":[],"Brand":{},"min":1,"max":15},
+        "docking_station":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[20,30,25,30,20,35,40,30,39,50],"Box":[],"Brand":{},"min":1,"max":15},
         "dvd_br":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[15,20,30,25,27,28,19,26,27,19],"Box":[],"Brand":{},"min":1,"max":15},
         "drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[10,15,12,9,15,19,18,10,15,13],"Box":[],"Brand":{},"min":1,"max":15},
         "game":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[9,12,14,15,18,19,12,9,15,14],"Box":[],"Brand":{},"min":1,"max":15},
@@ -303,7 +303,7 @@ var jsonObj = {
         "charger":{},
         "controller":{},
         "desktop":{},
-        "docking station":{},
+        "docking_station":{},
         "dvd_br":{},
         "drive":{},
         "game":{},
@@ -333,7 +333,7 @@ var jsonObj = {
         "desktop":{"RAM":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"},
                       "CPU":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GHz"},
                       "HDD":{"StdDev":0,"Mean":0,"UpperBound":10,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"GB"}},
-        "docking station":{"Port":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"No."},
+        "docking_station":{"Port":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"No."},
                             "USB":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"No."}},
         "dvd_br":{"Resolution":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":0,"AvgArray":[],"isBox":0,"min":1,"max":15,"Unit":"Pixels"}
                                ,"DVD":{"isBox":1,"isClicked":0},"BR":{"isBox":1,"isClicked":0,"min":1,"max":15}},
@@ -379,7 +379,7 @@ function getJsonBrand(){
      return JSON.parse(localStorage['brand']);
 }
 
-var typeArrayFixed = ["notebook","monitor","notebook_case","mouse","charger","keyboard","cable","docking station","speaker","tablet","mobile","drive","printer","dvd_br","desktop","controller","camera","headset","game","console","lens","television"];
+var typeArrayFixed = ["notebook","monitor","notebook_case","mouse","charger","keyboard","cable","docking_station","speaker","tablet","mobile","drive","printer","dvd_br","desktop","controller","camera","headset","game","console","lens","television"];
 
 function initJsonObject(){
 
@@ -503,7 +503,6 @@ function updateBrand(brand,givenType)
     }
     localJSON[givenType][brand]["Count"]=localJSON[givenType][brand]["Count"]+1;
     localStorage.setItem('brand',JSON.stringify(localJSON))
-    mostUsedBrand(givenType)
 }
 
  function mostUsedBrand(productType)
@@ -525,6 +524,7 @@ function updateBrand(brand,givenType)
      mostUsed.push(arrayBrandObj[arrayBrandObj.length-1]);
      mostUsed.push(arrayBrandObj[arrayBrandObj.length-2]);
      mostUsed.push(arrayBrandObj[arrayBrandObj.length-3]);
+     console.log(arrayBrandObj);
 
     return mostUsed;
 

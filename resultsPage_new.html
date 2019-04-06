@@ -32,7 +32,7 @@
 <html lang="en">
 <head><title>TechSails</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">F
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/Logo/logo3.png">
 </head>
 
@@ -59,7 +59,7 @@
 
         <button class="btn" style="border: 1px solid gainsboro" onclick="linkHomePage();"><i class="fa fa-home" ></i></button>
 
-          <div class="dropdown" onclick="getFilterChanges()">
+          <div class="dropdown" onclick="localStorage['filterChanges'] = JSON.stringify(getFilterChanges());">
             <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="background: white; border: 1px solid gainsboro">Filter
             <span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">

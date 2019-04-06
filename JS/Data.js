@@ -8,7 +8,7 @@ var itemTypes =
     "charger",
     "keyboard",
     "cable",
-    "docking station",
+    "docking_station",
     "speaker",
     "tablet",
     "mobile",
