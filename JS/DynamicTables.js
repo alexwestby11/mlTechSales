@@ -259,7 +259,7 @@ function customSliderPrice(upper,lower,index) {
 
 
 function getFilterChanges(){
-    var filterArray = [];
+    var filterArray = JSON.parse(localStorage['brandData']);
     var tempArray = JSON.parse(localStorage.allBrands);
     //slider
         for(var i = 0;i < tempArray.length;++i){
@@ -303,51 +303,116 @@ function getFilterChanges(){
         }
 
 
-console.log(filterArray);
 
 
-        var brandData = {
-            "camera":{},
-            "lens":{},
-            "charger":{},
-            "controller":{},
-            "desktop":{},
-            "docking_station":{},
-            "dvd_br":{},
-            "drive":{},
-            "game":{},
-            "console":{},
-            "cable":{},
-            "headset":{},
-            "keyboard":{},
-            "monitor":{},
-            "mouse":{},
-            "notebook":{},
-            "notebook_case":{},
-            "printer":{},
-            "mobile":{},
-            "speaker":{},
-            "tablet":{},
-            "television":{}
-        };
+
+
 
         var tempPrice = JSON.parse(localStorage['prices']);
 
-        var k = 0;
         for(var key in filterArray){
-
-                brandData[key] = {"Brand":filterArray[key]["Brand"]};
-
-
-
                 tempPrice[key]["UpperBound"] = filterArray[key]["Price"]["upper"];
                 tempPrice[key]["LowerBound"] = filterArray[key]["Price"]["lower"];
-                ++k;
         }
 
-        console.log(brandData);
         localStorage['prices'] = JSON.stringify(tempPrice);
-        localStorage.setItem('brandData',JSON.stringify(brandData));
+        localStorage.setItem('brandData',JSON.stringify(filterArray));
 
 
+}
+
+
+  var brandData1 = {
+            "camera":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "lens":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "charger":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "controller":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "desktop":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "docking_station":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "dvd_br":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "drive":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "game":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "console":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "cable":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "headset":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "keyboard":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "monitor":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "mouse":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "notebook":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "notebook_case":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "printer":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "mobile":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "speaker":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "tablet":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}},
+            "television":{Price:{"lower":0,"upper":0}, Brand:{
+                                                    "1":{"name":name,"checked":false},
+                                                    "2":{"name":name,"checked":false},
+                                                    "3":{"name":name,"checked":false}}}
+        };
+
+function initBrandData(){
+    localStorage['brandData'] = JSON.stringify(brandData1);
 }
