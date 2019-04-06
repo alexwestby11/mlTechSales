@@ -355,13 +355,24 @@ console.log(filterArray);
             }
         }*/
 
+        var brandData = [];
+
         var tempPrice = JSON.parse(localStorage['prices']);
 
-        for(var key in  filterArray){
+        var k = 0;
+        for(var key in filterArray){
+                brandData.push()
+
+
+
                 tempPrice[key]["UpperBound"] = filterArray[key]["Price"]["upper"];
                 tempPrice[key]["LowerBound"] = filterArray[key]["Price"]["lower"];
+                ++k;
         }
 
+        //console.log(brandData);
         localStorage['prices'] = JSON.stringify(tempPrice);
+        localStorage.setItem('brandData',JSON.stringify(filterArray));
+
 
 }
