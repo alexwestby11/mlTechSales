@@ -175,6 +175,7 @@ function dFilter() {
 
 let priceArray = getJsonPrice();
             var arrayOfBrands = [];
+             var filterArray = JSON.parse(localStorage['brandData']);
              let numTypesArray = JSON.parse(localStorage.numPerType);
              $("#dynamic_filter").ready(function () {
 
@@ -192,16 +193,28 @@ let priceArray = getJsonPrice();
                         //Creates Brand List
 
                         stringValue += "<label>" + arr[l] + ":<br>Brand</label>"
-                        for (var j = 0; j < brandArray.length; ++j) {
 
+                        var j = 0;
+                        for (var key in filterArray[arr[l]]["Brand"]) {
 
-                                stringValue += "<div  class= 'checkbox'>"
-                                    + "<label>&emsp;<input id = '" + stringNameBrand + j +"'  type= 'checkbox' value= ''>"
-                                    + brandArray[j];
-                                +"</label>"
-                                + "</div>";
-                                brandData.push(brandArray[length]);
+                                if(filterArray[arr[l]]["Brand"][key]["checked"] === true){
+                                    stringValue += "<div  class= 'checkbox'>"
+                                        + "<label>&emsp;<input id = '" + stringNameBrand + j + "'  type= 'checkbox' value= '' checked>"
+                                        + brandArray[j];
+                                    +"</label>"
+                                    + "</div>";
+                                    brandData.push(brandArray[length]);
+                                }
+                                else {
+                                    stringValue += "<div  class= 'checkbox'>"
+                                        + "<label>&emsp;<input id = '" + stringNameBrand + j + "'  type= 'checkbox' value= ''>"
+                                        + brandArray[j];
+                                    +"</label>"
+                                    + "</div>";
+                                    brandData.push(brandArray[length]);
+                                }
 //console.log(stringNameBrand + j );
+                            ++j;
 
                         }
 
@@ -262,7 +275,7 @@ function getFilterChanges(){
     var filterArray = JSON.parse(localStorage['brandData']);
     var tempArray = JSON.parse(localStorage.allBrands);
     console.log("here");
-    console.log(tempArray);
+    console.log(brandData1);
     console.log("here1");
     console.log(filterArray);
     //slider
@@ -287,9 +300,12 @@ function getFilterChanges(){
                         filterArray[tempArray[j]["name"]]["Brand"][key]["name"] = tempArray[j]["array"][i][0];
                         if (checkedBox.checked === true) {
                             filterArray[tempArray[j]["name"]]["Brand"][key]["checked"]= true;
+
                         } else {
                             filterArray[tempArray[j]["name"]]["Brand"][key]["checked"]= false;
+
                         }
+                        checkedBox.checked = filterArray[tempArray[j]["name"]]["Brand"][key]["checked"];
 
 
                     ++i;
@@ -307,7 +323,6 @@ function getFilterChanges(){
 
         localStorage['prices'] = JSON.stringify(tempPrice);
         localStorage.setItem('brandData',JSON.stringify(filterArray));
-
 
 }
 
@@ -404,5 +419,8 @@ function getFilterChanges(){
         };
 
 function initBrandData(){
-    localStorage['brandData'] = JSON.stringify(brandData1);
+    if(localStorage['brandData'] === undefined){
+        localStorage['brandData'] = JSON.stringify(brandData1);
+    }
+
 }

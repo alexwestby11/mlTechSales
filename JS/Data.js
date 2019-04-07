@@ -322,6 +322,8 @@ function mainSearchPage(inputArray)
     var brandData = JSON.parse(localStorage["brandData"]);
     var boolArray=[];
     var brandData = JSON.parse(localStorage['brandData'])
+    console.log("main");
+    console.log(brandData)
     var filterBrandBool = false;
 
     for(var i=0; i<=inputArray.length-1;++i)
