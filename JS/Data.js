@@ -101,7 +101,7 @@ function getData1() {
                     isResults = 1;
                     var boolArray = mainSearchPage(dataArray);
                     localStorage.boolArray = JSON.stringify(boolArray);
-                    numCol = Math.ceil(boolArray[boolArray.length-1]/numRows);
+                    numCol = Math.ceil(boolArray.length/numRows);
                     dTable();
                     changeImage(numRows,numCol);
                 }
@@ -324,7 +324,7 @@ function mainSearchPage(inputArray)
     var brandData = JSON.parse(localStorage['brandData'])
     var filterBrandBool = false;
 
-    for(var i=0; i<=inputArray.length-2;++i)
+    for(var i=0; i<=inputArray.length-1;++i)
     {
         for (var key in brandData[inputArray[i].type]["Brand"])
         {
@@ -337,7 +337,6 @@ function mainSearchPage(inputArray)
 
         if(filterBrandBool)
         {
-        var lock = false;
         for (var key in brandData[inputArray[i].type]["Brand"])
         {
             if( (inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound'])
@@ -347,7 +346,6 @@ function mainSearchPage(inputArray)
             )
             {
                 boolArray.push(true)
-                lock = true;
                 ++index;
             }
         }
@@ -368,7 +366,6 @@ function mainSearchPage(inputArray)
 
         }
     }
-    boolArray.push(index);
     return boolArray;
 }
 
