@@ -322,10 +322,11 @@ function mainSearchPage(inputArray)
     var brandData = JSON.parse(localStorage["brandData"]);
     var boolArray=[];
     var brandData = JSON.parse(localStorage['brandData'])
-    var filterBrandBool = false;
+
 
     for(var i=0; i<=inputArray.length-1;++i)
     {
+        var filterBrandBool = false;
         for (var key in brandData[inputArray[i].type]["Brand"])
         {
             if(brandData[inputArray[i].type]["Brand"][key]["checked"]==true)
@@ -337,21 +338,24 @@ function mainSearchPage(inputArray)
 
         if(filterBrandBool)
         {
-        for (var key in brandData[inputArray[i].type]["Brand"])
-        {
-            if( (inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound'])
-            &&  (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound'])
-            &&  (brandData[inputArray[i].type]["Brand"][key]["name"]==inputArray[i].brand)
-            &&  (brandData[inputArray[i].type]["Brand"][key]["checked"])
-            )
+            var isFiltered=false
+            for (var key in brandData[inputArray[i].type]["Brand"])
             {
-                boolArray.push(true)
-                ++index;
+                if( (inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound'])
+                &&  (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound'])
+                &&  (brandData[inputArray[i].type]["Brand"][key]["name"]==inputArray[i].brand)
+                &&  (brandData[inputArray[i].type]["Brand"][key]["checked"])
+                )
+                {
+                    boolArray.push(true)
+                    isFiltered=true
+                    ++index;
+                }
             }
-        }
-
-
-
+            if(!isFiltered)
+            {
+                boolArray.push(false)
+            }
         }
         else if((inputArray[i].price <=jsonObjtemp[inputArray[i].type]['UpperBound'])
             &&  (inputArray[i].price >= jsonObjtemp[inputArray[i].type]['LowerBound']))
