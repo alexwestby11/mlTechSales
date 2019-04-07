@@ -494,7 +494,6 @@ function myTimer() {
   else{
       stringVar = secondTimer;
   }
-  console.log(minute + ":" +stringVar);
   localStorage.second = secondTimer;
   localStorage.min = minute;
   //document.getElementById("Timer").innerHTML = " " + minute + ":" +stringVar;

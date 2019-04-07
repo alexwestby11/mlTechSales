@@ -524,7 +524,7 @@ function updateBrand(brand,givenType)
      mostUsed.push(arrayBrandObj[arrayBrandObj.length-1]);
      mostUsed.push(arrayBrandObj[arrayBrandObj.length-2]);
      mostUsed.push(arrayBrandObj[arrayBrandObj.length-3]);
-     console.log(arrayBrandObj);
+    // console.log(arrayBrandObj);
 
     return mostUsed;
 

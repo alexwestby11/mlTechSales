@@ -201,7 +201,7 @@ let priceArray = getJsonPrice();
                                 +"</label>"
                                 + "</div>";
                                 brandData.push(brandArray[length]);
-console.log(stringNameBrand + j );
+//console.log(stringNameBrand + j );
 
                         }
 
@@ -261,24 +261,19 @@ function customSliderPrice(upper,lower,index) {
 function getFilterChanges(){
     var filterArray = JSON.parse(localStorage['brandData']);
     var tempArray = JSON.parse(localStorage.allBrands);
+    console.log("here");
+    console.log(tempArray);
+    console.log("here1");
+    console.log(filterArray);
     //slider
         for(var i = 0;i < tempArray.length;++i){
 
             if($("#slider-range" + tempArray[i]["name"].toString()).length){
                 let valueUpper = $("#slider-range" + tempArray[i]["name"]).slider("values",1);
                 let valueLower = $("#slider-range" + tempArray[i]["name"]).slider("values",0);
-                filterArray[tempArray[i]["name"]] = {Price:{"lower":valueLower,"upper":valueUpper},
-                                                Brand:{
-                                                    "1":{"name":name,"checked":false},
-                                                    "2":{"name":name,"checked":false},
-                                                    "3":{"name":name,"checked":false}
-                                                }
-                                            };
+                filterArray[tempArray[i]["name"]]["Price"]["lower"] = valueLower;
+                filterArray[tempArray[i]["name"]]["Price"]["upper"] = valueUpper;
             }
-            else{
-                break;
-            }
-
 
         }
 
@@ -301,11 +296,6 @@ function getFilterChanges(){
                 }
 
         }
-
-
-
-
-
 
 
         var tempPrice = JSON.parse(localStorage['prices']);
