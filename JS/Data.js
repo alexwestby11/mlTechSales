@@ -166,7 +166,7 @@ function getSimData(x) {
 }
 
 function getRecommendData(x) {
-    
+
    var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+localStorage['sessionID']+
     "/" + x + "/6"
     localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+localStorage['sessionID']+
