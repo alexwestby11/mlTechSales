@@ -166,10 +166,14 @@ function getSimData(x) {
 }
 
 function getRecommendData(x) {
+    
    var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+localStorage['sessionID']+
     "/" + x + "/6"
     localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+localStorage['sessionID']+
     "/" + x + "/6"
+    var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/"+ localStorage['ID'] + "/"
+     + x + "/comp"
+    localStorage['searchRec']= userString
     console.log(localStorage['searchRec']);
 
     $(document).ready(function () {
