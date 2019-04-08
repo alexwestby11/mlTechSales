@@ -101,7 +101,13 @@ function getData1() {
                     isResults = 1;
                     var boolArray = mainSearchPage(dataArray);
                     localStorage.boolArray = JSON.stringify(boolArray);
-                    numCol = Math.ceil(boolArray.length/numRows);
+                    var index = 0;
+                    for(var i = 0; i < boolArray.length; ++i){
+                        if(boolArray[i] === true){
+                            ++index;
+                        }
+                    }
+                    numCol = Math.ceil(index/numRows);
                     dTable();
                     changeImage(numRows,numCol);
                 }
@@ -171,9 +177,11 @@ function getRecommendData(x) {
     "/" + x + "/6"
     localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+localStorage['sessionID']+
     "/" + x + "/6"
+
     var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/"+ localStorage['ID'] + "/"
      + x + "/comp"
     localStorage['searchRec']= userString
+
     console.log(localStorage['searchRec']);
 
     $(document).ready(function () {

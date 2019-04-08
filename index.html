@@ -29,7 +29,7 @@
 
 <body style="margin: 0;padding: 0">
 <div class="container-fluid" style="background-image: linear-gradient(155deg, CORNFLOWERBLUE,ROYALBLUE);" >
-    <script>initialSet();initJsonObject();resetTimer();createSessionID();addJSONParameter();initBrandData();</script>
+    <script>initialSet();initJsonObject();resetTimer();createSessionID();addJSONParameter();initBrandData();startTimer()</script>
     <!-- Title -->
     <div class="d-flex flex-col justify-content-center" style="height: 15%; width: 100%;)">
         <div class="d-flex flex-column">
@@ -37,11 +37,19 @@
             <div class="d-flex  justify-content-center titleText">
                 Tech Sails
             </div>
+            <button onclick="startTimer()"></button>
 
 
 
 
         </div>
+
+
+                   <div class="d-flex vertical-align"  style='height: 10%;max-width: 100%'>
+                     <p id="Timer" style="text-align: right"></p><button onclick="resetTimer()">Stop time</button>
+                    </div>
+
+               </div>
 
     </div>
 </div>

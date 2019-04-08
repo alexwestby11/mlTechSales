@@ -474,13 +474,13 @@ function incrementClick() {
 
 
 
-var secondTimer = localStorage.second || 0
-var output = setInterval(myTimer ,1000);;
+var secondTimer = localStorage.second || '0';
+var minute = localStorage.min || '0';
+var output = setInterval(myTimer ,1000);
 function startTimer(){
 
 }
 
-var minute = localStorage.min || 0;
 function myTimer() {
   var stringVar = "0";
   ++secondTimer;
@@ -496,11 +496,13 @@ function myTimer() {
   }
   localStorage.second = secondTimer;
   localStorage.min = minute;
-  //document.getElementById("Timer").innerHTML = " " + minute + ":" +stringVar;
+  console.log(" " + minute + ":" +stringVar);
+ document.getElementById("Timer").innerHTML = " " + minute + ":" +stringVar;
 }
 
 function resetTimer(){
     clearInterval(output);
+    output = 0;
     localStorage.second = 0;
     localStorage.min = 0;
     localStorage.output = 0;
