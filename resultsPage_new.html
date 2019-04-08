@@ -14,6 +14,7 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+
 <!-- local js scripts -->
 <script src="filterTest.js"></script>
 <script src="filter.js"></script>
@@ -27,6 +28,8 @@
 <link rel ="stylesheet" href="styles/frontpage.css">
 <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 <!------ Include the above in youritemArray[num] HEAD tag ---------->
 <!DOCTYPE html>
 <html lang="en">
@@ -54,17 +57,16 @@
    <div class="d-flex vertical-align titleText" style="margin-top: 1%">Tech Sails</div>
 
 
-
     <div class="d-flex" style="width: 50%;margin: auto">
 
         <button class="btn" style="border: 1px solid gainsboro" onclick="linkHomePage();"><i class="fa fa-home" ></i></button>
 
           <div class="dropdown" onclick="localStorage['filterChanges'] = JSON.stringify(getFilterChanges());">
-            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="background: white; border: 1px solid gainsboro">Filter
-            <span class="caret"></span></button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="background: white; border: 1px solid gainsboro;">
+            <span class="caret subText1" style="text-align: center"> Filter</span></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="height: 16vmax;overflow:auto;overflow-scrolling: touch;background-image: linear-gradient(155deg, whitesmoke,gainsboro);">
 
-                    <div id="dFilter" style = "margin: 5%;overflow: hidden;"></div>
+                    <div id="dFilter"></div>
 
                 </ul>
         </div>
