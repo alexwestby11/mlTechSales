@@ -185,6 +185,18 @@ src: url("../fonts/BenguiatGothicStd-HeavyObl.otf");
 
 }
 
+.subText1 {
+    color: whitesmoke;
+    font-family: custom1;
+    font-size: medium;
+    text-shadow:
+    -1px -1px 0 darkgrey,
+    1px -1px 0 darkgrey,
+    -1px 1px 0 darkgrey,
+    1px 1px 0 darkgrey;
+
+}
+
 .searchText {
     color: white;
     font-family: custom1;

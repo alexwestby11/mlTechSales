@@ -182,7 +182,7 @@ let priceArray = getJsonPrice();
 
                      function createGUI(arr) {
 
-                     var stringValue = "<form>";
+                     var stringValue = "<form style='height: auto'>";
 
                     for(let l = 0; l < arr.length; ++l) {
                           //let priceArray = getJsonPrice();
