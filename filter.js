@@ -281,7 +281,7 @@ var jsonObj = {
         "docking_station":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[20,30,25,30,20,35,40,30,39,50],"Box":[],"Brand":{},"min":1,"max":15},
         "dvd_br":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[15,20,30,25,27,28,19,26,27,19],"Box":[],"Brand":{},"min":1,"max":15},
         "drive":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[10,15,12,9,15,19,18,10,15,13],"Box":[],"Brand":{},"min":1,"max":15},
-        "game":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[9,12,14,15,18,19,12,9,15,14],"Box":[],"Brand":{},"min":1,"max":15},
+        "game":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[20,12,25,15,25,19,12,25,15,14],"Box":[],"Brand":{},"min":1,"max":15},
         "console":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[209,200,250,280,210,290,300,210,210,250],"Box":[],"Brand":{},"min":1,"max":15},
         "cable":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[7,10,7,12,10,8,10,12,9,9],"Box":[],"Brand":{},"min":1,"max":15},
         "headset":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[20,15,25,20,25,30,20,15,29,26],"Box":[],"Brand":{},"min":1,"max":15},
