@@ -110,6 +110,7 @@ function getData1() {
                     numCol = Math.ceil(index/numRows);
                     dTable();
                     changeImage(numRows,numCol);
+                    dFilter();
                 }
 
 
@@ -124,10 +125,11 @@ function getData1() {
 
 
 function getSimData(x) {
-    var ab = 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemCBRec/' + x + '/8'
     localStorage['searchSim'] = 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemCBRec/' + x + '/8';
     console.log(localStorage['searchSim']);
 
+      var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/"+ localStorage['ID'] + "/" + x + "/sim";
+      localStorage['searchSim'] = userString;
     $(document).ready(function () {
             simArray = [];
             $.getJSON(localStorage['searchSim'], function (result) {
@@ -180,7 +182,7 @@ function getRecommendData(x) {
 
     var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/"+ localStorage['ID'] + "/"
      + x + "/comp"
-    localStorage['searchRec']= userString
+    localStorage['searchRec']= userString;
 
     console.log(localStorage['searchRec']);
 
@@ -331,9 +333,8 @@ function mainSearchPage(inputArray)
 {
     var index = 0;
     var jsonObjtemp = JSON.parse(localStorage['prices']);
-    var brandData = JSON.parse(localStorage["brandData"]);
     var boolArray=[];
-    var brandData = JSON.parse(localStorage['brandData'])
+    var brandData = JSON.parse(localStorage['brandData']);
 
 
     for(var i=0; i<=inputArray.length-1;++i)

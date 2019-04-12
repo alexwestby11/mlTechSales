@@ -74,7 +74,7 @@ function dImage() {
                         stringValue += "<div class = \"d-flex flex-column justify-content-center vertical-align\" style='width:auto%; height:100%;' >";
                          for (var k = 0; k < x; ++k) {//col
                              stringValue +=
-                             "<div class=\"d-flex redColor marginMainImageNormal btnImg-primary  greenColor rounded\" style= 'border: 1px solid gainsboro;height:5vmax;width:5vmax;margin-top: 5%;margin-bottom: 5%;'>" +
+                             "<div class=\"d-flex marginMainImageNormal btnImg-primary  greenColor rounded\" style= 'border: 1px solid gainsboro;height:5vmax;width:5vmax;margin-top: 5%;margin-bottom: 5%;'>" +
 
                                 "<img id = 'mainImg"+index+"' class = \"img rounded creamColor shadow-lg img1\" src='images/Apple1.jpg' onclick='replyMainImage(this.id)'>"+
 
@@ -102,7 +102,7 @@ function dImage() {
                         stringValue += "<div class = \"d-flex flex-column justify-content-center vertical-align\" style='width:auto%; height:100%;' >";
                          for (var k = 0; k < x; ++k) {//col
                              stringValue +=
-                             "<div class=\"d-flex redColor marginMainImageNormal btnImg-primary  greenColor rounded\" style= 'border: 1px solid gainsboro;height:5vmax;width:5vmax;margin-top: 5%;margin-bottom: 5%;'>" +
+                             "<div class=\"d-flex  marginMainImageNormal btnImg-primary  greenColor rounded\" style= 'border: 1px solid gainsboro;height:5vmax;width:5vmax;margin-top: 5%;margin-bottom: 5%;'>" +
 
                                 "<img id = 'mainImg"+index+"' class = \"img rounded creamColor shadow-lg img1\" src='images/Apple1.jpg' onclick='replyMainImage(this.id)'>"+
 
@@ -165,9 +165,9 @@ function dTable() {
          ["Price","100","200"]];
 //var filterGUI = JSON.parse(localStorage.jsonObj)['performance']['Notebook'];
      //Results Page items
-var index1 = 0;
-var index2 = 0;
-var typeData = [];
+
+
+
 var brandData = [];
 function dFilter() {
 
@@ -182,9 +182,12 @@ let priceArray = getJsonPrice();
 
                      function createGUI(arr) {
 
-                     var stringValue = "<form style='height: auto'>";
+                     var stringValue = "<div class = 'rounded'>" +
+                                        "<form style='height: auto;'>";
 
                     for(let l = 0; l < arr.length; ++l) {
+                        stringValue += "<div class = 'rounded' style=' height: 4%'></div>";
+                         stringValue += "<div class = 'rounded' style='background: dodgerblue; height: 3%'></div>";
                           //let priceArray = getJsonPrice();
                           let brandArray = mostUsedBrand(arr[l]);
                           arrayOfBrands.push({"name": arr[l],"array":brandArray});
@@ -192,9 +195,10 @@ let priceArray = getJsonPrice();
                           var stringNameBrand = arr[l] + "Brand";
                         //Creates Brand List
 
-                        stringValue += "<label>" + arr[l] + ":<br>Brand</label>"
+                        stringValue += "<label ><h5  style='text-transform: capitalize'>" + arr[l] + ":</h5><p>Brand</p></label>"
 
                         var j = 0;
+
                         for (var key in filterArray[arr[l]]["Brand"]) {
 
                                 if(filterArray[arr[l]]["Brand"][key]["checked"] === true){
@@ -217,6 +221,7 @@ let priceArray = getJsonPrice();
                             ++j;
 
                         }
+                        stringValue += "</div>";
 
                         //Creates Price
                         stringValue += "<p>" +
@@ -227,7 +232,7 @@ let priceArray = getJsonPrice();
                         stringValue += "<div id='slider-range" + arr[l] + "' ></div>";
 
                     }
-                      stringValue += "</form>";
+                      stringValue += "</form></div>";
 
 
                      return stringValue;
