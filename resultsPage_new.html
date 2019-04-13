@@ -40,7 +40,7 @@
 </head>
 
 <body onload = "getData1();startTimer();">
-  <script>dFilter();</script>
+
 
 
 <div class="container-fluid">
@@ -54,11 +54,12 @@
         </div>
 
 
-                  <div class="d-flex vertical-align"  style='height: 10%;max-width: 100%'>
+                  <!--<div class="d-flex vertical-align"  style='height: 10%;max-width: 100%'>
                      <p id="Timer" style="text-align: right"></p><button onclick="resetTimer()">Stop time</button>
-                    </div>
+                    </div>-->
 
-               </div>
+
+
 
 
    <div class="d-flex vertical-align titleText" style="margin-top: 1%">Tech Sails</div>
@@ -71,9 +72,9 @@
           <div class="dropdown" onclick="localStorage['filterChanges'] = JSON.stringify(getFilterChanges());">
             <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="background: white; border: 1px solid gainsboro;">
             <span class="caret subText1" style="text-align: center"> Filter</span></button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="height: 16vmax;overflow:auto;overflow-scrolling: touch;background-image: linear-gradient(155deg, whitesmoke,gainsboro);">
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1" style="height: 16vmax;overflow:auto;overflow-scrolling: touch;">
 
-                    <div id="dFilter"></div>
+                    <div  id="dFilter"></div>
 
                 </ul>
         </div>

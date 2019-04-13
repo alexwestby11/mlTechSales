@@ -375,8 +375,12 @@ function getJsonPrice(){
      return JSON.parse(localStorage['prices']);
 }
 
-function getJsonBrand(){
-     return JSON.parse(localStorage['brand']);
+function initJsonBrand(){
+    var tempArray = JSON.parse(localStorage['brand']);
+    if(tempArray['notebook']['Dell'] === undefined){
+        addJSONParameter();
+    }
+
 }
 
 var typeArrayFixed = ["notebook","monitor","notebook_case","mouse","charger","keyboard","cable","docking_station","speaker","tablet","mobile","drive","printer","dvd_br","desktop","controller","camera","headset","game","console","lens","television"];
@@ -397,26 +401,40 @@ function initJsonObject(){
         jsonObj['Price'][typeString]["LowerBound"] = lowerBoundPrice;
 
     }
- localStorage['prices'] = JSON.stringify(jsonObj['Price']);
-    localStorage['brand'] = JSON.stringify(jsonObj['Brand']);
- localStorage['Macro']  = JSON.stringify(jsonObj['Macro'])
+
+        localStorage['prices'] = JSON.stringify(jsonObj['Price']);
+
+
+     if(localStorage['brand'] === undefined){
+        localStorage['brand'] = JSON.stringify(jsonObj['Brand']);
+        console.log("here");
+    }
+
+
+         localStorage['Macro']  = JSON.stringify(jsonObj['Macro'])
+
+
+
+
 }
 
 function addJSONParameter()
 {
    var givenObj=JSON.parse(localStorage['brand']);
-   for(category in givenObj)
-   {
-    for(var i=0; i<=brands.length-1;++i)
-    {
-        var givenCompany=brands[i]
-        givenObj[category][givenCompany]={"Count":0}
+
+    for (var category in givenObj) {
+        for (var i = 0; i <= brands.length - 1; ++i) {
+            var givenCompany = brands[i];
+            givenObj[category][givenCompany] = {"Count": 0}
+        }
     }
-   }
-    localStorage.setItem('brand',JSON.stringify(givenObj))
-    testPerformanceFilter(jsonObj)
+
+    localStorage['brand'] =  JSON.stringify(givenObj);
+
 
 }
+
+
 
 function averageArray(arrayGiven)
 {
@@ -496,13 +514,13 @@ function updateAveragePrice(x)
 function updateBrand(brand,givenType)
 {
     var localJSON=JSON.parse(localStorage['brand']);
-    if(localJSON[givenType][brand]==null)
+    if(localJSON[givenType][brand] == null)
     {
         addJSONParameter();
         localJSON=JSON.parse(localStorage['brand']);
     }
     localJSON[givenType][brand]["Count"]=localJSON[givenType][brand]["Count"]+1;
-    localStorage.setItem('brand',JSON.stringify(localJSON))
+    localStorage['brand'] =  JSON.stringify(localJSON);
 }
 
  function mostUsedBrand(productType)
