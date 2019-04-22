@@ -776,7 +776,7 @@ function imageSearcher(arraySize)
 	$(document).ready(function() {
         var alpha = $.ajax({
             url: 'https://api.cognitive.microsoft.com/bing/v7.0/images/search',
-			beforeSend: function(xhr){xhr.setRequestHeader('Ocp-Apim-Subscription-Key', '6fa1be3480b94f0d8512368b7907855d');},
+			beforeSend: function(xhr){xhr.setRequestHeader('Ocp-Apim-Subscription-Key', '14da4a9232f24cc99fe943b90d7f1e40');},
             dataType: 'json',
             type: 'GET',
             data:{
