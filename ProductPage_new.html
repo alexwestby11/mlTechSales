@@ -59,13 +59,12 @@
 
 
     </head>
-<body onload = "setProductInfo();startTimer()">
+<body onload = "setProductInfo(); initPageBoxes(localStorage['ID_type']);console.log(JSON.parse(localStorage.page)[localStorage['ID_type']])">
 
   <!--Background -->
 <div class = "container-fluid">
      <script>
          //sets the typeArray from local storage
-         setTypeArray();
          //gets the values set in the temp array
 
 
@@ -229,7 +228,8 @@
        </div>
     <script>
 
- initBoxes(localStorage['ID_type']);
+ //initBoxes(localStorage['ID_type']);
+
     getRetailers();
     //averageArrayTest();
 </script>

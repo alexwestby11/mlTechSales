@@ -92,6 +92,40 @@ function initBoxes(type){
 
 }
 
+function initPageBoxes(type){
+     var tempPageData = JSON.parse(localStorage.page);
+
+     if(tempPageData[type]["update"]["index"] === 4){
+         tempPageData[type]["current"]["box1"] = tempPageData[type]["update"]["box1"] ;
+         tempPageData[type]["current"]["box2"] = tempPageData[type]["update"]["box2"] ;
+         tempPageData[type]["current"]["box3"] = tempPageData[type]["update"]["box3"] ;
+         tempPageData[type]["current"]["box4"] = tempPageData[type]["update"]["box4"] ;
+         tempPageData[type]["update"]["box1"] = 0;
+         tempPageData[type]["update"]["box2"] = 0;
+         tempPageData[type]["update"]["box3"] = 0;
+         tempPageData[type]["update"]["box4"] = 0;
+         tempPageData[type]["update"]["index"] = 0;
+
+     }
+         box1 = 0;
+         box2 = 0;
+         box3 = 0;
+         box4 = 0;
+         priorityBox = [tempPageData[type]["current"]["box1"], tempPageData[type]["current"]["box2"],tempPageData[type]["current"]["box3"],tempPageData[type]["current"]["box4"]];
+
+    localStorage.page = JSON.stringify(tempPageData);
+      colChange();
+      console.log(tempPageData);
+
+}
+
+function updatePageDataCount(type){
+        var tempPageData = JSON.parse(localStorage.page);
+
+        ++tempPageData[type]["update"]["count"];
+
+         localStorage.page = JSON.stringify(tempPageData);
+}
 function initialSet(){
         if(flag === '0') {
             var typeTempArray = typeArrayFixed;
@@ -117,11 +151,45 @@ function initialSet(){
                 }
                 localStorage.type = JSON.stringify(tempArray);
             }
+
         }
         typeArray = JSON.parse(localStorage.type);
-        //alert("flag = " + flag + "\n" + "here = " + typeArray);
+        alert("flag = " + flag + "\n" + "here = " + typeArray);
         flag = '1';
         localStorage['flag'] = flag;
+}
+
+function initPageData(){
+        if(localStorage.page === undefined) {
+            localStorage.page = JSON.stringify(pageData);
+
+        }
+       // var tempPageData = JSON.parse(localStorage.page);
+       // console.log( "initSet2 = " + tempPageData);
+}
+
+function updatePageDataIndex(type){
+    var tempPageData = JSON.parse(localStorage.page);
+
+    ++tempPageData[type]["update"]["index"];
+
+    localStorage.page = JSON.stringify(tempPageData);
+}
+
+//Update Value in existing box
+function updatePageData(type){
+     var tempPageData = JSON.parse(localStorage.page);
+
+    tempPageData[type]["update"]["box1"] += box1;
+    tempPageData[type]["update"]["box2"] += box2;
+    tempPageData[type]["update"]["box3"] += box3;
+    tempPageData[type]["update"]["box4"] += box4;
+      box1 = 0;
+      box2 = 0;
+      box3 = 0;
+      box4 = 0;
+
+    localStorage.page = JSON.stringify(tempPageData);
 }
 
 function updateType(type){
@@ -139,13 +207,15 @@ function updateType(type){
 
 
 
+
 function sortType(){
     var items = [];
+    var tempPageData = JSON.parse(localStorage.page);
 
-        for(var i = 0; i < typeArray.length; i += 7) {
+        for(var key in tempPageData) {
             var temp = new Item(); // ReferenceError
-            temp.number = parseInt(typeArray[i+6]);
-            temp.type = typeArray[i];
+            temp.number = tempPageData[key]["update"]["count"];
+            temp.type = key;
             items.push(temp);
         }
 
@@ -348,6 +418,7 @@ function linkResultsPage() {
 function linkHomePage() {
   window.location.href = 'index.html';
 }
+
 ///Only works on results page
  function reply_click(clicked_id)
 {
@@ -366,6 +437,7 @@ function linkHomePage() {
         localStorage['ID_type'] = dataArray[itemIndexInLocalArray].type;
         localStorage['results_index'] = z_idx - 10;
         updateAveragePrice(dataArray[itemIndexInLocalArray].price);
+        updatePageDataCount(localStorage['ID_type']);
         updateBrand(dataArray[itemIndexInLocalArray].brand,dataArray[itemIndexInLocalArray].type)
         initialBoxSize(localStorage['ID_cat']);
 
@@ -560,3 +632,28 @@ function returnStar(id) {
     console.log(localStorage.userRating);
 
 }
+
+var pageData = {
+        "camera":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+         "lens":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "charger":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "controller":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "desktop":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "docking_station":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "dvd_br":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "drive":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "game":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "console":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "cable":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "headset":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "keyboard":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "monitor":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "mouse":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "notebook":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "notebook_case":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "printer":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "mobile":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "speaker":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "tablet":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+        "television":{"update":{"box1":0,"box2":0,"box3":0,"box4":0,"index":0,"count":0},"current":{"box1":0,"box2":0,"box3":0,"box4":0}},
+};

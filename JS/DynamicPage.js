@@ -1,42 +1,42 @@
 function reply_mouseOver(clicked_id)
 {
             if(clicked_id === "box1"){
-                 Timer1 = setInterval(myCounter1, 100);
+                 Timer1 = setInterval(myCounter1, 1000);
                  localStorage['Timer1'] = Timer1;
             }
             else if(clicked_id === "box2"){
-                Timer2 = setInterval(myCounter2, 100);
+                Timer2 = setInterval(myCounter2, 1000);
                 localStorage['Timer2'] = Timer2;
             }
             else if(clicked_id === "box3"){
-                Timer3 = setInterval(myCounter3, 100);
+                Timer3 = setInterval(myCounter3, 1000);
                 localStorage['Timer3'] = Timer3;
             }
             else if(clicked_id === "box4") {
-                Timer4 = setInterval(myCounter4, 100);
+                Timer4 = setInterval(myCounter4, 1000);
                 localStorage['Timer4'] = Timer4;
             }
  }
 
  function reply_mouseOut(clicked_id) {
             if(clicked_id === "box1"){
-                priorityBox[0] += c1;
-                 box1 =  priorityBox[0];
+                 box1 += c1;
+
                  clearTimeout(Timer1);
             }
             else if(clicked_id === "box2"){
-                priorityBox[1] += c2;
-                box2 =  priorityBox[1];
+                box2 += c2;
+
                 clearTimeout(Timer2);
             }
             else if(clicked_id === "box3"){
-                 priorityBox[2] += c3;
-                 box3 = priorityBox[2];
+                box3 += c3;
+
                  clearTimeout(Timer3);
             }
             else if(clicked_id === "box4"){
-                 priorityBox[3] += c4;
-                 box4 =  priorityBox[3];
+                 box4 += c4;
+
                  clearTimeout(Timer4);
             }
 
@@ -362,7 +362,8 @@ function reply_ProPage(clicked_id)
             localStorage['ID_price'] = recArray[num].price;
             localStorage['ID_brand'] = recArray[num].brand;
             localStorage['ID_type'] = recArray[num].type;
-             updateBoxValue(localStorage['prevType']);
+             //updateBoxValue(localStorage['prevType']);
+             updatePageData(localStorage['prevType']);
 
         }
         else{
@@ -375,7 +376,8 @@ function reply_ProPage(clicked_id)
             localStorage['ID_price'] = simArray[num].price;
             localStorage['ID_brand'] = simArray[num].brand;
             localStorage['ID_type'] = simArray[num].type;
-              updateBoxValue(localStorage['prevType']);
+             // updateBoxValue(localStorage['prevType']);
+              updatePageData(localStorage['prevType']);
         }
 
            updateAveragePrice(localStorage['ID_price'])
@@ -390,7 +392,8 @@ function reply_ProPage(clicked_id)
             ++numClicked;
             localStorage['numClicked'] = numClicked;
         }
-        updateType(localStorage['ID_type']);
+       // updateType(localStorage['ID_type']);
+        updatePageDataIndex(localStorage['ID_type'])
 
         if(bool === 0){
              var priceDict= JSON.parse(localStorage['prices'])
