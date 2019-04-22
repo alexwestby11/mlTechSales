@@ -74,9 +74,9 @@ function dImage() {
                         stringValue += "<div class = \"d-flex flex-column justify-content-center vertical-align\" style='width:auto%; height:100%;' >";
                          for (var k = 0; k < x; ++k) {//col
                              stringValue +=
-                             "<div class=\"d-flex marginMainImageNormal btnImg-primary  greenColor rounded\" style= 'border: 1px solid gainsboro;height:5vmax;width:5vmax;margin-top: 5%;margin-bottom: 5%;'>" +
+                             "<div class=\"d-flex marginMainImageNormal btnImg-primary rounded\" style= 'border: 1px solid gainsboro;height:5vmax;width:5vmax;margin-top: 5%;margin-bottom: 5%;'>" +
 
-                                "<img id = 'mainImg"+index+"' class = \"img rounded creamColor shadow-lg img1\" src='images/Apple1.jpg' onclick='replyMainImage(this.id)'>"+
+                                "<img id = 'mainImg"+index+"' class = \"img rounded creamColor shadow-sm img1\" src='images/Apple1.jpg' onclick='replyMainImage(this.id)'>"+
 
                                  "</div>";
                              ++index;
@@ -102,7 +102,7 @@ function dImage() {
                         stringValue += "<div class = \"d-flex flex-column justify-content-center vertical-align\" style='width:auto%; height:100%;' >";
                          for (var k = 0; k < x; ++k) {//col
                              stringValue +=
-                             "<div class=\"d-flex  marginMainImageNormal btnImg-primary  greenColor rounded\" style= 'border: 1px solid gainsboro;height:5vmax;width:5vmax;margin-top: 5%;margin-bottom: 5%;'>" +
+                             "<div class=\"d-flex  marginMainImageNormal btnImg-primary rounded\" style= 'border: 1px solid gainsboro;height:5vmax;width:5vmax;margin-top: 5%;margin-bottom: 5%;'>" +
 
                                 "<img id = 'mainImg"+index+"' class = \"img rounded creamColor shadow-lg img1\" src='images/Apple1.jpg' onclick='replyMainImage(this.id)'>"+
 
@@ -182,7 +182,7 @@ let priceArray = getJsonPrice();
 
                      function createGUI(arr) {
 
-                     var stringValue = "<div class = 'rounded'>" +
+                     var stringValue = "<div class = 'rounded'>" + "<button type=\"button\" class=\"btn btn-primary\" style='color:black;align-self: center' onclick='localStorage[\"filterChanges\"] = JSON.stringify(getFilterChanges());document.location.reload();'>Reload</button>" +
                                         "<form style='height: auto;'>";
 
                     for(let l = 0; l < arr.length; ++l) {
@@ -244,7 +244,7 @@ let priceArray = getJsonPrice();
                   for(var l = 0; l < numTypesArray.length; ++l){
 
 
-                        customSliderPrice(priceArray[numTypesArray[l]]["UpperBound"],priceArray[numTypesArray[l]]["LowerBound"],numTypesArray[l]);
+                        customSliderPrice(priceArray[numTypesArray[l]]["UpperBound"],priceArray[numTypesArray[l]]["LowerBound"],priceArray[numTypesArray[l]]["max"],numTypesArray[l]);
 
 
 
@@ -255,12 +255,12 @@ let priceArray = getJsonPrice();
 
 
 
-function customSliderPrice(upper,lower,index) {
+function customSliderPrice(upper,lower,max,index) {
           $(function () {
               $("#slider-range" + index.toString()).slider({
                   range: true,
                   min: 0,
-                  max: 5000,
+                  max: max,
                   values: [lower, upper],
                   slide: function (event, ui) {
                       $("#amount" + index).val("$" + ui.values[0] + " - $" + ui.values[1]);
