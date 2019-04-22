@@ -18,7 +18,8 @@ Download the master Branch and import it into your favorite destination. Launch 
 * [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - The web framework used
 * [Javascript](https://devdocs.io/javascript/) - Backend Language
 
-
+## Licensing
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Authors
 
@@ -26,10 +27,10 @@ Download the master Branch and import it into your favorite destination. Launch 
 * **Alex Westby** 
 * **Yousif Amanuel**
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors]https://github.com/alexwestby11/mlTechSales/contributors) who participated in this project.
 
 
 ## Acknowledgments
 
 * Bootstrap Creators
-*
+* Jeff Bezos
