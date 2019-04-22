@@ -791,21 +791,29 @@ function imageSearcher(arraySize)
                     var index=1;
 					while(i<=8) {
 
-							var imgValue = document.getElementById("mainImg"+i.toString());
+
 							if(returnData.value[index].contentUrl==null)
 							{
 								console.log("bad");
 								index++;
 								continue;
 							}
-							else{
-									imgValue.src=returnData.value[i].contentUrl;
+							else {
+
+							    if(document.getElementById("mainImg"+i.toString()) !== null){
+							        var imgValue = document.getElementById("mainImg"+i.toString());
+							          imgValue.src = returnData.value[i].contentUrl;
+                                }
+
+
 									addPicsArray[i]=returnData.value[index].contentUrl;
 									imageLinkArray.push(returnData.value[index].contentUrl);
 									i++;
 									index++;
 							}
 						}
+						localStorage.pics = JSON.stringify(addPicsArray);
+					setImages();
 			        isLoaded=isLoaded+1
             },
             error: function (error) {

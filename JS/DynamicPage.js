@@ -380,7 +380,7 @@ function reply_ProPage(clicked_id)
               updatePageData(localStorage['prevType']);
         }
 
-           updateAveragePrice(localStorage['ID_price'])
+           updateAveragePrice(localStorage['ID_price']);
 
         if(localStorage['numClicked'] === undefined || localStorage['numClicked'] === 0){
             numClicked = 0;
@@ -396,9 +396,9 @@ function reply_ProPage(clicked_id)
         updatePageDataIndex(localStorage['ID_type'])
 
         if(bool === 0){
-             var priceDict= JSON.parse(localStorage['prices'])
-             var lowerBound = priceDict[recArray[num].type]['LowerBound']
-             var upperBound = priceDict[recArray[num].type]['UpperBound']
+             var priceDict= JSON.parse(localStorage['prices']);
+             var lowerBound = priceDict[recArray[num].type]['LowerBound'];
+             var upperBound = priceDict[recArray[num].type]['UpperBound'];
              if(upperBound>0 && lowerBound>0)
              {
                 localStorage['searchInput'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/getItemsBy/" + "Item_Type" + "/" + recArray[num].type

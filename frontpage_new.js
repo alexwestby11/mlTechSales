@@ -65,6 +65,11 @@ var topValuesTypesNames = [typeArray[0],typeArray[7],typeArray[14],typeArray[21]
 var prevValue = 0;
 const numToChangeBox = 3;
 
+function setImages(){
+    if(localStorage.pics !== undefined){
+        addPicsArray = JSON.parse(localStorage.pics);
+    }
+}
 
 function initBoxes(type){
     var index = 0;
