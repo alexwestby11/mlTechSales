@@ -175,9 +175,9 @@ function getSimData(x) {
 
 function getRecommendData(x) {
 
-   var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+localStorage['sessionID']+
+   var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+'iiolpxuk29b4' +
     "/" + x + "/6"
-    localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+localStorage['sessionID']+
+    localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+'iiolpxuk29b4'+
     "/" + x + "/6"
 
     var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/"+ localStorage['ID'] + "/"
