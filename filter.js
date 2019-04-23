@@ -1,4 +1,5 @@
 var isFirst=true;
+
 var brands=
     [
         'HP','Dell','Asus','Acer','Apple',
@@ -273,7 +274,7 @@ var jsonObj = {
     },
     "Price":
     {
-        "camera":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[90,120,200,50,220,170,180,155,100,250],"Box":[],"Brand":{},"min":0,"max":3000},
+        "camera":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[900,1200,2000,500,2200,1700,1800,1550,1000,1000],"Box":[],"Brand":{},"min":0,"max":3000},
         "lens":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[130,90,86,129,196,109,248,100,150,200],"Box":[],"Brand":{},"min":0,"max":3000},
         "charger":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[7,11,13,10,11,15,9,10,8,7],"Box":[],"Brand":{},"min":0,"max":100},
         "controller":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[15,20,25,10,8,30,20,20,21,18],"Box":[],"Brand":{},"min":0,"max":100},
@@ -288,7 +289,8 @@ var jsonObj = {
         "keyboard":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[19,19,21,23,21,9,10,15,10,15],"Box":[],"Brand":{},"min":0,"max":100},
         "monitor":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[150,100,80,180,90,150,160,170,180,190],"Box":[],"Brand":{},"min":0,"max":500},
         "mouse":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[11.99, 9.95, 7.99, 6.99, 9.99, 8.99, 9.99, 14.99, 2.64, 7.99],"Box":[],"Brand":{},"min":0,"max":100},
-        "notebook":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[349.9, 208.9, 272, 265.99, 269, 217.95, 294.85, 274.5, 217.95, 228],"Box":[],"Brand":{},"min":0,"max":3000},
+        "notebook":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[349.9, 208.9, 272, 265.99, 269, 217.95, 294.85, 274.5, 350, 350],"Box":[],"Brand":{},"min":0,"max":3000},
+        //"notebook":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":4,"AvgPriceArray":[1,3000,3000,1],"Box":[],"Brand":{},"min":0,"max":3000},
         "notebook_case":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[16,12,10,14,16,10,12,15,16,15],"Box":[],"Brand":{},"min":0,"max":150},
         "printer":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[100,50,60,90,65,100,64,75,100,100],"Box":[],"Brand":{},"min":0,"max":500},
         "mobile":{"StdDev":0,"Mean":0,"UpperBound":0,"LowerBound":0,"Count":10,"AvgPriceArray":[109,50,60,75,65,55,90,95,50,65],"Box":[],"Brand":{},"min":0,"max":1200},

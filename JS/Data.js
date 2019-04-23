@@ -125,11 +125,11 @@ function getData1() {
 
 
 function getSimData(x) {
-    localStorage['searchSim'] = 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemCBRec/' + x + '/8';
+    localStorage['searchSim'] = 'http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemCBRec/' + localStorage['ID'] + '/'+ x;
     console.log(localStorage['searchSim']);
 
-      var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/"+ localStorage['ID'] + "/" + x + "/sim";
-      localStorage['searchSim'] = userString;
+     // var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/"+ localStorage['ID'] + "/" + x + "/sim";
+    //  localStorage['searchSim'] = userString;
     $(document).ready(function () {
             simArray = [];
             $.getJSON(localStorage['searchSim'], function (result) {
@@ -175,14 +175,14 @@ function getSimData(x) {
 
 function getRecommendData(x) {
 
-   var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+'iiolpxuk29b4' +
+   var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+'xE0haWy2UMeW' +
     "/" + x + "/6"
-    localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+'iiolpxuk29b4'+
+    localStorage['searchRec'] = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemUBCFRec/"+'xE0haWy2UMeW'+
     "/" + x + "/6"
 
-    var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/"+ localStorage['ID'] + "/"
-     + x + "/comp"
-    localStorage['searchRec']= userString;
+    //var userString = "http://techsailsrestful.us-east-2.elasticbeanstalk.com/itemRandomRec/"+ localStorage['ID'] + "/"
+    // + x + "/comp"
+   // localStorage['searchRec']= userString;
 
     console.log(localStorage['searchRec']);
 
