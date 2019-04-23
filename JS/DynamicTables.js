@@ -7,7 +7,7 @@ function RTable() {
                  function numTable(x, y) {
                      var index = 0;
                      var stringValue =
-                         "<div  class=\"d-flex flex-column\" style='width:100%; height:100%;'><h4>Compatible Items</h4>";
+                         "<div  class=\"d-flex flex-column\" style='width:100%; height:100%;'><h4>Similar Users Bought</h4>";
                      for (var j = 0; j < y; ++j) {//rows
                          stringValue += "<div class=\"d-flex\" style='width:100%; height:100%;'>"
                          for (var k = 0; k < x; ++k) {//col
