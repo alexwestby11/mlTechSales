@@ -34,4 +34,4 @@ See also the list of [contributors](https://github.com/alexwestby11/mlTechSales/
 ## Acknowledgments
 
 * Bootstrap Creators
-* Jeff Bezos
+* [Jeff Bezos](https://www.vox.com/identities/2019/1/10/18176048/jeff-bezos-ami-extortion-medium-photos-divorce)
