@@ -27,7 +27,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * **Alex Westby** 
 * **Yousif Amanuel**
 
-See also the list of [contributors]https://github.com/alexwestby11/mlTechSales/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/alexwestby11/mlTechSales/contributors) who participated in this project.
 
 
 ## Acknowledgments
