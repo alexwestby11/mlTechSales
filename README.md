@@ -17,6 +17,7 @@ Download the master Branch and import it into your favorite destination. Launch 
 
 * [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/) - The web framework used
 * [Javascript](https://devdocs.io/javascript/) - Backend Language
+* [mySQL](https://dev.mysql.com/doc/) - Database Protocol
 
 ## Licensing
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
