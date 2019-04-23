@@ -34,4 +34,4 @@ See also the list of [contributors](https://github.com/alexwestby11/mlTechSales/
 ## Acknowledgments
 
 * Bootstrap Creators
-* [Jeff Bezos](https://en.wikipedia.org/wiki/Jeff_Bezos) [ ](https://www.google.com)
+* [Jeff Bezos](https://en.wikipedia.org/wiki/Jeff_Bezos) [_](https://www.google.com)
